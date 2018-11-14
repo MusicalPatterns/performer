@@ -4,4 +4,4 @@ set -e
 
 make build
 npm i
-npm publish
+npm publish --access public
