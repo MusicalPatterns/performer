@@ -29,5 +29,4 @@ const TimeControls: (timeControlsProps: TimeControlsProps) => JSX.Element =
         )
     }
 
-// tslint:disable-next-line:no-any
-export default connect(mapStateToProps, mapDispatchToProps)(TimeControls as any)
+export default connect(mapStateToProps, mapDispatchToProps)(TimeControls)

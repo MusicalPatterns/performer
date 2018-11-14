@@ -29,7 +29,6 @@ const prepareOscillatorVoice: (prepareOscillatorVoiceParameters: PrepareOscillat
                 positionalSound = webVr.createPositionalSound()
                 positionNode.add(positionalSound)
                 gainNode = positionalSound.getOutput()
-                // tslint:disable-next-line:no-unsafe-any
                 oscillatorNode = webVr.createSpatialOscillator()
 
                 positionNode.position.set(

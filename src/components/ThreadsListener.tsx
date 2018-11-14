@@ -29,5 +29,4 @@ const ThreadsListener: (threadsChangeListenerProps: ThreadsListenerProps) => JSX
         return <div/>
     }
 
-// tslint:disable-next-line:no-any
-export default connect(mapStateToProps, mapDispatchToProps)(ThreadsListener as any)
+export default connect(mapStateToProps, mapDispatchToProps)(ThreadsListener)
