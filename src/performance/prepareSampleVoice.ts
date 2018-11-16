@@ -1,6 +1,6 @@
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
-import { BASE_GAIN, BASE_SAMPLE_GAIN, STANDARDIZED_SAMPLE_PITCH_OF_C5, X_AXIS, Y_AXIS, Z_AXIS } from '../constants'
+import { BASE_GAIN, X_AXIS, Y_AXIS, Z_AXIS } from '../constants'
 import {
     NoteToPlay,
     PrepareSampleVoiceParameters,
@@ -9,9 +9,10 @@ import {
     StopNote,
     Voice,
 } from '../index'
-import { from, Scalar, to } from '../nominal'
+import { from } from '../nominal'
 import { ImmutableState, StateKeys, store } from '../state'
-import { applyScale, centsToPitch, dereference, Maybe } from '../utilities'
+import { applyScale, dereference, Maybe } from '../utilities'
+import { calculatePlaybackRate } from './calculatePlaybackRate'
 import { context } from './context'
 import { buildSampleData, SampleDatas } from './sampleData'
 import { samples } from './samples'
@@ -63,17 +64,12 @@ const prepareSampleVoice: (prepareSampleVoiceParameters: PrepareSampleVoiceParam
                 gainNode = context.createGain()
                 gainNode.connect(context.destination)
 
-                gainNode.gain.value = from.Scalar(applyScale(gain, BASE_SAMPLE_GAIN))
+                gainNode.gain.value = from.Scalar(gain)
             }
 
+            sourceNode.playbackRate.value = calculatePlaybackRate(sampleData[timbre], frequency)
+
             sourceNode.connect(gainNode)
-
-            const pitch: Scalar =
-                to.Scalar(from.Frequency(frequency) / from.Frequency(STANDARDIZED_SAMPLE_PITCH_OF_C5))
-            const samplePitchAdjustment: Scalar =
-                centsToPitch(sampleData[ timbre ].centsAdjustment || to.Cents(0))
-            sourceNode.playbackRate.value = from.Scalar(pitch) * from.Scalar(samplePitchAdjustment)
-
             sourceNode.start()
         }
 

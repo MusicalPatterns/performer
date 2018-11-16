@@ -9,6 +9,7 @@ import { SampleName } from './samples'
 
 interface SampleData {
     centsAdjustment?: Cents,
+    unpitched?: boolean,
 }
 
 type SampleDatas = { [x in SampleName]: SampleData }
@@ -36,12 +37,19 @@ const buildSampleData: () => SampleDatas =
             centsAdjustment: shiftSemitones(UP_ONE_OCTAVE_IN_SEMITONES),
         },
         [ SampleName.VIOLIN ]: {},
-        [ SampleName.SNARE ]: {},
-        [ SampleName.KICK ]: {},
-        [ SampleName.HIHAT ]: {},
+        [ SampleName.SNARE ]: {
+            unpitched: true,
+        },
+        [ SampleName.KICK ]: {
+            unpitched: true,
+        },
+        [ SampleName.HIHAT ]: {
+            unpitched: true,
+        },
     })
 
 export {
     buildSampleData,
     SampleDatas,
+    SampleData,
 }

@@ -7,8 +7,7 @@ import { ActionType, store } from '../state'
 const restart: (threads: Thread[]) => void =
     (threads: Thread[]): void => {
         const batchedAction: BatchAction = batchActions([
-            { type: ActionType.SET_ATOMIC_TIME, data: to.Time(0) },
-            { type: ActionType.SET_RAW_TIME, data: to.Time(0) },
+            { type: ActionType.SET_TIME, data: to.Time(0) },
             { type: ActionType.SET_THREADS, data: threads },
         ])
         store.dispatch(batchedAction)

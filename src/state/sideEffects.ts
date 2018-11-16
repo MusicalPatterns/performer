@@ -10,10 +10,10 @@ const stopThreads: (threads: Thread[]) => void =
         })
     }
 
-const updateThreads: (threads: Thread[], rawTime: Time, atomicTime: Time) => void =
-    (threads: Thread[], rawTime: Time, atomicTime: Time): void => {
+const updateThreads: (threads: Thread[], time: Time) => void =
+    (threads: Thread[], time: Time): void => {
         threads.forEach((thread: Thread): void => {
-            update(thread, rawTime, atomicTime)
+            update(thread, time)
         })
     }
 

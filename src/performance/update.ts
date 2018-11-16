@@ -1,4 +1,4 @@
-import { Note, Thread, TimeType } from '../index'
+import { Note, Thread } from '../index'
 import { from, Time, to } from '../nominal'
 import { applyOffset, applyScale, dereference } from '../utilities'
 import { BASE_DURATION } from './constants'
@@ -23,10 +23,8 @@ const startThreadNote: (thread: Thread, note: Note) => void =
         thread.noteIndex = to.Index(from.Index(thread.noteIndex) + 1)
     }
 
-const update: (thread: Thread, rawTime: Time, atomicTime: Time) => void =
-    (thread: Thread, rawTime: Time, atomicTime: Time): void => {
-        const time: Time = thread.timeType === TimeType.RAW ? rawTime : atomicTime
-
+const update: (thread: Thread, time: Time) => void =
+    (thread: Thread, time: Time): void => {
         const note: Note = dereference(thread.notes, thread.noteIndex)
 
         if (time > thread.nextEnd) {

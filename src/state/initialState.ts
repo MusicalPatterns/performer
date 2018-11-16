@@ -3,12 +3,11 @@ import { immutablize } from './immutablize'
 import { ImmutableState } from './state'
 
 const initialState: ImmutableState = immutablize({
-    atomicTime: to.Time(0),
     clock: undefined,
     paused: true,
-    rawTime: to.Time(0),
     scene: undefined,
     threads: [],
+    time: to.Time(0),
     webVr: undefined,
 })
 

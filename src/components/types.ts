@@ -13,8 +13,8 @@ interface ThreadsListenerProps extends ThreadsListenerPropsFromState, ThreadsLis
 }
 
 interface TimeControlsPropsFromState {
-    atomicTime: Time,
     paused: boolean,
+    time: Time,
 }
 
 interface TimeControlsPropsFromDispatch {

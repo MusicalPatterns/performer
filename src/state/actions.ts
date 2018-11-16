@@ -7,8 +7,7 @@ enum ActionType {
     SET_THREADS = 'set threads',
     TOGGLE_PAUSED = 'toggle paused',
     SET_CLOCK = 'set clock',
-    SET_ATOMIC_TIME = 'set atomic time',
-    SET_RAW_TIME = 'set raw time',
+    SET_TIME = 'set time',
     SET_PAUSED = 'set paused',
     INCREMENT_TIME = 'increment time',
     SET_SCENE = 'set scene',
@@ -29,14 +28,9 @@ interface SetClock {
     type: ActionType.SET_CLOCK,
 }
 
-interface SetAtomicTime {
+interface SetTime {
     data: Time,
-    type: ActionType.SET_ATOMIC_TIME,
-}
-
-interface SetRawTime {
-    data: Time,
-    type: ActionType.SET_RAW_TIME,
+    type: ActionType.SET_TIME,
 }
 
 interface SetPaused {
@@ -63,8 +57,7 @@ type Action =
     SetThreads |
     TogglePaused |
     SetClock |
-    SetAtomicTime |
-    SetRawTime |
+    SetTime |
     SetPaused |
     IncrementTime |
     SetScene |

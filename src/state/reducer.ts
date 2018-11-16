@@ -26,11 +26,8 @@ const reducer: Reducer<ImmutableState, Action> =
 
                 return state.set(StateKeys.CLOCK, action.data)
             }
-            case ActionType.SET_ATOMIC_TIME: {
-                return state.set(StateKeys.ATOMIC_TIME, action.data)
-            }
-            case ActionType.SET_RAW_TIME: {
-                return state.set(StateKeys.RAW_TIME, action.data)
+            case ActionType.SET_TIME: {
+                return state.set(StateKeys.TIME, action.data)
             }
             case ActionType.SET_PAUSED: {
                 return state.set(StateKeys.PAUSED, action.data)
@@ -46,24 +43,12 @@ const reducer: Reducer<ImmutableState, Action> =
                     return state
                 }
 
-                const incrementedAtomicTime: Time = applyOffset(
-                    state.get(StateKeys.ATOMIC_TIME),
-                    to.Offset(1),
-                )
-                const incrementedRawTime: Time = applyOffset(
-                    state.get(StateKeys.RAW_TIME),
-                    to.Offset(from.Time(action.data)),
-                )
+                const time: Time = applyOffset(state.get(StateKeys.TIME), to.Offset(from.Time(action.data)))
 
-                updateThreads(
-                    state.get(StateKeys.THREADS),
-                    state.get(StateKeys.RAW_TIME),
-                    incrementedAtomicTime,
-                )
+                updateThreads(state.get(StateKeys.THREADS), time)
 
                 return state
-                    .set(StateKeys.ATOMIC_TIME, incrementedAtomicTime)
-                    .set(StateKeys.RAW_TIME, incrementedRawTime)
+                    .set(StateKeys.TIME, time)
             }
 
             default: {

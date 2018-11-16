@@ -19,11 +19,6 @@ enum OscillatorName {
     CUSTOM = 'custom',
 }
 
-enum TimeType {
-    RAW = 'raw',
-    ATOMIC = 'atomic',
-}
-
 interface Note {
     duration: Time,
     frequency: Frequency,
@@ -42,7 +37,6 @@ interface Thread {
     nextStart: Time,
     noteIndex: Index,
     notes: Note[],
-    timeType: TimeType,
     voice: Voice,
 }
 
@@ -74,7 +68,6 @@ export {
     StopNote,
     OscillatorName,
     VoiceType,
-    TimeType,
     SpatializationType,
     Voice,
     Note,
