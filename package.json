@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/performer",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/main.js",
   "typings": "dist/index.d.ts",
   "repository": {

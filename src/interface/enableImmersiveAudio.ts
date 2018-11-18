@@ -2,14 +2,23 @@ import { BatchAction, batchActions } from 'redux-batched-actions'
 import { Scene } from 'three'
 import { buildVrb, Vrb } from 'vrb'
 import { ActionType, store } from '../state'
+import { EnableImmersiveAudioParameters } from './types'
 
-const enableImmersiveAudio: VoidFunction =
-    (): void => {
+const enableImmersiveAudio: (enableImmersiveAudioParameters: EnableImmersiveAudioParameters) => void =
+    ({ vrb }: EnableImmersiveAudioParameters): void => {
         const scene: Scene = new Scene()
-        const webVr: Vrb = buildVrb({
-            camerasConfig: { INITIAL_PERSPECTIVE_POSITION: [ 0, 0, 0 ] },
-            scene,
-        })
+
+        let webVr: Vrb
+        if (vrb) {
+            webVr = vrb
+        }
+        else {
+            webVr = buildVrb({
+                camerasConfig: { INITIAL_PERSPECTIVE_POSITION: [ 0, 0, 0 ] },
+                scene,
+            })
+            webVr.requestAnimationFrame()
+        }
 
         const batchedAction: BatchAction = batchActions([
             { type: ActionType.SET_SCENE, data: scene },
@@ -17,7 +26,6 @@ const enableImmersiveAudio: VoidFunction =
         ])
         store.dispatch(batchedAction)
 
-        webVr.requestAnimationFrame()
     }
 
 export {

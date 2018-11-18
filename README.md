@@ -46,6 +46,9 @@ import { enableImmersiveAudio } from '@musical-patterns/performer'
 enableImmersiveAudio()
 ```
 
+If you have your own instance of Vrb ([https://www.npmjs.com/package/vrb](https://www.npmjs.com/package/vrb)) you may inject it here.
+If you do not, Vrb is what will be used under the hood for WebVR and it will be automatically configured to reasonable defaults for you.
+
 ## samples notes
 
 If you're going to use samples, I'm afraid you'll also need to find some way to get the samples' .wav files into your bundle.
