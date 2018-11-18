@@ -25,13 +25,13 @@ const startThreadNote: (thread: Thread, note: Note) => void =
 
 const update: (thread: Thread, time: Time) => void =
     (thread: Thread, time: Time): void => {
-        const note: Note = dereference(thread.notes, thread.noteIndex)
+        const note: Note = dereference(thread.part, thread.noteIndex)
 
         if (time > thread.nextEnd) {
             thread.voice.stopNote()
         }
 
-        if (from.Index(thread.noteIndex) === thread.notes.length) {
+        if (from.Index(thread.noteIndex) === thread.part.length) {
             thread.noteIndex = to.Index(0)
         }
 

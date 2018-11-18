@@ -27,6 +27,8 @@ interface Note {
     sustain: Time,
 }
 
+type Part = Note[]
+
 interface Voice {
     startNote: StartNote,
     stopNote: StopNote,
@@ -36,8 +38,19 @@ interface Thread {
     nextEnd: Time,
     nextStart: Time,
     noteIndex: Index,
-    notes: Note[],
+    part: Note[],
     voice: Voice,
+}
+
+interface ThreadSpec {
+    part: Part,
+    voiceSpec: VoiceSpec,
+}
+
+interface VoiceSpec {
+    spatialization?: SpatializationType,
+    timbre: SampleName | OscillatorName,
+    voiceType: VoiceType,
 }
 
 enum VoiceType {
@@ -50,19 +63,19 @@ enum SpatializationType {
     IMMERSIVE = 'immersive',
 }
 
-interface PrepareOscillatorVoiceParameters {
-    spatialization?: SpatializationType,
-    timbre: OscillatorType,
-}
-
-interface PrepareSampleVoiceParameters {
+interface SampleVoiceConstructorParameters {
     spatialization?: SpatializationType,
     timbre: SampleName,
 }
 
+interface OscillatorVoiceConstructorParameters {
+    spatialization?: SpatializationType,
+    timbre: OscillatorName,
+}
+
 export {
-    PrepareOscillatorVoiceParameters,
-    PrepareSampleVoiceParameters,
+    OscillatorVoiceConstructorParameters,
+    SampleVoiceConstructorParameters,
     NoteToPlay,
     StartNote,
     StopNote,
@@ -72,11 +85,12 @@ export {
     Voice,
     Note,
     Thread,
+    ThreadSpec,
+    VoiceSpec,
+    Part,
 }
 
 export {
-    prepareOscillatorVoice,
-    prepareSampleVoice,
     restart,
     SampleName,
 } from './performance'
