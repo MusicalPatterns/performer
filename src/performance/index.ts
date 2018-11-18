@@ -2,8 +2,11 @@ export { loadAllSamples, samples, SampleName } from './samples'
 export { buildSampleData } from './sampleData'
 export { buildClock } from './buildClock'
 export { context } from './context'
-export { activateContextInMobileBrowserEnvironments } from './activateContextInMobileBrowserEnvironments'
 export { update } from './update'
 export { constructOscillatorVoice } from './constructOscillatorVoice'
 export { constructSampleVoice } from './constructSampleVoice'
-export { restart } from './restart'
+export { constructThreads } from './constructThreads'
+
+export {
+    Voice,
+} from './types'

@@ -1,14 +1,7 @@
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { BASE_GAIN, X_AXIS, Y_AXIS, Z_AXIS } from '../constants'
-import {
-    NoteToPlay,
-    SampleVoiceConstructorParameters,
-    SpatializationType,
-    StartNote,
-    StopNote,
-    Voice,
-} from '../index'
+import { SpatializationType } from '../index'
 import { from } from '../nominal'
 import { ImmutableState, StateKeys, store } from '../state'
 import { applyScale, dereference, Maybe } from '../utilities'
@@ -16,6 +9,7 @@ import { calculatePlaybackRate } from './calculatePlaybackRate'
 import { context } from './context'
 import { buildSampleData, SampleDatas } from './sampleData'
 import { samples } from './samples'
+import { NoteToPlay, SampleVoiceConstructorParameters, StartNote, StopNote, Voice } from './types'
 
 let sampleData: SampleDatas
 

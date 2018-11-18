@@ -6,18 +6,47 @@ given a compiled pattern, this will render it to audio
 
 `npm i @musical-patterns/performer`
 
-Then, in your source code,
+### setup
 
 ```
 import { setupPerformer } from '@musical-patterns/performer'
 
-const performer: HTMLDivElement = setupPerformer()
+const onUpdate = time => {
+	// do whatever you wanna do with the latest time here
+}
+
+setupPerformer({ onUpdate })
 ```
 
-You don't need to put the performer on the page if you don't want,
-though at this point you wouldn't then be able to start or stop the music, or enable immersive audio.
+### loading a pattern
 
-If you're working in React, try appending this `div` as a child using a `ref`.
+```
+import { restart, ThreadSpec } from '@musical-patterns/performer'
+
+const threadSpecs: ThreadSpec[] = [
+	// your thread specs here
+]
+
+restart(threadSpecs) // will automatically restart time whether you like it or not
+```
+
+### starting and stopping
+
+```
+import { togglePaused } from '@musical-patterns/performer'
+
+togglePaused()
+```
+
+### enabling immersive audio
+
+```
+import { enableImmersiveAudio } from '@musical-patterns/performer'
+
+enableImmersiveAudio()
+```
+
+## samples notes
 
 If you're going to use samples, I'm afraid you'll also need to find some way to get the samples' .wav files into your bundle.
 Either way, if you don't do this, you'll see a bunch of errors in your console (urgh).

@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/performer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/main.js",
   "typings": "dist/index.d.ts",
   "repository": {
@@ -19,9 +19,6 @@
     "immutable": "^4.0.0-rc.12",
     "jasmine": "^3.1.0",
     "raf": "^3.4.0",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-batched-actions": "^0.4.1",
     "redux-immutable": "^4.0.0",

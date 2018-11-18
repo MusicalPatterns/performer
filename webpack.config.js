@@ -9,7 +9,7 @@ module.exports = {
                 options: { inline: true },
             },
             {
-                test: /\.tsx?$/,
+                test: /\.ts$/,
                 loader: 'awesome-typescript-loader',
                 exclude: /test/,
             },
@@ -20,7 +20,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js'],
+        extensions: ['.ts', '.js'],
     },
     output: {
         library: 'performer',

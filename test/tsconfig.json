@@ -14,7 +14,6 @@
     "pretty": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "jsx": "react",
     "allowSyntheticDefaultImports": true
   }
 }

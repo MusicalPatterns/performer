@@ -5,6 +5,7 @@ export { applyPower } from './applyPower'
 export { logMessageToScreen } from './logMessageToScreen'
 export { dereference } from './dereference'
 export { doAsync } from './doAsync'
+export { deepEqual } from './deepEqual'
 
 export {
     Maybe,

@@ -1,7 +1,9 @@
-import { OscillatorName, SampleName, Thread, ThreadSpec, Voice, VoiceType } from '../index'
+import { OscillatorName, SampleName, ThreadSpec, VoiceType } from '../index'
 import { to } from '../nominal'
+import { Thread } from '../types'
 import { constructOscillatorVoice } from './constructOscillatorVoice'
 import { constructSampleVoice } from './constructSampleVoice'
+import { Voice } from './types'
 
 const constructThreads: (threadSpecs: ThreadSpec[]) => Thread[] =
     (threadSpecs: ThreadSpec[]): Thread[] =>

@@ -1,9 +1,9 @@
-import * as React from 'react'
 import { BatchAction, batchActions } from 'redux-batched-actions'
-import { Thread, ThreadSpec } from '../index'
+import { ThreadSpec } from '../index'
 import { to } from '../nominal'
+import { constructThreads } from '../performance'
 import { ActionType, store } from '../state'
-import { constructThreads } from './constructThreads'
+import { Thread } from '../types'
 
 const restart: (threadSpecs: ThreadSpec[]) => void =
     (threadSpecs: ThreadSpec[]): void => {

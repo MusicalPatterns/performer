@@ -1,5 +1,6 @@
-import { Note, Thread } from '../index'
+import { Note } from '../index'
 import { from, Time, to } from '../nominal'
+import { Thread } from '../types'
 import { applyOffset, applyScale, dereference } from '../utilities'
 import { BASE_DURATION } from './constants'
 

@@ -1,8 +1,8 @@
 import { Map } from 'immutable'
 import { Scene } from 'three'
 import { Vrb } from 'vrb'
-import { Thread } from '../index'
 import { Time } from '../nominal'
+import { Thread } from '../types'
 import { Maybe } from '../utilities'
 
 type AllowedValue =

@@ -1,18 +1,12 @@
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { BASE_GAIN, X_AXIS, Y_AXIS, Z_AXIS } from '../constants'
-import {
-    NoteToPlay,
-    OscillatorVoiceConstructorParameters,
-    SpatializationType,
-    StartNote,
-    StopNote,
-    Voice,
-} from '../index'
+import { SpatializationType } from '../index'
 import { from } from '../nominal'
 import { ImmutableState, StateKeys, store } from '../state'
 import { applyScale, dereference, Maybe } from '../utilities'
 import { context } from './context'
+import { NoteToPlay, OscillatorVoiceConstructorParameters, StartNote, StopNote, Voice } from './types'
 
 const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: OscillatorVoiceConstructorParameters) => Voice =
     ({ spatialization, timbre }: OscillatorVoiceConstructorParameters): Voice => {

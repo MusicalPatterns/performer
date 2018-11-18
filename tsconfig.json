@@ -10,18 +10,12 @@
       "es2017",
       "dom"
     ],
-    "types": [
-      "react",
-      "react-dom",
-      "react-redux"
-    ],
     "noImplicitReturns": true,
     "strict": true,
     "pretty": true,
     "sourceMap": true,
     "skipLibCheck": true,
     "declaration": true,
-    "jsx": "react",
     "allowSyntheticDefaultImports": true
   },
   "exclude": [
