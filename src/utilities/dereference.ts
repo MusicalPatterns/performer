@@ -1,4 +1,4 @@
-import { from, Index } from '../nominal'
+import { from, Index } from '@musical-patterns/utilities'
 
 const dereference: <T>(array: T[], index: Index) => T =
     <T>(array: T[], index: Index): T =>

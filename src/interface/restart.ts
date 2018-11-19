@@ -1,6 +1,6 @@
+import { to } from '@musical-patterns/utilities'
 import { BatchAction, batchActions } from 'redux-batched-actions'
 import { ThreadSpec } from '../index'
-import { to } from '../nominal'
 import { constructThreads } from '../performance'
 import { ActionType, store } from '../state'
 import { Thread } from '../types'

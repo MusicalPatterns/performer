@@ -1,4 +1,4 @@
-import { to } from '../nominal'
+import { to } from '@musical-patterns/utilities'
 import { immutablize } from './immutablize'
 import { ImmutableState } from './state'
 

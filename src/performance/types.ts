@@ -1,5 +1,5 @@
-import { OscillatorName, SpatializationType } from '../index'
-import { Coordinate, Frequency, Scalar } from '../nominal'
+import { Coordinate, Frequency, Scalar } from '@musical-patterns/utilities'
+import { OscillatorName, SpatializationType } from '../types'
 import { SampleName } from './samples'
 
 interface SampleVoiceConstructorParameters {

@@ -1,4 +1,4 @@
-import { from, Offset } from '../nominal'
+import { from, Offset } from '@musical-patterns/utilities'
 
 const applyOffset: <T>(value: T, offsetAmount: Offset) => T =
     <T>(value: T, offsetAmount: Offset): T =>

@@ -1,5 +1,5 @@
+import { Time, to } from '@musical-patterns/utilities'
 import { OnUpdate } from '../index'
-import { Time, to } from '../nominal'
 import { ImmutableState, StateKeys, store } from '../state'
 
 const setupTimeControls: (onUpdate: OnUpdate) => void =

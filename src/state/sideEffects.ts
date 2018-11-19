@@ -1,4 +1,4 @@
-import { Time } from '../nominal'
+import { Time } from '@musical-patterns/utilities'
 import { update } from '../performance'
 import { Thread } from '../types'
 import { Maybe } from '../utilities'

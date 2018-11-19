@@ -7,14 +7,5 @@ export {
 
 export {
     Cents,
-    Count,
-    Frequency,
-    Index,
-    Offset,
-    Power,
-    Scalar,
     Semitones,
-    Time,
-    CoordinateElement,
-    Coordinate,
 } from './types'

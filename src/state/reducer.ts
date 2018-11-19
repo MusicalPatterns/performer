@@ -1,5 +1,5 @@
+import { from, Time, to } from '@musical-patterns/utilities'
 import { Reducer } from 'redux'
-import { from, Time , to } from '../nominal'
 import { applyOffset } from '../utilities'
 import { Action, ActionType } from './actions'
 import { initialState } from './initialState'

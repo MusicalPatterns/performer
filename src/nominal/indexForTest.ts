@@ -6,6 +6,5 @@ export {
 }
 
 export {
-    Scalar,
     Cents,
 } from './types'

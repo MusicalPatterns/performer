@@ -1,7 +1,6 @@
 // tslint:disable:no-reaching-imports
 
 export {
-    Scalar,
     to,
 } from './nominal/indexForTest'
 export {

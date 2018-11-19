@@ -1,6 +1,6 @@
+import { Time } from '@musical-patterns/utilities'
 import { Scene } from 'three'
 import { Vrb } from 'vrb'
-import { Time } from '../nominal'
 import { Thread } from '../types'
 
 enum ActionType {

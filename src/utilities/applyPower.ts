@@ -1,4 +1,4 @@
-import { from, Power } from '../nominal'
+import { from, Power } from '@musical-patterns/utilities'
 
 const applyPower: <T>(base: T, power: Power) => T =
     <T>(base: T, power: Power): T =>
