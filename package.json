@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/performer",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "main": "dist/main.js",
   "typings": "dist/index.d.ts",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/MusicalPatterns/performer.git"
   },
   "devDependencies": {
-    "@musical-patterns/utilities": "^1.0.4",
+    "@musical-patterns/utilities": "^1.0.5",
     "@types/jasmine": "^2.8.8",
     "@types/redux-immutable": "^4.0.0",
     "@types/three": "^0.93.8",

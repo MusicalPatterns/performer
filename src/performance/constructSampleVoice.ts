@@ -1,10 +1,10 @@
-import { from } from '@musical-patterns/utilities'
+import { apply, from } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { BASE_GAIN, X_AXIS, Y_AXIS, Z_AXIS } from '../constants'
 import { SpatializationType } from '../index'
 import { ImmutableState, StateKeys, store } from '../state'
-import { applyScale, dereference, Maybe } from '../utilities'
+import { Maybe } from '../utilities'
 import { calculatePlaybackRate } from './calculatePlaybackRate'
 import { context } from './context'
 import { buildSampleData, SampleDatas } from './sampleData'
@@ -43,13 +43,13 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
                 positionalSound = webVr.createPositionalSound()
                 positionNode.add(positionalSound)
                 positionNode.position.set(
-                    from.CoordinateElement(dereference(position, X_AXIS)),
-                    from.CoordinateElement(dereference(position, Y_AXIS)),
-                    from.CoordinateElement(dereference(position, Z_AXIS)),
+                    from.CoordinateElement(apply.Index(position, X_AXIS)),
+                    from.CoordinateElement(apply.Index(position, Y_AXIS)),
+                    from.CoordinateElement(apply.Index(position, Z_AXIS)),
                 )
                 positionalSound.setNodeSource(sourceNode)
 
-                positionalSound.setVolume(from.Scalar(applyScale(gain, BASE_GAIN)))
+                positionalSound.setVolume(from.Scalar(apply.Scalar(gain, BASE_GAIN)))
             }
             else {
                 sourceNode = context.createBufferSource()

@@ -1,7 +1,6 @@
-import { from, Time, to } from '@musical-patterns/utilities'
+import { apply, from, Time, to } from '@musical-patterns/utilities'
 import { Note } from '../index'
 import { Thread } from '../types'
-import { applyOffset, applyScale, dereference } from '../utilities'
 import { BASE_DURATION } from './constants'
 
 const startThreadNote: (thread: Thread, note: Note) => void =
@@ -12,13 +11,13 @@ const startThreadNote: (thread: Thread, note: Note) => void =
             position: note.position || to.Coordinate([ 0, 0, 0 ]),
         })
 
-        thread.nextEnd = applyOffset(
+        thread.nextEnd = apply.Offset(
             thread.nextStart,
-            to.Offset(from.Time(applyScale(note.sustain, BASE_DURATION))),
+            to.Offset(from.Time(apply.Scalar(note.sustain, BASE_DURATION))),
         )
-        thread.nextStart = applyOffset(
+        thread.nextStart = apply.Offset(
             thread.nextStart,
-            to.Offset(from.Time(applyScale(note.duration, BASE_DURATION))),
+            to.Offset(from.Time(apply.Scalar(note.duration, BASE_DURATION))),
         )
 
         thread.noteIndex = to.Index(from.Index(thread.noteIndex) + 1)
@@ -26,7 +25,7 @@ const startThreadNote: (thread: Thread, note: Note) => void =
 
 const update: (thread: Thread, time: Time) => void =
     (thread: Thread, time: Time): void => {
-        const note: Note = dereference(thread.part, thread.noteIndex)
+        const note: Note = apply.Index(thread.part, thread.noteIndex)
 
         if (time > thread.nextEnd) {
             thread.voice.stopNote()

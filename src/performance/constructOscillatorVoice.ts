@@ -1,10 +1,10 @@
-import { from } from '@musical-patterns/utilities'
+import { apply, from } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { BASE_GAIN, X_AXIS, Y_AXIS, Z_AXIS } from '../constants'
 import { SpatializationType } from '../index'
 import { ImmutableState, StateKeys, store } from '../state'
-import { applyScale, dereference, Maybe } from '../utilities'
+import { Maybe } from '../utilities'
 import { context } from './context'
 import { NoteToPlay, OscillatorVoiceConstructorParameters, StartNote, StopNote, Voice } from './types'
 
@@ -33,9 +33,9 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
                 oscillatorNode = webVr.createSpatialOscillator()
 
                 positionNode.position.set(
-                    from.CoordinateElement(dereference(position, X_AXIS)),
-                    from.CoordinateElement(dereference(position, Y_AXIS)),
-                    from.CoordinateElement(dereference(position, Z_AXIS)),
+                    from.CoordinateElement(apply.Index(position, X_AXIS)),
+                    from.CoordinateElement(apply.Index(position, Y_AXIS)),
+                    from.CoordinateElement(apply.Index(position, Z_AXIS)),
                 )
 
                 oscillatorNode.connect(gainNode)
@@ -44,7 +44,7 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
                 oscillatorNode.frequency.value = from.Frequency(frequency)
                 // @ts-ignore
                 positionalSound.setNodeSource(oscillatorNode)
-                positionalSound.setVolume(from.Scalar(applyScale(gain, BASE_GAIN)))
+                positionalSound.setVolume(from.Scalar(apply.Scalar(gain, BASE_GAIN)))
             }
             else {
                 oscillatorNode = context.createOscillator()
@@ -54,7 +54,7 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
                 oscillatorNode.type = timbre
                 oscillatorNode.start()
                 oscillatorNode.frequency.value = from.Frequency(frequency)
-                gainNode.gain.value = from.Scalar(applyScale(gain, BASE_GAIN))
+                gainNode.gain.value = from.Scalar(apply.Scalar(gain, BASE_GAIN))
             }
         }
 

@@ -1,6 +1,5 @@
-import { from, Time, to } from '@musical-patterns/utilities'
+import { apply, from, Time, to } from '@musical-patterns/utilities'
 import { Reducer } from 'redux'
-import { applyOffset } from '../utilities'
 import { Action, ActionType } from './actions'
 import { initialState } from './initialState'
 import { stopThreads, terminateClock, updateThreads } from './sideEffects'
@@ -43,7 +42,7 @@ const reducer: Reducer<ImmutableState, Action> =
                     return state
                 }
 
-                const time: Time = applyOffset(state.get(StateKeys.TIME), to.Offset(from.Time(action.data)))
+                const time: Time = apply.Offset(state.get(StateKeys.TIME), to.Offset(from.Time(action.data)))
 
                 updateThreads(state.get(StateKeys.THREADS), time)
 
