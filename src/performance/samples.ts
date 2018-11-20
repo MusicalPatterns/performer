@@ -8,17 +8,17 @@ declare const require: (modulePath: ModulePath) => string
 type ModulePath = string
 
 enum SampleName {
-    CELLO = 'cello',
-    DOUBLEBASS = 'doublebass',
-    FLUTE = 'flute',
-    PIANO = 'piano',
-    TROMBONE = 'trombone',
-    TRUMPET = 'trumpet',
-    TUBA = 'tuba',
-    VIOLIN = 'violin',
-    SNARE = 'snare',
-    KICK = 'kick',
-    HIHAT = 'hihat',
+    CELLO = 'CELLO',
+    DOUBLEBASS = 'DOUBLEBASS',
+    FLUTE = 'FLUTE',
+    PIANO = 'PIANO',
+    TROMBONE = 'TROMBONE',
+    TRUMPET = 'TRUMPET',
+    TUBA = 'TUBA',
+    VIOLIN = 'VIOLIN',
+    SNARE = 'SNARE',
+    KICK = 'KICK',
+    HIHAT = 'HIHAT',
 }
 
 const getTimbreUrl: (timbre: SampleName) => ModulePath =

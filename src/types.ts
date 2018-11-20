@@ -10,11 +10,11 @@ interface Thread {
 }
 
 enum OscillatorName {
-    SQUARE = 'square',
-    SINE = 'sine',
-    SAWTOOTH = 'sawtooth',
-    TRIANGLE = 'triangle',
-    CUSTOM = 'custom',
+    SQUARE = 'SQUARE',
+    SINE = 'SINE',
+    SAWTOOTH = 'SAWTOOTH',
+    TRIANGLE = 'TRIANGLE',
+    CUSTOM = 'CUSTOM',
 }
 
 interface Note {
@@ -39,13 +39,13 @@ interface VoiceSpec {
 }
 
 enum VoiceType {
-    OSCILLATOR = 'oscillator',
-    SAMPLE = 'sample',
+    OSCILLATOR = 'OSCILLATOR',
+    SAMPLE = 'SAMPLE',
 }
 
 enum SpatializationType {
-    MONO = 'mono',
-    IMMERSIVE = 'immersive',
+    MONO = 'MONO',
+    IMMERSIVE = 'IMMERSIVE',
 }
 
 type OnUpdate = (time: Time) => void

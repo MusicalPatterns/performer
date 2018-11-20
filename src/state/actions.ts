@@ -4,14 +4,14 @@ import { Vrb } from 'vrb'
 import { Thread } from '../types'
 
 enum ActionType {
-    SET_THREADS = 'set threads',
-    TOGGLE_PAUSED = 'toggle paused',
-    SET_CLOCK = 'set clock',
-    SET_TIME = 'set time',
-    SET_PAUSED = 'set paused',
-    INCREMENT_TIME = 'increment time',
-    SET_SCENE = 'set scene',
-    SET_WEB_VR = 'set web vr',
+    SET_THREADS = 'SET_THREADS',
+    TOGGLE_PAUSED = 'TOGGLE_PAUSED',
+    SET_CLOCK = 'SET_CLOCK',
+    SET_TIME = 'SET_TIME',
+    SET_PAUSED = 'SET_PAUSED',
+    INCREMENT_TIME = 'INCREMENT_TIME',
+    SET_SCENE = 'SET_SCENE',
+    SET_WEB_VR = 'SET_WEB_VR',
 }
 
 interface SetThreads {

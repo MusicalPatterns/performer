@@ -6,12 +6,12 @@ import { Maybe } from '../utilities'
 import { StateIndexSignature, TypedMap } from './immutablize'
 
 enum StateKeys {
-    CLOCK = 'clock',
-    PAUSED = 'paused',
-    SCENE = 'scene',
-    THREADS = 'threads',
-    TIME = 'time',
-    WEB_VR = 'webVr',
+    CLOCK = 'CLOCK',
+    PAUSED = 'PAUSED',
+    SCENE = 'SCENE',
+    THREADS = 'THREADS',
+    TIME = 'TIME',
+    WEB_VR = 'WEB_VR',
 }
 
 interface State extends StateIndexSignature {
