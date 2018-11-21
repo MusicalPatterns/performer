@@ -16,7 +16,7 @@ type AllowedValue =
     Maybe<Vrb>
 
 interface StateIndexSignature {
-    [index: string]: AllowedValue,
+    [ index: string ]: AllowedValue,
 }
 
 type MapTypeAllowedData<T> = StateIndexSignature & {

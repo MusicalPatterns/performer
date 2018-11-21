@@ -3,7 +3,7 @@
 import { logMessageToScreen } from '../utilities'
 
 interface AudioContextConstructor {
-    new (): AudioContext;
+    new(): AudioContext;
 }
 
 // @ts-ignore

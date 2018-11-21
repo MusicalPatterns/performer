@@ -19,10 +19,10 @@ enum StateKeys {
 interface State extends StateIndexSignature {
     [ StateKeys.CLOCK ]: Maybe<Worker>,
     [ StateKeys.PAUSED ]: boolean,
-    [ StateKeys.SCENE]: Maybe<Scene>,
+    [ StateKeys.SCENE ]: Maybe<Scene>,
     [ StateKeys.THREADS ]: Thread[],
     [ StateKeys.TIME ]: Time,
-    [ StateKeys.WEB_VR]: Maybe<Vrb>,
+    [ StateKeys.WEB_VR ]: Maybe<Vrb>,
 }
 
 type ImmutableState = TypedMap<State>

@@ -1,9 +1,11 @@
 import { Cents, from, Semitones, to } from '../nominal'
 import {
-    CENTS_PER_SEMITONE, DOWN_ONE_SEMITONE,
+    CENTS_PER_SEMITONE,
+    DOWN_ONE_SEMITONE,
     DOWN_TWO_OCTAVES_IN_SEMITONES,
     UP_ONE_OCTAVE_IN_SEMITONES,
-    UP_TWO_OCTAVES_IN_SEMITONES, UP_TWO_SEMITONES,
+    UP_TWO_OCTAVES_IN_SEMITONES,
+    UP_TWO_SEMITONES,
 } from './constants'
 import { SampleDatas, SampleName } from './types'
 

@@ -61,7 +61,7 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
                 gainNode.gain.value = from.Scalar(gain)
             }
 
-            sourceNode.playbackRate.value = calculatePlaybackRate(sampleData[timbre], frequency)
+            sourceNode.playbackRate.value = calculatePlaybackRate(sampleData[ timbre ], frequency)
 
             sourceNode.connect(gainNode)
             sourceNode.start()

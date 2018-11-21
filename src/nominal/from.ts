@@ -1,9 +1,6 @@
 // tslint:disable:variable-name no-any
 
-import {
-    Cents,
-    Semitones,
-} from './types'
+import { Cents, Semitones } from './types'
 
 const Cents: (cents: Cents) => number =
     (cents: Cents): number => cents as any
