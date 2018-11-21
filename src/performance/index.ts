@@ -1,4 +1,4 @@
-export { loadAllSamples, samples, SampleName } from './samples'
+export { loadAllSamples, samples } from './samples'
 export { buildSampleData } from './sampleData'
 export { buildClock } from './buildClock'
 export { context } from './context'
@@ -8,5 +8,6 @@ export { constructSampleVoice } from './constructSampleVoice'
 export { constructThreads } from './constructThreads'
 
 export {
+    SampleName,
     Voice,
 } from './types'

@@ -1,25 +1,10 @@
 import { context } from './context'
+import { ModulePath, SampleName } from './types'
 
 // @ts-ignore
 const samples: { [x in SampleName]: AudioBuffer } = {}
 
 declare const require: (modulePath: ModulePath) => string
-
-type ModulePath = string
-
-enum SampleName {
-    CELLO = 'CELLO',
-    DOUBLEBASS = 'DOUBLEBASS',
-    FLUTE = 'FLUTE',
-    PIANO = 'PIANO',
-    TROMBONE = 'TROMBONE',
-    TRUMPET = 'TRUMPET',
-    TUBA = 'TUBA',
-    VIOLIN = 'VIOLIN',
-    SNARE = 'SNARE',
-    KICK = 'KICK',
-    HIHAT = 'HIHAT',
-}
 
 const getTimbreUrl: (timbre: SampleName) => ModulePath =
     (timbre: SampleName): ModulePath => {
@@ -59,5 +44,4 @@ const loadAllSamples: () => void =
 export {
     samples,
     loadAllSamples,
-    SampleName,
 }

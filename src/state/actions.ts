@@ -1,3 +1,5 @@
+// tslint:disable:no-type-definitions-outside-types-modules
+
 import { Time } from '@musical-patterns/utilities'
 import { Scene } from 'three'
 import { Vrb } from 'vrb'

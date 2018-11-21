@@ -1,3 +1,5 @@
+// tslint:disable:no-type-definitions-outside-types-modules
+
 import { Time } from '@musical-patterns/utilities'
 import { Map } from 'immutable'
 import { Scene } from 'three'

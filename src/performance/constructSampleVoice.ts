@@ -7,9 +7,9 @@ import { ImmutableState, StateKeys, store } from '../state'
 import { Maybe } from '../utilities'
 import { calculatePlaybackRate } from './calculatePlaybackRate'
 import { context } from './context'
-import { buildSampleData, SampleDatas } from './sampleData'
+import { buildSampleData } from './sampleData'
 import { samples } from './samples'
-import { NoteToPlay, SampleVoiceConstructorParameters, StartNote, StopNote, Voice } from './types'
+import { NoteToPlay, SampleDatas, SampleVoiceConstructorParameters, StartNote, StopNote, Voice } from './types'
 
 let sampleData: SampleDatas
 

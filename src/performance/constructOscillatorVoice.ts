@@ -8,6 +8,7 @@ import { Maybe } from '../utilities'
 import { context } from './context'
 import { NoteToPlay, OscillatorVoiceConstructorParameters, StartNote, StopNote, Voice } from './types'
 
+// tslint:disable-next-line:no-type-definitions-outside-types-modules
 const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: OscillatorVoiceConstructorParameters) => Voice =
     ({ spatialization, timbre }: OscillatorVoiceConstructorParameters): Voice => {
         let oscillatorNode: OscillatorNode
@@ -39,6 +40,7 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
                 )
 
                 oscillatorNode.connect(gainNode)
+                // @ts-ignore
                 oscillatorNode.type = timbre
                 oscillatorNode.start()
                 oscillatorNode.frequency.value = from.Frequency(frequency)
@@ -51,6 +53,7 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
                 gainNode = context.createGain()
                 gainNode.connect(context.destination)
                 oscillatorNode.connect(gainNode)
+                // @ts-ignore
                 oscillatorNode.type = timbre
                 oscillatorNode.start()
                 oscillatorNode.frequency.value = from.Frequency(frequency)

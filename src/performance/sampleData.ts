@@ -5,14 +5,7 @@ import {
     UP_ONE_OCTAVE_IN_SEMITONES,
     UP_TWO_OCTAVES_IN_SEMITONES, UP_TWO_SEMITONES,
 } from './constants'
-import { SampleName } from './samples'
-
-interface SampleData {
-    centsAdjustment?: Cents,
-    unpitched?: boolean,
-}
-
-type SampleDatas = { [x in SampleName]: SampleData }
+import { SampleDatas, SampleName } from './types'
 
 const shiftSemitones: (semitones: Semitones) => Cents = (semitones: Semitones): Cents =>
     to.Cents(from.Semitones(semitones) * from.Cents(CENTS_PER_SEMITONE))
@@ -50,6 +43,4 @@ const buildSampleData: () => SampleDatas =
 
 export {
     buildSampleData,
-    SampleDatas,
-    SampleData,
 }

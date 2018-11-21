@@ -1,14 +1,14 @@
 import { to } from '@musical-patterns/utilities'
 import { immutablize } from './immutablize'
-import { ImmutableState } from './state'
+import { ImmutableState, StateKeys } from './state'
 
 const initialState: ImmutableState = immutablize({
-    clock: undefined,
-    paused: true,
-    scene: undefined,
-    threads: [],
-    time: to.Time(0),
-    webVr: undefined,
+    [ StateKeys.CLOCK ]: undefined,
+    [ StateKeys.PAUSED ]: true,
+    [ StateKeys.SCENE ]: undefined,
+    [ StateKeys.THREADS ]: [],
+    [ StateKeys.TIME ]: to.Time(0),
+    [ StateKeys.WEB_VR ]: undefined,
 })
 
 export {
