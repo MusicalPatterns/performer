@@ -2,11 +2,26 @@ import { apply, from } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { BASE_GAIN, X_AXIS, Y_AXIS, Z_AXIS } from '../constants'
-import { SpatializationType } from '../index'
+import { OscillatorName, SpatializationType } from '../index'
 import { ImmutableState, StateKeys, store } from '../state'
 import { Maybe } from '../utilities'
 import { context } from './context'
-import { NoteToPlay, OscillatorVoiceConstructorParameters, StartNote, StopNote, Voice } from './types'
+import {
+    NoteToPlay,
+    OscillatorNameToTypeMap,
+    OscillatorVoiceConstructorParameters,
+    StartNote,
+    StopNote,
+    Voice,
+} from './types'
+
+const oscillatorNameToTypeMap: OscillatorNameToTypeMap = {
+    [ OscillatorName.CUSTOM ]: 'custom',
+    [ OscillatorName.SAWTOOTH ]: 'sawtooth',
+    [ OscillatorName.SINE ]: 'sine',
+    [ OscillatorName.SQUARE ]: 'square',
+    [ OscillatorName.TRIANGLE ]: 'triangle',
+}
 
 // tslint:disable-next-line:no-type-definitions-outside-types-modules
 const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: OscillatorVoiceConstructorParameters) => Voice =
@@ -40,8 +55,7 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
                 )
 
                 oscillatorNode.connect(gainNode)
-                // @ts-ignore
-                oscillatorNode.type = timbre
+                oscillatorNode.type = oscillatorNameToTypeMap[ timbre ] as OscillatorType
                 oscillatorNode.start()
                 oscillatorNode.frequency.value = from.Frequency(frequency)
                 // @ts-ignore
@@ -53,8 +67,7 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
                 gainNode = context.createGain()
                 gainNode.connect(context.destination)
                 oscillatorNode.connect(gainNode)
-                // @ts-ignore
-                oscillatorNode.type = timbre
+                oscillatorNode.type = oscillatorNameToTypeMap[ timbre ] as OscillatorType
                 oscillatorNode.start()
                 oscillatorNode.frequency.value = from.Frequency(frequency)
                 gainNode.gain.value = from.Scalar(apply.Scalar(gain, BASE_GAIN))

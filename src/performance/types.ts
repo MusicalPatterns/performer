@@ -50,6 +50,8 @@ enum SampleName {
     HIHAT = 'HIHAT',
 }
 
+type OscillatorNameToTypeMap = { [K in OscillatorName]: string }
+
 export {
     SampleVoiceConstructorParameters,
     OscillatorVoiceConstructorParameters,
@@ -61,4 +63,5 @@ export {
     SampleDatas,
     ModulePath,
     SampleName,
+    OscillatorNameToTypeMap,
 }
