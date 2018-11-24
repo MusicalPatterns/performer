@@ -8,7 +8,7 @@
     "url": "https://github.com/MusicalPatterns/performer.git"
   },
   "devDependencies": {
-    "@musical-patterns/utilities": "^1.0.18",
+    "@musical-patterns/utilities": "^1.0.21",
     "@types/jasmine": "^2.8.8",
     "@types/redux-immutable": "^4.0.0",
     "@types/three": "^0.93.8",
