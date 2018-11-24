@@ -11,7 +11,7 @@ test:
 	./bin/test.sh
 
 lint:
-	./bin/lint.sh
+	sh ./node_modules/.bin/musical-patterns lint
 
 build:
 	./bin/build.sh
