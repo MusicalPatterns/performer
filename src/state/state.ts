@@ -1,10 +1,9 @@
 // tslint:disable:no-type-definitions-outside-types-modules
 
-import { Time } from '@musical-patterns/utilities'
+import { Maybe, Time } from '@musical-patterns/utilities'
 import { Scene } from 'three'
 import { Vrb } from 'vrb'
 import { Thread } from '../types'
-import { Maybe } from '../utilities'
 import { StateIndexSignature, TypedMap } from './immutablize'
 
 enum StateKeys {

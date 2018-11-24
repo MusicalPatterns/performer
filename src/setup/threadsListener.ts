@@ -1,7 +1,7 @@
+import { deepEqual } from '@musical-patterns/utilities'
 import { buildClock } from '../performance'
 import { ActionType, ImmutableState, StateKeys, store } from '../state'
 import { Thread } from '../types'
-import { deepEqual } from '../utilities'
 
 const setupThreadsListener: VoidFunction =
     (): void => {

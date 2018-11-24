@@ -1,11 +1,10 @@
 // tslint:disable:no-type-definitions-outside-types-modules
 
-import { Time } from '@musical-patterns/utilities'
+import { Maybe, Time } from '@musical-patterns/utilities'
 import { Map } from 'immutable'
 import { Scene } from 'three'
 import { Vrb } from 'vrb'
 import { Thread } from '../types'
-import { Maybe } from '../utilities'
 
 type AllowedValue =
     boolean |

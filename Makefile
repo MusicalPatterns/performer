@@ -1,8 +1,8 @@
 .PHONY: lint
 .PHONY: test
 
-deploy:
-	./bin/deploy.sh
+publish:
+	./bin/publish.sh
 
 setup:
 	./bin/setup.sh
