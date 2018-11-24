@@ -38,7 +38,7 @@ type ModulePath = string
 
 enum SampleName {
     CELLO = 'CELLO',
-    DOUBLEBASS = 'DOUBLEBASS',
+    DOUBLE_BASS = 'DOUBLE_BASS',
     FLUTE = 'FLUTE',
     PIANO = 'PIANO',
     TROMBONE = 'TROMBONE',

@@ -15,7 +15,7 @@ const shiftSemitones: (semitones: Semitones) => Cents = (semitones: Semitones): 
 const buildSampleData: () => SampleDatas =
     (): SampleDatas => ({
         [ SampleName.CELLO ]: {},
-        [ SampleName.DOUBLEBASS ]: {
+        [ SampleName.DOUBLE_BASS ]: {
             centsAdjustment: shiftSemitones(UP_TWO_OCTAVES_IN_SEMITONES),
         },
         [ SampleName.FLUTE ]: {},
