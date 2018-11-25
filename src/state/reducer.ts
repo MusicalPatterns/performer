@@ -1,9 +1,8 @@
 import { apply, from, Time, to } from '@musical-patterns/utilities'
 import { Reducer } from 'redux'
 import { Action, ActionType } from './actions'
-import { initialState } from './initialState'
 import { stopThreads, terminateClock, updateThreads } from './sideEffects'
-import { ImmutableState, StateKeys } from './state'
+import { ImmutableState, initialState, StateKeys } from './state'
 
 const reducer: Reducer<ImmutableState, Action> =
     // tslint:disable-next-line:cyclomatic-complexity

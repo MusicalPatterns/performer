@@ -2,8 +2,8 @@
 
 import { applyMiddleware, compose, createStore, Store } from 'redux'
 import { batchDispatchMiddleware, enableBatching } from 'redux-batched-actions'
-import { initialState } from './initialState'
 import { reducer } from './reducer'
+import { initialState } from './state'
 
 // @ts-ignore
 const composeEnhancers: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
