@@ -4,7 +4,7 @@ import { Maybe, Time } from '@musical-patterns/utilities'
 import { Scene } from 'three'
 import { Vrb } from 'vrb'
 import { Thread } from '../types'
-import { AllowedValue, StateIndexSignature, TypedMap } from './immutablize'
+import { AllowedValue, TypedMap } from './immutablize'
 
 enum StateKeys {
     CLOCK = 'CLOCK',
@@ -15,7 +15,7 @@ enum StateKeys {
     WEB_VR = 'WEB_VR',
 }
 
-interface State extends StateIndexSignature<AllowedValue> {
+interface State {
     [ StateKeys.CLOCK ]: Maybe<Worker>,
     [ StateKeys.PAUSED ]: boolean,
     [ StateKeys.SCENE ]: Maybe<Scene>,

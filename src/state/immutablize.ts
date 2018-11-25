@@ -14,14 +14,11 @@ type AllowedValue =
     Maybe<Scene> |
     Maybe<Vrb>
 
-interface StateIndexSignature<V> {
-    [ index: string ]: V,
-}
-
-type MapTypeAllowedData<T, V> = StateIndexSignature<V> & {
+type MapTypeAllowedData<T, V> = {
     [K in keyof T]: V
 }
 
+// @ts-ignore
 interface TypedMap<V, T extends MapTypeAllowedData<T, V>> extends Map<string, V> {
     get<K extends keyof T>(key: K, notSetValue?: T[K]): T[K]
 
@@ -36,7 +33,6 @@ const immutablize: <V, T extends MapTypeAllowedData<T, V>>(data: T) => TypedMap<
 
 export {
     immutablize,
-    StateIndexSignature,
     TypedMap,
     AllowedValue,
 }
