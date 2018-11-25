@@ -1,6 +1,6 @@
 module.exports = {
     entry: './src/index.ts',
-    mode: 'none',
+    mode: 'production',
     module: {
         rules: [
             {
