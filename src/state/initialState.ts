@@ -1,8 +1,8 @@
 import { to } from '@musical-patterns/utilities'
-import { immutablize } from './immutablize'
-import { ImmutableState, StateKeys } from './state'
+import { AllowedValue, immutablize } from './immutablize'
+import { ImmutableState, State, StateKeys } from './state'
 
-const initialState: ImmutableState = immutablize({
+const initialState: ImmutableState = immutablize<AllowedValue, State>({
     [ StateKeys.CLOCK ]: undefined,
     [ StateKeys.PAUSED ]: true,
     [ StateKeys.SCENE ]: undefined,
