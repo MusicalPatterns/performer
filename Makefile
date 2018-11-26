@@ -5,10 +5,10 @@ publish:
 	sh ./node_modules/.bin/musical-patterns publish
 
 test:
-	./bin/test.sh
+	sh ./node_modules/.bin/musical-patterns test
 
 lint:
 	sh ./node_modules/.bin/musical-patterns lint
 
 build:
-	sh ./node_modules/.bin/webpack
+	sh ./node_modules/.bin/musical-patterns build --command ./node_modules/.bin/webpack
