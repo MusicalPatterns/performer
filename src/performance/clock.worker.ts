@@ -25,8 +25,4 @@ const mainLoop: (timestamp: number) => void =
 
 requestAnimationFrame(mainLoop)
 
-const Clock: any = ((): void => undefined) as any
-
-export {
-    Clock,
-}
+export default ((): void => undefined) as any

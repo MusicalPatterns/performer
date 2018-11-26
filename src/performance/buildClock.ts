@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux'
 import { ActionType } from '../state'
-import { Clock } from './clock.worker'
+import Clock from './clock.worker'
 
 const buildClock: (dispatch: Dispatch) => Worker =
     (dispatch: Dispatch): Worker => {
