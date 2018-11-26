@@ -1,7 +1,7 @@
-import { apply, from, Maybe } from '@musical-patterns/shared'
+import { apply, from, Maybe, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/shared'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
-import { BASE_GAIN, X_AXIS, Y_AXIS, Z_AXIS } from '../constants'
+import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'
 import { OscillatorName, SpatializationType } from '../index'
 import { ImmutableState, StateKeys, store } from '../state'
 import { context } from './context'
@@ -59,7 +59,7 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
                 oscillatorNode.frequency.value = from.Frequency(frequency)
                 // @ts-ignore
                 positionalSound.setNodeSource(oscillatorNode)
-                positionalSound.setVolume(from.Scalar(apply.Scalar(gain, BASE_GAIN)))
+                positionalSound.setVolume(from.Scalar(apply.Scalar(gain, GAIN_ADJUST_FOR_WEB_AUDIO)))
             }
             else {
                 oscillatorNode = context.createOscillator()
@@ -69,7 +69,7 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
                 oscillatorNode.type = oscillatorNameToTypeMap[ timbre ] as OscillatorType
                 oscillatorNode.start()
                 oscillatorNode.frequency.value = from.Frequency(frequency)
-                gainNode.gain.value = from.Scalar(apply.Scalar(gain, BASE_GAIN))
+                gainNode.gain.value = from.Scalar(apply.Scalar(gain, GAIN_ADJUST_FOR_WEB_AUDIO))
             }
         }
 

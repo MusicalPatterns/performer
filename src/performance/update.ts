@@ -1,7 +1,6 @@
 import { apply, from, Time, to } from '@musical-patterns/shared'
 import { Note } from '../index'
 import { Thread } from '../types'
-import { BASE_DURATION } from './constants'
 
 const startThreadNote: (thread: Thread, note: Note) => void =
     (thread: Thread, note: Note): void => {
@@ -13,11 +12,11 @@ const startThreadNote: (thread: Thread, note: Note) => void =
 
         thread.nextEnd = apply.Offset(
             thread.nextStart,
-            to.Offset(from.Time(apply.Scalar(note.sustain, BASE_DURATION))),
+            to.Offset(from.Time(note.sustain)),
         )
         thread.nextStart = apply.Offset(
             thread.nextStart,
-            to.Offset(from.Time(apply.Scalar(note.duration, BASE_DURATION))),
+            to.Offset(from.Time(note.duration)),
         )
 
         thread.noteIndex = to.Index(from.Index(thread.noteIndex) + 1)

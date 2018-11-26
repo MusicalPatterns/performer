@@ -1,26 +1,12 @@
 // tslint:disable no-magic-numbers
 
-import { Frequency, Index, Scalar, to } from '@musical-patterns/shared'
-import { Cents, to as performerTo } from './nominal'
-
-const OCTAVE: Scalar = to.Scalar(2)
-
-const X_AXIS: Index = to.Index(0)
-const Y_AXIS: Index = to.Index(1)
-const Z_AXIS: Index = to.Index(2)
+import { Frequency, Scalar, to } from '@musical-patterns/shared'
 
 const STANDARDIZED_SAMPLE_PITCH_OF_C5: Frequency = to.Frequency(523.25)
 
-const BASE_GAIN: Scalar = to.Scalar(0.1)
-
-const CENTS_PER_OCTAVE: Cents = performerTo.Cents(1200)
+const GAIN_ADJUST_FOR_WEB_AUDIO: Scalar = to.Scalar(0.1)
 
 export {
-    OCTAVE,
-    X_AXIS,
-    Y_AXIS,
-    Z_AXIS,
     STANDARDIZED_SAMPLE_PITCH_OF_C5,
-    BASE_GAIN,
-    CENTS_PER_OCTAVE,
+    GAIN_ADJUST_FOR_WEB_AUDIO,
 }

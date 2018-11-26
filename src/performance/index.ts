@@ -6,7 +6,6 @@ export { update } from './update'
 export { constructOscillatorVoice } from './constructOscillatorVoice'
 export { constructSampleVoice } from './constructSampleVoice'
 export { constructThreads } from './constructThreads'
-export { centsToPitch } from './centsToPitch'
 
 export {
     SampleName,

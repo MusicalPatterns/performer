@@ -1,7 +1,7 @@
-import { apply, from, Maybe } from '@musical-patterns/shared'
+import { apply, from, Maybe, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/shared'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
-import { BASE_GAIN, X_AXIS, Y_AXIS, Z_AXIS } from '../constants'
+import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'
 import { SpatializationType } from '../index'
 import { ImmutableState, StateKeys, store } from '../state'
 import { calculatePlaybackRate } from './calculatePlaybackRate'
@@ -48,7 +48,7 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
                 )
                 positionalSound.setNodeSource(sourceNode)
 
-                positionalSound.setVolume(from.Scalar(apply.Scalar(gain, BASE_GAIN)))
+                positionalSound.setVolume(from.Scalar(apply.Scalar(gain, GAIN_ADJUST_FOR_WEB_AUDIO)))
             }
             else {
                 sourceNode = context.createBufferSource()

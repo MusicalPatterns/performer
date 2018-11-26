@@ -1,7 +1,5 @@
-import { Frequency, from, Scalar, to } from '@musical-patterns/shared'
+import { centsToPitch, Frequency, from, Scalar, to } from '@musical-patterns/shared'
 import { STANDARDIZED_SAMPLE_PITCH_OF_C5 } from '../constants'
-import { to as performerTo } from '../nominal'
-import { centsToPitch } from './centsToPitch'
 import { SampleData } from './types'
 
 const calculatePlaybackRate: (sampleData: SampleData, frequency: Frequency) => number =
@@ -14,7 +12,7 @@ const calculatePlaybackRate: (sampleData: SampleData, frequency: Frequency) => n
             from.Frequency(frequency) / from.Frequency(STANDARDIZED_SAMPLE_PITCH_OF_C5),
         )
         const samplePitchAdjustment: Scalar =
-            centsToPitch(sampleData.centsAdjustment || performerTo.Cents(0))
+            centsToPitch(sampleData.centsAdjustment || to.Cents(0))
 
         return from.Scalar(pitch) * from.Scalar(samplePitchAdjustment)
     }
