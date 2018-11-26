@@ -2,13 +2,13 @@
 .PHONY: test
 
 publish:
-	sh ./node_modules/.bin/musical-patterns publish
+	musical-patterns publish
 
 test:
-	sh ./node_modules/.bin/musical-patterns test
+	musical-patterns test
 
 lint:
-	sh ./node_modules/.bin/musical-patterns lint
+	musical-patterns lint
 
 build:
-	sh ./node_modules/.bin/musical-patterns build --command ./node_modules/.bin/webpack
+	musical-patterns build --command webpack
