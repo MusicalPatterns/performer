@@ -1,4 +1,4 @@
-// tslint:disable:no-require-imports no-var-requires no-any no-unsafe-any no-default-export
+// tslint:disable
 // @ts-ignore
 import requestAnimationFrame from 'raf'
 import { TIMESTEP } from './constants'
@@ -25,4 +25,8 @@ const mainLoop: (timestamp: number) => void =
 
 requestAnimationFrame(mainLoop)
 
-export default ((): void => undefined) as any
+const Clock: any = ((): void => undefined) as any
+
+export {
+    Clock,
+}
