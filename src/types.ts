@@ -1,4 +1,4 @@
-import { Coordinate, Frequency, Index, Scalar, Time } from '@musical-patterns/utilities'
+import { Coordinate, Frequency, Index, Scalar, Time } from '@musical-patterns/shared'
 import { SampleName, Voice } from './performance'
 
 interface Thread {

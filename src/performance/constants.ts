@@ -1,6 +1,6 @@
 // tslint:disable no-magic-numbers
 
-import { Scalar, to } from '@musical-patterns/utilities'
+import { Scalar, to } from '@musical-patterns/shared'
 import { Cents, Semitones, to as performerTo } from '../nominal'
 
 const BASE_DURATION: Scalar = to.Scalar(7)

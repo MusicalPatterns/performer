@@ -1,4 +1,4 @@
-import { apply, from, Time, to } from '@musical-patterns/utilities'
+import { apply, from, Time, to } from '@musical-patterns/shared'
 import { Note } from '../index'
 import { Thread } from '../types'
 import { BASE_DURATION } from './constants'

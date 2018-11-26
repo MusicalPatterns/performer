@@ -1,4 +1,4 @@
-import { to } from '@musical-patterns/utilities'
+import { to } from '@musical-patterns/shared'
 import { OscillatorName, SampleName, ThreadSpec, VoiceType } from '../index'
 import { Thread } from '../types'
 import { constructOscillatorVoice } from './constructOscillatorVoice'

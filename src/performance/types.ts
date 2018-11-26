@@ -1,4 +1,4 @@
-import { Coordinate, Frequency, Scalar } from '@musical-patterns/utilities'
+import { Coordinate, Frequency, Scalar } from '@musical-patterns/shared'
 import { Cents } from '../nominal'
 import { OscillatorName, SpatializationType } from '../types'
 

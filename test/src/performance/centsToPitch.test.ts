@@ -1,4 +1,4 @@
-import { Scalar, testIsCloseTo, to } from '@musical-patterns/utilities'
+import { Scalar, testIsCloseTo, to } from '@musical-patterns/shared'
 import { centsToPitch, to as performerTo } from '../../../src/indexForTest'
 
 describe('cents to pitch', () => {

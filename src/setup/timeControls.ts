@@ -1,4 +1,4 @@
-import { Time, to } from '@musical-patterns/utilities'
+import { Time, to } from '@musical-patterns/shared'
 import { OnUpdate } from '../index'
 import { ImmutableState, StateKeys, store } from '../state'
 

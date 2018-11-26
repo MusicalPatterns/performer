@@ -1,6 +1,6 @@
 // tslint:disable no-magic-numbers
 
-import { Frequency, Index, Scalar, to } from '@musical-patterns/utilities'
+import { Frequency, Index, Scalar, to } from '@musical-patterns/shared'
 import { Cents, to as performerTo } from './nominal'
 
 const OCTAVE: Scalar = to.Scalar(2)

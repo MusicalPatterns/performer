@@ -1,6 +1,6 @@
 // tslint:disable:no-type-definitions-outside-types-modules
 
-import { Maybe, Time, to, typedMap, TypedMap } from '@musical-patterns/utilities'
+import { Maybe, Time, to, typedMap, TypedMap } from '@musical-patterns/shared'
 import { Scene } from 'three'
 import { Vrb } from 'vrb'
 import { Thread } from '../types'

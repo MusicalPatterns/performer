@@ -1,4 +1,4 @@
-import { deepEqual } from '@musical-patterns/utilities'
+import { deepEqual } from '@musical-patterns/shared'
 import { buildClock } from '../performance'
 import { ActionType, ImmutableState, StateKeys, store } from '../state'
 import { Thread } from '../types'

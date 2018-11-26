@@ -1,4 +1,4 @@
-import { apply, Scalar, to } from '@musical-patterns/utilities'
+import { apply, Scalar, to } from '@musical-patterns/shared'
 import { CENTS_PER_OCTAVE, OCTAVE } from '../constants'
 import { Cents, from as performerFrom } from '../nominal'
 

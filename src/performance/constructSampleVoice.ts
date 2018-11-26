@@ -1,4 +1,4 @@
-import { apply, from, Maybe } from '@musical-patterns/utilities'
+import { apply, from, Maybe } from '@musical-patterns/shared'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { BASE_GAIN, X_AXIS, Y_AXIS, Z_AXIS } from '../constants'

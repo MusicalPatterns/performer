@@ -1,4 +1,4 @@
-import { Frequency, from, Scalar, to } from '@musical-patterns/utilities'
+import { Frequency, from, Scalar, to } from '@musical-patterns/shared'
 import { STANDARDIZED_SAMPLE_PITCH_OF_C5 } from '../constants'
 import { to as performerTo } from '../nominal'
 import { centsToPitch } from './centsToPitch'

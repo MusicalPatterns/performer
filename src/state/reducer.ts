@@ -1,4 +1,4 @@
-import { apply, from, Time, to } from '@musical-patterns/utilities'
+import { apply, from, Time, to } from '@musical-patterns/shared'
 import { Reducer } from 'redux'
 import { Action, ActionType } from './actions'
 import { stopThreads, terminateClock, updateThreads } from './sideEffects'
