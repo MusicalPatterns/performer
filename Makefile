@@ -1,4 +1,5 @@
-.PHONY: test, lint
+.PHONY: lint
+.PHONY: test
 
 publish:
 	musical-patterns publish
