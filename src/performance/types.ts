@@ -1,5 +1,4 @@
-import { Coordinate, Frequency, Scalar } from '@musical-patterns/shared'
-import { Cents } from '../nominal'
+import { Cents, Coordinate, Frequency, Scalar } from '@musical-patterns/shared'
 import { OscillatorName, SpatializationType } from '../types'
 
 interface SampleVoiceConstructorParameters {
