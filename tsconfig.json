@@ -1,26 +1,12 @@
 {
+  "extends": "./tsconfig-common.json",
   "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "esnext",
-    "target": "es5",
-    "rootDir": "src",
-    "outDir": "dist",
-    "downlevelIteration": true,
-    "lib": [
-      "es2017",
-      "dom"
-    ],
-    "noImplicitReturns": true,
-    "strict": true,
-    "pretty": true,
-    "sourceMap": true,
-    "skipLibCheck": true,
     "declaration": true,
-    "allowSyntheticDefaultImports": true
+    "outDir": "dist",
+    "rootDir": "src"
   },
   "exclude": [
-    "lint",
-    "test",
-    "dist"
+    "dist",
+    "test"
   ]
 }
