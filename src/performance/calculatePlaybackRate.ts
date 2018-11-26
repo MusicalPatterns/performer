@@ -1,7 +1,7 @@
 import { Frequency, from, Scalar, to } from '@musical-patterns/utilities'
 import { STANDARDIZED_SAMPLE_PITCH_OF_C5 } from '../constants'
 import { to as performerTo } from '../nominal'
-import { centsToPitch } from '../utilities'
+import { centsToPitch } from './centsToPitch'
 import { SampleData } from './types'
 
 const calculatePlaybackRate: (sampleData: SampleData, frequency: Frequency) => number =

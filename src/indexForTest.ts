@@ -5,4 +5,4 @@ export {
 } from './nominal/indexForTest'
 export {
     centsToPitch,
-} from './utilities/indexForTest'
+} from './performance/indexForTest'

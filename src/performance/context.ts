@@ -1,6 +1,6 @@
 // tslint:disable:no-type-definitions-outside-types-modules variable-name no-unsafe-any
 
-import { logMessageToScreen } from '../utilities'
+import { logMessageToScreen } from '@musical-patterns/utilities'
 
 interface AudioContextConstructor {
     new(): AudioContext;
