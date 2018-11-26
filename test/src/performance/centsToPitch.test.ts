@@ -1,6 +1,5 @@
-import { Scalar, to } from '@musical-patterns/utilities'
+import { Scalar, testIsCloseTo, to } from '@musical-patterns/utilities'
 import { centsToPitch, to as performerTo } from '../../../src/indexForTest'
-import { testIsCloseTo } from '../../support'
 
 describe('cents to pitch', () => {
     it('gives the pitch ratio equivalent to the cents amount', () => {

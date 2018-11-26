@@ -2,8 +2,8 @@
   "spec_files": [
     "test/src/**/*.test.ts",
     "test/src/**/*.test.js",
-    "patterns/**/*.test.ts",
-    "patterns/**/*.test.js"
+    "test/src/**/*.test.tsx",
+    "test/src/**/*.test.jsx"
   ],
   "helpers": [
     "test/support/mockDom.ts"
