@@ -1,5 +1,5 @@
-import { Coordinate, Frequency, Index, Scalar, Time } from '@musical-patterns/shared'
-import { SampleName, Voice } from './performance'
+import { Index, Time } from '@musical-patterns/shared'
+import { Note, OscillatorName, SampleName, SpatializationType, Voice, VoiceType } from './performance'
 
 interface Thread {
     nextEnd: Time,
@@ -7,22 +7,6 @@ interface Thread {
     noteIndex: Index,
     part: Note[],
     voice: Voice,
-}
-
-enum OscillatorName {
-    SQUARE = 'SQUARE',
-    SINE = 'SINE',
-    SAWTOOTH = 'SAWTOOTH',
-    TRIANGLE = 'TRIANGLE',
-    CUSTOM = 'CUSTOM',
-}
-
-interface Note {
-    duration: Time,
-    frequency: Frequency,
-    gain: Scalar,
-    position: Coordinate,
-    sustain: Time,
 }
 
 type Part = Note[]
@@ -38,31 +22,9 @@ interface VoiceSpec {
     voiceType: VoiceType,
 }
 
-enum VoiceType {
-    OSCILLATOR = 'OSCILLATOR',
-    SAMPLE = 'SAMPLE',
-}
-
-enum SpatializationType {
-    MONO = 'MONO',
-    IMMERSIVE = 'IMMERSIVE',
-}
-
-type OnUpdate = (time: Time) => void
-
-interface SetupPerformerParameters {
-    onUpdate: OnUpdate,
-}
-
 export {
     Thread,
-    OscillatorName,
-    VoiceType,
-    SpatializationType,
-    Note,
     Part,
     ThreadSpec,
     VoiceSpec,
-    SetupPerformerParameters,
-    OnUpdate,
 }

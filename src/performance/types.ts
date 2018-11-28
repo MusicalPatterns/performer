@@ -1,5 +1,4 @@
-import { Cents, Coordinate, Frequency, Scalar } from '@musical-patterns/shared'
-import { OscillatorName, SpatializationType } from '../types'
+import { Cents, Coordinate, Frequency, Scalar, Time } from '@musical-patterns/shared'
 
 interface SampleVoiceConstructorParameters {
     spatialization?: SpatializationType,
@@ -51,6 +50,32 @@ enum SampleName {
 
 type OscillatorNameToTypeMap = { [K in OscillatorName]: string }
 
+enum OscillatorName {
+    SQUARE = 'SQUARE',
+    SINE = 'SINE',
+    SAWTOOTH = 'SAWTOOTH',
+    TRIANGLE = 'TRIANGLE',
+    CUSTOM = 'CUSTOM',
+}
+
+interface Note {
+    duration: Time,
+    frequency: Frequency,
+    gain: Scalar,
+    position: Coordinate,
+    sustain: Time,
+}
+
+enum VoiceType {
+    OSCILLATOR = 'OSCILLATOR',
+    SAMPLE = 'SAMPLE',
+}
+
+enum SpatializationType {
+    MONO = 'MONO',
+    IMMERSIVE = 'IMMERSIVE',
+}
+
 export {
     SampleVoiceConstructorParameters,
     OscillatorVoiceConstructorParameters,
@@ -63,4 +88,8 @@ export {
     ModulePath,
     SampleName,
     OscillatorNameToTypeMap,
+    OscillatorName,
+    Note,
+    VoiceType,
+    SpatializationType,
 }

@@ -10,4 +10,8 @@ export { constructThreads } from './constructThreads'
 export {
     SampleName,
     Voice,
+    OscillatorName,
+    Note,
+    SpatializationType,
+    VoiceType,
 } from './types'

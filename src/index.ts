@@ -1,17 +1,15 @@
 export {
-    OscillatorName,
-    VoiceType,
-    SpatializationType,
-    Note,
     Part,
     ThreadSpec,
     VoiceSpec,
-    SetupPerformerParameters,
-    OnUpdate,
 } from './types'
 
 export {
+    OscillatorName,
     SampleName,
+    Note,
+    VoiceType,
+    SpatializationType,
 } from './performance'
 export {
     enableImmersiveAudio,
@@ -19,3 +17,6 @@ export {
     setupPerformer,
     togglePaused,
 } from './interface'
+export {
+    OnUpdate,
+} from './setup'
