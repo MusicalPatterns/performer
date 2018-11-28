@@ -1,12 +1,4 @@
 export {
-    Part,
-    ThreadSpec,
-} from './types'
-
-export {
-    Note,
-} from './performance'
-export {
     enableImmersiveAudio,
     restart,
     setupPerformer,

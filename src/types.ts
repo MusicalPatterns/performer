@@ -1,5 +1,5 @@
-import { Index, Time, VoiceSpec } from '@musical-patterns/shared'
-import { Note, Voice } from './performance'
+import { Index, Note, Time } from '@musical-patterns/shared'
+import { Voice } from './performance'
 
 interface Thread {
     nextEnd: Time,
@@ -9,15 +9,6 @@ interface Thread {
     voice: Voice,
 }
 
-type Part = Note[]
-
-interface ThreadSpec {
-    part: Part,
-    voiceSpec: VoiceSpec,
-}
-
 export {
     Thread,
-    Part,
-    ThreadSpec,
 }

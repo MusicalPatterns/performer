@@ -9,5 +9,4 @@ export { constructThreads } from './constructThreads'
 
 export {
     Voice,
-    Note,
 } from './types'

@@ -9,9 +9,9 @@ given a compiled pattern, this will render it to audio
 ### setup
 
 ```
-import { setupPerformer } from '@musical-patterns/performer'
+import { setupPerformer, OnUpdate } from '@musical-patterns/performer'
 
-const onUpdate = time => {
+const onUpdate: OnUpdate = time => {
 	// do whatever you wanna do with the latest time here
 }
 
@@ -21,7 +21,8 @@ setupPerformer({ onUpdate })
 ### loading a pattern
 
 ```
-import { restart, ThreadSpec } from '@musical-patterns/performer'
+import { restart } from '@musical-patterns/performer'
+import { ThreadSpec } from '@musical-patterns/shared'
 
 const threadSpecs: ThreadSpec[] = [
 	// your thread specs here

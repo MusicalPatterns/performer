@@ -1,4 +1,4 @@
-import { Cents, Coordinate, Frequency, Scalar, Time } from '@musical-patterns/shared'
+import { Cents, Coordinate, Frequency, Scalar } from '@musical-patterns/shared'
 
 interface SampleVoiceConstructorParameters {
     spatialization?: SpatializationType,
@@ -36,14 +36,6 @@ type ModulePath = string
 
 type OscillatorNameToTypeMap = { [K in OscillatorName]: string }
 
-interface Note {
-    duration: Time,
-    frequency: Frequency,
-    gain: Scalar,
-    position: Coordinate,
-    sustain: Time,
-}
-
 export {
     SampleVoiceConstructorParameters,
     OscillatorVoiceConstructorParameters,
@@ -55,5 +47,4 @@ export {
     SampleDatas,
     ModulePath,
     OscillatorNameToTypeMap,
-    Note,
 }

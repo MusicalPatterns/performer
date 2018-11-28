@@ -1,5 +1,4 @@
-import { apply, from, Time, to } from '@musical-patterns/shared'
-import { Note } from '../index'
+import { apply, from, Note, Time, to } from '@musical-patterns/shared'
 import { Thread } from '../types'
 
 const startThreadNote: (thread: Thread, note: Note) => void =
