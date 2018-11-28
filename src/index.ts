@@ -1,15 +1,10 @@
 export {
     Part,
     ThreadSpec,
-    VoiceSpec,
 } from './types'
 
 export {
-    OscillatorName,
-    SampleName,
     Note,
-    VoiceType,
-    SpatializationType,
 } from './performance'
 export {
     enableImmersiveAudio,

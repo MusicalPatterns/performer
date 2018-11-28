@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/performer",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "main": "dist/main.js",
   "typings": "dist/index.d.ts",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/MusicalPatterns/performer.git"
   },
   "devDependencies": {
-    "@musical-patterns/shared": "^1.0.6",
+    "@musical-patterns/shared": "^1.0.8",
     "@types/three": "^0.93.8",
     "awesome-typescript-loader": "^5.2.0",
     "file-loader": "^2.0.0",

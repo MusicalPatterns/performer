@@ -1,8 +1,7 @@
-import { apply, from, Maybe, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/shared'
+import { apply, from, Maybe, SpatializationType, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/shared'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'
-import { SpatializationType } from '../index'
 import { ImmutableState, StateKeys, store } from '../state'
 import { calculatePlaybackRate } from './calculatePlaybackRate'
 import { context } from './context'
@@ -34,6 +33,7 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
             if (spatialization === SpatializationType.IMMERSIVE && webVr) {
                 // tslint:disable-next-line:no-unsafe-any
                 sourceNode = webVr.listener.context.createBufferSource()
+                // tslint:disable-next-line:no-unsafe-any
                 sourceNode.buffer = samples[ timbre ]
 
                 gainNode = positionalSound.getOutput()
@@ -52,6 +52,7 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
             }
             else {
                 sourceNode = context.createBufferSource()
+                // tslint:disable-next-line:no-unsafe-any
                 sourceNode.buffer = samples[ timbre ]
 
                 gainNode = context.createGain()

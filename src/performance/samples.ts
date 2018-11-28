@@ -1,8 +1,9 @@
+import { SampleName } from '@musical-patterns/shared'
 import { context } from './context'
-import { ModulePath, SampleName } from './types'
+import { ModulePath } from './types'
 
-// @ts-ignore
-const samples: { [x in SampleName]: AudioBuffer } = {}
+// tslint:disable:no-any
+const samples: { [x in SampleName]: AudioBuffer } = {} as any
 
 declare const require: (modulePath: ModulePath) => string
 

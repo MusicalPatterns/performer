@@ -1,5 +1,5 @@
-import { Index, Time } from '@musical-patterns/shared'
-import { Note, OscillatorName, SampleName, SpatializationType, Voice, VoiceType } from './performance'
+import { Index, Time, VoiceSpec } from '@musical-patterns/shared'
+import { Note, Voice } from './performance'
 
 interface Thread {
     nextEnd: Time,
@@ -16,15 +16,8 @@ interface ThreadSpec {
     voiceSpec: VoiceSpec,
 }
 
-interface VoiceSpec {
-    spatialization?: SpatializationType,
-    timbre: SampleName | OscillatorName,
-    voiceType: VoiceType,
-}
-
 export {
     Thread,
     Part,
     ThreadSpec,
-    VoiceSpec,
 }

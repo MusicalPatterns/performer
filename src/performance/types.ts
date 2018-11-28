@@ -34,29 +34,7 @@ type SampleDatas = { [x in SampleName]: SampleData }
 
 type ModulePath = string
 
-enum SampleName {
-    CELLO = 'CELLO',
-    DOUBLE_BASS = 'DOUBLE_BASS',
-    FLUTE = 'FLUTE',
-    PIANO = 'PIANO',
-    TROMBONE = 'TROMBONE',
-    TRUMPET = 'TRUMPET',
-    TUBA = 'TUBA',
-    VIOLIN = 'VIOLIN',
-    SNARE = 'SNARE',
-    KICK = 'KICK',
-    HIHAT = 'HIHAT',
-}
-
 type OscillatorNameToTypeMap = { [K in OscillatorName]: string }
-
-enum OscillatorName {
-    SQUARE = 'SQUARE',
-    SINE = 'SINE',
-    SAWTOOTH = 'SAWTOOTH',
-    TRIANGLE = 'TRIANGLE',
-    CUSTOM = 'CUSTOM',
-}
 
 interface Note {
     duration: Time,
@@ -64,16 +42,6 @@ interface Note {
     gain: Scalar,
     position: Coordinate,
     sustain: Time,
-}
-
-enum VoiceType {
-    OSCILLATOR = 'OSCILLATOR',
-    SAMPLE = 'SAMPLE',
-}
-
-enum SpatializationType {
-    MONO = 'MONO',
-    IMMERSIVE = 'IMMERSIVE',
 }
 
 export {
@@ -86,10 +54,6 @@ export {
     SampleData,
     SampleDatas,
     ModulePath,
-    SampleName,
     OscillatorNameToTypeMap,
-    OscillatorName,
     Note,
-    VoiceType,
-    SpatializationType,
 }

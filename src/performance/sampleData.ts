@@ -1,4 +1,4 @@
-import { Cents, CENTS_PER_SEMITONE, from, Semitones, to } from '@musical-patterns/shared'
+import { Cents, CENTS_PER_SEMITONE, from, SampleName, Semitones, to } from '@musical-patterns/shared'
 import {
     DOWN_ONE_SEMITONE,
     DOWN_TWO_OCTAVES_IN_SEMITONES,
@@ -6,7 +6,7 @@ import {
     UP_TWO_OCTAVES_IN_SEMITONES,
     UP_TWO_SEMITONES,
 } from './constants'
-import { SampleDatas, SampleName } from './types'
+import { SampleDatas } from './types'
 
 const shiftSemitones: (semitones: Semitones) => Cents = (semitones: Semitones): Cents =>
     to.Cents(from.Semitones(semitones) * from.Cents(CENTS_PER_SEMITONE))
