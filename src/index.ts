@@ -12,6 +12,10 @@ export {
 export {
     Note,
     VoiceSpec,
+    VoiceType,
+    SpatializationType,
+    SampleName,
+    OscillatorName,
 } from './performance'
 export {
     ThreadSpec,
