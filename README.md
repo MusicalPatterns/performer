@@ -21,8 +21,7 @@ setupPerformer({ onUpdate })
 ### loading a pattern
 
 ```
-import { restart } from '@musical-patterns/performer'
-import { ThreadSpec } from '@musical-patterns/utilities'
+import { restart, ThreadSpec } from '@musical-patterns/performer'
 
 const threadSpecs: ThreadSpec[] = [
 	// your thread specs here
