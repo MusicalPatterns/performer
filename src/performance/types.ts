@@ -84,8 +84,6 @@ interface Note {
     sustain: Time,
 }
 
-type Part = Note[]
-
 export {
     SampleVoiceConstructorParameters,
     OscillatorVoiceConstructorParameters,
@@ -103,5 +101,4 @@ export {
     SampleName,
     OscillatorName,
     Note,
-    Part,
 }

@@ -6,7 +6,7 @@ import { OscillatorName, SampleName, SpatializationType, Voice, VoiceType } from
 
 const constructThreads: (threadSpecs: ThreadSpec[]) => Thread[] =
     (threadSpecs: ThreadSpec[]): Thread[] =>
-        threadSpecs.map(({ part, voiceSpec }: ThreadSpec) => {
+        threadSpecs.map(({ notes, voiceSpec }: ThreadSpec) => {
             const {
                 spatialization = SpatializationType.MONO,
                 timbre = OscillatorName.SQUARE,
@@ -21,7 +21,7 @@ const constructThreads: (threadSpecs: ThreadSpec[]) => Thread[] =
                 nextEnd: to.Time(0),
                 nextStart: to.Time(0),
                 noteIndex: to.Index(0),
-                part,
+                notes,
                 voice,
             }
         })

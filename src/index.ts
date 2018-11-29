@@ -10,7 +10,7 @@ export {
     OnUpdate,
 } from './setup'
 export {
-    Part,
+    Note,
     VoiceSpec,
 } from './performance'
 export {
