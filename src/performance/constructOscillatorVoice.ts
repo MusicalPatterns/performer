@@ -1,11 +1,18 @@
-import { apply, from, Maybe, SpatializationType, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/utilities'
+import { apply, from, Maybe, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'
 import { ImmutableState, StateKeys, store } from '../state'
 import { context } from './context'
 import { oscillatorNameToTypeMap } from './oscillatorNameToTypeMap'
-import { NoteToPlay, OscillatorVoiceConstructorParameters, StartNote, StopNote, Voice } from './types'
+import {
+    NoteToPlay,
+    OscillatorVoiceConstructorParameters,
+    SpatializationType,
+    StartNote,
+    StopNote,
+    Voice,
+} from './types'
 
 // tslint:disable-next-line:no-type-definitions-outside-types-modules
 const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: OscillatorVoiceConstructorParameters) => Voice =

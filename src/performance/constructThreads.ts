@@ -1,8 +1,8 @@
-import { OscillatorName, SampleName, ThreadSpec, to, VoiceType } from '@musical-patterns/utilities'
-import { Thread } from '../types'
+import { to } from '@musical-patterns/utilities'
+import { Thread, ThreadSpec } from '../types'
 import { constructOscillatorVoice } from './constructOscillatorVoice'
 import { constructSampleVoice } from './constructSampleVoice'
-import { Voice } from './types'
+import { OscillatorName, SampleName, Voice, VoiceType } from './types'
 
 const constructThreads: (threadSpecs: ThreadSpec[]) => Thread[] =
     (threadSpecs: ThreadSpec[]): Thread[] =>

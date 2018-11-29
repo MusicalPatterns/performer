@@ -1,6 +1,5 @@
-import { SampleName } from '@musical-patterns/utilities'
 import { context } from './context'
-import { ModulePath } from './types'
+import { ModulePath, SampleName } from './types'
 
 // tslint:disable:no-any
 const samples: { [x in SampleName]: AudioBuffer } = {} as any

@@ -1,8 +1,8 @@
-import { ThreadSpec, to } from '@musical-patterns/utilities'
+import { to } from '@musical-patterns/utilities'
 import { BatchAction, batchActions } from 'redux-batched-actions'
 import { constructThreads } from '../performance'
 import { ActionType, store } from '../state'
-import { Thread } from '../types'
+import { Thread, ThreadSpec } from '../types'
 
 const restart: (threadSpecs: ThreadSpec[]) => void =
     (threadSpecs: ThreadSpec[]): void => {

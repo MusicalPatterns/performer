@@ -1,4 +1,4 @@
-import { apply, from, Maybe, SpatializationType, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/utilities'
+import { apply, from, Maybe, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'
@@ -7,7 +7,15 @@ import { calculatePlaybackRate } from './calculatePlaybackRate'
 import { context } from './context'
 import { buildSampleData } from './sampleData'
 import { samples } from './samples'
-import { NoteToPlay, SampleDatas, SampleVoiceConstructorParameters, StartNote, StopNote, Voice } from './types'
+import {
+    NoteToPlay,
+    SampleDatas,
+    SampleVoiceConstructorParameters,
+    SpatializationType,
+    StartNote,
+    StopNote,
+    Voice,
+} from './types'
 
 let sampleData: SampleDatas
 
