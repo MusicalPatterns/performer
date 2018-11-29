@@ -22,7 +22,7 @@ setupPerformer({ onUpdate })
 
 ```
 import { restart } from '@musical-patterns/performer'
-import { ThreadSpec } from '@musical-patterns/shared'
+import { ThreadSpec } from '@musical-patterns/utilities'
 
 const threadSpecs: ThreadSpec[] = [
 	// your thread specs here

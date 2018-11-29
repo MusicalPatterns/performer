@@ -1,4 +1,4 @@
-import { SampleName } from '@musical-patterns/shared'
+import { SampleName } from '@musical-patterns/utilities'
 import { context } from './context'
 import { ModulePath } from './types'
 

@@ -1,4 +1,4 @@
-import { Maybe, Time } from '@musical-patterns/shared'
+import { Maybe, Time } from '@musical-patterns/utilities'
 import { update } from '../performance'
 import { Thread } from '../types'
 

@@ -1,4 +1,4 @@
-import { Index, Note, Time } from '@musical-patterns/shared'
+import { Index, Note, Time } from '@musical-patterns/utilities'
 import { Voice } from './performance'
 
 interface Thread {

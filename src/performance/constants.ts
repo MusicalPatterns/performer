@@ -1,6 +1,6 @@
 // tslint:disable no-magic-numbers
 
-import { Semitones, to } from '@musical-patterns/shared'
+import { Semitones, to } from '@musical-patterns/utilities'
 
 const UP_TWO_SEMITONES: Semitones = to.Semitones(2)
 const DOWN_ONE_SEMITONE: Semitones = to.Semitones(-1)

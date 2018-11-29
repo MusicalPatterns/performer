@@ -1,4 +1,4 @@
-import { Cents, Coordinate, Frequency, Scalar } from '@musical-patterns/shared'
+import { Cents, Coordinate, Frequency, Scalar } from '@musical-patterns/utilities'
 
 interface SampleVoiceConstructorParameters {
     spatialization?: SpatializationType,

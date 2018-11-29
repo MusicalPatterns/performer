@@ -1,4 +1,4 @@
-import { OscillatorName } from '@musical-patterns/shared'
+import { OscillatorName } from '@musical-patterns/utilities'
 import { OscillatorNameToTypeMap } from './types'
 
 const oscillatorNameToTypeMap: OscillatorNameToTypeMap = {

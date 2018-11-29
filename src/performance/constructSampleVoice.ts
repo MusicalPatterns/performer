@@ -1,4 +1,4 @@
-import { apply, from, Maybe, SpatializationType, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/shared'
+import { apply, from, Maybe, SpatializationType, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'

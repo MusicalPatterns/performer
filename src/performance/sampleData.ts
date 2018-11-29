@@ -1,4 +1,4 @@
-import { Cents, CENTS_PER_SEMITONE, from, SampleName, Semitones, to } from '@musical-patterns/shared'
+import { Cents, CENTS_PER_SEMITONE, from, SampleName, Semitones, to } from '@musical-patterns/utilities'
 import {
     DOWN_ONE_SEMITONE,
     DOWN_TWO_OCTAVES_IN_SEMITONES,
