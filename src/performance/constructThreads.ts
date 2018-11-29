@@ -2,12 +2,17 @@ import { to } from '@musical-patterns/utilities'
 import { Thread, ThreadSpec } from '../types'
 import { constructOscillatorVoice } from './constructOscillatorVoice'
 import { constructSampleVoice } from './constructSampleVoice'
-import { OscillatorName, SampleName, Voice, VoiceType } from './types'
+import { OscillatorName, SampleName, SpatializationType, Voice, VoiceType } from './types'
 
 const constructThreads: (threadSpecs: ThreadSpec[]) => Thread[] =
     (threadSpecs: ThreadSpec[]): Thread[] =>
         threadSpecs.map(({ part, voiceSpec }: ThreadSpec) => {
-            const { spatialization, timbre, voiceType } = voiceSpec
+            const {
+                spatialization = SpatializationType.MONO,
+                timbre = OscillatorName.SQUARE,
+                voiceType = VoiceType.OSCILLATOR,
+            } = voiceSpec
+
             const voice: Voice = voiceType === VoiceType.OSCILLATOR ?
                 constructOscillatorVoice({ spatialization, timbre: timbre as OscillatorName }) :
                 constructSampleVoice({ spatialization, timbre: timbre as SampleName })
