@@ -2,6 +2,7 @@ import { loadAllSamples } from '../performance'
 import { activateContextInMobileBrowserEnvironments, setupThreadsListener, setupTimeControls } from '../setup'
 import { enableImmersiveAudio } from './enableImmersiveAudio'
 import { restart } from './restart'
+import { togglePaused } from './togglePaused'
 import { SetupPerformerParameters } from './types'
 
 // tslint:disable-next-line:no-empty
@@ -21,6 +22,7 @@ const setupPerformer: (setupPerformerParameters: SetupPerformerParameters) => vo
             }
 
             restart(autoStart.threadSpecs)
+            togglePaused()
         }
     }
 
