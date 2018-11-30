@@ -49,6 +49,22 @@ enableImmersiveAudio()
 If you have your own instance of Vrb ([https://www.npmjs.com/package/vrb](https://www.npmjs.com/package/vrb)) you may inject it here.
 If you do not, Vrb is what will be used under the hood for WebVR and it will be automatically configured to reasonable defaults for you.
 
+### or if you're an eager beaver
+
+```
+import { setupPerformer } from '@musical-patterns/performer'
+import houndstoothtopiaTheme from '@musical-patterns/pattern-houndstoothtopia-theme'
+import { buildVrb } from 'vrb'
+
+setupPerformer({
+	autoStart: {
+		threadSpecs: houndstoothtopiaTheme,
+		vrb: buildVrb()
+	}
+})
+
+```
+
 ## samples notes
 
 If you're going to use samples, I'm afraid you'll also need to find some way to get the samples' .wav files into your bundle.
