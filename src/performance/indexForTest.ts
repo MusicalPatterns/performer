@@ -1,11 +1,10 @@
 // tslint:disable:no-reaching-imports
 
+export { constructThreads } from './constructThreads'
+
 export {
-    constructThreads,
     Note,
     OscillatorName,
     SpatializationType,
     VoiceType,
-} from './performance/indexForTest'
-
-export { ThreadSpec } from './types'
+} from './types'

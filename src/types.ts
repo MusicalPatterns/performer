@@ -10,8 +10,8 @@ interface Thread {
 }
 
 interface ThreadSpec {
-    notes: Note[],
-    voiceSpec: VoiceSpec,
+    notes?: Note[],
+    voiceSpec?: VoiceSpec,
 }
 
 export {
