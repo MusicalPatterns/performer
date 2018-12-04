@@ -1,4 +1,4 @@
-import * as to from '@musical-patterns/utilities/dist/nominal/to'
+import { to } from '@musical-patterns/utilities'
 import { constructThreads, Thread, ThreadSpec } from '../../../src/indexForTest'
 
 describe('construct threads', () => {
