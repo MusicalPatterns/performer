@@ -1,6 +1,5 @@
-import { constructThreads, ThreadSpec, Note, OscillatorName, SpatializationType, VoiceType } from '../../../src/indexForTest'
-import { Thread } from '../../../src/types'
 import * as to from '@musical-patterns/utilities/dist/nominal/to'
+import { constructThreads, Thread, ThreadSpec } from '../../../src/indexForTest'
 
 describe('construct threads', () => {
     it('defaults notes to empty array', () => {

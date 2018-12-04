@@ -8,7 +8,6 @@ import { oscillatorNameToTypeMap } from './oscillatorNameToTypeMap'
 import {
     NoteToPlay,
     OscillatorVoiceConstructorParameters,
-    SpatializationType,
     StartNote,
     StopNote,
     Voice,
@@ -16,7 +15,7 @@ import {
 
 // tslint:disable-next-line:no-type-definitions-outside-types-modules
 const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: OscillatorVoiceConstructorParameters) => Voice =
-    ({ spatialization, timbre }: OscillatorVoiceConstructorParameters): Voice => {
+    ({ timbre }: OscillatorVoiceConstructorParameters): Voice => {
         let oscillatorNode: OscillatorNode
         let gainNode: GainNode
 
@@ -26,13 +25,13 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
 
         let positionNode: Object3D
         let positionalSound: PositionalAudio
-        if (spatialization === SpatializationType.IMMERSIVE && webVr && scene) {
+        if (webVr && scene) {
             positionNode = new Object3D()
             scene.add(positionNode)
         }
 
         const startNote: StartNote = ({ frequency, gain, position }: NoteToPlay): void => {
-            if (spatialization === SpatializationType.IMMERSIVE && webVr) {
+            if (webVr) {
                 // tslint:disable-next-line:no-unsafe-any
                 positionalSound = webVr.createPositionalSound()
                 positionNode.add(positionalSound)
@@ -40,9 +39,9 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
                 oscillatorNode = webVr.createSpatialOscillator()
 
                 positionNode.position.set(
-                    from.CoordinateElement(apply.Index(position, X_AXIS)),
-                    from.CoordinateElement(apply.Index(position, Y_AXIS)),
-                    from.CoordinateElement(apply.Index(position, Z_AXIS)),
+                    position.length ? from.CoordinateElement(apply.Index(position, X_AXIS)) : 0,
+                    position.length > 0 ? from.CoordinateElement(apply.Index(position, Y_AXIS)) : 0,
+                    position.length > 1 ? from.CoordinateElement(apply.Index(position, Z_AXIS)) : 0,
                 )
 
                 oscillatorNode.connect(gainNode)

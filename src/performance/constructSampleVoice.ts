@@ -11,7 +11,6 @@ import {
     NoteToPlay,
     SampleDatas,
     SampleVoiceConstructorParameters,
-    SpatializationType,
     StartNote,
     StopNote,
     Voice,
@@ -20,7 +19,7 @@ import {
 let sampleData: SampleDatas
 
 const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstructorParameters) => Voice =
-    ({ spatialization, timbre }: SampleVoiceConstructorParameters): Voice => {
+    ({ timbre }: SampleVoiceConstructorParameters): Voice => {
         sampleData = sampleData || buildSampleData()
 
         const state: ImmutableState = store.getState() as ImmutableState
@@ -32,13 +31,13 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
 
         let positionNode: Object3D
         let positionalSound: PositionalAudio
-        if (spatialization === SpatializationType.IMMERSIVE && webVr && scene) {
+        if (webVr && scene) {
             positionNode = new Object3D()
             scene.add(positionNode)
         }
 
         const startNote: StartNote = ({ frequency, gain, position }: NoteToPlay): void => {
-            if (spatialization === SpatializationType.IMMERSIVE && webVr) {
+            if (webVr) {
                 // tslint:disable-next-line:no-unsafe-any
                 sourceNode = webVr.listener.context.createBufferSource()
                 // tslint:disable-next-line:no-unsafe-any
@@ -50,9 +49,9 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
                 positionalSound = webVr.createPositionalSound()
                 positionNode.add(positionalSound)
                 positionNode.position.set(
-                    from.CoordinateElement(apply.Index(position, X_AXIS)),
-                    from.CoordinateElement(apply.Index(position, Y_AXIS)),
-                    from.CoordinateElement(apply.Index(position, Z_AXIS)),
+                    position.length ? from.CoordinateElement(apply.Index(position, X_AXIS)) : 0,
+                    position.length > 0 ? from.CoordinateElement(apply.Index(position, Y_AXIS)) : 0,
+                    position.length > 1 ? from.CoordinateElement(apply.Index(position, Z_AXIS)) : 0,
                 )
                 positionalSound.setNodeSource(sourceNode)
 

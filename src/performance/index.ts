@@ -12,7 +12,6 @@ export {
     VoiceSpec,
     Note,
     VoiceType,
-    SpatializationType,
     SampleName,
     OscillatorName,
 } from './types'

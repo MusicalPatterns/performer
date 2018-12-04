@@ -4,6 +4,7 @@ import { ActionType } from '../state'
 const buildClock: (dispatch: Dispatch) => Worker =
     (dispatch: Dispatch): Worker => {
         // @ts-ignore
+        // tslint:disable-next-line
         const Clock = require('./clock.worker')
         // tslint:disable-next-line:no-unsafe-any
         const clock: Worker = new Clock()

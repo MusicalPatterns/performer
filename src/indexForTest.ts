@@ -4,8 +4,10 @@ export {
     constructThreads,
     Note,
     OscillatorName,
-    SpatializationType,
     VoiceType,
 } from './performance/indexForTest'
 
-export { ThreadSpec } from './types'
+export {
+    Thread,
+    ThreadSpec,
+} from './types'

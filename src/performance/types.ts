@@ -3,12 +3,10 @@
 import { Cents, Coordinate, Frequency, Scalar, Time } from '@musical-patterns/utilities'
 
 interface SampleVoiceConstructorParameters {
-    spatialization?: SpatializationType,
     timbre: SampleName,
 }
 
 interface OscillatorVoiceConstructorParameters {
-    spatialization?: SpatializationType,
     timbre: OscillatorName,
 }
 
@@ -39,7 +37,6 @@ type ModulePath = string
 type OscillatorNameToTypeMap = { [K in OscillatorName]: string }
 
 interface VoiceSpec {
-    spatialization?: SpatializationType,
     timbre: SampleName | OscillatorName,
     voiceType: VoiceType,
 }
@@ -47,11 +44,6 @@ interface VoiceSpec {
 enum VoiceType {
     OSCILLATOR = 'OSCILLATOR',
     SAMPLE = 'SAMPLE',
-}
-
-enum SpatializationType {
-    MONO = 'MONO',
-    IMMERSIVE = 'IMMERSIVE',
 }
 
 enum SampleName {
@@ -97,7 +89,6 @@ export {
     OscillatorNameToTypeMap,
     VoiceSpec,
     VoiceType,
-    SpatializationType,
     SampleName,
     OscillatorName,
     Note,
