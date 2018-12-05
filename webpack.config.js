@@ -13,7 +13,9 @@ module.exports = {
                 loader: 'awesome-typescript-loader',
                 exclude: /test/,
                 query: {
-                    module: 'esnext',
+                    compilerOptions: {
+                        module: 'esnext',
+                    },
                 },
             },
             {
