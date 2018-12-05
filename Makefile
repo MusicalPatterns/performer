@@ -1,9 +1,6 @@
 .PHONY: lint
 .PHONY: test
 
-.PHONY: lint
-.PHONY: test
-
 build:
 	musical-patterns build webpack
 
