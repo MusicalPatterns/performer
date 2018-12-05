@@ -12,11 +12,6 @@ module.exports = {
                 test: /\.ts$/,
                 loader: 'awesome-typescript-loader',
                 exclude: /test/,
-                query: {
-                    compilerOptions: {
-                        module: 'esnext',
-                    },
-                },
             },
             {
                 test: /\.wav/,
