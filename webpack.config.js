@@ -12,6 +12,9 @@ module.exports = {
                 test: /\.ts$/,
                 loader: 'awesome-typescript-loader',
                 exclude: /test/,
+                query: {
+                    module: 'esnext',
+                },
             },
             {
                 test: /\.wav/,
@@ -20,7 +23,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.ts', '.js'],
+        extensions: [ '.ts', '.js' ],
     },
     output: {
         library: 'performer',
