@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/performer",
-  "version": "1.0.52",
+  "version": "1.0.53",
   "main": "dist/main.js",
   "typings": "dist/index.d.ts",
   "repository": {
@@ -11,9 +11,9 @@
     "build": "webpack"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.35",
-    "@musical-patterns/utilities": "^1.0.84",
-    "@types/three": "^0.93.11",
+    "@musical-patterns/cli": "^1.0.36",
+    "@musical-patterns/utilities": "^1.0.85",
+    "@types/three": "^0.93.12",
     "awesome-typescript-loader": "^5.2.0",
     "file-loader": "^2.0.0",
     "raf": "^3.4.0",
@@ -22,7 +22,7 @@
     "three": "^0.99.0",
     "typescript": "^3.2.1",
     "vrb": "^1.1.14",
-    "webpack": "^4.27.0",
+    "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
     "worker-loader": "^2.0.0"
   }
