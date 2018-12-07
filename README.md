@@ -1,4 +1,4 @@
-# Musical Patterns Performer
+# Musical Patterns - performer
 
 given a compiled pattern, this will render it to audio
 
