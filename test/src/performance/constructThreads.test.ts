@@ -2,7 +2,7 @@ import { to } from '@musical-patterns/utilities'
 import { constructThreads, Thread, ThreadSpec } from '../../../src/indexForTest'
 
 describe('construct threads', () => {
-    it('defaults notes to empty array', () => {
+    it('defaults notes to empty array, and next start, next end, and note index each to zero', () => {
         const threadSpecs: ThreadSpec[] = [
             {},
         ]

@@ -12,8 +12,8 @@
     "build": "webpack"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.41",
-    "@musical-patterns/utilities": "^1.0.89",
+    "@musical-patterns/cli": "^1.0.42",
+    "@musical-patterns/utilities": "^1.0.90",
     "@types/three": "^0.93.12",
     "awesome-typescript-loader": "^5.2.0",
     "file-loader": "^2.0.0",

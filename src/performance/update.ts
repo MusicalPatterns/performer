@@ -34,7 +34,7 @@ const update: (thread: Thread, time: Time) => void =
             thread.noteIndex = to.Index(0)
         }
 
-        if (time > thread.nextStart) {
+        if (time >= thread.nextStart) {
             startThreadNote(thread, note)
         }
     }

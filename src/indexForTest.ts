@@ -2,6 +2,7 @@
 
 export {
     constructThreads,
+    update,
     Note,
     OscillatorName,
     VoiceType,

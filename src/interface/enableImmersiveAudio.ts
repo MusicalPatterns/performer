@@ -25,7 +25,6 @@ const enableImmersiveAudio: (enableImmersiveAudioParameters: EnableImmersiveAudi
             { type: ActionType.SET_WEB_VR, data: webVr },
         ])
         store.dispatch(batchedAction)
-
     }
 
 export {
