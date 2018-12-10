@@ -1,4 +1,4 @@
-import { context } from './context'
+import { context } from '../performance'
 import { ModulePath, SampleName } from './types'
 
 // tslint:disable:no-any

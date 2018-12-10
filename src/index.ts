@@ -11,11 +11,13 @@ export {
 } from './setup'
 export {
     Note,
+} from './performance'
+export {
     VoiceSpec,
     VoiceType,
     SampleName,
     OscillatorName,
-} from './performance'
+} from './voice'
 export {
     ThreadSpec,
 } from './types'

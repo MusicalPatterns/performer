@@ -1,5 +1,6 @@
 import { Index, Time } from '@musical-patterns/utilities'
-import { Note, Voice, VoiceSpec } from './performance'
+import { Note } from './performance'
+import { Voice, VoiceSpec } from './voice'
 
 interface Thread {
     nextEnd: Time,

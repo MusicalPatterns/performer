@@ -2,9 +2,9 @@ import { apply, from, Maybe, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/ut
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'
+import { context } from '../performance'
 import { ImmutableState, StateKeys, store } from '../state'
 import { calculatePlaybackRate } from './calculatePlaybackRate'
-import { context } from './context'
 import { buildSampleData } from './sampleData'
 import { samples } from './samples'
 import {
