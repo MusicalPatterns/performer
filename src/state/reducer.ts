@@ -12,6 +12,7 @@ const reducer: Reducer<ImmutableState, Action> =
         switch (action.type) {
             case ActionType.SET_THREADS: {
                 stopThreads(state.get(StateKeys.THREADS))
+                terminateClock(state.get(StateKeys.CLOCK))
 
                 return state.set(StateKeys.THREADS, action.data)
                     .set(StateKeys.CLOCK, buildClock(store.dispatch))
@@ -21,11 +22,6 @@ const reducer: Reducer<ImmutableState, Action> =
                     StateKeys.PAUSED,
                     !state.get(StateKeys.PAUSED),
                 )
-            }
-            case ActionType.SET_CLOCK: {
-                terminateClock(state.get(StateKeys.CLOCK))
-
-                return state.set(StateKeys.CLOCK, action.data)
             }
             case ActionType.SET_TIME: {
                 return state.set(StateKeys.TIME, action.data)

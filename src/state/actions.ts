@@ -8,7 +8,6 @@ import { Thread } from '../types'
 enum ActionType {
     SET_THREADS = 'SET_THREADS',
     TOGGLE_PAUSED = 'TOGGLE_PAUSED',
-    SET_CLOCK = 'SET_CLOCK',
     SET_TIME = 'SET_TIME',
     SET_PAUSED = 'SET_PAUSED',
     INCREMENT_TIME = 'INCREMENT_TIME',
@@ -23,11 +22,6 @@ interface SetThreads {
 
 interface TogglePaused {
     type: ActionType.TOGGLE_PAUSED,
-}
-
-interface SetClock {
-    data: Worker,
-    type: ActionType.SET_CLOCK,
 }
 
 interface SetTime {
@@ -58,7 +52,6 @@ interface SetWebVr {
 type Action =
     SetThreads |
     TogglePaused |
-    SetClock |
     SetTime |
     SetPaused |
     IncrementTime |
