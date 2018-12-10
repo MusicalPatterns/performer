@@ -6,7 +6,7 @@ import { context } from '../performance'
 import { ImmutableState, StateKeys, store } from '../state'
 import { calculatePlaybackRate } from './calculatePlaybackRate'
 import { buildSampleData } from './sampleData'
-import { samples } from './samples'
+import { getOrLoad } from './samples'
 import {
     NoteToPlay,
     SampleDatas,
@@ -18,8 +18,8 @@ import {
 
 let sampleData: SampleDatas
 
-const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstructorParameters) => Voice =
-    ({ timbre }: SampleVoiceConstructorParameters): Voice => {
+const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstructorParameters) => Promise<Voice> =
+    async ({ timbre }: SampleVoiceConstructorParameters): Promise<Voice> => {
         sampleData = sampleData || buildSampleData()
 
         const state: ImmutableState = store.getState() as ImmutableState
@@ -36,12 +36,13 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
             scene.add(positionNode)
         }
 
+        const buffer: AudioBuffer = await getOrLoad(timbre)
+
         const startNote: StartNote = ({ frequency, gain, position }: NoteToPlay): void => {
             if (webVr) {
                 // tslint:disable-next-line:no-unsafe-any
                 sourceNode = webVr.listener.context.createBufferSource()
-                // tslint:disable-next-line:no-unsafe-any
-                sourceNode.buffer = samples[ timbre ]
+                sourceNode.buffer = buffer
 
                 gainNode = positionalSound.getOutput()
 
@@ -59,8 +60,7 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
             }
             else {
                 sourceNode = context.createBufferSource()
-                // tslint:disable-next-line:no-unsafe-any
-                sourceNode.buffer = samples[ timbre ]
+                sourceNode.buffer = buffer
 
                 gainNode = context.createGain()
                 gainNode.connect(context.destination)

@@ -6,6 +6,15 @@ const samples: { [x in SampleName]: AudioBuffer } = {} as any
 
 declare const require: (modulePath: ModulePath) => string
 
+const getOrLoad: (timbre: SampleName) => Promise<AudioBuffer>  =
+    async (timbre: SampleName): Promise<AudioBuffer> => {
+        if (!samples[ timbre ]) {
+            await load(timbre)
+        }
+
+        return samples[ timbre ]
+    }
+
 const getTimbreUrl: (timbre: SampleName) => ModulePath =
     (timbre: SampleName): ModulePath => {
         let inTest: boolean = false
@@ -35,13 +44,6 @@ const load: (timbre: SampleName) => void =
         request.send()
     }
 
-const loadAllSamples: () => void =
-    (): void => {
-        Object.values(SampleName)
-            .forEach(load)
-    }
-
 export {
-    samples,
-    loadAllSamples,
+    getOrLoad,
 }

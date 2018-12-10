@@ -4,9 +4,9 @@ import { ActionType, store } from '../state'
 import { Thread, ThreadSpec } from '../types'
 import { constructThreads } from '../voice'
 
-const perform: (threadSpecs: ThreadSpec[]) => void =
-    (threadSpecs: ThreadSpec[]): void => {
-        const threads: Thread[] = constructThreads(threadSpecs)
+const perform: (threadSpecs: ThreadSpec[]) => Promise<void> =
+    async (threadSpecs: ThreadSpec[]): Promise<void> => {
+        const threads: Thread[] = await constructThreads(threadSpecs)
 
         const batchedAction: BatchAction = batchActions([
             { type: ActionType.SET_TIME, data: to.Time(0) },

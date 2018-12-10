@@ -1,4 +1,3 @@
-export { loadAllSamples, samples } from './samples'
 export { buildSampleData } from './sampleData'
 export { constructOscillatorVoice } from './constructOscillatorVoice'
 export { constructSampleVoice } from './constructSampleVoice'

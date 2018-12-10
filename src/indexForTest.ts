@@ -5,8 +5,6 @@ export {
     Note,
 } from './performance/indexForTest'
 export {
-    // OscillatorName,
-    // VoiceType,
     constructThreads,
 } from './voice/indexForTest'
 

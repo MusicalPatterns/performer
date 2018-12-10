@@ -3,9 +3,9 @@ import { Thread, ThreadSpec } from '../types'
 import { constructOscillatorVoice, constructSampleVoice } from '../voice'
 import { OscillatorName, SampleName, Voice, VoiceType } from './types'
 
-const constructThreads: (threadSpecs: ThreadSpec[]) => Thread[] =
-    (threadSpecs: ThreadSpec[]): Thread[] =>
-        threadSpecs.map((threadSpec: ThreadSpec) => {
+const constructThreads: (threadSpecs: ThreadSpec[]) => Promise<Thread[]> =
+    async (threadSpecs: ThreadSpec[]): Promise<Thread[]> =>
+        Promise.all(threadSpecs.map(async (threadSpec: ThreadSpec): Promise<Thread> => {
             const {
                 notes = [],
                 voiceSpec,
@@ -18,7 +18,7 @@ const constructThreads: (threadSpecs: ThreadSpec[]) => Thread[] =
 
             const voice: Voice = voiceType === VoiceType.OSCILLATOR ?
                 constructOscillatorVoice({ timbre: timbre as OscillatorName }) :
-                constructSampleVoice({ timbre: timbre as SampleName })
+                await constructSampleVoice({ timbre: timbre as SampleName })
 
             return {
                 nextEnd: to.Time(0),
@@ -27,7 +27,7 @@ const constructThreads: (threadSpecs: ThreadSpec[]) => Thread[] =
                 notes,
                 voice,
             }
-        })
+        }))
 
 export {
     constructThreads,

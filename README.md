@@ -15,7 +15,7 @@ const onUpdate: OnUpdate = time => {
 	// do whatever you wanna do with the latest time here
 }
 
-setupPerformer({ onUpdate })
+await setupPerformer({ onUpdate })
 ```
 
 ### loading a pattern
@@ -27,7 +27,7 @@ const threadSpecs: ThreadSpec[] = [
 	// your thread specs here
 ]
 
-perform(threadSpecs) // will automatically perform time whether you like it or not
+await perform(threadSpecs) // will automatically restart the time whether you like it or not
 ```
 
 ### starting and stopping
@@ -67,8 +67,7 @@ setupPerformer({
 
 ## samples notes
 
-If you're going to use samples, I'm afraid you'll also need to find some way to get the samples' .wav files into your bundle.
-Either way, if you don't do this, you'll see a bunch of errors in your console (urgh).
+If you want to use samples, I'm afraid you'll need to find some way to get the samples' .wav files into your bundle.
 I suggest `npm i copy-webpack-plugin` and adding this to your `webpack.config.js`:
 
 ```

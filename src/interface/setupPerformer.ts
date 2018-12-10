@@ -1,14 +1,12 @@
 import { noop } from '@musical-patterns/utilities'
 import { activateContextInMobileBrowserEnvironments, setupTimeControls } from '../setup'
-import { loadAllSamples } from '../voice'
 import { enableImmersiveAudio } from './enableImmersiveAudio'
 import { perform } from './perform'
 import { togglePaused } from './togglePaused'
 import { SetupPerformerParameters } from './types'
 
-const setupPerformer: (setupPerformerParameters: SetupPerformerParameters) => void =
-    ({ onUpdate = noop, autoStart }: SetupPerformerParameters): void => {
-        loadAllSamples()
+const setupPerformer: (setupPerformerParameters: SetupPerformerParameters) => Promise<void> =
+    async ({ onUpdate = noop, autoStart }: SetupPerformerParameters): Promise<void> => {
         activateContextInMobileBrowserEnvironments()
         setupTimeControls(onUpdate)
 
@@ -17,7 +15,7 @@ const setupPerformer: (setupPerformerParameters: SetupPerformerParameters) => vo
                 enableImmersiveAudio({ vrb: autoStart.vrb })
             }
 
-            perform(autoStart.threadSpecs)
+            await perform(autoStart.threadSpecs)
             togglePaused()
         }
     }
