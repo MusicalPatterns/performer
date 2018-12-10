@@ -28,7 +28,7 @@ const getTimbreUrl: (timbre: SampleName) => ModulePath =
         return inTest ? '' : require(`../../samples/${timbre}.wav`)
     }
 
-const load: (timbre: SampleName) => void =
+const load: (timbre: SampleName) => Promise<void> =
     async (timbre: SampleName): Promise<void> =>
         new Promise((resolve: VoidFunction): void => {
             const request: XMLHttpRequest = new XMLHttpRequest()
