@@ -21,13 +21,13 @@ setupPerformer({ onUpdate })
 ### loading a pattern
 
 ```
-import { restart, ThreadSpec } from '@musical-patterns/performer'
+import { perform, ThreadSpec } from '@musical-patterns/performer'
 
 const threadSpecs: ThreadSpec[] = [
 	// your thread specs here
 ]
 
-restart(threadSpecs) // will automatically restart time whether you like it or not
+perform(threadSpecs) // will automatically perform time whether you like it or not
 ```
 
 ### starting and stopping

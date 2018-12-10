@@ -1,6 +1,6 @@
 export {
     enableImmersiveAudio,
-    restart,
+    perform,
     setupPerformer,
     togglePaused,
     EnableImmersiveAudioParameters,

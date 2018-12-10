@@ -4,7 +4,7 @@ import { ActionType, store } from '../state'
 import { Thread, ThreadSpec } from '../types'
 import { constructThreads } from '../voice'
 
-const restart: (threadSpecs: ThreadSpec[]) => void =
+const perform: (threadSpecs: ThreadSpec[]) => void =
     (threadSpecs: ThreadSpec[]): void => {
         const threads: Thread[] = constructThreads(threadSpecs)
 
@@ -16,5 +16,5 @@ const restart: (threadSpecs: ThreadSpec[]) => void =
     }
 
 export {
-    restart,
+    perform,
 }
