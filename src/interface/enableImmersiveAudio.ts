@@ -5,7 +5,7 @@ import { ActionType, store } from '../state'
 import { EnableImmersiveAudioParameters } from './types'
 
 const enableImmersiveAudio: (enableImmersiveAudioParameters: EnableImmersiveAudioParameters) => void =
-    ({ vrb }: EnableImmersiveAudioParameters): void => {
+    ({ homePosition, vrb }: EnableImmersiveAudioParameters): void => {
         const scene: Scene = new Scene()
 
         let webVr: Vrb
@@ -23,6 +23,7 @@ const enableImmersiveAudio: (enableImmersiveAudioParameters: EnableImmersiveAudi
         const batchedAction: BatchAction = batchActions([
             { type: ActionType.SET_SCENE, data: scene },
             { type: ActionType.SET_WEB_VR, data: webVr },
+            { type: ActionType.SET_HOME_POSITION, data: homePosition },
         ])
         store.dispatch(batchedAction)
     }

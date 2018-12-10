@@ -1,4 +1,4 @@
-import { apply, from, Maybe, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/utilities'
+import { apply, Coordinate, from, Maybe, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'
@@ -7,14 +7,8 @@ import { ImmutableState, StateKeys, store } from '../state'
 import { calculatePlaybackRate } from './calculatePlaybackRate'
 import { buildSampleData } from './sampleData'
 import { getOrLoad } from './samples'
-import {
-    NoteToPlay,
-    SampleDatas,
-    SampleVoiceConstructorParameters,
-    StartNote,
-    StopNote,
-    Voice,
-} from './types'
+import { NoteToPlay, SampleDatas, SampleVoiceConstructorParameters, StartNote, StopNote, Voice } from './types'
+import { setPosition } from './setPosition'
 
 let sampleData: SampleDatas
 
@@ -25,6 +19,7 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
         const state: ImmutableState = store.getState() as ImmutableState
         const webVr: Maybe<Vrb> = state.get(StateKeys.WEB_VR)
         const scene: Maybe<Scene> = state.get(StateKeys.SCENE)
+        const homePosition: Maybe<Coordinate> = state.get(StateKeys.HOME_POSITION)
 
         let sourceNode: AudioBufferSourceNode
         let gainNode: GainNode
@@ -49,11 +44,8 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
                 // tslint:disable-next-line:no-unsafe-any
                 positionalSound = webVr.createPositionalSound()
                 positionNode.add(positionalSound)
-                positionNode.position.set(
-                    position.length ? from.CoordinateElement(apply.Index(position, X_AXIS)) : 0,
-                    position.length > 0 ? from.CoordinateElement(apply.Index(position, Y_AXIS)) : 0,
-                    position.length > 1 ? from.CoordinateElement(apply.Index(position, Z_AXIS)) : 0,
-                )
+
+                setPosition(positionNode, position, homePosition)
                 positionalSound.setNodeSource(sourceNode)
 
                 positionalSound.setVolume(from.Scalar(apply.Scalar(gain, GAIN_ADJUST_FOR_WEB_AUDIO)))

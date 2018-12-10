@@ -11,11 +11,12 @@ const setupPerformer: (setupPerformerParameters: SetupPerformerParameters) => Pr
         setupTimeControls(onUpdate)
 
         if (autoStart) {
-            if (autoStart.vrb) {
-                enableImmersiveAudio({ vrb: autoStart.vrb })
+            const { homePosition, threadSpecs, vrb } = autoStart
+            if (vrb) {
+                enableImmersiveAudio({ vrb, homePosition })
             }
 
-            await perform(autoStart.threadSpecs)
+            await perform(threadSpecs)
             togglePaused()
         }
     }

@@ -1,6 +1,6 @@
 // tslint:disable:no-type-definitions-outside-types-modules
 
-import { Time } from '@musical-patterns/utilities'
+import { Coordinate, Time } from '@musical-patterns/utilities'
 import { Scene } from 'three'
 import { Vrb } from 'vrb'
 import { Thread } from '../types'
@@ -13,6 +13,7 @@ enum ActionType {
     INCREMENT_TIME = 'INCREMENT_TIME',
     SET_SCENE = 'SET_SCENE',
     SET_WEB_VR = 'SET_WEB_VR',
+    SET_HOME_POSITION = 'SET_HOME_POSITION',
 }
 
 interface SetThreads {
@@ -49,6 +50,11 @@ interface SetWebVr {
     type: ActionType.SET_WEB_VR,
 }
 
+interface SetHomePosition {
+    data: Coordinate,
+    type: ActionType.SET_HOME_POSITION,
+}
+
 type Action =
     SetThreads |
     TogglePaused |
@@ -56,7 +62,8 @@ type Action =
     SetPaused |
     IncrementTime |
     SetScene |
-    SetWebVr
+    SetWebVr |
+    SetHomePosition
 
 export {
     Action,

@@ -1,6 +1,6 @@
 // tslint:disable:no-type-definitions-outside-types-modules
 
-import { Maybe, Time, to, typedMap, TypedMap } from '@musical-patterns/utilities'
+import { Coordinate, Maybe, Time, to, typedMap, TypedMap } from '@musical-patterns/utilities'
 import { Scene } from 'three'
 import { Vrb } from 'vrb'
 import { Thread } from '../types'
@@ -12,6 +12,7 @@ enum StateKeys {
     THREADS = 'THREADS',
     TIME = 'TIME',
     WEB_VR = 'WEB_VR',
+    HOME_POSITION = 'HOME_POSITION',
 }
 
 interface State {
@@ -21,6 +22,7 @@ interface State {
     [ StateKeys.THREADS ]: Thread[],
     [ StateKeys.TIME ]: Time,
     [ StateKeys.WEB_VR ]: Maybe<Vrb>,
+    [ StateKeys.HOME_POSITION ]: Maybe<Coordinate>,
 }
 
 type StateValueTypes =
@@ -29,7 +31,8 @@ type StateValueTypes =
     Thread[] |
     Maybe<Worker> |
     Maybe<Scene> |
-    Maybe<Vrb>
+    Maybe<Vrb> |
+    Maybe<Coordinate>
 
 type ImmutableState = TypedMap<StateValueTypes, State>
 
@@ -40,6 +43,7 @@ const initialState: ImmutableState = typedMap<StateValueTypes, State>({
     [ StateKeys.THREADS ]: [],
     [ StateKeys.TIME ]: to.Time(0),
     [ StateKeys.WEB_VR ]: undefined,
+    [ StateKeys.HOME_POSITION ]: undefined,
 })
 
 export {

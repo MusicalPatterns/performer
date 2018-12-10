@@ -1,4 +1,4 @@
-import { apply, from, Maybe, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/utilities'
+import { apply, Coordinate, from, Maybe, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'
@@ -12,6 +12,7 @@ import {
     StopNote,
     Voice,
 } from './types'
+import { setPosition } from './setPosition'
 
 // tslint:disable-next-line:no-type-definitions-outside-types-modules
 const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: OscillatorVoiceConstructorParameters) => Voice =
@@ -22,6 +23,7 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
         const state: ImmutableState = store.getState() as ImmutableState
         const webVr: Maybe<Vrb> = state.get(StateKeys.WEB_VR)
         const scene: Maybe<Scene> = state.get(StateKeys.SCENE)
+        const homePosition: Maybe<Coordinate> = state.get(StateKeys.HOME_POSITION)
 
         let positionNode: Object3D
         let positionalSound: PositionalAudio
@@ -38,11 +40,7 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
                 gainNode = positionalSound.getOutput()
                 oscillatorNode = webVr.createSpatialOscillator()
 
-                positionNode.position.set(
-                    position.length ? from.CoordinateElement(apply.Index(position, X_AXIS)) : 0,
-                    position.length > 0 ? from.CoordinateElement(apply.Index(position, Y_AXIS)) : 0,
-                    position.length > 1 ? from.CoordinateElement(apply.Index(position, Z_AXIS)) : 0,
-                )
+                setPosition(positionNode, position, homePosition)
 
                 oscillatorNode.connect(gainNode)
                 oscillatorNode.type = oscillatorNameToTypeMap[ timbre ] as OscillatorType
