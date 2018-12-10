@@ -1,5 +1,5 @@
 import { noop } from '@musical-patterns/utilities'
-import { activateContextInMobileBrowserEnvironments, setupThreadsListener, setupTimeControls } from '../setup'
+import { activateContextInMobileBrowserEnvironments, setupTimeControls } from '../setup'
 import { loadAllSamples } from '../voice'
 import { enableImmersiveAudio } from './enableImmersiveAudio'
 import { restart } from './restart'
@@ -10,7 +10,6 @@ const setupPerformer: (setupPerformerParameters: SetupPerformerParameters) => vo
     ({ onUpdate = noop, autoStart }: SetupPerformerParameters): void => {
         loadAllSamples()
         activateContextInMobileBrowserEnvironments()
-        setupThreadsListener()
         setupTimeControls(onUpdate)
 
         if (autoStart) {

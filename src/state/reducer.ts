@@ -1,8 +1,10 @@
 import { apply, from, Time, to } from '@musical-patterns/utilities'
 import { Reducer } from 'redux'
+import { buildClock } from '../performance'
 import { Action, ActionType } from './actions'
 import { stopThreads, terminateClock, updateThreads } from './sideEffects'
 import { ImmutableState, initialState, StateKeys } from './state'
+import { store } from './store'
 
 const reducer: Reducer<ImmutableState, Action> =
     // tslint:disable-next-line:cyclomatic-complexity
@@ -12,6 +14,7 @@ const reducer: Reducer<ImmutableState, Action> =
                 stopThreads(state.get(StateKeys.THREADS))
 
                 return state.set(StateKeys.THREADS, action.data)
+                    .set(StateKeys.CLOCK, buildClock(store.dispatch))
             }
             case ActionType.TOGGLE_PAUSED: {
                 return state.set(
