@@ -1,5 +1,3 @@
-// tslint:disable:max-file-line-count
-
 import { Coordinate, Frequency, Scalar, Time } from '@musical-patterns/utilities'
 
 interface Note {
