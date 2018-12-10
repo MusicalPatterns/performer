@@ -1,4 +1,4 @@
-import { apply, Coordinate, from, Maybe, to } from '@musical-patterns/utilities'
+import { apply, from, Maybe, to } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'
@@ -13,7 +13,6 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
         const state: ImmutableState = store.getState() as ImmutableState
         const webVr: Maybe<Vrb> = state.get(StateKeys.WEB_VR)
         const scene: Maybe<Scene> = state.get(StateKeys.SCENE)
-        const homePosition: Maybe<Coordinate> = state.get(StateKeys.HOME_POSITION)
 
         let sourceNode: AudioBufferSourceNode
         let gainNode: GainNode
@@ -39,7 +38,7 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
                 positionalSound = webVr.createPositionalSound()
                 positionNode.add(positionalSound)
 
-                setPosition(positionNode, position, homePosition)
+                setPosition(positionNode, position)
                 positionalSound.setNodeSource(sourceNode)
 
                 positionalSound.setVolume(from.Scalar(apply.Scalar(gain, GAIN_ADJUST_FOR_WEB_AUDIO)))

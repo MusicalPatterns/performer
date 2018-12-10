@@ -1,4 +1,4 @@
-import { apply, Coordinate, from, Maybe, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/utilities'
+import { apply, from, Maybe } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'
@@ -23,7 +23,6 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
         const state: ImmutableState = store.getState() as ImmutableState
         const webVr: Maybe<Vrb> = state.get(StateKeys.WEB_VR)
         const scene: Maybe<Scene> = state.get(StateKeys.SCENE)
-        const homePosition: Maybe<Coordinate> = state.get(StateKeys.HOME_POSITION)
 
         let positionNode: Object3D
         let positionalSound: PositionalAudio
@@ -40,7 +39,7 @@ const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: Oscillato
                 gainNode = positionalSound.getOutput()
                 oscillatorNode = webVr.createSpatialOscillator()
 
-                setPosition(positionNode, position, homePosition)
+                setPosition(positionNode, position)
 
                 oscillatorNode.connect(gainNode)
                 oscillatorNode.type = oscillatorNameToTypeMap[ timbre ] as OscillatorType
