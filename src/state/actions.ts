@@ -4,6 +4,7 @@ import { Coordinate, Time } from '@musical-patterns/utilities'
 import { Scene } from 'three'
 import { Vrb } from 'vrb'
 import { Thread } from '../types'
+import { SampleDatas } from '../voice'
 
 enum ActionType {
     SET_THREADS = 'SET_THREADS',
@@ -14,6 +15,7 @@ enum ActionType {
     SET_SCENE = 'SET_SCENE',
     SET_WEB_VR = 'SET_WEB_VR',
     SET_HOME_POSITION = 'SET_HOME_POSITION',
+    SET_SAMPLE_DATA = 'SET_SAMPLE_DATA',
 }
 
 interface SetThreads {
@@ -55,6 +57,11 @@ interface SetHomePosition {
     type: ActionType.SET_HOME_POSITION,
 }
 
+interface SetSampleData {
+    data: SampleDatas,
+    type: ActionType.SET_SAMPLE_DATA,
+}
+
 type Action =
     SetThreads |
     TogglePaused |
@@ -63,7 +70,8 @@ type Action =
     IncrementTime |
     SetScene |
     SetWebVr |
-    SetHomePosition
+    SetHomePosition |
+    SetSampleData
 
 export {
     Action,

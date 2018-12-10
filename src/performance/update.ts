@@ -1,12 +1,12 @@
 import { apply, from, Time, to } from '@musical-patterns/utilities'
-import { Thread } from '../types'
-import { Note } from './types'
+import { Note, Thread } from '../types'
 
 const startThreadNote: (thread: Thread, note: Note) => void =
     (thread: Thread, note: Note): void => {
         thread.voice.startNote({
             frequency: note.frequency,
             gain: note.gain,
+            playbackRate: note.playbackRate,
             position: note.position || to.Coordinate([ 0, 0, 0 ]),
         })
 

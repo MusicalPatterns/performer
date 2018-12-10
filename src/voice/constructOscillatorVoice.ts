@@ -5,6 +5,7 @@ import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'
 import { context } from '../performance'
 import { ImmutableState, StateKeys, store } from '../state'
 import { oscillatorNameToTypeMap } from './oscillatorNameToTypeMap'
+import { setPosition } from './setPosition'
 import {
     NoteToPlay,
     OscillatorVoiceConstructorParameters,
@@ -12,7 +13,6 @@ import {
     StopNote,
     Voice,
 } from './types'
-import { setPosition } from './setPosition'
 
 // tslint:disable-next-line:no-type-definitions-outside-types-modules
 const constructOscillatorVoice: (oscillatorVoiceConstructorParameters: OscillatorVoiceConstructorParameters) => Voice =

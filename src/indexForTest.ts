@@ -2,7 +2,6 @@
 
 export {
     update,
-    Note,
 } from './performance/indexForTest'
 export {
     constructThreads,
@@ -11,4 +10,5 @@ export {
 export {
     Thread,
     ThreadSpec,
+    Note,
 } from './types'

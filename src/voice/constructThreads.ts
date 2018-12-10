@@ -1,6 +1,7 @@
 import { to } from '@musical-patterns/utilities'
-import { Thread, ThreadSpec } from '../types'
+import { Note, Thread, ThreadSpec } from '../types'
 import { constructOscillatorVoice, constructSampleVoice } from '../voice'
+import { applyPlaybackRate } from './applyPlaybackRate'
 import { OscillatorName, SampleName, Voice, VoiceType } from './types'
 
 const constructThreads: (threadSpecs: ThreadSpec[]) => Promise<Thread[]> =
@@ -19,6 +20,12 @@ const constructThreads: (threadSpecs: ThreadSpec[]) => Promise<Thread[]> =
             const voice: Voice = voiceType === VoiceType.OSCILLATOR ?
                 constructOscillatorVoice({ timbre: timbre as OscillatorName }) :
                 await constructSampleVoice({ timbre: timbre as SampleName })
+
+            if (voiceType === VoiceType.SAMPLE) {
+                notes.map((note: Note): void => {
+                    applyPlaybackRate(note, timbre as SampleName)
+                })
+            }
 
             return {
                 nextEnd: to.Time(0),

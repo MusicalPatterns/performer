@@ -47,6 +47,12 @@ const reducer: Reducer<ImmutableState, Action> =
                 return state
                     .set(StateKeys.TIME, time)
             }
+            case ActionType.SET_HOME_POSITION: {
+                return state.set(StateKeys.HOME_POSITION, action.data)
+            }
+            case ActionType.SET_SAMPLE_DATA: {
+                return state.set(StateKeys.SAMPLE_DATA, action.data)
+            }
 
             default: {
                 return state

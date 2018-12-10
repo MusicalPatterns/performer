@@ -4,6 +4,7 @@ import { Coordinate, Maybe, Time, to, typedMap, TypedMap } from '@musical-patter
 import { Scene } from 'three'
 import { Vrb } from 'vrb'
 import { Thread } from '../types'
+import { SampleDatas } from '../voice'
 
 enum StateKeys {
     CLOCK = 'CLOCK',
@@ -13,6 +14,7 @@ enum StateKeys {
     TIME = 'TIME',
     WEB_VR = 'WEB_VR',
     HOME_POSITION = 'HOME_POSITION',
+    SAMPLE_DATA = 'SAMPLE_DATA',
 }
 
 interface State {
@@ -23,6 +25,7 @@ interface State {
     [ StateKeys.TIME ]: Time,
     [ StateKeys.WEB_VR ]: Maybe<Vrb>,
     [ StateKeys.HOME_POSITION ]: Maybe<Coordinate>,
+    [ StateKeys.SAMPLE_DATA ]: Maybe<SampleDatas>,
 }
 
 type StateValueTypes =
@@ -32,7 +35,8 @@ type StateValueTypes =
     Maybe<Worker> |
     Maybe<Scene> |
     Maybe<Vrb> |
-    Maybe<Coordinate>
+    Maybe<Coordinate> |
+    Maybe<SampleDatas>
 
 type ImmutableState = TypedMap<StateValueTypes, State>
 
@@ -44,6 +48,7 @@ const initialState: ImmutableState = typedMap<StateValueTypes, State>({
     [ StateKeys.TIME ]: to.Time(0),
     [ StateKeys.WEB_VR ]: undefined,
     [ StateKeys.HOME_POSITION ]: undefined,
+    [ StateKeys.SAMPLE_DATA ]: undefined,
 })
 
 export {

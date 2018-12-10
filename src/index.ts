@@ -10,9 +10,6 @@ export {
     OnUpdate,
 } from './setup'
 export {
-    Note,
-} from './performance'
-export {
     VoiceSpec,
     VoiceType,
     SampleName,
@@ -20,4 +17,5 @@ export {
 } from './voice'
 export {
     ThreadSpec,
+    Note,
 } from './types'

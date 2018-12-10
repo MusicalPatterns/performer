@@ -9,4 +9,6 @@ export {
     VoiceType,
     SampleName,
     OscillatorName,
+    NoteToPlay,
+    SampleDatas,
 } from './types'

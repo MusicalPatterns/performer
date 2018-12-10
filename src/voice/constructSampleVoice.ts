@@ -1,21 +1,15 @@
-import { apply, Coordinate, from, Maybe, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/utilities'
+import { apply, Coordinate, from, Maybe, to } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio, Scene } from 'three'
 import { Vrb } from 'vrb'
 import { GAIN_ADJUST_FOR_WEB_AUDIO } from '../constants'
 import { context } from '../performance'
 import { ImmutableState, StateKeys, store } from '../state'
-import { calculatePlaybackRate } from './calculatePlaybackRate'
-import { buildSampleData } from './sampleData'
 import { getOrLoad } from './samples'
-import { NoteToPlay, SampleDatas, SampleVoiceConstructorParameters, StartNote, StopNote, Voice } from './types'
 import { setPosition } from './setPosition'
-
-let sampleData: SampleDatas
+import { NoteToPlay, SampleVoiceConstructorParameters, StartNote, StopNote, Voice } from './types'
 
 const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstructorParameters) => Promise<Voice> =
     async ({ timbre }: SampleVoiceConstructorParameters): Promise<Voice> => {
-        sampleData = sampleData || buildSampleData()
-
         const state: ImmutableState = store.getState() as ImmutableState
         const webVr: Maybe<Vrb> = state.get(StateKeys.WEB_VR)
         const scene: Maybe<Scene> = state.get(StateKeys.SCENE)
@@ -33,7 +27,7 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
 
         const buffer: AudioBuffer = await getOrLoad(timbre)
 
-        const startNote: StartNote = ({ frequency, gain, position }: NoteToPlay): void => {
+        const startNote: StartNote = ({ frequency, gain, position, playbackRate }: NoteToPlay): void => {
             if (webVr) {
                 // tslint:disable-next-line:no-unsafe-any
                 sourceNode = webVr.listener.context.createBufferSource()
@@ -60,7 +54,7 @@ const constructSampleVoice: (sampleVoiceConstructorParameters: SampleVoiceConstr
                 gainNode.gain.value = from.Scalar(gain)
             }
 
-            sourceNode.playbackRate.value = calculatePlaybackRate(sampleData[ timbre ], frequency)
+            sourceNode.playbackRate.value = from.Scalar(playbackRate || to.Scalar(1))
 
             sourceNode.connect(gainNode)
             sourceNode.start()

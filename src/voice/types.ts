@@ -18,7 +18,8 @@ type SampleDatas = { [x in SampleName]: SampleData }
 interface NoteToPlay {
     frequency: Frequency,
     gain: Scalar,
-    position: Coordinate
+    playbackRate?: Scalar,
+    position: Coordinate,
 }
 
 type StartNote = (note: NoteToPlay) => void
