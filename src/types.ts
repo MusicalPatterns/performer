@@ -1,4 +1,4 @@
-import { Coordinate, Frequency, Index, Scalar, Time } from '@musical-patterns/utilities'
+import { Index, Time } from '@musical-patterns/utilities'
 import { NoteToPlay, Voice, VoiceSpec } from './voice'
 
 interface Thread {
