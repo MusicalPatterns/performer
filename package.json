@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/performer",
-  "version": "1.0.69",
+  "version": "1.0.70",
   "main": "dist/main.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@musical-patterns/cli": "^1.0.58",
-    "@musical-patterns/utilities": "^1.0.95",
+    "@musical-patterns/utilities": "^1.0.96",
     "@types/three": "^0.93.12",
     "awesome-typescript-loader": "^5.2.0",
     "file-loader": "^2.0.0",
