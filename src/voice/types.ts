@@ -67,6 +67,11 @@ enum OscillatorName {
     CUSTOM = 'CUSTOM',
 }
 
+interface ConstructNotesOptions {
+    timbre: SampleName | OscillatorName,
+    voiceType: VoiceType,
+}
+
 export {
     SampleName,
     SampleData,
@@ -82,4 +87,5 @@ export {
     OscillatorName,
     VoiceSpec,
     VoiceType,
+    ConstructNotesOptions,
 }

@@ -3,7 +3,7 @@ import { Object3D } from 'three'
 
 const setPosition: (positionNode: Object3D, position: Coordinate) => void =
     (positionNode: Object3D, position: Coordinate): void => {
-        let rawPosition: number[] = from.Coordinate(position)
+        const rawPosition: number[] = from.Coordinate(position)
         positionNode.position.set(
             apply.Index(rawPosition, X_AXIS),
             apply.Index(rawPosition, Y_AXIS),
