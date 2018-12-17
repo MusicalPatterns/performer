@@ -3,8 +3,8 @@
 import { Coordinate, Time } from '@musical-patterns/utilities'
 import { Scene } from 'three'
 import { Vrb } from 'vrb'
+import { SampleDatas } from '../construction'
 import { Thread } from '../types'
-import { SampleDatas } from '../voice'
 
 enum ActionType {
     SET_THREADS = 'SET_THREADS',

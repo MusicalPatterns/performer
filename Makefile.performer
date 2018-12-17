@@ -1,2 +1,6 @@
 build:
 	webpack
+
+.PHONY: qa
+qa:
+	webpack-dev-server --config webpack.qa.js

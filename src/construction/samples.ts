@@ -6,17 +6,17 @@ const samples: { [x in SampleName]: AudioBuffer } = {} as any
 
 declare const require: (modulePath: ModulePath) => string
 
-const getOrLoad: (timbre: SampleName) => Promise<AudioBuffer>  =
-    async (timbre: SampleName): Promise<AudioBuffer> => {
-        if (!samples[ timbre ]) {
-            await load(timbre)
+const getOrLoad: (sampleName: SampleName) => Promise<AudioBuffer>  =
+    async (sampleName: SampleName): Promise<AudioBuffer> => {
+        if (!samples[ sampleName ]) {
+            await load(sampleName)
         }
 
-        return samples[ timbre ]
+        return samples[ sampleName ]
     }
 
-const getTimbreUrl: (timbre: SampleName) => ModulePath =
-    (timbre: SampleName): ModulePath => {
+const getSampleUrl: (sampleName: SampleName) => ModulePath =
+    (sampleName: SampleName): ModulePath => {
         let inTest: boolean = false
         Object.keys(require)
             .forEach((key: string): void => {
@@ -25,21 +25,21 @@ const getTimbreUrl: (timbre: SampleName) => ModulePath =
                 }
             })
 
-        return inTest ? '' : require(`../../samples/${timbre}.wav`)
+        return inTest ? '' : require(`../../samples/${sampleName}.wav`)
     }
 
-const load: (timbre: SampleName) => Promise<void> =
-    async (timbre: SampleName): Promise<void> =>
+const load: (sampleName: SampleName) => Promise<void> =
+    async (sampleName: SampleName): Promise<void> =>
         new Promise((resolve: VoidFunction): void => {
             const request: XMLHttpRequest = new XMLHttpRequest()
-            const url: ModulePath = getTimbreUrl(timbre)
+            const url: ModulePath = getSampleUrl(sampleName)
             request.open('GET', url, true)
             request.responseType = 'arraybuffer'
 
             request.onload = async (): Promise<void> => {
                 const audioData: ArrayBuffer = request.response as ArrayBuffer
-                await context.decodeAudioData(audioData, (buffer: AudioBuffer): void => {
-                    samples[ timbre ] = buffer
+                await context.decodeAudioData(audioData, (sample: AudioBuffer): void => {
+                    samples[ sampleName ] = sample
                     resolve()
                 })
             }

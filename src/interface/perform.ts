@@ -1,8 +1,8 @@
 import { to } from '@musical-patterns/utilities'
 import { BatchAction, batchActions } from 'redux-batched-actions'
+import { constructThreads } from '../construction'
 import { ActionType, store } from '../state'
 import { Thread, ThreadSpec } from '../types'
-import { constructThreads } from '../voice'
 
 const perform: (threadSpecs: ThreadSpec[]) => Promise<void> =
     async (threadSpecs: ThreadSpec[]): Promise<void> => {

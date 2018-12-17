@@ -1,5 +1,13 @@
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const contentBase = path.join(__dirname, './qa-dist')
+
 module.exports = {
-    entry: './src/index.ts',
+    entry: './src/indexForQa.ts',
+    output: {
+        path: contentBase,
+    },
     mode: 'development',
     module: {
         rules: [
@@ -20,10 +28,15 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: [ '.ts', '.js' ],
+        extensions: [ '.ts', '.js', '.json' ],
     },
-    output: {
-        library: 'performer',
-        libraryTarget: 'umd',
+    devServer: {
+        contentBase,
+        port: 8082,
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'Musical Patterns - Performer QA',
+        }),
+    ],
 }

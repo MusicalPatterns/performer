@@ -3,8 +3,8 @@
 import { Coordinate, Maybe, Time, to, typedMap, TypedMap } from '@musical-patterns/utilities'
 import { Scene } from 'three'
 import { Vrb } from 'vrb'
+import { SampleDatas } from '../construction'
 import { Thread } from '../types'
-import { SampleDatas } from '../voice'
 
 enum StateKeys {
     CLOCK = 'CLOCK',

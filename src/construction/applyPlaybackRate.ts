@@ -4,14 +4,18 @@ import { Note } from '../types'
 import { calculatePlaybackRate } from './calculatePlaybackRate'
 import { SampleDatas, SampleName } from './types'
 
-const applyPlaybackRate: (note: Note, timbre: SampleName) => void =
-    (note: Note, timbre: SampleName): void => {
+const applyPlaybackRate: (note: Note, timbreName: SampleName) => Note =
+    (note: Note, timbreName: SampleName): Note => {
+        const outputNote: Note = note
+
         const state: ImmutableState = store.getState() as ImmutableState
         const sampleData: Maybe<SampleDatas> = state.get(StateKeys.SAMPLE_DATA)
 
         if (sampleData) {
-            note.playbackRate = calculatePlaybackRate(sampleData[ timbre ], note.frequency)
+            note.playbackRate = calculatePlaybackRate(sampleData[ timbreName ], note.frequency)
         }
+
+        return outputNote
     }
 
 export {

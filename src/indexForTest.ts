@@ -5,7 +5,7 @@ export {
 } from './performance/indexForTest'
 export {
     constructThreads,
-} from './voice/indexForTest'
+} from './construction/indexForTest'
 
 export {
     Thread,

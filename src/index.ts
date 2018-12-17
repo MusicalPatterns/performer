@@ -14,7 +14,8 @@ export {
     VoiceType,
     SampleName,
     OscillatorName,
-} from './voice'
+    TimbreName,
+} from './construction'
 export {
     ThreadSpec,
     Note,

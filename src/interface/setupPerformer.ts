@@ -1,6 +1,6 @@
 import { noop } from '@musical-patterns/utilities'
+import { buildSampleData } from '../construction'
 import { activateContextInMobileBrowserEnvironments, setupTimeControls } from '../setup'
-import { buildSampleData } from '../voice'
 import { enableImmersiveAudio } from './enableImmersiveAudio'
 import { perform } from './perform'
 import { togglePaused } from './togglePaused'

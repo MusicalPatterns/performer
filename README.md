@@ -1,6 +1,7 @@
 # Musical Patterns - performer
 
-given a compiled pattern, this will render it to audio
+given a compiled pattern, this will first construct everything it needs to render it to audio with as few calculations during rendering as possible;
+then it will render it.
 
 ## usage
 

@@ -1,6 +1,4 @@
 export { buildSampleData } from './sampleData'
-export { constructOscillatorVoice } from './constructOscillatorVoice'
-export { constructSampleVoice } from './constructSampleVoice'
 export { constructThreads } from './constructThreads'
 
 export {
@@ -9,6 +7,13 @@ export {
     VoiceType,
     SampleName,
     OscillatorName,
-    NoteToPlay,
     SampleDatas,
+    TimbreName,
+    SourceNode,
+    BuildStartNoteParameters,
+    StartNoteAndStartedNote,
+    StartedNote,
+    BuildStartImmersiveNoteParameters,
+    StartImmersiveNoteAndStartedNote,
+    StartedImmersiveNote,
 } from './types'
