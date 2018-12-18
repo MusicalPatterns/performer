@@ -21,8 +21,9 @@ const buildStopNote: (startedNote: StartedNote) => StopNote =
         }
 
 const buildStopImmersiveNote: (startedImmersiveNote: StartedImmersiveNote, positionNode: Object3D) => StopNote =
-    ({ positionalAudio, sourceNode, gainNode }: StartedImmersiveNote, positionNode: Object3D): StopNote =>
+    (startedImmersiveNote: StartedImmersiveNote, positionNode: Object3D): StopNote =>
         (): void => {
+            const { positionalAudio, sourceNode, gainNode } = startedImmersiveNote
             if (positionNode && positionalAudio) {
                 positionNode.remove(positionalAudio)
             }
