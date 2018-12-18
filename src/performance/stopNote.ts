@@ -1,6 +1,5 @@
 import { Object3D } from 'three'
-import { StartedImmersiveNote, StartedNote } from '../construction'
-import { StopNote } from './types'
+import { StartedImmersiveNote, StartedNote, StopNote } from './types'
 
 const buildStopNote: (startedNote: StartedNote) => StopNote =
     (startedNote: StartedNote): StopNote =>

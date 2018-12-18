@@ -1,8 +1,4 @@
-// tslint:disable:max-file-line-count
-
 import { Cents } from '@musical-patterns/utilities'
-import { Object3D, PositionalAudio } from 'three'
-import { Vrb } from 'vrb'
 import { StartNote, StopNote } from '../performance'
 
 type SourceNode = AudioBufferSourceNode | OscillatorNode
@@ -59,37 +55,6 @@ enum OscillatorName {
     CUSTOM = 'CUSTOM',
 }
 
-interface StartNoteAnd {
-    startNote: StartNote,
-}
-
-interface BuildStartNoteParameters {
-    timbre: Timbre,
-    voiceType: VoiceType,
-}
-
-interface BuildStartImmersiveNoteParameters extends BuildStartNoteParameters {
-    positionNode: Object3D,
-    webVr: Vrb,
-}
-
-interface StartNoteAndStartedNote extends StartNoteAnd {
-    startedNote: StartedNote
-}
-
-interface StartImmersiveNoteAndStartedNote extends StartNoteAnd {
-    startedNote: StartedImmersiveNote
-}
-
-interface StartedNote {
-    gainNode?: GainNode,
-    sourceNode?: SourceNode,
-}
-
-interface StartedImmersiveNote extends StartedNote {
-    positionalAudio?: PositionalAudio
-}
-
 export {
     SampleName,
     SampleData,
@@ -103,10 +68,4 @@ export {
     TimbreName,
     SourceNode,
     Timbre,
-    BuildStartNoteParameters,
-    BuildStartImmersiveNoteParameters,
-    StartNoteAndStartedNote,
-    StartImmersiveNoteAndStartedNote,
-    StartedNote,
-    StartedImmersiveNote,
 }

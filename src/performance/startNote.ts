@@ -1,14 +1,17 @@
-import {
-    BuildStartImmersiveNoteParameters,
-    BuildStartNoteParameters, StartedImmersiveNote,
-    StartedNote, StartImmersiveNoteAndStartedNote,
-    StartNoteAndStartedNote,
-    VoiceType,
-} from '../construction'
+import { VoiceType } from '../construction'
 import { buildGainNode, buildImmersiveGainNode } from './gainNode'
 import { buildPositionalAudio } from './positionalAudio'
 import { buildOscillatorSourceNode, buildSampleSourceNode } from './sourceNode'
-import { NoteToPlay, StartNote } from './types'
+import {
+    BuildStartImmersiveNoteParameters,
+    BuildStartNoteParameters,
+    NoteToPlay,
+    StartedImmersiveNote,
+    StartedNote,
+    StartImmersiveNoteAndStartedNote,
+    StartNote,
+    StartNoteAndStartedNote,
+} from './types'
 
 const buildStartNote: (parameters: BuildStartNoteParameters) => StartNoteAndStartedNote =
     (parameters: BuildStartNoteParameters): StartNoteAndStartedNote => {

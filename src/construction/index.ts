@@ -10,10 +10,5 @@ export {
     SampleDatas,
     TimbreName,
     SourceNode,
-    BuildStartNoteParameters,
-    StartNoteAndStartedNote,
-    StartedNote,
-    BuildStartImmersiveNoteParameters,
-    StartImmersiveNoteAndStartedNote,
-    StartedImmersiveNote,
+    Timbre,
 } from './types'
