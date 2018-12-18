@@ -24,13 +24,13 @@ const constructVoice: (voiceSpec: VoiceSpec) => Promise<Voice> =
         if (webVr) {
             const positionNode: Object3D = new Object3D()
             const { startNote, startedNote } = buildStartImmersiveNote({ timbre, positionNode, webVr, voiceType })
-            const stopNote: StopNote = buildStopImmersiveNote(startedNote, positionNode)
+            const stopNote: StopNote = buildStopImmersiveNote({ startedNote, positionNode })
 
             return { startNote, stopNote }
         }
         else {
             const { startNote, startedNote } = buildStartNote({ timbre, voiceType })
-            const stopNote: StopNote = buildStopNote(startedNote)
+            const stopNote: StopNote = buildStopNote({ startedNote })
 
             return { startNote, stopNote }
         }

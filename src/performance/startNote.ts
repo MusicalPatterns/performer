@@ -1,4 +1,5 @@
-import { VoiceType } from '../construction'
+import { PositionalAudio } from 'three'
+import { SourceNode, VoiceType } from '../construction'
 import { buildGainNode, buildImmersiveGainNode } from './gainNode'
 import { buildPositionalAudio } from './positionalAudio'
 import { buildOscillatorSourceNode, buildSampleSourceNode } from './sourceNode'
@@ -20,10 +21,11 @@ const buildStartNote: (parameters: BuildStartNoteParameters) => StartNoteAndStar
         const startedNote: StartedNote = {}
 
         const startNote: StartNote = ({ gain, frequency, playbackRate }: NoteToPlay): void => {
-            startedNote.sourceNode = voiceType === VoiceType.SAMPLE ?
+            const sourceNode: SourceNode = voiceType === VoiceType.SAMPLE ?
                 buildSampleSourceNode(timbre as AudioBuffer, playbackRate) :
                 buildOscillatorSourceNode(timbre as OscillatorType, frequency)
-            startedNote.gainNode = buildGainNode(startedNote.sourceNode, gain)
+            startedNote.sourceNode = sourceNode
+            startedNote.gainNode = buildGainNode({ sourceNode, gain })
             startedNote.sourceNode.start()
         }
 
@@ -40,11 +42,13 @@ const buildStartImmersiveNote: (parameters: BuildStartImmersiveNoteParameters) =
         const startedNote: StartedImmersiveNote = {}
 
         const startNote: StartNote = ({ gain, frequency, playbackRate, position }: NoteToPlay): void => {
-            startedNote.sourceNode = voiceType === VoiceType.SAMPLE ?
+            const sourceNode: SourceNode = voiceType === VoiceType.SAMPLE ?
                 buildSampleSourceNode(timbre as AudioBuffer, playbackRate, webVr) :
                 buildOscillatorSourceNode(timbre as OscillatorType, frequency, webVr)
-            startedNote.positionalAudio = buildPositionalAudio(startedNote.sourceNode, positionNode, webVr, position)
-            startedNote.gainNode = buildImmersiveGainNode(startedNote.positionalAudio, gain)
+            startedNote.sourceNode = sourceNode
+            const positionalAudio: PositionalAudio = buildPositionalAudio({ position, positionNode, sourceNode, webVr })
+            startedNote.positionalAudio = positionalAudio
+            startedNote.gainNode = buildImmersiveGainNode({ positionalAudio, gain })
             startedNote.sourceNode.start()
         }
 

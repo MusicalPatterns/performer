@@ -1,10 +1,9 @@
-import { from, Scalar } from '@musical-patterns/utilities'
-import { PositionalAudio } from 'three'
-import { SourceNode } from '../construction'
+import { from } from '@musical-patterns/utilities'
 import { context } from './context'
+import { BuildGainNodeParameters, BuildImmersiveGainNodeParameters } from './types'
 
-const buildGainNode: (sourceNode: SourceNode, gain: Scalar) => GainNode =
-    (sourceNode: SourceNode, gain: Scalar): GainNode => {
+const buildGainNode: (parameters: BuildGainNodeParameters) => GainNode =
+    ({ sourceNode, gain }: BuildGainNodeParameters): GainNode => {
         const gainNode: GainNode = context.createGain()
         sourceNode.connect(gainNode)
         gainNode.connect(context.destination)
@@ -13,8 +12,8 @@ const buildGainNode: (sourceNode: SourceNode, gain: Scalar) => GainNode =
         return gainNode
     }
 
-const buildImmersiveGainNode: (positionalAudio: PositionalAudio, gain: Scalar) => GainNode =
-    (positionalAudio: PositionalAudio, gain: Scalar): GainNode => {
+const buildImmersiveGainNode: (parameters: BuildImmersiveGainNodeParameters) => GainNode =
+    ({ positionalAudio, gain }: BuildImmersiveGainNodeParameters): GainNode => {
         const gainNode: GainNode = positionalAudio.getOutput()
         positionalAudio.setVolume(from.Scalar(gain))
 

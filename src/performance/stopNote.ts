@@ -1,8 +1,7 @@
-import { Object3D } from 'three'
-import { StartedImmersiveNote, StartedNote, StopNote } from './types'
+import { BuildStopImmersiveNoteParameters, BuildStopNoteParameters, StopNote } from './types'
 
-const buildStopNote: (startedNote: StartedNote) => StopNote =
-    (startedNote: StartedNote): StopNote =>
+const buildStopNote: (parameters: BuildStopNoteParameters) => StopNote =
+    ({ startedNote }: BuildStopNoteParameters): StopNote =>
         (): void => {
             const { sourceNode, gainNode } = startedNote
 
@@ -20,15 +19,15 @@ const buildStopNote: (startedNote: StartedNote) => StopNote =
             }
         }
 
-const buildStopImmersiveNote: (startedImmersiveNote: StartedImmersiveNote, positionNode: Object3D) => StopNote =
-    (startedImmersiveNote: StartedImmersiveNote, positionNode: Object3D): StopNote =>
+const buildStopImmersiveNote: (parameters: BuildStopImmersiveNoteParameters) => StopNote =
+    ({ startedNote, positionNode }: BuildStopImmersiveNoteParameters): StopNote =>
         (): void => {
-            const { positionalAudio, sourceNode, gainNode } = startedImmersiveNote
+            const { positionalAudio } = startedNote
             if (positionNode && positionalAudio) {
                 positionNode.remove(positionalAudio)
             }
 
-            const stopStandardNote: StopNote = buildStopNote({ sourceNode, gainNode })
+            const stopStandardNote: StopNote = buildStopNote({ startedNote })
             stopStandardNote()
         }
 

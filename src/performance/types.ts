@@ -18,14 +18,17 @@ interface StartNoteAnd {
     startNote: StartNote,
 }
 
+interface ImmersiveParameters {
+    positionNode: Object3D,
+    webVr: Vrb,
+}
+
 interface BuildStartNoteParameters {
     timbre: Timbre,
     voiceType: VoiceType,
 }
 
-interface BuildStartImmersiveNoteParameters extends BuildStartNoteParameters {
-    positionNode: Object3D,
-    webVr: Vrb,
+interface BuildStartImmersiveNoteParameters extends BuildStartNoteParameters, ImmersiveParameters {
 }
 
 interface StartNoteAndStartedNote extends StartNoteAnd {
@@ -45,6 +48,30 @@ interface StartedImmersiveNote extends StartedNote {
     positionalAudio?: PositionalAudio
 }
 
+interface BuildStopNoteParameters {
+    startedNote: StartedNote,
+}
+
+interface BuildStopImmersiveNoteParameters {
+    positionNode: Object3D,
+    startedNote: StartedImmersiveNote,
+}
+
+interface BuildGainNodeParameters {
+    gain: Scalar,
+    sourceNode: SourceNode,
+}
+
+interface BuildImmersiveGainNodeParameters {
+    gain: Scalar,
+    positionalAudio: PositionalAudio,
+}
+
+interface BuildPositionalAudioParameters extends ImmersiveParameters {
+    position: Coordinate,
+    sourceNode: SourceNode,
+}
+
 export {
     NoteToPlay,
     StartNote,
@@ -55,4 +82,9 @@ export {
     StartImmersiveNoteAndStartedNote,
     StartedNote,
     StartedImmersiveNote,
+    BuildStopNoteParameters,
+    BuildStopImmersiveNoteParameters,
+    BuildGainNodeParameters,
+    BuildImmersiveGainNodeParameters,
+    BuildPositionalAudioParameters,
 }
