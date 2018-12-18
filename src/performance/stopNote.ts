@@ -3,8 +3,10 @@ import { StartedImmersiveNote, StartedNote } from '../construction'
 import { StopNote } from './types'
 
 const buildStopNote: (startedNote: StartedNote) => StopNote =
-    ({ sourceNode, gainNode }: StartedNote): StopNote =>
+    (startedNote: StartedNote): StopNote =>
         (): void => {
+            const { sourceNode, gainNode } = startedNote
+
             if (sourceNode) {
                 try {
                     sourceNode.stop()
