@@ -1,7 +1,13 @@
-import { Cents } from '@musical-patterns/utilities'
+import { Cents, DictionaryOf } from '@musical-patterns/utilities'
 import { StartNote, StopNote } from '../performance'
 
-type SourceNode = AudioBufferSourceNode | OscillatorNode
+type SourceNode = (AudioBufferSourceNode | OscillatorNode) & DictionaryOf<SourceNodeKey>
+
+type SourceNodeKey = Timbre & SourceNodeIndexSignature
+
+interface SourceNodeIndexSignature {
+    value: number,
+}
 
 type TimbreName = SampleName | OscillatorName
 
@@ -68,4 +74,5 @@ export {
     TimbreName,
     SourceNode,
     Timbre,
+    SourceNodeKey,
 }

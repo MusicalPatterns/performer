@@ -1,54 +1,25 @@
-import { PositionalAudio } from 'three'
-import { SourceNode, VoiceType } from '../construction'
-import { buildGainNode, buildImmersiveGainNode } from './gainNode'
+import { Object3D } from 'three'
+import { SourceNode } from '../construction'
+import { buildGainNode } from './gainNode'
 import { buildPositionalAudio } from './positionalAudio'
-import { buildOscillatorSourceNode, buildSampleSourceNode } from './sourceNode'
-import {
-    BuildStartImmersiveNoteParameters,
-    BuildStartNoteParameters,
-    NoteToPlay,
-    StartedImmersiveNote,
-    StartedNote,
-    StartImmersiveNoteAndStartedNote,
-    StartNote,
-    StartNoteAndStartedNote,
-} from './types'
+import { buildSourceNode } from './sourceNode'
+import { BuildStartNoteParameters, NoteToPlay, StartedNote, StartNote, StartNoteAndStartedNote } from './types'
 
 const buildStartNote: (parameters: BuildStartNoteParameters) => StartNoteAndStartedNote =
     (parameters: BuildStartNoteParameters): StartNoteAndStartedNote => {
-        const { timbre, voiceType } = parameters
+        const { timbre, webVr, voiceType } = parameters
 
         const startedNote: StartedNote = {}
 
-        const startNote: StartNote = ({ gain, frequency, playbackRate }: NoteToPlay): void => {
-            const sourceNode: SourceNode = voiceType === VoiceType.SAMPLE ?
-                buildSampleSourceNode(timbre as AudioBuffer, playbackRate) :
-                buildOscillatorSourceNode(timbre as OscillatorType, frequency)
-            startedNote.sourceNode = sourceNode
-            startedNote.gainNode = buildGainNode({ sourceNode, gain })
-            startedNote.sourceNode.start()
-        }
-
-        return {
-            startNote,
-            startedNote,
-        }
-    }
-
-const buildStartImmersiveNote: (parameters: BuildStartImmersiveNoteParameters) => StartImmersiveNoteAndStartedNote =
-    (parameters: BuildStartImmersiveNoteParameters): StartImmersiveNoteAndStartedNote => {
-        const { timbre, positionNode, webVr, voiceType } = parameters
-
-        const startedNote: StartedImmersiveNote = {}
-
         const startNote: StartNote = ({ gain, frequency, playbackRate, position }: NoteToPlay): void => {
-            const sourceNode: SourceNode = voiceType === VoiceType.SAMPLE ?
-                buildSampleSourceNode(timbre as AudioBuffer, playbackRate, webVr) :
-                buildOscillatorSourceNode(timbre as OscillatorType, frequency, webVr)
+            const sourceNode: SourceNode = buildSourceNode({ frequency, playbackRate, timbre, voiceType, webVr })
             startedNote.sourceNode = sourceNode
-            const positionalAudio: PositionalAudio = buildPositionalAudio({ position, positionNode, sourceNode, webVr })
-            startedNote.positionalAudio = positionalAudio
-            startedNote.gainNode = buildImmersiveGainNode({ positionalAudio, gain })
+            if (webVr) {
+                const positionNode: Object3D = new Object3D()
+                startedNote.positionNode = positionNode
+                startedNote.positionalAudio = buildPositionalAudio({ position, positionNode, sourceNode, webVr })
+            }
+            startedNote.gainNode = buildGainNode({ gain, sourceNode, positionalAudio: startedNote.positionalAudio })
             startedNote.sourceNode.start()
         }
 
@@ -60,5 +31,4 @@ const buildStartImmersiveNote: (parameters: BuildStartImmersiveNoteParameters) =
 
 export {
     buildStartNote,
-    buildStartImmersiveNote,
 }

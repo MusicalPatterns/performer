@@ -1,37 +1,33 @@
-import { BuildStopImmersiveNoteParameters, BuildStopNoteParameters, StopNote } from './types'
+import { SourceNode } from '../construction'
+import { BuildStopNoteParameters, StopNote } from './types'
+
+const stopSourceNode: (sourceNode: SourceNode) => void =
+    (sourceNode: SourceNode): void => {
+        try {
+            sourceNode.stop()
+            sourceNode.disconnect()
+        }
+            // tslint:disable-next-line:no-empty
+        catch (e) {
+        }
+    }
 
 const buildStopNote: (parameters: BuildStopNoteParameters) => StopNote =
     ({ startedNote }: BuildStopNoteParameters): StopNote =>
         (): void => {
-            const { sourceNode, gainNode } = startedNote
+            const { sourceNode, gainNode, positionalAudio, positionNode } = startedNote
+            if (positionNode && positionalAudio) {
+                positionNode.remove(positionalAudio)
+            }
 
             if (sourceNode) {
-                try {
-                    sourceNode.stop()
-                    sourceNode.disconnect()
-                }
-                    // tslint:disable-next-line:no-empty
-                catch (e) {
-                }
+                stopSourceNode(sourceNode)
             }
             if (gainNode) {
                 gainNode.disconnect()
             }
         }
 
-const buildStopImmersiveNote: (parameters: BuildStopImmersiveNoteParameters) => StopNote =
-    ({ startedNote, positionNode }: BuildStopImmersiveNoteParameters): StopNote =>
-        (): void => {
-            const { positionalAudio } = startedNote
-            if (positionNode && positionalAudio) {
-                positionNode.remove(positionalAudio)
-            }
-
-            const stopStandardNote: StopNote = buildStopNote({ startedNote })
-            stopStandardNote()
-        }
-
 export {
     buildStopNote,
-    buildStopImmersiveNote,
 }

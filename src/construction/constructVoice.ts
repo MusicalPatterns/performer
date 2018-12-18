@@ -1,13 +1,7 @@
 import { Maybe } from '@musical-patterns/utilities'
 import { Object3D } from 'three'
 import { Vrb } from 'vrb'
-import {
-    buildStartImmersiveNote,
-    buildStartNote,
-    buildStopImmersiveNote,
-    buildStopNote,
-    StopNote,
-} from '../performance'
+import { buildStartNote, buildStopNote, StopNote } from '../performance'
 import { ImmutableState, StateKeys, store } from '../state'
 import { oscillatorNameToTypeMap } from './oscillatorNameToTypeMap'
 import { getOrLoad } from './samples'
@@ -21,19 +15,11 @@ const constructVoice: (voiceSpec: VoiceSpec) => Promise<Voice> =
 
         const state: ImmutableState = store.getState() as ImmutableState
         const webVr: Maybe<Vrb> = state.get(StateKeys.WEB_VR)
-        if (webVr) {
-            const positionNode: Object3D = new Object3D()
-            const { startNote, startedNote } = buildStartImmersiveNote({ timbre, positionNode, webVr, voiceType })
-            const stopNote: StopNote = buildStopImmersiveNote({ startedNote, positionNode })
 
-            return { startNote, stopNote }
-        }
-        else {
-            const { startNote, startedNote } = buildStartNote({ timbre, voiceType })
-            const stopNote: StopNote = buildStopNote({ startedNote })
+        const { startNote, startedNote } = buildStartNote({ timbre, webVr, voiceType })
+        const stopNote: StopNote = buildStopNote({ startedNote })
 
-            return { startNote, stopNote }
-        }
+        return { startNote, stopNote }
     }
 
 export {

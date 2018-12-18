@@ -1,4 +1,4 @@
-import { Coordinate, Frequency, Scalar } from '@musical-patterns/utilities'
+import { Coordinate, Frequency, Maybe, Scalar } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio } from 'three'
 import { Vrb } from 'vrb'
 import { SourceNode, Timbre, VoiceType } from '../construction'
@@ -18,58 +18,49 @@ interface StartNoteAnd {
     startNote: StartNote,
 }
 
-interface ImmersiveParameters {
-    positionNode: Object3D,
-    webVr: Vrb,
-}
-
 interface BuildStartNoteParameters {
     timbre: Timbre,
     voiceType: VoiceType,
-}
-
-interface BuildStartImmersiveNoteParameters extends BuildStartNoteParameters, ImmersiveParameters {
+    webVr?: Vrb,
 }
 
 interface StartNoteAndStartedNote extends StartNoteAnd {
     startedNote: StartedNote
 }
 
-interface StartImmersiveNoteAndStartedNote extends StartNoteAnd {
-    startedNote: StartedImmersiveNote
-}
-
 interface StartedNote {
     gainNode?: GainNode,
+    positionalAudio?: PositionalAudio,
+    positionNode?: Object3D,
     sourceNode?: SourceNode,
-}
-
-interface StartedImmersiveNote extends StartedNote {
-    positionalAudio?: PositionalAudio
 }
 
 interface BuildStopNoteParameters {
     startedNote: StartedNote,
 }
 
-interface BuildStopImmersiveNoteParameters {
-    positionNode: Object3D,
-    startedNote: StartedImmersiveNote,
-}
-
 interface BuildGainNodeParameters {
     gain: Scalar,
+    positionalAudio: Maybe<PositionalAudio>,
     sourceNode: SourceNode,
 }
 
-interface BuildImmersiveGainNodeParameters {
-    gain: Scalar,
-    positionalAudio: PositionalAudio,
-}
-
-interface BuildPositionalAudioParameters extends ImmersiveParameters {
+interface BuildPositionalAudioParameters {
     position: Coordinate,
+    positionNode: Object3D,
     sourceNode: SourceNode,
+    webVr: Vrb,
+}
+
+interface BuildSourceNodeParameters {
+    frequency: Frequency,
+    playbackRate?: Maybe<Scalar>,
+    timbre: Timbre,
+    voiceType: VoiceType,
+    webVr?: Vrb,
+
+    // tslint:disable-next-line:no-any
+    [ index: string ]: any,
 }
 
 export {
@@ -77,14 +68,10 @@ export {
     StartNote,
     StopNote,
     BuildStartNoteParameters,
-    BuildStartImmersiveNoteParameters,
     StartNoteAndStartedNote,
-    StartImmersiveNoteAndStartedNote,
     StartedNote,
-    StartedImmersiveNote,
     BuildStopNoteParameters,
-    BuildStopImmersiveNoteParameters,
     BuildGainNodeParameters,
-    BuildImmersiveGainNodeParameters,
     BuildPositionalAudioParameters,
+    BuildSourceNodeParameters,
 }

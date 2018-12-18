@@ -1,30 +1,40 @@
-import { Frequency, from, Maybe, Scalar, to } from '@musical-patterns/utilities'
-import { Vrb } from 'vrb'
+import { DictionaryOf } from '@musical-patterns/utilities'
+import { SourceNode, SourceNodeKey, VoiceType } from '../construction'
 import { context } from './context'
+import { BuildSourceNodeParameters } from './types'
 
-// tslint:disable-next-line:no-type-definitions-outside-types-modules
-const buildOscillatorSourceNode: (timbre: OscillatorType, frequency: Frequency, webVr?: Vrb) => OscillatorNode =
-    (timbre: OscillatorType, frequency: Frequency, webVr?: Vrb): OscillatorNode => {
-        const sourceNode: OscillatorNode = webVr ? webVr.createSpatialOscillator() : context.createOscillator()
-        sourceNode.type = timbre
-        sourceNode.frequency.value = from.Frequency(frequency)
+const buildSourceNode: (parameters: BuildSourceNodeParameters) => SourceNode =
+    (parameters: BuildSourceNodeParameters): SourceNode => {
+        const { timbre, voiceType, webVr } = parameters
 
-        return sourceNode
-    }
+        let sourceNodeBuildingKeys: DictionaryOf<string>
+        if (voiceType === VoiceType.SAMPLE) {
+            sourceNodeBuildingKeys = {
+                immersiveKey: 'createSpatialBufferSource',
+                pitchKey: 'playbackRate',
+                standardKey: 'createBufferSource',
+                timbreKey: 'buffer',
+            }
+        }
+        else {
+            sourceNodeBuildingKeys = {
+                immersiveKey: 'createSpatialOscillator',
+                pitchKey: 'frequency',
+                standardKey: 'createOscillator',
+                timbreKey: 'type',
+            }
+        }
+        const { timbreKey, immersiveKey, standardKey, pitchKey } = sourceNodeBuildingKeys
 
-const buildSampleSourceNode: (timbre: AudioBuffer, playbackRate: Maybe<Scalar>, webVr?: Vrb) => AudioBufferSourceNode =
-    (timbre: AudioBuffer, playbackRate: Maybe<Scalar> = to.Scalar(1), webVr?: Vrb): AudioBufferSourceNode => {
-        const sourceNode: AudioBufferSourceNode = webVr ?
-            // tslint:disable-next-line:no-unsafe-any
-            webVr.listener.context.createBufferSource() as AudioBufferSourceNode :
-            context.createBufferSource()
-        sourceNode.buffer = timbre
-        sourceNode.playbackRate.value = from.Scalar(playbackRate)
+        // @ts-ignore
+        // tslint:disable-next-line:no-unsafe-any
+        const sourceNode: SourceNode = webVr ? webVr[ immersiveKey ]() : context[ standardKey ]()
+        sourceNode[ timbreKey ] = timbre as SourceNodeKey
+        sourceNode[ pitchKey ].value = parameters[ pitchKey ] as number || 1
 
         return sourceNode
     }
 
 export {
-    buildOscillatorSourceNode,
-    buildSampleSourceNode,
+    buildSourceNode,
 }

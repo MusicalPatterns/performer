@@ -11,4 +11,5 @@ export {
     TimbreName,
     SourceNode,
     Timbre,
+    SourceNodeKey,
 } from './types'
