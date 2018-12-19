@@ -1,5 +1,6 @@
 import snapshot from '@musical-patterns/pattern-template'
-import { setupPerformer } from '../src'
+// tslint:disable-next-line:only-import-index-for-test-from-src
+import { setupPerformer } from '../../src'
 
 setupPerformer({
     autoStart: {

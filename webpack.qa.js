@@ -3,16 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const common = require('./webpack.common')
 const merge = require('webpack-merge')
 
-const contentBase = path.join(__dirname, './qa-dist')
-
 module.exports = merge(common, {
-    entry: './src/indexForQa.ts',
+    entry: './test/qa/index.ts',
     output: {
         libraryTarget: 'var',
-        path: contentBase,
+        path: path.join(__dirname, './qa-dist'),
     },
     devServer: {
-        contentBase,
         port: 8082,
     },
     plugins: [
