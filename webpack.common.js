@@ -20,7 +20,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: [ '.ts', '.js' ],
+        extensions: [ '.ts', '.js', '.json' ],
     },
     output: {
         library: 'performer',

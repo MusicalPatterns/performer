@@ -1,34 +1,15 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const common = require('./webpack.common')
+const merge = require('webpack-merge')
 
 const contentBase = path.join(__dirname, './qa-dist')
 
-module.exports = {
+module.exports = merge(common, {
     entry: './src/indexForQa.ts',
     output: {
+        libraryTarget: 'var',
         path: contentBase,
-    },
-    mode: 'development',
-    module: {
-        rules: [
-            {
-                test: /\.worker\.ts$/,
-                loader: 'worker-loader',
-                options: { inline: true },
-            },
-            {
-                test: /\.ts$/,
-                loader: 'awesome-typescript-loader',
-                exclude: /test/,
-            },
-            {
-                test: /\.wav/,
-                loader: 'file-loader',
-            },
-        ],
-    },
-    resolve: {
-        extensions: [ '.ts', '.js', '.json' ],
     },
     devServer: {
         contentBase,
@@ -39,4 +20,4 @@ module.exports = {
             title: 'Musical Patterns - Performer QA',
         }),
     ],
-}
+})

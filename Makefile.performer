@@ -1,5 +1,8 @@
 build:
-	webpack
+	webpack --config webpack.prod.js
+
+build_local:
+	webpack --config webpack.local.js
 
 .PHONY: qa
 qa:
