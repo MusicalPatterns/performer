@@ -2,9 +2,7 @@
 
 import { logMessageToScreen } from '@musical-patterns/utilities'
 
-interface AudioContextConstructor {
-    new(): AudioContext;
-}
+type AudioContextConstructor = new() => AudioContext;
 
 // @ts-ignore
 const AudioContext: AudioContextConstructor = global.AudioContext || global.webkitAudioContext || false
