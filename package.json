@@ -9,7 +9,7 @@
     "url": "https://github.com/MusicalPatterns/performer.git"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.96",
+    "@musical-patterns/cli": "^1.0.99",
     "@musical-patterns/pattern-performer-qa": "^1.0.11",
     "@musical-patterns/utilities": "^1.0.105",
     "@types/three": "^0.93.13",
