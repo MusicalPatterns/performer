@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/performer",
-  "version": "1.0.79",
+  "version": "1.0.80",
   "main": "dist/main.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
@@ -9,9 +9,9 @@
     "url": "https://github.com/MusicalPatterns/performer.git"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.91",
+    "@musical-patterns/cli": "^1.0.92",
     "@musical-patterns/pattern-performer-qa": "^1.0.4",
-    "@musical-patterns/utilities": "^1.0.101",
+    "@musical-patterns/utilities": "^1.0.102",
     "@types/three": "^0.93.13",
     "awesome-typescript-loader": "^5.2.0",
     "file-loader": "^2.0.0",
