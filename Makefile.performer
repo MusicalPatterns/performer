@@ -4,6 +4,5 @@ build:
 build_dev:
 	webpack --config webpack.dev.js
 
-.PHONY: qa
 qa:
 	webpack-dev-server --config webpack.qa.js
