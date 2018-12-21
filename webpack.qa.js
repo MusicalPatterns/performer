@@ -10,6 +10,7 @@ module.exports = merge(common, {
         path: path.join(__dirname, './qa-dist'),
     },
     devServer: {
+        disableHostCheck: true,
         port: 8082,
     },
     plugins: [
