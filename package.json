@@ -9,9 +9,9 @@
     "url": "https://github.com/MusicalPatterns/performer.git"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.114",
-    "@musical-patterns/pattern-performer-qa": "^1.0.12",
-    "@musical-patterns/utilities": "^1.0.107",
+    "@musical-patterns/cli": "^1.0.120",
+    "@musical-patterns/pattern-performer-qa": "^1.0.14",
+    "@musical-patterns/utilities": "^1.0.109",
     "@types/three": "^0.93.13",
     "awesome-typescript-loader": "^5.2.0",
     "file-loader": "^2.0.0",
@@ -21,10 +21,10 @@
     "redux-batched-actions": "^0.4.1",
     "three": "^0.99.0",
     "typescript": "^3.2.2",
-    "vrb": "^1.1.15",
-    "webpack": "^4.28.1",
+    "vrb": "^1.1.32",
+    "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10",
+    "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.1.5",
     "worker-loader": "^2.0.0"
   }
