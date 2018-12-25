@@ -1,5 +1,4 @@
 import { Maybe } from '@musical-patterns/utilities'
-import { Object3D } from 'three'
 import { Vrb } from 'vrb'
 import { buildStartNote, buildStopNote, StopNote } from '../performance'
 import { ImmutableState, StateKeys, store } from '../state'
