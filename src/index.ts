@@ -16,7 +16,9 @@ export {
     TimbreName,
 } from './construction'
 export {
+    VoiceType,
+} from './performance'
+export {
     ThreadSpec,
     Note,
-    VoiceType,
 } from './types'

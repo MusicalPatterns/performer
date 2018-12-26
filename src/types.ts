@@ -20,23 +20,14 @@ interface Note extends NoteToPlay {
     sustain: Time,
 }
 
-enum VoiceType {
-    OSCILLATOR = 'OSCILLATOR',
-    SAMPLE = 'SAMPLE',
-}
-
 interface Voice {
     startNote: StartNote,
     stopNote: StopNote,
 }
 
-type Timbre = AudioBuffer | PeriodicWave
-
 export {
     Thread,
     ThreadSpec,
     Note,
-    VoiceType,
     Voice,
-    Timbre,
 }

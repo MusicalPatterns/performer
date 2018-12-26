@@ -1,6 +1,6 @@
 import { Frequency, Maybe, Scalar } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
-import { Timbre, VoiceType } from '../../types'
+import { Timbre, VoiceType } from '../types'
 
 interface BuildSourceNodeParameters {
     frequency: Frequency,
@@ -14,46 +14,46 @@ interface BuildSourceNodeParameters {
 }
 
 type SourceNode = (AudioBufferSourceNode | OscillatorNode) &
-    SourceNodeTimbreSetterKeyIndexSignature &
-    SourceNodePitchKeyIndexSignature
+    TimbreSetterKeyIndexSignature &
+    PitchKeyIndexSignature
 
-type SourceNodePitchKeyIndexSignature = {
-    [K in SourceNodePitchKey]: SourceNodePitchObject
+type PitchKeyIndexSignature = {
+    [K in PitchKey]: PitchObject
 }
 
-type SourceNodeTimbreSetterKeyIndexSignature = {
-    [K in SourceNodeTimbreSetterKey]: SourceNodeTimbreSetter
+type TimbreSetterKeyIndexSignature = {
+    [K in TimbreSetterKey]: TimbreSetter
 }
 
-interface SourceNodePitchObject {
+interface PitchObject {
     value: number,
 }
 
-type SourceNodeTimbreSetter = (timbre: Timbre) => void
+type TimbreSetter = (timbre: Timbre) => void
 
 interface SourceNodeBuildingKeys {
-    immersiveKey: SourceNodeImmersiveKey,
-    pitchKey: SourceNodePitchKey,
-    standardKey: SourceNodeStandardKey,
-    timbreSetterKey: SourceNodeTimbreSetterKey,
+    immersiveKey: ImmersiveKey,
+    pitchKey: PitchKey,
+    standardKey: StandardKey,
+    timbreSetterKey: TimbreSetterKey,
 }
 
-enum SourceNodeImmersiveKey {
+enum ImmersiveKey {
     createSpatialBufferSource = 'createSpatialBufferSource',
     createSpatialOscillator = 'createSpatialOscillator',
 }
 
-enum SourceNodePitchKey {
+enum PitchKey {
     frequency = 'frequency',
     playbackRate = 'playbackRate',
 }
 
-enum SourceNodeStandardKey {
+enum StandardKey {
     createBufferSource = 'createBufferSource',
     createOscillator = 'createOscillator',
 }
 
-enum SourceNodeTimbreSetterKey {
+enum TimbreSetterKey {
     setPeriodicWave = 'setPeriodicWave',
     setBuffer = 'setBuffer',
 }
@@ -61,13 +61,13 @@ enum SourceNodeTimbreSetterKey {
 export {
     BuildSourceNodeParameters,
     SourceNode,
-    SourceNodePitchObject,
-    SourceNodeTimbreSetter,
+    PitchObject,
+    TimbreSetter,
     SourceNodeBuildingKeys,
-    SourceNodeImmersiveKey,
-    SourceNodePitchKey,
-    SourceNodePitchKeyIndexSignature,
-    SourceNodeStandardKey,
-    SourceNodeTimbreSetterKey,
-    SourceNodeTimbreSetterKeyIndexSignature,
+    ImmersiveKey,
+    PitchKey,
+    PitchKeyIndexSignature,
+    StandardKey,
+    TimbreSetterKey,
+    TimbreSetterKeyIndexSignature,
 }

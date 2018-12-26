@@ -1,7 +1,6 @@
 import { Coordinate, Frequency, Maybe, Scalar } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio } from 'three'
 import { Vrb } from 'vrb'
-import { Timbre, VoiceType } from '../types'
 import { SourceNode } from './source'
 
 interface NoteToPlay {
@@ -53,6 +52,13 @@ interface BuildPositionalAudioParameters {
     webVr: Vrb,
 }
 
+enum VoiceType {
+    OSCILLATOR = 'OSCILLATOR',
+    SAMPLE = 'SAMPLE',
+}
+
+type Timbre = AudioBuffer | PeriodicWave
+
 export {
     NoteToPlay,
     StartNote,
@@ -63,4 +69,6 @@ export {
     BuildStopNoteParameters,
     BuildGainNodeParameters,
     BuildPositionalAudioParameters,
+    Timbre,
+    VoiceType,
 }

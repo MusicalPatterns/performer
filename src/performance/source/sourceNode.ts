@@ -1,14 +1,14 @@
-import { Timbre, VoiceType } from '../../types'
 import { context } from '../context'
+import { Timbre, VoiceType } from '../types'
 import {
     BuildSourceNodeParameters,
+    ImmersiveKey,
+    PitchKey,
+    PitchObject,
     SourceNode,
     SourceNodeBuildingKeys,
-    SourceNodeImmersiveKey,
-    SourceNodePitchKey,
-    SourceNodePitchObject,
-    SourceNodeStandardKey,
-    SourceNodeTimbreSetterKey,
+    StandardKey,
+    TimbreSetterKey,
 } from './types'
 
 const buildSourceNode: (parameters: BuildSourceNodeParameters) => SourceNode =
@@ -18,18 +18,18 @@ const buildSourceNode: (parameters: BuildSourceNodeParameters) => SourceNode =
         let sourceNodeBuildingKeys: SourceNodeBuildingKeys
         if (voiceType === VoiceType.SAMPLE) {
             sourceNodeBuildingKeys = {
-                immersiveKey: SourceNodeImmersiveKey.createSpatialBufferSource,
-                pitchKey: SourceNodePitchKey.playbackRate,
-                standardKey: SourceNodeStandardKey.createBufferSource,
-                timbreSetterKey: SourceNodeTimbreSetterKey.setBuffer,
+                immersiveKey: ImmersiveKey.createSpatialBufferSource,
+                pitchKey: PitchKey.playbackRate,
+                standardKey: StandardKey.createBufferSource,
+                timbreSetterKey: TimbreSetterKey.setBuffer,
             }
         }
         else {
             sourceNodeBuildingKeys = {
-                immersiveKey: SourceNodeImmersiveKey.createSpatialOscillator,
-                pitchKey: SourceNodePitchKey.frequency,
-                standardKey: SourceNodeStandardKey.createOscillator,
-                timbreSetterKey: SourceNodeTimbreSetterKey.setPeriodicWave,
+                immersiveKey: ImmersiveKey.createSpatialOscillator,
+                pitchKey: PitchKey.frequency,
+                standardKey: StandardKey.createOscillator,
+                timbreSetterKey: TimbreSetterKey.setPeriodicWave,
             }
         }
         const { timbreSetterKey, immersiveKey, standardKey, pitchKey } = sourceNodeBuildingKeys
@@ -43,7 +43,7 @@ const buildSourceNode: (parameters: BuildSourceNodeParameters) => SourceNode =
 
         sourceNode[ timbreSetterKey ](timbre)
 
-        const pitchObject: SourceNodePitchObject = sourceNode[ pitchKey ]
+        const pitchObject: PitchObject = sourceNode[ pitchKey ]
         // tslint:disable-next-line:no-any
         pitchObject.value = parameters[ pitchKey ] as any as number || 1
 

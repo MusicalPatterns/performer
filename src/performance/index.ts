@@ -8,4 +8,6 @@ export {
     NoteToPlay,
     StartNote,
     StopNote,
+    Timbre,
+    VoiceType,
 } from './types'
