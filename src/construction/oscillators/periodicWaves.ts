@@ -2,7 +2,62 @@
 import * as periodicWaves from '@mohayonao/wave-tables'
 import { logMessageToConsole, Maybe } from '@musical-patterns/utilities'
 import { context } from '../../performance'
-import { GetPeriodicWave, OscillatorName, PeriodicWaveSpec } from './types'
+import { GetPeriodicWave, OscillatorName, OscillatorNameToPeriodicWaveNameMap, PeriodicWaveSpec } from './types'
+
+const oscillatorNameToPeriodicWaveNameMap: OscillatorNameToPeriodicWaveNameMap = {
+    BASS: 'Bass',
+    BASS_AMP_360: 'BassAmp360',
+    BASS_FUZZ: 'BassFuzz',
+    BASS_FUZZ_2: 'BassFuzz2',
+    BASS_SUB_DUB: 'BassSubDub',
+    BASS_SUB_DUB_2: 'BassSubDub2',
+    BRASS: 'Brass',
+    BRIT_BLUES: 'BritBlues',
+    BRIT_BLUES_DRIVEN: 'BritBluesDriven',
+    BUZZY_1: 'Buzzy1',
+    BUZZY_2: 'Buzzy2',
+    CELESTE: 'Celeste',
+    CHORUS_STRINGS: 'ChorusStrings',
+    DISSONANT_1: 'Dissonant1',
+    DISSONANT_2: 'Dissonant2',
+    DISSONANT_PIANO: 'DissonantPiano',
+    DROPPED_SAW: 'DroppedSaw',
+    DROPPED_SQUARE: 'DroppedSquare',
+    DYNA_EP_BRIGHT: 'DynaEPBright',
+    DYNA_EP_MED: 'DynaEPMed',
+    ETHNIC_33: 'Ethnic33',
+    FULL_1: 'Full1',
+    FULL_2: 'Full2',
+    GUITAR_FUZZ: 'GuitarFuzz',
+    HARSH: 'Harsh',
+    MKL_HARD: 'MklHard',
+    NOISE: 'Noise',
+    ORGAN_2: 'Organ2',
+    ORGAN_3: 'Organ3',
+    PHONEME_AH: 'PhonemeAh',
+    PHONEME_BAH: 'PhonemeBah',
+    PHONEME_EE: 'PhonemeEe',
+    PHONEME_O: 'PhonemeO',
+    PHONEME_OOH: 'PhonemeOoh',
+    PHONEME_POP_AHHHS: 'PhonemePopAhhhs',
+    PIANO: 'Piano',
+    PULSE: 'Pulse',
+    PUTNEY_WAVERING: 'PutneyWavering',
+    SAW: 'Saw',
+    SINE: 'Sine',
+    SQUARE: 'Square',
+    TB303_SQUARE: 'TB303Square',
+    THROATY: 'Throaty',
+    TRIANGLE: 'Triangle',
+    TROMBONE: 'Trombone',
+    TWELVE_OP_TINES: 'TwelveOpTines',
+    TWELVE_STRING_GUITAR_1: 'TwelveStringGuitar1',
+    WARM_SAW: 'WarmSaw',
+    WARM_SQUARE: 'WarmSquare',
+    WARM_TRIANGLE: 'WarmTriangle',
+    WURLITZER: 'Wurlitzer',
+    WURLITZER_2: 'Wurlitzer2',
+}
 
 const sineSpec: PeriodicWaveSpec = {
     imag: [ 0, 0 ],
@@ -11,8 +66,9 @@ const sineSpec: PeriodicWaveSpec = {
 
 const getPeriodicWaveSpec: (oscillatorName: OscillatorName) => PeriodicWaveSpec =
     (oscillatorName: OscillatorName): PeriodicWaveSpec => {
-        // tslint:disable-next-line:no-unsafe-any
-        const periodicWaveSpec: Maybe<PeriodicWaveSpec> = periodicWaves[ oscillatorName ] as PeriodicWaveSpec
+        const periodicWaveSpec: Maybe<PeriodicWaveSpec> =
+            // tslint:disable-next-line:no-unsafe-any
+            periodicWaves[ oscillatorNameToPeriodicWaveNameMap[ oscillatorName ] ] as PeriodicWaveSpec
 
         if (!periodicWaveSpec) {
             // tslint:disable-next-line:no
