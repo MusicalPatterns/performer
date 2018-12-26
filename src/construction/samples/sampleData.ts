@@ -1,5 +1,5 @@
 import { Cents, CENTS_PER_SEMITONE, from, Semitones, to } from '@musical-patterns/utilities'
-import { ActionType, store } from '../state'
+import { ActionType, store } from '../../state'
 import {
     DOWN_ONE_SEMITONE,
     DOWN_TWO_OCTAVES_IN_SEMITONES,

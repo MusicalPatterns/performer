@@ -1,15 +1,14 @@
-export { buildSampleData } from './sampleData'
-export { constructThreads } from './constructThreads'
+export {
+    buildSampleData,
+    SampleName,
+    SampleDatas,
+} from './samples'
+export {
+    OscillatorName,
+} from './oscillators'
+export { constructThreads } from './threads'
 
 export {
-    Voice,
     VoiceSpec,
-    VoiceType,
-    SampleName,
-    OscillatorName,
-    SampleDatas,
     TimbreName,
-    SourceNode,
-    Timbre,
-    SourceNodeKey,
 } from './types'

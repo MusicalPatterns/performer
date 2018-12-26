@@ -1,11 +1,11 @@
 import { Coordinate, Maybe } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
 import { ImmutableState, StateKeys, store } from '../state'
-import { Note } from '../types'
-import { applyGainAdjustmentForWebAudioOscillators } from './applyGainAdjustmentForWebAudioOscillators'
+import { Note, VoiceType } from '../types'
 import { applyHomePosition } from './applyHomePosition'
-import { applyPlaybackRate } from './applyPlaybackRate'
-import { SampleName, VoiceSpec, VoiceType } from './types'
+import { applyGainAdjustmentForWebAudioOscillators } from './oscillators'
+import { applyPlaybackRate, SampleName } from './samples'
+import { VoiceSpec } from './types'
 
 const constructNotes: (notes: Note[], options: VoiceSpec) => Note[] =
     (notes: Note[], { voiceType, timbreName }: VoiceSpec): Note[] => {

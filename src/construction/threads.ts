@@ -1,8 +1,9 @@
 import { to } from '@musical-patterns/utilities'
-import { Thread, ThreadSpec } from '../types'
-import { constructNotes } from './constructNotes'
-import { constructVoice } from './constructVoice'
-import { OscillatorName, VoiceSpec, VoiceType } from './types'
+import { Thread, ThreadSpec, VoiceType } from '../types'
+import { constructNotes } from './notes'
+import { OscillatorName } from './oscillators'
+import { VoiceSpec } from './types'
+import { constructVoice } from './voice'
 
 const defaultVoiceSpec: VoiceSpec = {
     timbreName: OscillatorName.SINE,

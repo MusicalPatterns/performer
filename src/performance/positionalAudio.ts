@@ -14,7 +14,7 @@ const setPosition: (positionNode: Object3D, position: Coordinate) => void =
 
 const buildPositionalAudio: (parameters: BuildPositionalAudioParameters) => PositionalAudio =
     ({ sourceNode, positionNode, webVr, position }: BuildPositionalAudioParameters): PositionalAudio => {
-        const positionalAudio: PositionalAudio = webVr.createPositionalSound() as PositionalAudio
+        const positionalAudio: PositionalAudio = webVr.createPositionalSound()
         // @ts-ignore
         positionalAudio.setNodeSource(sourceNode)
         positionNode.add(positionalAudio)

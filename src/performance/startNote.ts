@@ -1,9 +1,14 @@
 import { Object3D } from 'three'
-import { SourceNode } from '../construction'
 import { buildGainNode } from './gainNode'
 import { buildPositionalAudio } from './positionalAudio'
-import { buildSourceNode } from './sourceNode'
-import { BuildStartNoteParameters, NoteToPlay, StartedNote, StartNote, StartNoteAndStartedNote } from './types'
+import { buildSourceNode, SourceNode } from './source'
+import {
+    BuildStartNoteParameters,
+    NoteToPlay,
+    StartedNote,
+    StartNote,
+    StartNoteAndStartedNote,
+} from './types'
 
 const buildStartNote: (parameters: BuildStartNoteParameters) => StartNoteAndStartedNote =
     (parameters: BuildStartNoteParameters): StartNoteAndStartedNote => {

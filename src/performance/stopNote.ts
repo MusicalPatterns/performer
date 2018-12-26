@@ -1,4 +1,4 @@
-import { SourceNode } from '../construction'
+import { SourceNode } from './source'
 import { BuildStopNoteParameters, StopNote } from './types'
 
 const stopSourceNode: (sourceNode: SourceNode) => void =

@@ -2,15 +2,16 @@ import { Maybe } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
 import { buildStartNote, buildStopNote, StopNote } from '../performance'
 import { ImmutableState, StateKeys, store } from '../state'
-import { oscillatorNameToTypeMap } from './oscillatorNameToTypeMap'
-import { getOrLoad } from './samples'
-import { OscillatorName, SampleName, Timbre, Voice, VoiceSpec, VoiceType } from './types'
+import { Timbre, Voice, VoiceType } from '../types'
+import { getPeriodicWave, OscillatorName } from './oscillators'
+import { getBuffer, SampleName } from './samples'
+import { VoiceSpec } from './types'
 
 const constructVoice: (voiceSpec: VoiceSpec) => Promise<Voice> =
     async ({ timbreName, voiceType }: VoiceSpec): Promise<Voice> => {
         const timbre: Timbre = voiceType === VoiceType.SAMPLE ?
-            await getOrLoad(timbreName as SampleName) :
-            oscillatorNameToTypeMap[ timbreName as OscillatorName ] as OscillatorType
+            await getBuffer(timbreName as SampleName) :
+            getPeriodicWave(timbreName as OscillatorName)
 
         const state: ImmutableState = store.getState() as ImmutableState
         const webVr: Maybe<Vrb> = state.get(StateKeys.WEB_VR)

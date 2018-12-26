@@ -1,6 +1,6 @@
 import { Index, Time } from '@musical-patterns/utilities'
-import { Voice, VoiceSpec } from './construction'
-import { NoteToPlay } from './performance'
+import { VoiceSpec } from './construction'
+import { NoteToPlay, StartNote, StopNote } from './performance'
 
 interface Thread {
     nextEnd: Time,
@@ -20,8 +20,23 @@ interface Note extends NoteToPlay {
     sustain: Time,
 }
 
+enum VoiceType {
+    OSCILLATOR = 'OSCILLATOR',
+    SAMPLE = 'SAMPLE',
+}
+
+interface Voice {
+    startNote: StartNote,
+    stopNote: StopNote,
+}
+
+type Timbre = AudioBuffer | PeriodicWave
+
 export {
     Thread,
     ThreadSpec,
     Note,
+    VoiceType,
+    Voice,
+    Timbre,
 }

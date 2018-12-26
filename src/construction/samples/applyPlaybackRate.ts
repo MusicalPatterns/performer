@@ -1,6 +1,6 @@
 import { Maybe } from '@musical-patterns/utilities'
-import { ImmutableState, StateKeys, store } from '../state'
-import { Note } from '../types'
+import { ImmutableState, StateKeys, store } from '../../state'
+import { Note } from '../../types'
 import { calculatePlaybackRate } from './calculatePlaybackRate'
 import { SampleDatas, SampleName } from './types'
 

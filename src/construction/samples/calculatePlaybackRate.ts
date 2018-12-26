@@ -1,5 +1,5 @@
 import { apply, centsToPitch, Frequency, from, Scalar, to } from '@musical-patterns/utilities'
-import { STANDARDIZED_SAMPLE_PITCH_OF_C5 } from '../constants'
+import { STANDARDIZED_SAMPLE_PITCH_OF_C5 } from './constants'
 import { SampleData } from './types'
 
 const calculatePlaybackRate: (sampleData: SampleData, frequency: Frequency) => Scalar =

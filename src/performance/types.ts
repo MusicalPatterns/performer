@@ -1,7 +1,8 @@
 import { Coordinate, Frequency, Maybe, Scalar } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio } from 'three'
 import { Vrb } from 'vrb'
-import { SourceNode, Timbre, VoiceType } from '../construction'
+import { Timbre, VoiceType } from '../types'
+import { SourceNode } from './source'
 
 interface NoteToPlay {
     frequency: Frequency,
@@ -52,17 +53,6 @@ interface BuildPositionalAudioParameters {
     webVr: Vrb,
 }
 
-interface BuildSourceNodeParameters {
-    frequency: Frequency,
-    playbackRate?: Maybe<Scalar>,
-    timbre: Timbre,
-    voiceType: VoiceType,
-    webVr?: Vrb,
-
-    // tslint:disable-next-line:no-any
-    [ index: string ]: any,
-}
-
 export {
     NoteToPlay,
     StartNote,
@@ -73,5 +63,4 @@ export {
     BuildStopNoteParameters,
     BuildGainNodeParameters,
     BuildPositionalAudioParameters,
-    BuildSourceNodeParameters,
 }

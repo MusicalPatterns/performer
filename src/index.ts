@@ -11,7 +11,6 @@ export {
 } from './setup'
 export {
     VoiceSpec,
-    VoiceType,
     SampleName,
     OscillatorName,
     TimbreName,
@@ -19,4 +18,5 @@ export {
 export {
     ThreadSpec,
     Note,
+    VoiceType,
 } from './types'
