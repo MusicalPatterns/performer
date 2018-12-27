@@ -5,6 +5,8 @@ export {
 } from './performance/indexForTest'
 export {
     constructThreads,
+    OscillatorName,
+    SampleName,
 } from './construction/indexForTest'
 
 export {
