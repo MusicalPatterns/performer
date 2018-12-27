@@ -8,4 +8,4 @@ build_dev:
 	@webpack --config webpack.dev.js
 
 qa:
-	@webpack-dev-server --config webpack.qa.js
+	@webpack-dev-server --config webpack.qa.js --color
