@@ -4,7 +4,7 @@ const common = require('./webpack.common')
 const merge = require('webpack-merge')
 
 module.exports = merge(common, {
-    entry: './test/qa/index.ts',
+    entry: './test/qa/index.js',
     output: {
         libraryTarget: 'var',
         path: path.join(__dirname, './qa-dist'),

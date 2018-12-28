@@ -29,9 +29,6 @@ const reducer: Reducer<ImmutableState, Action> =
             case ActionType.SET_PAUSED: {
                 return state.set(StateKeys.PAUSED, action.data)
             }
-            case ActionType.SET_SCENE: {
-                return state.set(StateKeys.SCENE, action.data)
-            }
             case ActionType.SET_WEB_VR: {
                 return state.set(StateKeys.WEB_VR, action.data)
             }

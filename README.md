@@ -13,7 +13,7 @@ then it will render it.
 import { setupPerformer, OnUpdate } from '@musical-patterns/performer'
 
 const onUpdate: OnUpdate = time => {
-	// do whatever you wanna do with the latest time here
+	// do whatever you wanna do with the latest time here, such as update some display
 }
 
 await setupPerformer({ onUpdate })
@@ -43,8 +43,16 @@ togglePaused()
 
 ```
 import { enableImmersiveAudio } from '@musical-patterns/performer'
+import { buildVrb } from 'vrb'
 
-enableImmersiveAudio()
+const homePosition: Coordinate = [ 5, 4, 3 ]
+
+const enterImmersiveAudioHandler: VoidFunction = enableImmersiveAudio({ vrb, homePosition })
+
+const enterImmersiveAudioButton = document.createElement('div')
+enterImmersiveAudioButton.innerText = 'Enter Immersive Audio'
+enterImmersiveAudioButton.addEventListener('click', enterImmersiveAudioHandler)
+document.body.appendChild(enterImmersiveAudioButton)
 ```
 
 If you have your own instance of Vrb ([https://www.npmjs.com/package/vrb](https://www.npmjs.com/package/vrb)) you may inject it here.
@@ -52,16 +60,14 @@ If you do not, Vrb is what will be used under the hood for WebVR and it will be 
 
 ### or if you're an eager beaver
 
+If you pass `threadSpecs` to the setup, it will automatically start with them.
+
 ```
 import { setupPerformer } from '@musical-patterns/performer'
-import houndstoothtopiaTheme from '@musical-patterns/pattern-houndstoothtopia-theme'
-import { buildVrb } from 'vrb'
+import { snapshot } from '@musical-patterns/pattern-houndstoothtopia-theme'
 
-setupPerformer({
-	autoStart: {
-		threadSpecs: houndstoothtopiaTheme,
-		vrb: buildVrb()
-	}
+await setupPerformer({
+	threadSpecs: snapshot,
 })
 
 ```

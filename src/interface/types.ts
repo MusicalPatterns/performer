@@ -8,13 +8,9 @@ interface EnableImmersiveAudioParameters {
     vrb?: Vrb,
 }
 
-interface AutoStart extends EnableImmersiveAudioParameters {
-    threadSpecs: ThreadSpec[],
-}
-
 interface SetupPerformerParameters {
-    autoStart?: AutoStart,
     onUpdate?: OnUpdate,
+    threadSpecs?: ThreadSpec[],
 }
 
 export {
