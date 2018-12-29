@@ -10,9 +10,9 @@
   },
   "devDependencies": {
     "@mohayonao/wave-tables": "^0.2.0",
-    "@musical-patterns/cli": "^1.0.132",
+    "@musical-patterns/cli": "^1.0.134",
     "@musical-patterns/pattern-performer-qa": "^1.0.17",
-    "@musical-patterns/utilities": "^1.0.111",
+    "@musical-patterns/utilities": "^1.0.112",
     "@types/three": "^0.93.14",
     "@types/webpack-env": "^1.13.6",
     "awesome-typescript-loader": "^5.2.0",
