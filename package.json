@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/performer",
-  "version": "1.0.91",
+  "version": "1.0.92",
   "main": "dist/main.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@mohayonao/wave-tables": "^0.2.0",
-    "@musical-patterns/cli": "^1.0.134",
+    "@musical-patterns/cli": "^1.0.137",
     "@musical-patterns/pattern-performer-qa": "^1.0.17",
     "@musical-patterns/utilities": "^1.0.112",
     "@types/three": "^0.93.14",
