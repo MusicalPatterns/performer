@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.com/MusicalPatterns/performer.svg?branch=master)](https://travis-ci.com/MusicalPatterns/performer)
 
-# Musical Patterns - performer
+# Musical Patterns - Performer
 
-given a compiled pattern, this will first construct everything it needs to render it to audio with as few calculations during rendering as possible;
+Given a compiled pattern, this will first construct everything it needs to render it to audio with as few calculations during rendering as possible;
 then it will render it.
 
 ## usage
