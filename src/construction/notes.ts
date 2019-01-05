@@ -24,7 +24,7 @@ const constructNotes: (notes: Note[], options: VoiceSpec) => Note[] =
         const homePosition: Maybe<Coordinate> = state.get(StateKeys.HOME_POSITION)
         if (webVr && homePosition) {
             outputNotes = outputNotes.map((note: Note): Note =>
-               applyHomePosition(note, homePosition))
+                applyHomePosition(note, homePosition))
         }
 
         return outputNotes
