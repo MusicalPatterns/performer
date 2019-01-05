@@ -8,8 +8,7 @@ const stopSourceNode: (sourceNode: SourceNode) => void =
             sourceNode.disconnect()
         }
             // tslint:disable-next-line:no-empty
-        catch (e) {
-        }
+        catch (e) {}
     }
 
 const buildStopNote: (parameters: BuildStopNoteParameters) => StopNote =
