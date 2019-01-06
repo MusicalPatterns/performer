@@ -50,6 +50,12 @@ const reducer: Reducer<ImmutableState, Action> =
             case ActionType.SET_SAMPLE_DATA: {
                 return state.set(StateKeys.SAMPLE_DATA, action.data)
             }
+            case ActionType.TOGGLE_IMMMERSIVE_AUDIO: {
+                return state.set(
+                    StateKeys.IMMERSIVE_AUDIO,
+                    !state.get(StateKeys.IMMERSIVE_AUDIO),
+                )
+            }
 
             default: {
                 return state

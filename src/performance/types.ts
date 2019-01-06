@@ -19,6 +19,7 @@ interface StartNoteAnd {
 }
 
 interface BuildStartNoteParameters {
+    immersiveAudio: boolean,
     timbre: Timbre,
     voiceType: VoiceType,
     webVr?: Vrb,

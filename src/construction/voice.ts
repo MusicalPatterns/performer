@@ -15,8 +15,9 @@ const constructVoice: (voiceSpec: VoiceSpec) => Promise<Voice> =
 
         const state: ImmutableState = store.getState() as ImmutableState
         const webVr: Maybe<Vrb> = state.get(StateKeys.WEB_VR)
+        const immersiveAudio: boolean = state.get(StateKeys.IMMERSIVE_AUDIO)
 
-        const { startNote, startedNote } = buildStartNote({ timbre, webVr, voiceType })
+        const { startNote, startedNote } = buildStartNote({ timbre, webVr, immersiveAudio, voiceType })
         const stopNote: StopNote = buildStopNote({ startedNote })
 
         return { startNote, stopNote }

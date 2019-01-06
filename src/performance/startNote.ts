@@ -6,14 +6,21 @@ import { BuildStartNoteParameters, NoteToPlay, StartedNote, StartNote, StartNote
 
 const buildStartNote: (parameters: BuildStartNoteParameters) => StartNoteAndStartedNote =
     (parameters: BuildStartNoteParameters): StartNoteAndStartedNote => {
-        const { timbre, webVr, voiceType } = parameters
+        const { timbre, webVr, voiceType, immersiveAudio } = parameters
 
         const startedNote: StartedNote = {}
 
         const startNote: StartNote = ({ gain, frequency, playbackRate, position }: NoteToPlay): void => {
-            const sourceNode: SourceNode = buildSourceNode({ frequency, playbackRate, timbre, voiceType, webVr })
+            const sourceNode: SourceNode = buildSourceNode({
+                frequency,
+                immersiveAudio,
+                playbackRate,
+                timbre,
+                voiceType,
+                webVr,
+            })
             startedNote.sourceNode = sourceNode
-            if (webVr) {
+            if (immersiveAudio && webVr) {
                 const positionNode: Object3D = new Object3D()
                 startedNote.positionNode = positionNode
                 startedNote.positionalAudio = buildPositionalAudio({ position, positionNode, sourceNode, webVr })

@@ -13,6 +13,7 @@ enum StateKeys {
     WEB_VR = 'WEB_VR',
     HOME_POSITION = 'HOME_POSITION',
     SAMPLE_DATA = 'SAMPLE_DATA',
+    IMMERSIVE_AUDIO = 'IMMERSIVE_AUDIO',
 }
 
 interface State {
@@ -23,6 +24,7 @@ interface State {
     [ StateKeys.WEB_VR ]: Maybe<Vrb>,
     [ StateKeys.HOME_POSITION ]: Maybe<Coordinate>,
     [ StateKeys.SAMPLE_DATA ]: Maybe<SampleDatas>,
+    [ StateKeys.IMMERSIVE_AUDIO ]: boolean,
 }
 
 type StateValueTypes =
@@ -44,6 +46,7 @@ const initialState: ImmutableState = typedMap<StateValueTypes, State>({
     [ StateKeys.WEB_VR ]: undefined,
     [ StateKeys.HOME_POSITION ]: undefined,
     [ StateKeys.SAMPLE_DATA ]: undefined,
+    [ StateKeys.IMMERSIVE_AUDIO ]: false,
 })
 
 export {

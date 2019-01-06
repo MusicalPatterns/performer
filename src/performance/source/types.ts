@@ -4,6 +4,7 @@ import { Timbre, VoiceType } from '../types'
 
 interface BuildSourceNodeParameters {
     frequency: Frequency,
+    immersiveAudio: boolean,
     playbackRate?: Maybe<Scalar>,
     timbre: Timbre,
     voiceType: VoiceType,

@@ -14,6 +14,7 @@ enum ActionType {
     SET_WEB_VR = 'SET_WEB_VR',
     SET_HOME_POSITION = 'SET_HOME_POSITION',
     SET_SAMPLE_DATA = 'SET_SAMPLE_DATA',
+    TOGGLE_IMMMERSIVE_AUDIO = 'TOGGLE_IMMMERSIVE_AUDIO',
 }
 
 interface SetThreads {
@@ -55,6 +56,10 @@ interface SetSampleData {
     type: ActionType.SET_SAMPLE_DATA,
 }
 
+interface ToggleImmersiveAudio {
+    type: ActionType.TOGGLE_IMMMERSIVE_AUDIO,
+}
+
 type Action =
     SetThreads |
     TogglePaused |
@@ -63,7 +68,8 @@ type Action =
     IncrementTime |
     SetWebVr |
     SetHomePosition |
-    SetSampleData
+    SetSampleData |
+    ToggleImmersiveAudio
 
 export {
     Action,

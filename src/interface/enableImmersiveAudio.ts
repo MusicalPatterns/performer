@@ -1,7 +1,14 @@
 import { BatchAction, batchActions } from 'redux-batched-actions'
 import { buildVrb, Vrb } from 'vrb'
 import { ActionType, store } from '../state'
-import { EnableImmersiveAudioParameters } from './types'
+import { BuildEnterImmersiveAudioParameters, EnableImmersiveAudioParameters } from './types'
+
+const buildEnterImmersiveAudio: ({ vrb }: BuildEnterImmersiveAudioParameters) => VoidFunction =
+    ({ vrb }: BuildEnterImmersiveAudioParameters): VoidFunction =>
+        (): void => {
+            store.dispatch({ type: ActionType.TOGGLE_IMMMERSIVE_AUDIO })
+            vrb.toggleVr()
+        }
 
 const enableImmersiveAudio: (enableImmersiveAudioParameters?: EnableImmersiveAudioParameters) => VoidFunction =
     ({ homePosition, vrb }: EnableImmersiveAudioParameters = {}): VoidFunction => {
@@ -21,7 +28,7 @@ const enableImmersiveAudio: (enableImmersiveAudioParameters?: EnableImmersiveAud
         ])
         store.dispatch(batchedAction)
 
-        return webVr.toggleVr
+        return buildEnterImmersiveAudio({ vrb: webVr })
     }
 
 export {
