@@ -1,4 +1,4 @@
-import { to } from '@musical-patterns/utilities'
+import { BEGINNING, to } from '@musical-patterns/utilities'
 import { VoiceType } from '../performance'
 import { Thread, ThreadSpec } from '../types'
 import { constructNotes } from './notes'
@@ -17,8 +17,8 @@ const constructThreads: (threadSpecs: ThreadSpec[]) => Promise<Thread[]> =
             const { notes = [], voiceSpec = defaultVoiceSpec } = threadSpec
 
             return {
-                nextEnd: to.Time(0),
-                nextStart: to.Time(0),
+                nextEnd: BEGINNING,
+                nextStart: BEGINNING,
                 noteIndex: to.Index(0),
                 notes: constructNotes(notes, voiceSpec),
                 voice: await constructVoice(voiceSpec),

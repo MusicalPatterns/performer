@@ -1,6 +1,6 @@
 // tslint:disable:no-type-definitions-outside-types-modules
 
-import { Coordinate, Maybe, Time, to, typedMap, TypedMap } from '@musical-patterns/utilities'
+import { BEGINNING, Coordinate, Maybe, Time, typedMap, TypedMap } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
 import { SampleDatas } from '../construction'
 import { Thread } from '../types'
@@ -42,7 +42,7 @@ const initialState: ImmutableState = typedMap<StateValueTypes, State>({
     [ StateKeys.CLOCK ]: undefined,
     [ StateKeys.PAUSED ]: true,
     [ StateKeys.THREADS ]: [],
-    [ StateKeys.TIME ]: to.Time(0),
+    [ StateKeys.TIME ]: BEGINNING,
     [ StateKeys.WEB_VR ]: undefined,
     [ StateKeys.HOME_POSITION ]: undefined,
     [ StateKeys.SAMPLE_DATA ]: undefined,

@@ -1,4 +1,4 @@
-import { to } from '@musical-patterns/utilities'
+import { BEGINNING } from '@musical-patterns/utilities'
 import { BatchAction, batchActions } from 'redux-batched-actions'
 import { ActionType, ImmutableState, StateKeys, stopThreads, store } from '../state'
 import { Thread } from '../types'
@@ -10,7 +10,7 @@ const stop: VoidFunction =
         stopThreads(threads)
 
         const batchedAction: BatchAction = batchActions([
-            { type: ActionType.SET_TIME, data: to.Time(0) },
+            { type: ActionType.SET_TIME, data: BEGINNING },
             { type: ActionType.SET_PAUSED, data: true },
         ])
         store.dispatch(batchedAction)

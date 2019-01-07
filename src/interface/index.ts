@@ -3,6 +3,7 @@ export { setupPerformer } from './setupPerformer'
 export { perform } from './perform'
 export { togglePaused } from './togglePaused'
 export { stop } from './stop'
+export { setTime } from './setTime'
 
 export {
     EnableImmersiveAudioParameters,

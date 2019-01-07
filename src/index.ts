@@ -4,6 +4,7 @@ export {
     setupPerformer,
     togglePaused,
     stop,
+    setTime,
     EnableImmersiveAudioParameters,
     SetupPerformerParameters,
 } from './interface'
