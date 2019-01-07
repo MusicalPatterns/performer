@@ -12,6 +12,7 @@ module.exports = merge(common, {
     devServer: {
         disableHostCheck: true,
         port: 8082,
+        open: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
