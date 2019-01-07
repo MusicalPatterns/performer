@@ -1,4 +1,4 @@
-import { Maybe, Time } from '@musical-patterns/utilities'
+import { Maybe, Time, to } from '@musical-patterns/utilities'
 import { update } from '../performance'
 import { Thread } from '../types'
 
@@ -6,6 +6,9 @@ const stopThreads: (threads: Thread[]) => void =
     (threads: Thread[]): void => {
         threads.forEach((thread: Thread): void => {
             thread.voice.stopNote()
+            thread.noteIndex = to.Index(0)
+            thread.nextStart = to.Time(0)
+            thread.nextEnd = to.Time(0)
         })
     }
 
