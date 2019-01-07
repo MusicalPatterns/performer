@@ -12,7 +12,7 @@ interface NoteToPlay {
 
 type StartNote = (note: NoteToPlay) => void
 
-type StopNote = () => void
+type StopNote = VoidFunction
 
 interface StartNoteAnd {
     startNote: StartNote,

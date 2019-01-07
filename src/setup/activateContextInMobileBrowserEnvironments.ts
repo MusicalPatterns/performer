@@ -1,6 +1,6 @@
 import { context } from '../performance'
 
-const activateContextInMobileBrowserEnvironments: () => void =
+const activateContextInMobileBrowserEnvironments: VoidFunction =
     (): void => {
         document.addEventListener('touchstart', async () => {
             await context.resume()
