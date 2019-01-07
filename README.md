@@ -36,9 +36,13 @@ await perform(threadSpecs)
 ### starting and stopping
 
 ```
-import { togglePaused } from '@musical-patterns/performer'
+import { togglePaused, stop } from '@musical-patterns/performer'
 
+# set playing to the opposite of what it is now (playing or paused)
 togglePaused()
+# or set playing to paused and reset the time to 0
+stop()
+
 ```
 
 ### enabling immersive audio
