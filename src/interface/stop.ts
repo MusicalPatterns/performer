@@ -1,6 +1,6 @@
 import { to } from '@musical-patterns/utilities'
 import { BatchAction, batchActions } from 'redux-batched-actions'
-import { ActionType, ImmutableState, StateKeys, stopThreads, store } from '../state'
+import { ActionType, ImmutableState, StateKeys, stopThreads, store, terminateClock } from '../state'
 import { Thread } from '../types'
 
 const stop: VoidFunction =
@@ -8,6 +8,7 @@ const stop: VoidFunction =
         const state: ImmutableState = store.getState() as ImmutableState
         const threads: Thread[] = state.get(StateKeys.THREADS)
         stopThreads(threads)
+        terminateClock(state.get(StateKeys.CLOCK))
 
         const batchedAction: BatchAction = batchActions([
             { type: ActionType.SET_TIME, data: to.Time(0) },

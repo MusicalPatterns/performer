@@ -9,4 +9,5 @@ export {
 export { store } from './store'
 export {
     stopThreads,
+    terminateClock,
 } from './sideEffects'
