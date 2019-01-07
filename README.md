@@ -30,7 +30,7 @@ const threadSpecs: ThreadSpec[] = [
 	// your thread specs here
 ]
 
-await perform(threadSpecs) // will automatically restart the time whether you like it or not
+await perform(threadSpecs)
 ```
 
 ### starting and stopping
