@@ -20,6 +20,9 @@ const startThreadNote: (thread: Thread, note: Note) => void =
         )
 
         thread.noteIndex = to.Index(from.Index(thread.noteIndex) + 1)
+        if (from.Index(thread.noteIndex) === thread.notes.length) {
+            thread.noteIndex = to.Index(0)
+        }
     }
 
 const update: (thread: Thread, time: Time) => void =
@@ -28,10 +31,6 @@ const update: (thread: Thread, time: Time) => void =
 
         if (time > thread.nextEnd) {
             thread.voice.stopNote()
-        }
-
-        if (from.Index(thread.noteIndex) === thread.notes.length) {
-            thread.noteIndex = to.Index(0)
         }
 
         if (time > thread.nextStart) {
