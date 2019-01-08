@@ -5,8 +5,9 @@ import { batchDispatchMiddleware, enableBatching } from 'redux-batched-actions'
 import { reducer } from './reducer'
 import { initialState } from './state'
 
-// @ts-ignore
-const composeEnhancers: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const composeEnhancers: any =
+    // @ts-ignore
+    window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose
 
 const store: Store = createStore(
     enableBatching(reducer),
