@@ -25,5 +25,6 @@ module.exports = {
     output: {
         library: 'performer',
         libraryTarget: 'umd',
+        globalObject: 'this',
     },
 }
