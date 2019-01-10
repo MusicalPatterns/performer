@@ -1,3 +1,4 @@
+import { Index, Time } from '@musical-patterns/utilities'
 import { VoiceType } from '../performance'
 import { OscillatorName } from './oscillators'
 import { SampleName } from './samples'
@@ -9,7 +10,13 @@ interface VoiceSpec {
     voiceType: VoiceType,
 }
 
+interface InitialNote {
+    nextStart: Time,
+    noteIndex: Index,
+}
+
 export {
     VoiceSpec,
     TimbreName,
+    InitialNote,
 }

@@ -21,6 +21,8 @@ const onUpdate: OnUpdate = time => {
 await setupPerformer({ onUpdate })
 ```
 
+This will ensure your browser is ready to start playing!
+
 ### loading a pattern
 
 ```
@@ -33,6 +35,8 @@ const threadSpecs: ThreadSpec[] = [
 await perform(threadSpecs)
 ```
 
+Perform only sets the threads to be performed. It does not start playing yet.
+
 ### starting and stopping
 
 ```
@@ -41,7 +45,7 @@ import { togglePaused, stop } from '@musical-patterns/performer'
 # set playing to the opposite of what it is now (playing or paused)
 togglePaused()
 # or set playing to paused and reset the time to 0
-stop()
+await stop()
 
 ```
 
@@ -66,7 +70,7 @@ If you do not, Vrb is what will be used under the hood for WebVR and it will be 
 
 ### or if you're an eager beaver
 
-If you pass `threadSpecs` to the setup, it will automatically start with them.
+If you pass `threadSpecs` to the setup, it will automatically start playing them.
 
 ```
 import { setupPerformer } from '@musical-patterns/performer'
@@ -77,6 +81,17 @@ await setupPerformer({
 })
 
 ```
+
+### jumping around in time
+
+```
+import { setTime } from '@musical-patterns/performer'
+
+await setTime(14000)
+
+```
+
+It will keep playing if it was playing already.
 
 ## samples notes
 

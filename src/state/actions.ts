@@ -3,23 +3,34 @@
 import { Coordinate, Time } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
 import { SampleDatas } from '../construction'
-import { Thread } from '../types'
+import { Thread, ThreadSpec } from '../types'
 
 enum ActionType {
+    SET_CLOCK = 'SET_CLOCK',
     SET_THREADS = 'SET_THREADS',
+    SET_THREAD_SPECS = 'SET_THREAD_SPECS',
     TOGGLE_PAUSED = 'TOGGLE_PAUSED',
     SET_TIME = 'SET_TIME',
     SET_PAUSED = 'SET_PAUSED',
-    INCREMENT_TIME = 'INCREMENT_TIME',
     SET_WEB_VR = 'SET_WEB_VR',
     SET_HOME_POSITION = 'SET_HOME_POSITION',
     SET_SAMPLE_DATA = 'SET_SAMPLE_DATA',
     TOGGLE_IMMMERSIVE_AUDIO = 'TOGGLE_IMMMERSIVE_AUDIO',
 }
 
+interface SetClock {
+    data: Worker,
+    type: ActionType.SET_CLOCK,
+}
+
 interface SetThreads {
     data: Thread[],
     type: ActionType.SET_THREADS,
+}
+
+interface SetThreadSpecs {
+    data: ThreadSpec[],
+    type: ActionType.SET_THREAD_SPECS,
 }
 
 interface TogglePaused {
@@ -34,11 +45,6 @@ interface SetTime {
 interface SetPaused {
     data: boolean,
     type: ActionType.SET_PAUSED,
-}
-
-interface IncrementTime {
-    data: Time,
-    type: ActionType.INCREMENT_TIME,
 }
 
 interface SetWebVr {
@@ -61,11 +67,12 @@ interface ToggleImmersiveAudio {
 }
 
 type Action =
+    SetClock |
     SetThreads |
+    SetThreadSpecs |
     TogglePaused |
     SetTime |
     SetPaused |
-    IncrementTime |
     SetWebVr |
     SetHomePosition |
     SetSampleData |

@@ -1,21 +1,19 @@
-import { apply, from, Time, to } from '@musical-patterns/utilities'
 import { Reducer } from 'redux'
-import { buildClock } from '../performance'
 import { Action, ActionType } from './actions'
-import { stopThreads, terminateClock, updateThreads } from './sideEffects'
 import { ImmutableState, initialState, StateKeys } from './state'
-import { store } from './store'
 
 const reducer: Reducer<ImmutableState, Action> =
     // tslint:disable-next-line:cyclomatic-complexity
     (state: ImmutableState = initialState, action: Action): ImmutableState => {
         switch (action.type) {
+            case ActionType.SET_CLOCK: {
+                return state.set(StateKeys.CLOCK, action.data)
+            }
             case ActionType.SET_THREADS: {
-                stopThreads(state.get(StateKeys.THREADS))
-                terminateClock(state.get(StateKeys.CLOCK))
-
                 return state.set(StateKeys.THREADS, action.data)
-                    .set(StateKeys.CLOCK, buildClock(store.dispatch))
+            }
+            case ActionType.SET_THREAD_SPECS: {
+                return state.set(StateKeys.THREAD_SPECS, action.data)
             }
             case ActionType.TOGGLE_PAUSED: {
                 return state.set(
@@ -31,18 +29,6 @@ const reducer: Reducer<ImmutableState, Action> =
             }
             case ActionType.SET_WEB_VR: {
                 return state.set(StateKeys.WEB_VR, action.data)
-            }
-            case ActionType.INCREMENT_TIME: {
-                if (state.get(StateKeys.PAUSED)) {
-                    return state
-                }
-
-                const time: Time = apply.Offset(state.get(StateKeys.TIME), to.Offset(from.Time(action.data)))
-
-                updateThreads(state.get(StateKeys.THREADS), time)
-
-                return state
-                    .set(StateKeys.TIME, time)
             }
             case ActionType.SET_HOME_POSITION: {
                 return state.set(StateKeys.HOME_POSITION, action.data)

@@ -7,6 +7,3 @@ export {
     ActionType,
 } from './actions'
 export { store } from './store'
-export {
-    stopThreads,
-} from './sideEffects'

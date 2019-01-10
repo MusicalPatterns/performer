@@ -3,12 +3,13 @@
 import { BEGINNING, Coordinate, Maybe, Time, typedMap, TypedMap } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
 import { SampleDatas } from '../construction'
-import { Thread } from '../types'
+import { Thread, ThreadSpec } from '../types'
 
 enum StateKeys {
     CLOCK = 'CLOCK',
     PAUSED = 'PAUSED',
     THREADS = 'THREADS',
+    THREAD_SPECS = 'THREAD_SPECS',
     TIME = 'TIME',
     WEB_VR = 'WEB_VR',
     HOME_POSITION = 'HOME_POSITION',
@@ -20,6 +21,7 @@ interface State {
     [ StateKeys.CLOCK ]: Maybe<Worker>,
     [ StateKeys.PAUSED ]: boolean,
     [ StateKeys.THREADS ]: Thread[],
+    [ StateKeys.THREAD_SPECS ]: ThreadSpec[],
     [ StateKeys.TIME ]: Time,
     [ StateKeys.WEB_VR ]: Maybe<Vrb>,
     [ StateKeys.HOME_POSITION ]: Maybe<Coordinate>,
@@ -31,6 +33,7 @@ type StateValueTypes =
     boolean |
     Time |
     Thread[] |
+    ThreadSpec[] |
     Maybe<Worker> |
     Maybe<Vrb> |
     Maybe<Coordinate> |
@@ -42,6 +45,7 @@ const initialState: ImmutableState = typedMap<StateValueTypes, State>({
     [ StateKeys.CLOCK ]: undefined,
     [ StateKeys.PAUSED ]: true,
     [ StateKeys.THREADS ]: [],
+    [ StateKeys.THREAD_SPECS ]: [],
     [ StateKeys.TIME ]: BEGINNING,
     [ StateKeys.WEB_VR ]: undefined,
     [ StateKeys.HOME_POSITION ]: undefined,
