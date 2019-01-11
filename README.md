@@ -57,12 +57,12 @@ import { buildVrb } from 'vrb'
 
 const homePosition: Coordinate = [ 5, 4, 3 ]
 
-const enterImmersiveAudioHandler: VoidFunction = enableImmersiveAudio({ vrb, homePosition })
+const toggleImmersiveAudioHandler: VoidFunction = enableImmersiveAudio({ vrb, homePosition })
 
-const enterImmersiveAudioButton = document.createElement('div')
-enterImmersiveAudioButton.innerText = 'Enter Immersive Audio'
-enterImmersiveAudioButton.addEventListener('click', enterImmersiveAudioHandler)
-document.body.appendChild(enterImmersiveAudioButton)
+const toggleImmersiveAudioButton = document.createElement('div')
+toggleImmersiveAudioButton.innerText = 'Toggle Immersive Audio'
+toggleImmersiveAudioButton.addEventListener('click', toggleImmersiveAudioHandler)
+document.body.appendChild(toggleImmersiveAudioButton)
 ```
 
 If you have your own instance of Vrb ([https://www.npmjs.com/package/vrb](https://www.npmjs.com/package/vrb)) you may inject it here.

@@ -3,7 +3,7 @@ import { Vrb } from 'vrb'
 import { OnUpdate } from '../setup'
 import { ThreadSpec } from '../types'
 
-interface BuildEnterImmersiveAudioParameters {
+interface BuildToggleImmersiveAudioParameters {
     vrb: Vrb,
 }
 
@@ -18,7 +18,7 @@ interface SetupPerformerParameters {
 }
 
 export {
-    BuildEnterImmersiveAudioParameters,
+    BuildToggleImmersiveAudioParameters,
     EnableImmersiveAudioParameters,
     SetupPerformerParameters,
 }

@@ -4,7 +4,7 @@ import { enableImmersiveAudio, togglePaused, setTime, stop, setupPerformer } fro
 
 const setupQa = async () => {
     await setupPerformer({ threadSpecs: snapshot })
-    const enterImmersiveAudioHandler = enableImmersiveAudio()
+    const toggleImmersiveAudioHandler = enableImmersiveAudio()
 
     const setTimeButton = document.createElement('button')
     setTimeButton.innerText = 'Set Time (to 14800)'
@@ -21,10 +21,10 @@ const setupQa = async () => {
     togglePausedButton.addEventListener('click', togglePaused)
     document.body.appendChild(togglePausedButton)
 
-    const enterImmersiveAudioButton = document.createElement('button')
-    enterImmersiveAudioButton.innerText = 'Enter Immersive Audio'
-    enterImmersiveAudioButton.addEventListener('click', enterImmersiveAudioHandler)
-    document.body.appendChild(enterImmersiveAudioButton)
+    const toggleImmersiveAudioButton = document.createElement('button')
+    toggleImmersiveAudioButton.innerText = 'Toggle Immersive Audio'
+    toggleImmersiveAudioButton.addEventListener('click', toggleImmersiveAudioHandler)
+    document.body.appendChild(toggleImmersiveAudioButton)
 }
 
 setupQa()
