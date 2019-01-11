@@ -7,8 +7,8 @@ const setupQa = async () => {
     const enterImmersiveAudioHandler = enableImmersiveAudio()
 
     const setTimeButton = document.createElement('button')
-    setTimeButton.innerText = 'Set Time (to 14000)'
-    setTimeButton.addEventListener('click', () => setTime(14000))
+    setTimeButton.innerText = 'Set Time (to 14800)'
+    setTimeButton.addEventListener('click', () => setTime(14800))
     document.body.appendChild(setTimeButton)
 
     const stopButton = document.createElement('button')
