@@ -11,6 +11,7 @@ enum ActionType {
     SET_THREAD_SPECS = 'SET_THREAD_SPECS',
     TOGGLE_PAUSED = 'TOGGLE_PAUSED',
     SET_TIME = 'SET_TIME',
+    SET_IMMERSIVE_AUDIO_READY = 'SET_IMMERSIVE_AUDIO_READY',
     SET_PAUSED = 'SET_PAUSED',
     SET_WEB_VR = 'SET_WEB_VR',
     SET_HOME_POSITION = 'SET_HOME_POSITION',
@@ -40,6 +41,10 @@ interface TogglePaused {
 interface SetTime {
     data: Time,
     type: ActionType.SET_TIME,
+}
+
+interface SetImmersiveAudioReady {
+    type: ActionType.SET_IMMERSIVE_AUDIO_READY,
 }
 
 interface SetPaused {
@@ -72,6 +77,7 @@ type Action =
     SetThreadSpecs |
     TogglePaused |
     SetTime |
+    SetImmersiveAudioReady |
     SetPaused |
     SetWebVr |
     SetHomePosition |

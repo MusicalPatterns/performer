@@ -24,6 +24,9 @@ const reducer: Reducer<ImmutableState, Action> =
             case ActionType.SET_TIME: {
                 return state.set(StateKeys.TIME, action.data)
             }
+            case ActionType.SET_IMMERSIVE_AUDIO_READY: {
+                return state.set(StateKeys.IMMERSIVE_AUDIO_READY, true)
+            }
             case ActionType.SET_PAUSED: {
                 return state.set(StateKeys.PAUSED, action.data)
             }

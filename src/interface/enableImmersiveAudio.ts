@@ -1,12 +1,18 @@
 import { BatchAction, batchActions } from 'redux-batched-actions'
 import { buildVrb, Vrb } from 'vrb'
-import { ActionType, store } from '../state'
+import { ActionType, ImmutableState, StateKeys, store } from '../state'
 import { handleImmersiveAudioChange } from './helpers'
 import { BuildToggleImmersiveAudioParameters, EnableImmersiveAudioParameters } from './types'
 
 const buildToggleImmersiveAudio: ({ vrb }: BuildToggleImmersiveAudioParameters) => VoidFunction =
     ({ vrb }: BuildToggleImmersiveAudioParameters): VoidFunction =>
         (): void => {
+            const state: ImmutableState = store.getState() as ImmutableState
+            const immersiveAudioReady: boolean = state.get(StateKeys.IMMERSIVE_AUDIO_READY)
+            if (!immersiveAudioReady) {
+                return
+            }
+
             store.dispatch({ type: ActionType.TOGGLE_IMMMERSIVE_AUDIO })
             vrb.toggleVr()
         }
@@ -20,6 +26,9 @@ const enableImmersiveAudio: (enableImmersiveAudioParameters?: EnableImmersiveAud
         else {
             webVr = buildVrb({
                 camerasConfig: { INITIAL_PERSPECTIVE_POSITION: [ 0, 0, 0 ] },
+                onReady: (): void => {
+                    store.dispatch({ type: ActionType.SET_IMMERSIVE_AUDIO_READY })
+                },
             })
         }
 
