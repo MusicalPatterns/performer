@@ -1,3 +1,4 @@
+import { noop } from '@musical-patterns/utilities'
 import { BatchAction, batchActions } from 'redux-batched-actions'
 import { buildVrb, Vrb } from 'vrb'
 import { ActionType, ImmutableState, StateKeys, store } from '../state'
@@ -18,7 +19,7 @@ const buildToggleImmersiveAudio: ({ vrb }: BuildToggleImmersiveAudioParameters) 
         }
 
 const enableImmersiveAudio: (enableImmersiveAudioParameters?: EnableImmersiveAudioParameters) => VoidFunction =
-    ({ homePosition, vrb }: EnableImmersiveAudioParameters = {}): VoidFunction => {
+    ({ homePosition, vrb, onReady = noop }: EnableImmersiveAudioParameters = {}): VoidFunction => {
         let webVr: Vrb
         if (vrb) {
             webVr = vrb
@@ -28,6 +29,7 @@ const enableImmersiveAudio: (enableImmersiveAudioParameters?: EnableImmersiveAud
                 camerasConfig: { INITIAL_PERSPECTIVE_POSITION: [ 0, 0, 0 ] },
                 onReady: (): void => {
                     store.dispatch({ type: ActionType.SET_IMMERSIVE_AUDIO_READY })
+                    onReady()
                 },
             })
         }

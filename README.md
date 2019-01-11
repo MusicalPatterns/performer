@@ -56,8 +56,11 @@ import { enableImmersiveAudio } from '@musical-patterns/performer'
 import { buildVrb } from 'vrb'
 
 const homePosition: Coordinate = [ 5, 4, 3 ]
+const onReady: VoidFunction = () => {
+	// do whatever you want once the VR device is ready
+}
 
-const toggleImmersiveAudioHandler: VoidFunction = enableImmersiveAudio({ vrb, homePosition })
+const toggleImmersiveAudioHandler: VoidFunction = enableImmersiveAudio({ vrb, homePosition, onReady })
 
 const toggleImmersiveAudioButton = document.createElement('div')
 toggleImmersiveAudioButton.innerText = 'Toggle Immersive Audio'
