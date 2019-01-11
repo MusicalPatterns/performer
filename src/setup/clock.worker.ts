@@ -1,7 +1,7 @@
 // tslint:disable
 // @ts-ignore
 import requestAnimationFrame from 'raf'
-import { TIMESTEP } from './constants'
+import { TIME_STEP } from './constants'
 
 const worker: Worker = self as any
 
@@ -14,9 +14,9 @@ const mainLoop: (timestamp: number) => void =
             delta += timestamp - previousTimestamp
         }
 
-        while (delta >= TIMESTEP) {
-            worker.postMessage(TIMESTEP)
-            delta -= TIMESTEP
+        while (delta >= TIME_STEP) {
+            worker.postMessage(TIME_STEP)
+            delta -= TIME_STEP
         }
 
         previousTimestamp = timestamp

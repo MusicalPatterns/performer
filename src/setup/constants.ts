@@ -1,9 +1,10 @@
 // tslint:disable no-magic-numbers
 
-const MILLISECONDS_PER_SECOND: number = 1000
+import { MILLISECONDS_PER_SECOND } from '@musical-patterns/utilities'
+
 const TARGET_FPS: number = 120
-const TIMESTEP: number = MILLISECONDS_PER_SECOND / TARGET_FPS
+const TIME_STEP: number = MILLISECONDS_PER_SECOND / TARGET_FPS
 
 export {
-    TIMESTEP,
+    TIME_STEP,
 }
