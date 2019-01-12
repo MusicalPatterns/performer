@@ -59,8 +59,11 @@ const homePosition: Coordinate = [ 5, 4, 3 ]
 const onReady: VoidFunction = () => {
 	// do whatever you want once the VR device is ready
 }
+const onNoVr: VoidFunction = () => {
+	// do whatever you want once it is determined that your system does not support VR
+}
 
-const toggleImmersiveAudioHandler: VoidFunction = enableImmersiveAudio({ vrb, homePosition, onReady })
+const toggleImmersiveAudioHandler: VoidFunction = enableImmersiveAudio({ vrb, homePosition, onReady, onNoVr })
 
 const toggleImmersiveAudioButton = document.createElement('div')
 toggleImmersiveAudioButton.innerText = 'Toggle Immersive Audio'

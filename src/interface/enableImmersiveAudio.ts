@@ -19,7 +19,7 @@ const buildToggleImmersiveAudio: ({ vrb }: BuildToggleImmersiveAudioParameters) 
         }
 
 const enableImmersiveAudio: (enableImmersiveAudioParameters?: EnableImmersiveAudioParameters) => VoidFunction =
-    ({ homePosition, vrb, onReady = noop }: EnableImmersiveAudioParameters = {}): VoidFunction => {
+    ({ homePosition, vrb, onReady = noop, onNoVr = noop }: EnableImmersiveAudioParameters = {}): VoidFunction => {
         let webVr: Vrb
         if (vrb) {
             webVr = vrb
@@ -27,6 +27,7 @@ const enableImmersiveAudio: (enableImmersiveAudioParameters?: EnableImmersiveAud
         else {
             webVr = buildVrb({
                 camerasConfig: { INITIAL_PERSPECTIVE_POSITION: [ 0, 0, 0 ] },
+                onNoVr,
                 onReady: (): void => {
                     store.dispatch({ type: ActionType.SET_IMMERSIVE_AUDIO_READY })
                     onReady()

@@ -9,6 +9,7 @@ interface BuildToggleImmersiveAudioParameters {
 
 interface EnableImmersiveAudioParameters {
     homePosition?: Coordinate,
+    onNoVr?: VoidFunction,
     onReady?: VoidFunction,
     vrb?: Vrb,
 }
