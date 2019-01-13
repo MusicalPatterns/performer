@@ -11,7 +11,7 @@
   "devDependencies": {
     "@mohayonao/wave-tables": "^0.2.0",
     "@musical-patterns/cli": "^1.0.258",
-    "@musical-patterns/pattern-performer-qa": "^1.0.41",
+    "@musical-patterns/pattern-performer-qa": "^1.0.42",
     "@musical-patterns/utilities": "^1.0.149",
     "@types/three": "^0.93.15",
     "@types/webpack-env": "^1.13.6",
