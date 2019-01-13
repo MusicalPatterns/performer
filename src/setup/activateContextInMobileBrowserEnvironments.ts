@@ -5,9 +5,6 @@ const activateContextInMobileBrowserEnvironments: VoidFunction =
         document.addEventListener('touchstart', async () => {
             await context.resume()
         })
-        document.addEventListener('mousemove', async () => {
-            await context.resume()
-        })
     }
 
 export {
