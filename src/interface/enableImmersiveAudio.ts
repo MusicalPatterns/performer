@@ -23,6 +23,11 @@ const enableImmersiveAudio: (enableImmersiveAudioParameters?: EnableImmersiveAud
         let webVr: Vrb
         if (vrb) {
             webVr = vrb
+            const oldOnReady: VoidFunction = webVr.onReady
+            webVr.onReady = (): void => {
+                store.dispatch({ type: ActionType.SET_IMMERSIVE_AUDIO_READY })
+                oldOnReady()
+            }
         }
         else {
             webVr = buildVrb({
