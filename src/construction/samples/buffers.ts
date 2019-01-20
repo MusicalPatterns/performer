@@ -17,7 +17,7 @@ const load: (sampleName: SampleName) => Promise<void> =
     async (sampleName: SampleName): Promise<void> =>
         new Promise((resolve: VoidFunction): void => {
             const request: XMLHttpRequest = new XMLHttpRequest()
-            const url: ModulePath = require(`../../../samples/${sampleName}.wav`) as ModulePath
+            const url: ModulePath = require(`../../../assets/samples/${sampleName}.wav`) as ModulePath
             request.open('GET', url, true)
             request.responseType = 'arraybuffer'
 
