@@ -23,6 +23,7 @@ module.exports = {
         extensions: [ '.ts', '.js', '.json' ],
     },
     output: {
+        filename: 'index.js',
         library: 'performer',
         libraryTarget: 'umd',
     },
