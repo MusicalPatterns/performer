@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const common = require('./webpack.common')
 const merge = require('webpack-merge')
+const { PERFORMER_PORT } = require('@musical-patterns/utilities')
 
 module.exports = merge(common, {
     entry: './test/qa/index.js',
@@ -11,7 +12,7 @@ module.exports = merge(common, {
     },
     devServer: {
         disableHostCheck: true,
-        port: 8082,
+        port: PERFORMER_PORT,
         open: true,
     },
     plugins: [
