@@ -5,7 +5,7 @@ import { ActionType, ImmutableState, StateKeys, store } from '../state'
 import { Thread, ThreadSpec } from '../types'
 import { stopExistingThreads } from './helpers'
 
-const perform: (threadSpecs: ThreadSpec[]) => Promise<void> =
+const setThreadSpecs: (threadSpecs: ThreadSpec[]) => Promise<void> =
     async (threadSpecs: ThreadSpec[]): Promise<void> => {
         stopExistingThreads()
 
@@ -21,5 +21,5 @@ const perform: (threadSpecs: ThreadSpec[]) => Promise<void> =
     }
 
 export {
-    perform,
+    setThreadSpecs,
 }

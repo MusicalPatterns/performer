@@ -1,6 +1,6 @@
 export {
     enableImmersiveAudio,
-    perform,
+    setThreadSpecs,
     setupPerformer,
     togglePaused,
     stop,

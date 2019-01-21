@@ -2,8 +2,8 @@
 
 # Musical Patterns - Performer
 
-Given a compiled pattern, this will first construct everything it needs to render it to audio with as few calculations during rendering as possible;
-then it will render it.
+Given a pattern which has used the `@musical-patterns/compiler` to compile it down to `ThreadSpec`s, this will first construct everything it needs to render it to audio with as few calculations during rendering as possible;
+then it will render it as audio for you to hear.
 
 ## usage
 
@@ -26,16 +26,16 @@ This will ensure your browser is ready to start playing!
 ### loading a pattern
 
 ```
-import { perform, ThreadSpec } from '@musical-patterns/performer'
+import { setThreadSpecs, ThreadSpec } from '@musical-patterns/performer'
 
 const threadSpecs: ThreadSpec[] = [
 	// your thread specs here
 ]
 
-await perform(threadSpecs)
+await setThreadSpecs(threadSpecs)
 ```
 
-Perform only sets the threads to be performed. It does not start playing yet.
+`setThreadSpecs` only sets what is to be performed. It does not start playing it yet.
 
 ### starting and stopping
 

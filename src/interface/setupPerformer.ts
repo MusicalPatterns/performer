@@ -1,7 +1,7 @@
 import { noop } from '@musical-patterns/utilities'
 import { buildSampleData } from '../construction'
 import { activateContextInMobileBrowserEnvironments, setupClock, setupTimeControls } from '../setup'
-import { perform } from './perform'
+import { setThreadSpecs } from './setThreadSpecs'
 import { togglePaused } from './togglePaused'
 import { SetupPerformerParameters } from './types'
 
@@ -13,7 +13,7 @@ const setupPerformer: (parameters?: SetupPerformerParameters) => Promise<void> =
         setupClock()
 
         if (threadSpecs) {
-            await perform(threadSpecs)
+            await setThreadSpecs(threadSpecs)
             togglePaused()
         }
     }
