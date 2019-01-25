@@ -7,5 +7,5 @@ build:
 build-local:
 	@webpack --config webpack.dev.js
 
-start_qa:
+start:
 	@webpack-dev-server --config webpack.qa.js --color
