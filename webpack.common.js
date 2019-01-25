@@ -14,8 +14,8 @@ module.exports = {
                 exclude: /test/,
             },
             {
-                test: /\.wav/,
-                loader: 'file-loader',
+                test: /\.mp3/,
+                loader: 'url-loader',
             },
         ],
     },

@@ -98,16 +98,3 @@ await setTime(14000)
 ```
 
 It will keep playing if it was playing already.
-
-## samples notes
-
-If you want to use samples, I'm afraid you'll need to find some way to get the samples' .wav files into your bundle.
-I suggest `npm i copy-webpack-plugin` and adding this to your `webpack.config.js`:
-
-```
-new CopyWebpackPlugin([{
-	from: 'node_modules/@musical-patterns/performer/dist/*.wav',
-	to: path.join(__dirname, './dist'),
-	flatten: true,
-}]),
-```
