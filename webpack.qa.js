@@ -11,7 +11,6 @@ module.exports = merge(common, {
         path: path.join(__dirname, './qa-dist'),
     },
     devServer: {
-        disableHostCheck: true,
         port: PERFORMER_PORT,
         open: true,
     },
