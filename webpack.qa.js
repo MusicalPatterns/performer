@@ -6,10 +6,6 @@ const { PERFORMER_PORT } = require('@musical-patterns/utilities')
 
 module.exports = merge(common, {
     entry: './test/qa/performer.js',
-    output: {
-        libraryTarget: 'var',
-        path: path.join(__dirname, './qa-dist'),
-    },
     devServer: {
         port: PERFORMER_PORT,
         open: true,
