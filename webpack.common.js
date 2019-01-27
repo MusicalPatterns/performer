@@ -9,7 +9,7 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 loader: 'awesome-typescript-loader',
-                exclude: /test/,
+                exclude: /test\//,
             },
             {
                 test: /\.mp3/,
