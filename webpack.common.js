@@ -1,6 +1,4 @@
 module.exports = {
-    entry: './src/index.ts',
-    mode: 'development',
     module: {
         rules: [
             {
@@ -9,7 +7,7 @@ module.exports = {
                 options: { inline: true },
             },
             {
-                test: /\.ts$/,
+                test: /\.tsx?$/,
                 loader: 'awesome-typescript-loader',
                 exclude: /test/,
             },
@@ -20,11 +18,6 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: [ '.ts', '.js', '.json' ],
-    },
-    output: {
-        filename: 'index.js',
-        library: 'performer',
-        libraryTarget: 'umd',
+        extensions: [ '.ts', '.js', '.json', '.mp3' ],
     },
 }

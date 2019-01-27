@@ -2,10 +2,10 @@ Makefile.performer:
 	@:
 
 build:
-	@musical-patterns-cli build "webpack --config webpack.library.js"
+	@musical-patterns-cli build "webpack --config webpack.publish.js"
 
 build-dev:
-	@webpack --config webpack.dev.js
+	@webpack --config webpack.local.js
 
 start:
-	@webpack-dev-server --config webpack.browser.js
+	@webpack-dev-server --config webpack.qa.js
