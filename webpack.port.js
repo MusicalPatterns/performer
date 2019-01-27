@@ -1,5 +1,5 @@
 const { PERFORMER_PORT: port  } = require('@musical-patterns/utilities')
 
-export {
+module.exports = {
     port,
 }
