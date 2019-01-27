@@ -1,12 +1,12 @@
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { PERFORMER_PORT } = require('@musical-patterns/utilities')
+const { port } = require('./webpack.port')
 
 module.exports = {
     entry: './src/start.ts',
     devServer: {
         open: true,
-        port: PERFORMER_PORT,
+        port,
     },
     plugins: [
         new FaviconsWebpackPlugin('./node_modules/@musical-patterns/cli/assets/favicon.png'),
