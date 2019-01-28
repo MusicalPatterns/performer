@@ -1,15 +1,13 @@
-module.exports = {
+const common = require('./webpack.common')
+const merge = require('webpack-merge')
+
+module.exports = merge.strategy({ 'module.rules': 'prepend' })(common, {
     module: {
         rules: [
             {
-                test: /\.worker\.ts$/,
+                test: /\.ts\.worker$/,
                 loader: 'worker-loader',
                 options: { inline: true },
-            },
-            {
-                test: /\.tsx?$/,
-                loader: 'awesome-typescript-loader',
-                exclude: /test\//,
             },
             {
                 test: /\.mp3/,
@@ -18,6 +16,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: [ '.ts', '.js', '.json', '.mp3' ],
+        extensions: [ '.js', '.json', '.mp3' ],
     },
-}
+})
+
