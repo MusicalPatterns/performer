@@ -1,4 +1,4 @@
-// tslint:disable:no-type-definitions-outside-types-modules variable-name no-unsafe-any
+// tslint:disable:no-type-definitions-outside-types-modules variable-name
 
 import { logMessageToScreen } from '@musical-patterns/utilities'
 

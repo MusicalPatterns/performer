@@ -13,7 +13,6 @@ const setupClock: VoidFunction =
         // @ts-ignore
         // tslint:disable-next-line
         const Clock = require('./clock.worker')
-        // tslint:disable-next-line:no-unsafe-any
         const clock: Worker = new Clock()
         clock.onmessage = onClockMessage
 

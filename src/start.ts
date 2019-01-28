@@ -4,7 +4,6 @@ import { enableImmersiveAudio, setTime, setupPerformer, togglePaused } from './i
 
 const setupQa: () => Promise<void> =
     async (): Promise<void> => {
-        // tslint:disable-next-line:no-unsafe-any
         await setupPerformer({ threadSpecs: snapshot })
         const toggleImmersiveAudioHandler: VoidFunction = enableImmersiveAudio()
 

@@ -35,7 +35,6 @@ const buildSourceNode: (parameters: BuildSourceNodeParameters) => SourceNode =
         const { timbreSetterKey, immersiveKey, standardKey, pitchKey } = sourceNodeBuildingKeys
 
         // @ts-ignore
-        // tslint:disable-next-line:no-unsafe-any
         const sourceNode: SourceNode = immersiveAudio ? webVr[ immersiveKey ]() : context[ standardKey ]()
         sourceNode.setBuffer = (buffer: Timbre): void => {
             (sourceNode as AudioBufferSourceNode).buffer = buffer as AudioBuffer

@@ -66,9 +66,9 @@ const sineSpec: PeriodicWaveSpec = {
 
 const getPeriodicWaveSpec: (oscillatorName: OscillatorName) => PeriodicWaveSpec =
     (oscillatorName: OscillatorName): PeriodicWaveSpec => {
+        const oscillatorNameToPeriodicWaveNameMapElement: string = oscillatorNameToPeriodicWaveNameMap[ oscillatorName ]
         const periodicWaveSpec: Maybe<PeriodicWaveSpec> =
-            // tslint:disable-next-line:no-unsafe-any
-            periodicWaves[ oscillatorNameToPeriodicWaveNameMap[ oscillatorName ] ] as PeriodicWaveSpec
+            periodicWaves[ oscillatorNameToPeriodicWaveNameMapElement ] as PeriodicWaveSpec
 
         if (!periodicWaveSpec) {
             // tslint:disable-next-line:no
