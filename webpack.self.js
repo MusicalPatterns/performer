@@ -1,7 +1,4 @@
-const common = require('./webpack.common')
-const merge = require('webpack-merge')
-
-module.exports = merge.strategy({ 'module.rules': 'prepend' })(common, {
+module.exports = {
     module: {
         rules: [
             {
@@ -16,7 +13,6 @@ module.exports = merge.strategy({ 'module.rules': 'prepend' })(common, {
         ],
     },
     resolve: {
-        extensions: [ '.js', '.json', '.mp3' ],
+        extensions: [ '.js', '.mp3' ],
     },
-})
-
+}
