@@ -1,4 +1,4 @@
-Makefile.performer:
+Makefile.self:
 	@:
 
 build:
