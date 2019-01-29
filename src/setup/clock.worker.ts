@@ -1,6 +1,6 @@
 // tslint:disable
 // @ts-ignore
-import requestAnimationFrame from 'raf'
+import * as requestAnimationFrame from 'raf'
 import { TIME_STEP } from './constants'
 
 const worker: Worker = self as any
