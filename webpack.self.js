@@ -13,6 +13,6 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: [ '.js', '.mp3' ],
+        extensions: [ '.mp3' ],
     },
 }
