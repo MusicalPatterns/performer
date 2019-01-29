@@ -31,19 +31,9 @@ interface State {
     [ StateKeys.IMMERSIVE_AUDIO ]: boolean,
 }
 
-type StateValueTypes =
-    boolean |
-    Time |
-    Thread[] |
-    ThreadSpec[] |
-    Maybe<Worker> |
-    Maybe<Vrb> |
-    Maybe<Coordinate> |
-    Maybe<SampleDatas>
+type ImmutableState = TypedMap<State>
 
-type ImmutableState = TypedMap<StateValueTypes, State>
-
-const initialState: ImmutableState = typedMap<StateValueTypes, State>({
+const initialState: ImmutableState = typedMap<State>({
     [ StateKeys.CLOCK ]: undefined,
     [ StateKeys.PAUSED ]: true,
     [ StateKeys.THREADS ]: [],
