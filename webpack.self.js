@@ -2,7 +2,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.ts\.worker$/,
+                test: /\.worker\.ts$/,
                 loader: 'worker-loader',
                 options: { inline: true },
             },
