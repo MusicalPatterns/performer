@@ -1,15 +1,12 @@
 {
   "name": "@musical-patterns/performer",
-  "version": "1.0.171",
+  "version": "1.0.172",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/MusicalPatterns/performer.git"
-  },
-  "resolutions": {
-    "terser": "3.14.1"
   },
   "devDependencies": {
     "@mohayonao/wave-tables": "^0.2.0",
