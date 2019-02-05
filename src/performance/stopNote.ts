@@ -7,7 +7,7 @@ const stopSourceNode: (sourceNode: SourceNode) => void =
             sourceNode.stop()
             sourceNode.disconnect()
         }
-            // tslint:disable-next-line:no-empty
+            // tslint:disable-next-line no-empty
         catch (e) {}
     }
 

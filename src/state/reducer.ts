@@ -3,7 +3,7 @@ import { Action, ActionType } from './actions'
 import { ImmutableState, initialState, StateKeys } from './state'
 
 const reducer: Reducer<ImmutableState, Action> =
-    // tslint:disable-next-line:cyclomatic-complexity
+    // tslint:disable-next-line cyclomatic-complexity
     (state: ImmutableState = initialState, action: Action): ImmutableState => {
         switch (action.type) {
             case ActionType.SET_CLOCK: {

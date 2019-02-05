@@ -1,4 +1,4 @@
-// tslint:disable:no-type-definitions-outside-types-modules
+// tslint:disable no-type-definitions-outside-types-modules
 
 import { Coordinate, Time } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'

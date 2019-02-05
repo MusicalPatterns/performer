@@ -1,7 +1,7 @@
 import { context } from '../../performance'
 import { ModulePath, SampleName } from './types'
 
-// tslint:disable:no-any
+// tslint:disable no-any
 const samples: { [x in SampleName]: AudioBuffer } = {} as any
 
 const getBuffer: (sampleName: SampleName) => Promise<AudioBuffer> =

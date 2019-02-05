@@ -71,7 +71,7 @@ const getPeriodicWaveSpec: (oscillatorName: OscillatorName) => PeriodicWaveSpec 
             periodicWaves[ oscillatorNameToPeriodicWaveNameMapElement ] as PeriodicWaveSpec
 
         if (!periodicWaveSpec) {
-            // tslint:disable-next-line:no
+            // tslint:disable-next-line no
             logMessageToConsole(`No periodic wave spec was found for oscillator name ${oscillatorName}. \
 Defaulting to sine. Please try updating your '@musical-patterns' packages.`)
 

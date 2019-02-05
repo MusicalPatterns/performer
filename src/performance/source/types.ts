@@ -10,7 +10,7 @@ interface BuildSourceNodeParameters {
     voiceType: VoiceType,
     webVr?: Vrb,
 
-    // tslint:disable-next-line:no-any
+    // tslint:disable-next-line no-any
     [ index: string ]: any,
 }
 

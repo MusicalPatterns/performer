@@ -1,3 +1,3 @@
-// tslint:disable:no-reaching-imports
+// tslint:disable no-reaching-imports
 
 export { update } from './update'

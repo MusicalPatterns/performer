@@ -43,7 +43,7 @@ const buildSourceNode: (parameters: BuildSourceNodeParameters) => SourceNode =
         sourceNode[ timbreSetterKey ](timbre)
 
         const pitchObject: PitchObject = sourceNode[ pitchKey ]
-        // tslint:disable-next-line:no-any
+        // tslint:disable-next-line no-any
         pitchObject.value = parameters[ pitchKey ] as any as number || 1
 
         return sourceNode

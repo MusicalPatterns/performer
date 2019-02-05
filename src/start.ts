@@ -9,7 +9,7 @@ const setupQa: () => Promise<void> =
 
         const setTimeButton: HTMLElement = document.createElement('button')
         setTimeButton.innerText = 'Set Time (to 14800)'
-        // tslint:disable-next-line:no-magic-numbers
+        // tslint:disable-next-line no-magic-numbers
         setTimeButton.addEventListener('click', async () => setTime(to.Time(14800)))
         document.body.appendChild(setTimeButton)
 

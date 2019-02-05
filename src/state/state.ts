@@ -1,4 +1,4 @@
-// tslint:disable:no-type-definitions-outside-types-modules
+// tslint:disable no-type-definitions-outside-types-modules
 
 import { BEGINNING, Coordinate, Maybe, Time, typedMap, TypedMap } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
