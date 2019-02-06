@@ -6,7 +6,7 @@ const applyHomePosition: (note: Note, homePosition: Coordinate) => Note =
         ({
             ...note,
             position: note.position.map((coordinateElement: CoordinateElement, index: number) =>
-                apply.Offset(coordinateElement, to.Offset(from.CoordinateElement(homePosition[ index ])))),
+                apply.Translation(coordinateElement, to.Translation(from.CoordinateElement(homePosition[ index ])))),
         })
 
 export {

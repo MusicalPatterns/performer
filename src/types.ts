@@ -1,11 +1,11 @@
-import { Index, Time } from '@musical-patterns/utilities'
+import { Ordinal, Time } from '@musical-patterns/utilities'
 import { VoiceSpec } from './construction'
 import { NoteToPlay, StartNote, StopNote } from './performance'
 
 interface Thread {
     nextEnd: Time,
     nextStart: Time,
-    noteIndex: Index,
+    noteIndex: Ordinal,
     notes: Note[],
     voice: Voice,
 }

@@ -10,24 +10,24 @@ const startThreadNote: (thread: Thread, note: Note) => void =
             position: note.position || to.Coordinate([ 0, 0, 0 ]),
         })
 
-        thread.nextEnd = apply.Offset(
+        thread.nextEnd = apply.Translation(
             thread.nextStart,
-            to.Offset(from.Time(note.sustain)),
+            to.Translation(from.Time(note.sustain)),
         )
-        thread.nextStart = apply.Offset(
+        thread.nextStart = apply.Translation(
             thread.nextStart,
-            to.Offset(from.Time(note.duration)),
+            to.Translation(from.Time(note.duration)),
         )
 
-        thread.noteIndex = to.Index(from.Index(thread.noteIndex) + 1)
-        if (from.Index(thread.noteIndex) === thread.notes.length) {
-            thread.noteIndex = to.Index(0)
+        thread.noteIndex = to.Ordinal(from.Ordinal(thread.noteIndex) + 1)
+        if (from.Ordinal(thread.noteIndex) === thread.notes.length) {
+            thread.noteIndex = to.Ordinal(0)
         }
     }
 
 const update: (thread: Thread, time: Time) => void =
     (thread: Thread, time: Time): void => {
-        const note: Note = apply.Index(thread.notes, thread.noteIndex)
+        const note: Note = apply.Ordinal(thread.notes, thread.noteIndex)
 
         if (time > thread.nextEnd) {
             thread.voice.stopNote()

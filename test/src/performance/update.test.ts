@@ -23,7 +23,7 @@ describe('update', () => {
         const thread: Thread = {
             nextEnd: to.Time(0),
             nextStart: to.Time(0),
-            noteIndex: to.Index(0),
+            noteIndex: to.Ordinal(0),
             notes: [ testNote, nextTestNote ],
             voice: {
                 startNote: noop,
@@ -38,7 +38,7 @@ describe('update', () => {
         expect(thread.nextEnd)
             .toBe(to.Time(1))
         expect(thread.noteIndex)
-            .toBe(to.Index(1))
+            .toBe(to.Ordinal(1))
     })
 
     describe('next note', () => {
@@ -46,7 +46,7 @@ describe('update', () => {
             const thread: Thread = {
                 nextEnd: to.Time(0),
                 nextStart: to.Time(0),
-                noteIndex: to.Index(0),
+                noteIndex: to.Ordinal(0),
                 notes: [
                     {
                         duration: to.Time(5),
@@ -72,14 +72,14 @@ describe('update', () => {
             update(thread, to.Time(0.001))
 
             expect(thread.noteIndex)
-                .toBe(to.Index(1))
+                .toBe(to.Ordinal(1))
         })
 
         it('wraps around to the beginning if it has reached the last note', () => {
             const thread: Thread = {
                 nextEnd: to.Time(1),
                 nextStart: to.Time(5),
-                noteIndex: to.Index(1),
+                noteIndex: to.Ordinal(1),
                 notes: [
                     testNote,
                     nextTestNote,
@@ -93,7 +93,7 @@ describe('update', () => {
             update(thread, to.Time(5.001))
 
             expect(thread.noteIndex)
-                .toBe(to.Index(0))
+                .toBe(to.Ordinal(0))
         })
     })
 
@@ -103,7 +103,7 @@ describe('update', () => {
             const thread: Thread = {
                 nextEnd: to.Time(0),
                 nextStart: to.Time(8),
-                noteIndex: to.Index(0),
+                noteIndex: to.Ordinal(0),
                 notes: [ testNote ],
                 voice: {
                     startNote,
@@ -122,7 +122,7 @@ describe('update', () => {
             const thread: Thread = {
                 nextEnd: to.Time(0),
                 nextStart: to.Time(8),
-                noteIndex: to.Index(0),
+                noteIndex: to.Ordinal(0),
                 notes: [ testNote ],
                 voice: {
                     startNote,
@@ -142,7 +142,7 @@ describe('update', () => {
             const thread: Thread = {
                 nextEnd: to.Time(8),
                 nextStart: to.Time(0),
-                noteIndex: to.Index(0),
+                noteIndex: to.Ordinal(0),
                 notes: [ testNote ],
                 voice: {
                     startNote: noop,
@@ -161,7 +161,7 @@ describe('update', () => {
             const thread: Thread = {
                 nextEnd: to.Time(8),
                 nextStart: to.Time(0),
-                noteIndex: to.Index(0),
+                noteIndex: to.Ordinal(0),
                 notes: [ testNote ],
                 voice: {
                     startNote: noop,

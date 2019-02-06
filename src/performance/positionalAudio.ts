@@ -6,9 +6,9 @@ const setPosition: (positionNode: Object3D, position: Coordinate) => void =
     (positionNode: Object3D, position: Coordinate): void => {
         const rawPosition: number[] = from.Coordinate(position)
         positionNode.position.set(
-            apply.Index(rawPosition, X_AXIS),
-            apply.Index(rawPosition, Y_AXIS),
-            apply.Index(rawPosition, Z_AXIS),
+            apply.Ordinal(rawPosition, X_AXIS),
+            apply.Ordinal(rawPosition, Y_AXIS),
+            apply.Ordinal(rawPosition, Z_AXIS),
         )
     }
 

@@ -15,7 +15,7 @@ describe('construct threads', () => {
         expect(thread.nextStart)
             .toBe(to.Time(0))
         expect(thread.noteIndex)
-            .toBe(to.Index(0))
+            .toBe(to.Ordinal(0))
         expect(thread.notes)
             .toEqual([])
 
@@ -54,7 +54,7 @@ describe('construct threads', () => {
             expect(thread.nextStart)
                 .toBe(to.Time(5))
             expect(thread.noteIndex)
-                .toBe(to.Index(1))
+                .toBe(to.Ordinal(1))
 
             done()
         })
@@ -90,7 +90,7 @@ describe('construct threads', () => {
             expect(thread.nextStart)
                 .toBe(to.Time(16))
             expect(thread.noteIndex)
-                .toBe(to.Index(0))
+                .toBe(to.Ordinal(0))
 
             done()
         })
