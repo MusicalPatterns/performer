@@ -10,7 +10,7 @@ const calculatePlaybackRate: (sampleData: SampleData, frequency: Frequency) => S
 
         const pitch: Scalar = to.Scalar(apply.Scalar(
             from.Frequency(frequency),
-            to.Scalar(reciprocal(from.Frequency(STANDARDIZED_SAMPLE_PITCH_OF_C5))),
+            to.Scalar(from.Frequency(reciprocal(STANDARDIZED_SAMPLE_PITCH_OF_C5))),
         ))
         const samplePitchAdjustment: Scalar =
             centsToPitch(sampleData.centsAdjustment || to.Cents(0))
