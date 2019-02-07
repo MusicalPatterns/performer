@@ -1,4 +1,4 @@
-import { apply, from, Time, to } from '@musical-patterns/utilities'
+import { apply, from, INITIAL, NEXT, Time, to } from '@musical-patterns/utilities'
 import { Note, Thread } from '../types'
 
 const startThreadNote: (thread: Thread, note: Note) => void =
@@ -19,9 +19,9 @@ const startThreadNote: (thread: Thread, note: Note) => void =
             to.Translation(from.Time(note.duration)),
         )
 
-        thread.noteIndex = apply.Translation(thread.noteIndex, to.Translation(1))
+        thread.noteIndex = apply.Translation(thread.noteIndex, NEXT)
         if (from.Ordinal(thread.noteIndex) === thread.notes.length) {
-            thread.noteIndex = to.Ordinal(0)
+            thread.noteIndex = INITIAL
         }
     }
 
