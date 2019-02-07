@@ -2,6 +2,7 @@
 
 import {
     Frequency,
+    negative,
     SCIENTIFIC_PITCHES,
     ScientificPitchNoteName,
     ScientificPitchOctaveNumber,
@@ -10,10 +11,10 @@ import {
 } from '@musical-patterns/utilities'
 
 const UP_TWO_SEMITONES: Semitones = to.Semitones(2)
-const DOWN_ONE_SEMITONE: Semitones = to.Semitones(-1)
+const DOWN_ONE_SEMITONE: Semitones = to.Semitones(negative(1))
 const UP_ONE_OCTAVE_IN_SEMITONES: Semitones = to.Semitones(12)
 const UP_TWO_OCTAVES_IN_SEMITONES: Semitones = to.Semitones(24)
-const DOWN_TWO_OCTAVES_IN_SEMITONES: Semitones = to.Semitones(-24)
+const DOWN_TWO_OCTAVES_IN_SEMITONES: Semitones = to.Semitones(negative(24))
 
 const STANDARDIZED_SAMPLE_PITCH_OF_C5: Frequency =
     SCIENTIFIC_PITCHES[ ScientificPitchNoteName.C ][ ScientificPitchOctaveNumber._5 ]

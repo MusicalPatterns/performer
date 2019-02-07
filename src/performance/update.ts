@@ -19,7 +19,7 @@ const startThreadNote: (thread: Thread, note: Note) => void =
             to.Translation(from.Time(note.duration)),
         )
 
-        thread.noteIndex = to.Ordinal(from.Ordinal(thread.noteIndex) + 1)
+        thread.noteIndex = apply.Translation(thread.noteIndex, to.Translation(1))
         if (from.Ordinal(thread.noteIndex) === thread.notes.length) {
             thread.noteIndex = to.Ordinal(0)
         }
