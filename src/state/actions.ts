@@ -1,6 +1,6 @@
 // tslint:disable no-type-definitions-outside-types-modules
 
-import { Coordinate, Time } from '@musical-patterns/utilities'
+import { Coordinate, Ms } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
 import { SampleDatas } from '../construction'
 import { Thread, ThreadSpec } from '../types'
@@ -10,7 +10,7 @@ enum ActionType {
     SET_THREADS = 'SET_THREADS',
     SET_THREAD_SPECS = 'SET_THREAD_SPECS',
     TOGGLE_PAUSED = 'TOGGLE_PAUSED',
-    SET_TIME = 'SET_TIME',
+    SET_TIME_POSITION = 'SET_TIME_POSITION',
     SET_IMMERSIVE_AUDIO_READY = 'SET_IMMERSIVE_AUDIO_READY',
     SET_PAUSED = 'SET_PAUSED',
     SET_WEB_VR = 'SET_WEB_VR',
@@ -38,9 +38,9 @@ interface TogglePaused {
     type: ActionType.TOGGLE_PAUSED,
 }
 
-interface SetTime {
-    data: Time,
-    type: ActionType.SET_TIME,
+interface SetTimePosition {
+    data: Ms,
+    type: ActionType.SET_TIME_POSITION,
 }
 
 interface SetImmersiveAudioReady {
@@ -76,7 +76,7 @@ type Action =
     SetThreads |
     SetThreadSpecs |
     TogglePaused |
-    SetTime |
+    SetTimePosition |
     SetImmersiveAudioReady |
     SetPaused |
     SetWebVr |

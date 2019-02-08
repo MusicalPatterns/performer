@@ -4,25 +4,25 @@ import Spy = jasmine.Spy
 
 describe('update', () => {
     const testNote: Note = {
-        duration: to.Time(5),
-        frequency: to.Frequency(1),
+        duration: to.Ms(5),
+        frequency: to.Hz(1),
         gain: to.Scalar(1),
         position: to.Coordinate([ 1 ]),
-        sustain: to.Time(1),
+        sustain: to.Ms(1),
     }
 
     const nextTestNote: Note = {
-        duration: to.Time(3),
-        frequency: to.Frequency(1),
+        duration: to.Ms(3),
+        frequency: to.Hz(1),
         gain: to.Scalar(1),
         position: to.Coordinate([ 1 ]),
-        sustain: to.Time(1),
+        sustain: to.Ms(1),
     }
 
     it('uses duration and sustain to determine the next note end and start', () => {
         const thread: Thread = {
-            nextEnd: to.Time(0),
-            nextStart: to.Time(0),
+            nextEnd: to.Ms(0),
+            nextStart: to.Ms(0),
             noteIndex: to.Ordinal(0),
             notes: [ testNote, nextTestNote ],
             voice: {
@@ -31,12 +31,12 @@ describe('update', () => {
             },
         }
 
-        update(thread, to.Time(0.001))
+        update(thread, to.Ms(0.001))
 
         expect(thread.nextStart)
-            .toBe(to.Time(5))
+            .toBe(to.Ms(5))
         expect(thread.nextEnd)
-            .toBe(to.Time(1))
+            .toBe(to.Ms(1))
         expect(thread.noteIndex)
             .toBe(to.Ordinal(1))
     })
@@ -44,23 +44,23 @@ describe('update', () => {
     describe('next note', () => {
         it('sets note index to the next note', () => {
             const thread: Thread = {
-                nextEnd: to.Time(0),
-                nextStart: to.Time(0),
+                nextEnd: to.Ms(0),
+                nextStart: to.Ms(0),
                 noteIndex: to.Ordinal(0),
                 notes: [
                     {
-                        duration: to.Time(5),
-                        frequency: to.Frequency(1),
+                        duration: to.Ms(5),
+                        frequency: to.Hz(1),
                         gain: to.Scalar(1),
                         position: to.Coordinate([ 1 ]),
-                        sustain: to.Time(1),
+                        sustain: to.Ms(1),
                     },
                     {
-                        duration: to.Time(3),
-                        frequency: to.Frequency(1),
+                        duration: to.Ms(3),
+                        frequency: to.Hz(1),
                         gain: to.Scalar(1),
                         position: to.Coordinate([ 1 ]),
-                        sustain: to.Time(1),
+                        sustain: to.Ms(1),
                     },
                 ],
                 voice: {
@@ -69,7 +69,7 @@ describe('update', () => {
                 },
             }
 
-            update(thread, to.Time(0.001))
+            update(thread, to.Ms(0.001))
 
             expect(thread.noteIndex)
                 .toBe(to.Ordinal(1))
@@ -77,8 +77,8 @@ describe('update', () => {
 
         it('wraps around to the beginning if it has reached the last note', () => {
             const thread: Thread = {
-                nextEnd: to.Time(1),
-                nextStart: to.Time(5),
+                nextEnd: to.Ms(1),
+                nextStart: to.Ms(5),
                 noteIndex: to.Ordinal(1),
                 notes: [
                     testNote,
@@ -90,7 +90,7 @@ describe('update', () => {
                 },
             }
 
-            update(thread, to.Time(5.001))
+            update(thread, to.Ms(5.001))
 
             expect(thread.noteIndex)
                 .toBe(to.Ordinal(0))
@@ -101,8 +101,8 @@ describe('update', () => {
         it('calls the voice\'s start note method when the next start is reached', () => {
             const startNote: Spy = jasmine.createSpy()
             const thread: Thread = {
-                nextEnd: to.Time(0),
-                nextStart: to.Time(8),
+                nextEnd: to.Ms(0),
+                nextStart: to.Ms(8),
                 noteIndex: to.Ordinal(0),
                 notes: [ testNote ],
                 voice: {
@@ -111,7 +111,7 @@ describe('update', () => {
                 },
             }
 
-            update(thread, to.Time(8.001))
+            update(thread, to.Ms(8.001))
 
             expect(startNote)
                 .toHaveBeenCalled()
@@ -120,8 +120,8 @@ describe('update', () => {
         it('does not call the voice\'s start note method when the next start is not yet reached', () => {
             const startNote: Spy = jasmine.createSpy()
             const thread: Thread = {
-                nextEnd: to.Time(0),
-                nextStart: to.Time(8),
+                nextEnd: to.Ms(0),
+                nextStart: to.Ms(8),
                 noteIndex: to.Ordinal(0),
                 notes: [ testNote ],
                 voice: {
@@ -130,7 +130,7 @@ describe('update', () => {
                 },
             }
 
-            update(thread, to.Time(7))
+            update(thread, to.Ms(7))
 
             expect(startNote)
                 .not
@@ -140,8 +140,8 @@ describe('update', () => {
         it('calls the voice\'s stop note method when the next end is reached', () => {
             const stopNote: Spy = jasmine.createSpy()
             const thread: Thread = {
-                nextEnd: to.Time(8),
-                nextStart: to.Time(0),
+                nextEnd: to.Ms(8),
+                nextStart: to.Ms(0),
                 noteIndex: to.Ordinal(0),
                 notes: [ testNote ],
                 voice: {
@@ -150,7 +150,7 @@ describe('update', () => {
                 },
             }
 
-            update(thread, to.Time(8.001))
+            update(thread, to.Ms(8.001))
 
             expect(stopNote)
                 .toHaveBeenCalled()
@@ -159,8 +159,8 @@ describe('update', () => {
         it('does not call the voice\'s stop note method when the next end is not yet reached', () => {
             const stopNote: Spy = jasmine.createSpy()
             const thread: Thread = {
-                nextEnd: to.Time(8),
-                nextStart: to.Time(0),
+                nextEnd: to.Ms(8),
+                nextStart: to.Ms(0),
                 noteIndex: to.Ordinal(0),
                 notes: [ testNote ],
                 voice: {
@@ -169,7 +169,7 @@ describe('update', () => {
                 },
             }
 
-            update(thread, to.Time(7))
+            update(thread, to.Ms(7))
 
             expect(stopNote)
                 .not

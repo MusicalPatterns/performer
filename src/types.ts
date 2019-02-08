@@ -1,10 +1,10 @@
-import { Ordinal, Time } from '@musical-patterns/utilities'
+import { Ms, Ordinal } from '@musical-patterns/utilities'
 import { VoiceSpec } from './construction'
 import { NoteToPlay, StartNote, StopNote } from './performance'
 
 interface Thread {
-    nextEnd: Time,
-    nextStart: Time,
+    nextEnd: Ms,
+    nextStart: Ms,
     noteIndex: Ordinal,
     notes: Note[],
     voice: Voice,
@@ -16,8 +16,8 @@ interface ThreadSpec {
 }
 
 interface Note extends NoteToPlay {
-    duration: Time,
-    sustain: Time,
+    duration: Ms,
+    sustain: Ms,
 }
 
 interface Voice {

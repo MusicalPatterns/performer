@@ -1,7 +1,7 @@
 // tslint:disable no-magic-numbers
 
 import {
-    Frequency,
+    Hz,
     negative,
     SCIENTIFIC_PITCHES,
     ScientificPitchNoteName,
@@ -16,7 +16,7 @@ const UP_ONE_OCTAVE_IN_SEMITONES: Semitones = to.Semitones(12)
 const UP_TWO_OCTAVES_IN_SEMITONES: Semitones = to.Semitones(24)
 const DOWN_TWO_OCTAVES_IN_SEMITONES: Semitones = to.Semitones(negative(24))
 
-const STANDARDIZED_SAMPLE_PITCH_OF_C5: Frequency =
+const STANDARDIZED_SAMPLE_PITCH_OF_C5: Hz =
     SCIENTIFIC_PITCHES[ ScientificPitchNoteName.C ][ ScientificPitchOctaveNumber._5 ]
 
 export {

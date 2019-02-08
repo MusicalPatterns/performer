@@ -1,4 +1,4 @@
-import { Time } from '@musical-patterns/utilities'
+import { Ms } from '@musical-patterns/utilities'
 import { BatchAction, batchActions } from 'redux-batched-actions'
 import { constructThreads } from '../construction'
 import { ActionType, ImmutableState, StateKeys, store } from '../state'
@@ -10,8 +10,8 @@ const setThreadSpecs: (threadSpecs: ThreadSpec[]) => Promise<void> =
         stopExistingThreads()
 
         const state: ImmutableState = store.getState() as ImmutableState
-        const time: Time = state.get(StateKeys.TIME)
-        const threads: Thread[] = await constructThreads(threadSpecs, time)
+        const timePosition: Ms = state.get(StateKeys.TIME_POSITION)
+        const threads: Thread[] = await constructThreads(threadSpecs, timePosition)
 
         const batchedAction: BatchAction = batchActions([
             { type: ActionType.SET_THREAD_SPECS, data: threadSpecs },

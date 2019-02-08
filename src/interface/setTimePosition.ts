@@ -1,16 +1,16 @@
-import { Time } from '@musical-patterns/utilities'
+import { Ms } from '@musical-patterns/utilities'
 import { batchActions } from 'redux-batched-actions'
 import { Action, store } from '../state'
 import { buildSetTimeActions, stopExistingThreads } from './helpers'
 
-const setTime: (time: Time) => Promise<void> =
-    async (time: Time): Promise<void> => {
+const setTimePosition: (timePosition: Ms) => Promise<void> =
+    async (timePosition: Ms): Promise<void> => {
         stopExistingThreads()
 
-        const setTimeActions: Action[] = await buildSetTimeActions(time)
+        const setTimeActions: Action[] = await buildSetTimeActions(timePosition)
         store.dispatch(batchActions(setTimeActions))
     }
 
 export {
-    setTime,
+    setTimePosition,
 }

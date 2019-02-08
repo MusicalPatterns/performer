@@ -1,4 +1,4 @@
-import { Time, to } from '@musical-patterns/utilities'
+import { Ms, to } from '@musical-patterns/utilities'
 import { VoiceType } from '../performance'
 import { Note, Thread, ThreadSpec } from '../types'
 import { calculateInitialNote } from './initialNote'
@@ -12,8 +12,8 @@ const defaultVoiceSpec: VoiceSpec = {
     voiceType: VoiceType.OSCILLATOR,
 }
 
-const constructThreads: (threadSpecs: ThreadSpec[], startTime?: Time) => Promise<Thread[]> =
-    async (threadSpecs: ThreadSpec[], startTime: Time = to.Time(0)): Promise<Thread[]> =>
+const constructThreads: (threadSpecs: ThreadSpec[], startTime?: Ms) => Promise<Thread[]> =
+    async (threadSpecs: ThreadSpec[], startTime: Ms = to.Ms(0)): Promise<Thread[]> =>
         Promise.all(threadSpecs.map(async (threadSpec: ThreadSpec): Promise<Thread> => {
             const { notes = [], voiceSpec = defaultVoiceSpec } = threadSpec
 

@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/performer",
-  "version": "1.0.180",
+  "version": "1.0.181",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
@@ -10,9 +10,9 @@
   },
   "devDependencies": {
     "@mohayonao/wave-tables": "^0.2.0",
-    "@musical-patterns/cli": "^1.0.428",
-    "@musical-patterns/pattern-performer-qa": "^1.0.75",
-    "@musical-patterns/utilities": "^1.0.236",
+    "@musical-patterns/cli": "^1.0.431",
+    "@musical-patterns/pattern-performer-qa": "^1.0.78",
+    "@musical-patterns/utilities": "^1.0.238",
     "@types/three": "^0.93.19",
     "@types/webpack-env": "^1.13.7",
     "raf": "^3.4.0",

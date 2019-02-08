@@ -1,22 +1,20 @@
-import { apply, from, INITIAL, NEXT, Time, to } from '@musical-patterns/utilities'
+import { apply, from, INITIAL, Ms, NEXT, to } from '@musical-patterns/utilities'
 import { Note, Thread } from '../types'
 
 const startThreadNote: (thread: Thread, note: Note) => void =
     (thread: Thread, note: Note): void => {
         thread.voice.startNote({
-            frequency: note.frequency,
-            gain: note.gain,
-            playbackRate: note.playbackRate,
+            ...note,
             position: note.position || to.Coordinate([ 0, 0, 0 ]),
         })
 
         thread.nextEnd = apply.Translation(
             thread.nextStart,
-            to.Translation(from.Time(note.sustain)),
+            to.Translation(from.Ms(note.sustain)),
         )
         thread.nextStart = apply.Translation(
             thread.nextStart,
-            to.Translation(from.Time(note.duration)),
+            to.Translation(from.Ms(note.duration)),
         )
 
         thread.noteIndex = apply.Translation(thread.noteIndex, NEXT)
@@ -25,15 +23,15 @@ const startThreadNote: (thread: Thread, note: Note) => void =
         }
     }
 
-const update: (thread: Thread, time: Time) => void =
-    (thread: Thread, time: Time): void => {
+const update: (thread: Thread, timePosition: Ms) => void =
+    (thread: Thread, timePosition: Ms): void => {
         const note: Note = apply.Ordinal(thread.notes, thread.noteIndex)
 
-        if (time > thread.nextEnd) {
+        if (timePosition > thread.nextEnd) {
             thread.voice.stopNote()
         }
 
-        if (time > thread.nextStart) {
+        if (timePosition > thread.nextStart) {
             startThreadNote(thread, note)
         }
     }

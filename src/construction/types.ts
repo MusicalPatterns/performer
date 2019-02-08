@@ -1,4 +1,4 @@
-import { Ordinal, Time } from '@musical-patterns/utilities'
+import { Ms, Ordinal } from '@musical-patterns/utilities'
 import { VoiceType } from '../performance'
 import { OscillatorName } from './oscillators'
 import { SampleName } from './samples'
@@ -11,7 +11,7 @@ interface VoiceSpec {
 }
 
 interface InitialNote {
-    nextStart: Time,
+    nextStart: Ms,
     noteIndex: Ordinal,
 }
 

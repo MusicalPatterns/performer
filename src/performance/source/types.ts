@@ -1,9 +1,9 @@
-import { Frequency, Maybe, Scalar } from '@musical-patterns/utilities'
+import { Hz, Maybe, Scalar } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
 import { Timbre, VoiceType } from '../types'
 
 interface BuildSourceNodeParameters {
-    frequency: Frequency,
+    frequency: Hz,
     immersiveAudio: boolean,
     playbackRate?: Maybe<Scalar>,
     timbre: Timbre,

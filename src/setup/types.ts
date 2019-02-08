@@ -1,6 +1,6 @@
-import { Time } from '@musical-patterns/utilities'
+import { Ms } from '@musical-patterns/utilities'
 
-type OnUpdate = (time: Time) => void
+type OnUpdate = (timePosition: Ms) => void
 
 export {
     OnUpdate,

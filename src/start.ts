@@ -1,6 +1,6 @@
 import { snapshot } from '@musical-patterns/pattern-performer-qa'
 import { to } from '@musical-patterns/utilities'
-import { enableImmersiveAudio, setTime, setupPerformer, togglePaused } from './interface'
+import { enableImmersiveAudio, setTimePosition, setupPerformer, togglePaused } from './interface'
 
 const setupQa: () => Promise<void> =
     async (): Promise<void> => {
@@ -8,9 +8,9 @@ const setupQa: () => Promise<void> =
         const toggleImmersiveAudioHandler: VoidFunction = enableImmersiveAudio()
 
         const setTimeButton: HTMLElement = document.createElement('button')
-        setTimeButton.innerText = 'Set Time (to 14800)'
+        setTimeButton.innerText = 'Set Ms (to 14800)'
         // tslint:disable-next-line no-magic-numbers
-        setTimeButton.addEventListener('click', async () => setTime(to.Time(14800)))
+        setTimeButton.addEventListener('click', async () => setTimePosition(to.Ms(14800)))
         document.body.appendChild(setTimeButton)
 
         const stopButton: HTMLElement = document.createElement('button')

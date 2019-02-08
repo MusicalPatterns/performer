@@ -1,4 +1,4 @@
-import { Time, to } from '@musical-patterns/utilities'
+import { Ms, to } from '@musical-patterns/utilities'
 import { constructThreads, Thread, ThreadSpec } from '../../../src/indexForTest'
 
 describe('construct threads', () => {
@@ -11,9 +11,9 @@ describe('construct threads', () => {
         const thread: Thread = threads[ 0 ]
 
         expect(thread.nextEnd)
-            .toBe(to.Time(0))
+            .toBe(to.Ms(0))
         expect(thread.nextStart)
-            .toBe(to.Time(0))
+            .toBe(to.Ms(0))
         expect(thread.noteIndex)
             .toBe(to.Ordinal(0))
         expect(thread.notes)
@@ -28,31 +28,31 @@ describe('construct threads', () => {
                 {
                     notes: [
                         {
-                            duration: to.Time(5),
-                            frequency: to.Frequency(1),
+                            duration: to.Ms(5),
+                            frequency: to.Hz(1),
                             gain: to.Scalar(1),
                             position: to.Coordinate([ 1 ]),
-                            sustain: to.Time(4),
+                            sustain: to.Ms(4),
                         },
                         {
-                            duration: to.Time(3),
-                            frequency: to.Frequency(1),
+                            duration: to.Ms(3),
+                            frequency: to.Hz(1),
                             gain: to.Scalar(1),
                             position: to.Coordinate([ 1 ]),
-                            sustain: to.Time(1),
+                            sustain: to.Ms(1),
                         },
                     ],
                 },
             ]
-            const startTime: Time = to.Time(2)
+            const startTime: Ms = to.Ms(2)
 
             const threads: Thread[] = await constructThreads(threadSpecs, startTime)
             const thread: Thread = threads[ 0 ]
 
             expect(thread.nextEnd)
-                .toBe(to.Time(5))
+                .toBe(to.Ms(5))
             expect(thread.nextStart)
-                .toBe(to.Time(5))
+                .toBe(to.Ms(5))
             expect(thread.noteIndex)
                 .toBe(to.Ordinal(1))
 
@@ -64,31 +64,31 @@ describe('construct threads', () => {
                 {
                     notes: [
                         {
-                            duration: to.Time(5),
-                            frequency: to.Frequency(1),
+                            duration: to.Ms(5),
+                            frequency: to.Hz(1),
                             gain: to.Scalar(1),
                             position: to.Coordinate([ 1 ]),
-                            sustain: to.Time(4),
+                            sustain: to.Ms(4),
                         },
                         {
-                            duration: to.Time(3),
-                            frequency: to.Frequency(1),
+                            duration: to.Ms(3),
+                            frequency: to.Hz(1),
                             gain: to.Scalar(1),
                             position: to.Coordinate([ 1 ]),
-                            sustain: to.Time(1),
+                            sustain: to.Ms(1),
                         },
                     ],
                 },
             ]
-            const startTime: Time = to.Time(14)
+            const startTime: Ms = to.Ms(14)
 
             const threads: Thread[] = await constructThreads(threadSpecs, startTime)
             const thread: Thread = threads[ 0 ]
 
             expect(thread.nextEnd)
-                .toBe(to.Time(16))
+                .toBe(to.Ms(16))
             expect(thread.nextStart)
-                .toBe(to.Time(16))
+                .toBe(to.Ms(16))
             expect(thread.noteIndex)
                 .toBe(to.Ordinal(0))
 
