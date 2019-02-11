@@ -1,6 +1,6 @@
 import { snapshot } from '@musical-patterns/pattern-performer-qa'
 import { to } from '@musical-patterns/utilities'
-import { enableImmersiveAudio, setTimePosition, setupPerformer, togglePaused } from './interface'
+import { enableImmersiveAudio, setTimePosition, setupPerformer, stop, togglePaused } from './interface'
 
 const setupQa: () => Promise<void> =
     async (): Promise<void> => {
