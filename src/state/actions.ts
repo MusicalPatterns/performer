@@ -1,6 +1,6 @@
 // tslint:disable no-type-definitions-outside-types-modules
 
-import { Coordinate, Ms } from '@musical-patterns/utilities'
+import { Coordinate, Meters, Ms, ThreeDimensional } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
 import { SampleDatas } from '../construction'
 import { Thread, ThreadSpec } from '../types'
@@ -58,7 +58,7 @@ interface SetWebVr {
 }
 
 interface SetHomePosition {
-    data: Coordinate,
+    data: Coordinate<Meters, ThreeDimensional>,
     type: ActionType.SET_HOME_POSITION,
 }
 

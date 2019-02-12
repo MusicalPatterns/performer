@@ -8,7 +8,7 @@ const calculateInitialNote: (notes: Note[], startTime: Ms) => InitialNote =
         let nextStart: Ms = to.Ms(0)
         while (nextStart < startTime) {
             const duration: Ms = apply.Ordinal(notes, noteIndex).duration
-            nextStart = apply.Translation(nextStart, to.Translation(from.Ms(duration)))
+            nextStart = apply.Translation(nextStart, to.Translation(duration))
             noteIndex = apply.Translation(noteIndex, NEXT)
 
             if (from.Ordinal(noteIndex) > difference(notes.length, 1)) {

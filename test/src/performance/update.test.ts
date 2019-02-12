@@ -7,7 +7,7 @@ describe('update', () => {
         duration: to.Ms(5),
         frequency: to.Hz(1),
         gain: to.Scalar(1),
-        position: to.Coordinate([ 1 ]),
+        position: [ 1 ].map(to.Meters),
         sustain: to.Ms(1),
     }
 
@@ -15,7 +15,7 @@ describe('update', () => {
         duration: to.Ms(3),
         frequency: to.Hz(1),
         gain: to.Scalar(1),
-        position: to.Coordinate([ 1 ]),
+        position: [ 1 ].map(to.Meters),
         sustain: to.Ms(1),
     }
 
@@ -52,14 +52,14 @@ describe('update', () => {
                         duration: to.Ms(5),
                         frequency: to.Hz(1),
                         gain: to.Scalar(1),
-                        position: to.Coordinate([ 1 ]),
+                        position: [ 1 ].map(to.Meters),
                         sustain: to.Ms(1),
                     },
                     {
                         duration: to.Ms(3),
                         frequency: to.Hz(1),
                         gain: to.Scalar(1),
-                        position: to.Coordinate([ 1 ]),
+                        position: [ 1 ].map(to.Meters),
                         sustain: to.Ms(1),
                     },
                 ],

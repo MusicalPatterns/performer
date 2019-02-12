@@ -8,14 +8,14 @@ const calculatePlaybackRate: (sampleData: SampleData, frequency: Hz) => Scalar =
             return to.Scalar(1)
         }
 
-        const pitch: Scalar = to.Scalar(apply.Scalar(
-            from.Hz(frequency),
-            to.Scalar(from.Hz(reciprocal(STANDARDIZED_SAMPLE_PITCH_OF_C5))),
+        const pitch: Scalar<Hz> = to.Scalar(apply.Scalar(
+            frequency,
+            to.Scalar(reciprocal(STANDARDIZED_SAMPLE_PITCH_OF_C5)),
         ))
         const samplePitchAdjustment: Scalar =
             centsToPitch(sampleData.centsAdjustment || to.Cents(0))
 
-        return apply.Scalar(pitch, samplePitchAdjustment)
+        return apply.Scalar(from.Hz(pitch), samplePitchAdjustment)
     }
 
 export {

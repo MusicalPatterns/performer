@@ -1,17 +1,16 @@
-import { apply, Coordinate, CoordinateElement, from, map, Ordinal, to } from '@musical-patterns/utilities'
+import { apply, Coordinate, from, map, Meters, Ordinal, to } from '@musical-patterns/utilities'
 import { Note } from '../types'
 
-const applyHomePosition: (note: Note, homePosition: Coordinate) => Note =
-    (note: Note, homePosition: Coordinate): Note =>
-        ({
-            ...note,
-            position: map(note.position, (coordinateElement: CoordinateElement, index: Ordinal) =>
-                apply.Translation(
-                    coordinateElement,
-                    to.Translation(from.CoordinateElement(apply.Ordinal(homePosition, index))),
-                ),
+const applyHomePosition: (note: Note, homePosition: Coordinate<Meters>) => Note =
+    (note: Note, homePosition: Coordinate<Meters>): Note => ({
+        ...note,
+        position: map(note.position, (meters: Meters, index: Ordinal) =>
+            apply.Translation(
+                meters,
+                to.Translation(apply.Ordinal(homePosition, index)),
             ),
-        })
+        ),
+    })
 
 export {
     applyHomePosition,

@@ -1,4 +1,4 @@
-import { Coordinate, Hz, Maybe, Scalar } from '@musical-patterns/utilities'
+import { Coordinate, Hz, Maybe, Meters, Scalar, ThreeDimensional } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio } from 'three'
 import { Vrb } from 'vrb'
 import { SourceNode } from './source'
@@ -7,7 +7,7 @@ interface NoteToPlay {
     frequency: Hz,
     gain: Scalar,
     playbackRate?: Scalar,
-    position: Coordinate,
+    position: Coordinate<Meters>,
 }
 
 type StartNote = (note: NoteToPlay) => void
@@ -47,7 +47,7 @@ interface BuildGainNodeParameters {
 }
 
 interface BuildPositionalAudioParameters {
-    position: Coordinate,
+    position: Coordinate<Meters>,
     positionNode: Object3D,
     sourceNode: SourceNode,
     webVr: Vrb,

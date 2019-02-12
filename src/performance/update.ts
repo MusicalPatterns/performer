@@ -5,16 +5,16 @@ const startThreadNote: (thread: Thread, note: Note) => void =
     (thread: Thread, note: Note): void => {
         thread.voice.startNote({
             ...note,
-            position: note.position || to.Coordinate([ 0, 0, 0 ]),
+            position: note.position || [ 0, 0, 0 ].map(to.Meters),
         })
 
         thread.nextEnd = apply.Translation(
             thread.nextStart,
-            to.Translation(from.Ms(note.sustain)),
+            to.Translation(note.sustain),
         )
         thread.nextStart = apply.Translation(
             thread.nextStart,
-            to.Translation(from.Ms(note.duration)),
+            to.Translation(note.duration),
         )
 
         thread.noteIndex = apply.Translation(thread.noteIndex, NEXT)

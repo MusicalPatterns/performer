@@ -11,7 +11,7 @@ import { SampleDatas, SampleName } from './types'
 
 const shiftSemitones: (semitones: Semitones) => Cents =
     (semitones: Semitones): Cents =>
-        apply.Scalar(CENTS_PER_SEMITONE, to.Scalar(from.Semitones(semitones)))
+        apply.Scalar(CENTS_PER_SEMITONE, to.Scalar(semitones))
 
 const buildSampleData: VoidFunction =
     (): void => {

@@ -12,7 +12,7 @@ const onClockMessage: (event: MessageEvent) => void =
 
         const timePosition: Ms = state.get(StateKeys.TIME_POSITION)
         const clockTimeIncrement: Ms = event.data as Ms
-        const newTimePosition: Ms = apply.Translation(timePosition, to.Translation(from.Ms(clockTimeIncrement)))
+        const newTimePosition: Ms = apply.Translation(timePosition, to.Translation(clockTimeIncrement))
         store.dispatch({ type: ActionType.SET_TIME_POSITION, data: newTimePosition })
 
         const threads: Thread[] = state.get(StateKeys.THREADS)
