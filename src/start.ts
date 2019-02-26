@@ -1,3 +1,4 @@
+// @ts-ignore
 import { snapshot } from '@musical-patterns/pattern-performer-qa'
 import { to } from '@musical-patterns/utilities'
 import { enableImmersiveAudio, setTimePosition, setupPerformer, stop, togglePaused } from './interface'
