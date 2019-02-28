@@ -1,4 +1,4 @@
-import { apply, from, Ms, to } from '@musical-patterns/utilities'
+import { apply, Ms, to } from '@musical-patterns/utilities'
 import { update } from '../performance'
 import { ActionType, ImmutableState, StateKeys, store } from '../state'
 import { Thread } from '../types'

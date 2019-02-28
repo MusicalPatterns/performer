@@ -1,4 +1,4 @@
-import { apply, Coordinate, from, map, Meters, Ordinal, to } from '@musical-patterns/utilities'
+import { apply, Coordinate, map, Meters, Ordinal, to } from '@musical-patterns/utilities'
 import { Note } from '../types'
 
 const applyHomePosition: (note: Note, homePosition: Coordinate<Meters>) => Note =
