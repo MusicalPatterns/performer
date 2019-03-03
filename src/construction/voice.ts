@@ -1,7 +1,7 @@
 import { Maybe } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
 import { buildStartNote, buildStopNote, StopNote, Timbre, VoiceType } from '../performance'
-import { ImmutableState, StateKeys, store } from '../state'
+import { ImmutableState, StateKey, store } from '../state'
 import { Voice } from '../types'
 import { getPeriodicWave, OscillatorName } from './oscillators'
 import { getBuffer, SampleName } from './samples'
@@ -14,10 +14,10 @@ const constructVoice: (voiceSpec: VoiceSpec) => Promise<Voice> =
             getPeriodicWave(timbreName as OscillatorName)
 
         const state: ImmutableState = store.getState() as ImmutableState
-        const webVr: Maybe<Vrb> = state.get(StateKeys.WEB_VR)
-        const immersiveAudio: boolean = state.get(StateKeys.IMMERSIVE_AUDIO)
+        const webVr: Maybe<Vrb> = state.get(StateKey.WEB_VR)
+        const immersiveAudioEnabled: boolean = state.get(StateKey.IMMERSIVE_AUDIO_ENABLED)
 
-        const { startNote, startedNote } = buildStartNote({ timbre, webVr, immersiveAudio, voiceType })
+        const { startNote, startedNote } = buildStartNote({ timbre, webVr, immersiveAudioEnabled, voiceType })
         const stopNote: StopNote = buildStopNote({ startedNote })
 
         return { startNote, stopNote }

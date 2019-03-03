@@ -10,6 +10,7 @@ const composeEnhancers: any =
     window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose
 
 const store: Store = createStore(
+    // @ts-ignore
     enableBatching(reducer),
     initialState,
     composeEnhancers(applyMiddleware(batchDispatchMiddleware)),

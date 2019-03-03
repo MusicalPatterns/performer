@@ -1,11 +1,11 @@
 import { Maybe } from '@musical-patterns/utilities'
-import { ActionType, ImmutableState, StateKeys, store } from '../state'
+import { ActionType, ImmutableState, StateKey, store } from '../state'
 import { onClockMessage } from './onClockMessage'
 
 const setupClock: VoidFunction =
     (): void => {
         const state: ImmutableState = store.getState() as ImmutableState
-        const oldClock: Maybe<Worker> = state.get(StateKeys.CLOCK)
+        const oldClock: Maybe<Worker> = state.get(StateKey.CLOCK)
         if (oldClock) {
             oldClock.terminate()
         }

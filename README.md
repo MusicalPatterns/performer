@@ -40,11 +40,13 @@ await setThreadSpecs(threadSpecs)
 ### starting and stopping
 
 ```
-import { togglePaused, stop } from '@musical-patterns/performer'
+import { play, pause, stop } from '@musical-patterns/performer'
 
-# set playing to the opposite of what it is now (playing or paused)
-togglePaused()
-# or set playing to paused and reset the time to 0
+# set paused to true
+pause()
+# set paused to false
+play()
+# or set paused to false plus reset the time to 0
 await stop()
 
 ```

@@ -1,5 +1,5 @@
 import { Maybe } from '@musical-patterns/utilities'
-import { ImmutableState, StateKeys, store } from '../../state'
+import { ImmutableState, StateKey, store } from '../../state'
 import { Note } from '../../types'
 import { calculatePlaybackRate } from './calculatePlaybackRate'
 import { SampleDatas, SampleName } from './types'
@@ -9,7 +9,7 @@ const applyPlaybackRate: (note: Note, timbreName: SampleName) => Note =
         const outputNote: Note = note
 
         const state: ImmutableState = store.getState() as ImmutableState
-        const sampleData: Maybe<SampleDatas> = state.get(StateKeys.SAMPLE_DATA)
+        const sampleData: Maybe<SampleDatas> = state.get(StateKey.SAMPLE_DATA)
 
         if (sampleData) {
             note.playbackRate = calculatePlaybackRate(sampleData[ timbreName ], note.frequency)

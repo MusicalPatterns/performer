@@ -19,8 +19,14 @@ interface SetupPerformerParameters {
     threadSpecs?: ThreadSpec[],
 }
 
+interface ToggleImmersiveAudioHandlers {
+    enterImmersiveAudio: VoidFunction,
+    exitImmersiveAudio: VoidFunction,
+}
+
 export {
     BuildToggleImmersiveAudioParameters,
     EnableImmersiveAudioParameters,
     SetupPerformerParameters,
+    ToggleImmersiveAudioHandlers,
 }

@@ -4,19 +4,19 @@ import { Coordinate, Meters, Ms, ThreeDimensional } from '@musical-patterns/util
 import { Vrb } from 'vrb'
 import { SampleDatas } from '../construction'
 import { Thread, ThreadSpec } from '../types'
+import { StateKey } from './state'
 
 enum ActionType {
     SET_CLOCK = 'SET_CLOCK',
     SET_THREADS = 'SET_THREADS',
     SET_THREAD_SPECS = 'SET_THREAD_SPECS',
-    TOGGLE_PAUSED = 'TOGGLE_PAUSED',
     SET_TIME_POSITION = 'SET_TIME_POSITION',
     SET_IMMERSIVE_AUDIO_READY = 'SET_IMMERSIVE_AUDIO_READY',
+    SET_IMMERSIVE_AUDIO_ENABLED = 'SET_IMMERSIVE_AUDIO_ENABLED',
     SET_PAUSED = 'SET_PAUSED',
     SET_WEB_VR = 'SET_WEB_VR',
     SET_HOME_POSITION = 'SET_HOME_POSITION',
     SET_SAMPLE_DATA = 'SET_SAMPLE_DATA',
-    TOGGLE_IMMMERSIVE_AUDIO = 'TOGGLE_IMMMERSIVE_AUDIO',
 }
 
 interface SetClock {
@@ -34,17 +34,19 @@ interface SetThreadSpecs {
     type: ActionType.SET_THREAD_SPECS,
 }
 
-interface TogglePaused {
-    type: ActionType.TOGGLE_PAUSED,
-}
-
 interface SetTimePosition {
     data: Ms,
     type: ActionType.SET_TIME_POSITION,
 }
 
 interface SetImmersiveAudioReady {
+    data: boolean,
     type: ActionType.SET_IMMERSIVE_AUDIO_READY,
+}
+
+interface SetImmersiveAudioEnabled {
+    data: boolean,
+    type: ActionType.SET_IMMERSIVE_AUDIO_ENABLED,
 }
 
 interface SetPaused {
@@ -67,24 +69,22 @@ interface SetSampleData {
     type: ActionType.SET_SAMPLE_DATA,
 }
 
-interface ToggleImmersiveAudio {
-    type: ActionType.TOGGLE_IMMMERSIVE_AUDIO,
-}
-
 type Action =
     SetClock |
     SetThreads |
     SetThreadSpecs |
-    TogglePaused |
     SetTimePosition |
     SetImmersiveAudioReady |
+    SetImmersiveAudioEnabled |
     SetPaused |
     SetWebVr |
     SetHomePosition |
-    SetSampleData |
-    ToggleImmersiveAudio
+    SetSampleData
+
+type ActionMap = { [key in keyof typeof ActionType]: StateKey }
 
 export {
     Action,
     ActionType,
+    ActionMap,
 }

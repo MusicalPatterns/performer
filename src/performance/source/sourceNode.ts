@@ -13,7 +13,7 @@ import {
 
 const buildSourceNode: (parameters: BuildSourceNodeParameters) => SourceNode =
     (parameters: BuildSourceNodeParameters): SourceNode => {
-        const { timbre, voiceType, webVr, immersiveAudio } = parameters
+        const { timbre, voiceType, webVr, immersiveAudioEnabled } = parameters
 
         let sourceNodeBuildingKeys: SourceNodeBuildingKeys
         if (voiceType === VoiceType.SAMPLE) {
@@ -35,7 +35,7 @@ const buildSourceNode: (parameters: BuildSourceNodeParameters) => SourceNode =
         const { timbreSetterKey, immersiveKey, standardKey, pitchKey } = sourceNodeBuildingKeys
 
         // @ts-ignore
-        const sourceNode: SourceNode = immersiveAudio ? webVr[ immersiveKey ]() : context[ standardKey ]()
+        const sourceNode: SourceNode = immersiveAudioEnabled ? webVr[ immersiveKey ]() : context[ standardKey ]()
         sourceNode.setBuffer = (buffer: Timbre): void => {
             (sourceNode as AudioBufferSourceNode).buffer = buffer as AudioBuffer
         }

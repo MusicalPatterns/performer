@@ -1,55 +1,23 @@
 import { Reducer } from 'redux'
-import { Action, ActionType } from './actions'
-import { ImmutableState, initialState, StateKeys } from './state'
+import { Action, ActionMap, ActionType } from './actions'
+import { ImmutableState, initialState, StateKey } from './state'
 
 const reducer: Reducer<ImmutableState, Action> =
-    // tslint:disable-next-line cyclomatic-complexity
     (state: ImmutableState = initialState, action: Action): ImmutableState => {
-        switch (action.type) {
-            case ActionType.SET_CLOCK: {
-                return state.set(StateKeys.CLOCK, action.data)
-            }
-            case ActionType.SET_THREADS: {
-                return state.set(StateKeys.THREADS, action.data)
-            }
-            case ActionType.SET_THREAD_SPECS: {
-                return state.set(StateKeys.THREAD_SPECS, action.data)
-            }
-            case ActionType.TOGGLE_PAUSED: {
-                return state.set(
-                    StateKeys.PAUSED,
-                    !state.get(StateKeys.PAUSED),
-                )
-            }
-            case ActionType.SET_TIME_POSITION: {
-                return state.set(StateKeys.TIME_POSITION, action.data)
-            }
-            case ActionType.SET_IMMERSIVE_AUDIO_READY: {
-                return state.set(StateKeys.IMMERSIVE_AUDIO_READY, true)
-            }
-            case ActionType.SET_PAUSED: {
-                return state.set(StateKeys.PAUSED, action.data)
-            }
-            case ActionType.SET_WEB_VR: {
-                return state.set(StateKeys.WEB_VR, action.data)
-            }
-            case ActionType.SET_HOME_POSITION: {
-                return state.set(StateKeys.HOME_POSITION, action.data)
-            }
-            case ActionType.SET_SAMPLE_DATA: {
-                return state.set(StateKeys.SAMPLE_DATA, action.data)
-            }
-            case ActionType.TOGGLE_IMMMERSIVE_AUDIO: {
-                return state.set(
-                    StateKeys.IMMERSIVE_AUDIO,
-                    !state.get(StateKeys.IMMERSIVE_AUDIO),
-                )
-            }
-
-            default: {
-                return state
-            }
+        const actionMap: ActionMap = {
+            [ ActionType.SET_CLOCK ]: StateKey.CLOCK,
+            [ ActionType.SET_THREADS ]: StateKey.THREADS,
+            [ ActionType.SET_THREAD_SPECS ]: StateKey.THREAD_SPECS,
+            [ ActionType.SET_TIME_POSITION ]: StateKey.TIME_POSITION,
+            [ ActionType.SET_IMMERSIVE_AUDIO_READY ]: StateKey.IMMERSIVE_AUDIO_READY,
+            [ ActionType.SET_PAUSED ]: StateKey.PAUSED,
+            [ ActionType.SET_WEB_VR ]: StateKey.WEB_VR,
+            [ ActionType.SET_HOME_POSITION ]: StateKey.HOME_POSITION,
+            [ ActionType.SET_SAMPLE_DATA ]: StateKey.SAMPLE_DATA,
+            [ ActionType.SET_IMMERSIVE_AUDIO_ENABLED ]: StateKey.IMMERSIVE_AUDIO_ENABLED,
         }
+
+        return state.set(actionMap[ action.type ], action.data)
     }
 
 export {

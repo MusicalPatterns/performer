@@ -1,6 +1,6 @@
 export {
     ImmutableState,
-    StateKeys,
+    StateKey,
 } from './state'
 export {
     Action,
