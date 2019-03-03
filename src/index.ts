@@ -8,6 +8,7 @@ export {
     setTimePosition,
     EnableImmersiveAudioParameters,
     SetupPerformerParameters,
+    ToggleImmersiveAudioHandlers,
 } from './interface'
 export {
     OnUpdate,
