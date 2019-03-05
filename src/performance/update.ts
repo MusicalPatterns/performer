@@ -25,6 +25,10 @@ const startThreadNote: (thread: Thread, note: Note) => void =
 
 const update: (thread: Thread, timePosition: Ms) => void =
     (thread: Thread, timePosition: Ms): void => {
+        if (!thread.notes.length) {
+            return
+        }
+
         const note: Note = apply.Ordinal(thread.notes, thread.noteIndex)
 
         if (timePosition > thread.nextEnd) {

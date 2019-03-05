@@ -176,4 +176,19 @@ describe('update', () => {
                 .toHaveBeenCalled()
         })
     })
+
+    it('when there are no notes, it does not crash', () => {
+        const thread: Thread = {
+            nextEnd: to.Ms(0),
+            nextStart: to.Ms(0),
+            noteIndex: to.Ordinal(0),
+            notes: [],
+            voice: {
+                startNote: noop,
+                stopNote: noop,
+            },
+        }
+
+        update(thread, to.Ms(0.001))
+    })
 })
