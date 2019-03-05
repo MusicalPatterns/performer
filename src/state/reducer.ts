@@ -1,9 +1,9 @@
-import { Reducer } from 'redux'
-import { Action, ActionMap, ActionType } from './actions'
+import { AnyAction, Reducer } from 'redux'
+import { ActionMap, ActionType } from './actions'
 import { ImmutableState, initialState, StateKey } from './state'
 
-const reducer: Reducer<ImmutableState, Action> =
-    (state: ImmutableState = initialState, action: Action): ImmutableState => {
+const reducer: Reducer<ImmutableState> =
+    (state: ImmutableState = initialState, action: AnyAction): ImmutableState => {
         const actionMap: ActionMap = {
             [ ActionType.SET_CLOCK ]: StateKey.CLOCK,
             [ ActionType.SET_THREADS ]: StateKey.THREADS,
@@ -17,7 +17,11 @@ const reducer: Reducer<ImmutableState, Action> =
             [ ActionType.SET_IMMERSIVE_AUDIO_ENABLED ]: StateKey.IMMERSIVE_AUDIO_ENABLED,
         }
 
-        return state.set(actionMap[ action.type ], action.data)
+        if (actionMap[ action.type ]) {
+            return state.set(actionMap[ action.type ], action.data)
+        }
+
+        return state
     }
 
 export {
