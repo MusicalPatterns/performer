@@ -8,7 +8,7 @@ let previousImmersiveAudioEnabled: boolean = false
 
 const handleImmersiveAudioChange: () => Promise<void> =
     async (): Promise<void> => {
-        const state: ImmutableState = store.getState() as ImmutableState
+        const state: ImmutableState = store.getState()
         const immersiveAudioEnabled: boolean = state.get(StateKey.IMMERSIVE_AUDIO_ENABLED)
 
         if (immersiveAudioEnabled !== previousImmersiveAudioEnabled) {

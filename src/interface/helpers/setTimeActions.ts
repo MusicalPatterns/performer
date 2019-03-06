@@ -5,7 +5,7 @@ import { Thread, ThreadSpec } from '../../types'
 
 const buildSetTimeActions: (timePosition: Ms) => Promise<Action[]> =
     async (timePosition: Ms): Promise<Action[]> => {
-        const state: ImmutableState = store.getState() as ImmutableState
+        const state: ImmutableState = store.getState()
         const threadSpecs: ThreadSpec[] = state.get(StateKey.THREAD_SPECS)
         const threads: Thread[] = await constructThreads(threadSpecs, timePosition)
 

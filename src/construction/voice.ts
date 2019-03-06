@@ -1,19 +1,22 @@
 import { Maybe } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
-import { buildStartNote, buildStopNote, StopNote, Timbre, VoiceType } from '../performance'
+import { buildStartNote, buildStopNote, StopNote, Timbre } from '../performance'
 import { ImmutableState, StateKey, store } from '../state'
 import { Voice } from '../types'
-import { getPeriodicWave, OscillatorName } from './oscillators'
-import { getBuffer, SampleName } from './samples'
+import { getPeriodicWave } from './oscillators'
+import { getBuffer } from './samples'
+import { voiceSpecIsSampleVoiceSpec } from './typeGuards'
 import { VoiceSpec } from './types'
 
 const constructVoice: (voiceSpec: VoiceSpec) => Promise<Voice> =
-    async ({ timbreName, voiceType }: VoiceSpec): Promise<Voice> => {
-        const timbre: Timbre = voiceType === VoiceType.SAMPLE ?
-            await getBuffer(timbreName as SampleName) :
-            getPeriodicWave(timbreName as OscillatorName)
+    async (voiceSpec: VoiceSpec): Promise<Voice> => {
+        const timbre: Maybe<Timbre> = voiceSpecIsSampleVoiceSpec(voiceSpec) ?
+            await getBuffer(voiceSpec.timbreName) :
+                getPeriodicWave(voiceSpec.timbreName)
 
-        const state: ImmutableState = store.getState() as ImmutableState
+        const { voiceType } = voiceSpec
+
+        const state: ImmutableState = store.getState()
         const webVr: Maybe<Vrb> = state.get(StateKey.WEB_VR)
         const immersiveAudioEnabled: boolean = state.get(StateKey.IMMERSIVE_AUDIO_ENABLED)
 

@@ -14,8 +14,6 @@ enum SampleName {
     HIHAT = 'HIHAT',
 }
 
-type ModulePath = string
-
 interface SampleData {
     centsAdjustment?: Cents,
     unpitched?: boolean,
@@ -23,9 +21,11 @@ interface SampleData {
 
 type SampleDatas = { [K in SampleName]: SampleData }
 
+type Samples = { [x in SampleName]: AudioBuffer }
+
 export {
     SampleName,
-    ModulePath,
     SampleDatas,
     SampleData,
+    Samples,
 }

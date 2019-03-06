@@ -1,25 +1,25 @@
 import { Coordinate, Maybe, Meters, ThreeDimensional } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
-import { VoiceType } from '../performance'
 import { ImmutableState, StateKey, store } from '../state'
 import { Note } from '../types'
 import { applyHomePosition } from './applyHomePosition'
 import { applyGainAdjustmentForWebAudioOscillators } from './oscillators'
-import { applyPlaybackRate, SampleName } from './samples'
+import { applyPlaybackRate } from './samples'
+import { voiceSpecIsSampleVoiceSpec } from './typeGuards'
 import { VoiceSpec } from './types'
 
 const constructNotes: (notes: Note[], options: VoiceSpec) => Note[] =
-    (notes: Note[], { voiceType, timbreName }: VoiceSpec): Note[] => {
+    (notes: Note[], voiceSpec: VoiceSpec): Note[] => {
         let outputNotes: Note[] = notes
-        if (voiceType === VoiceType.SAMPLE) {
+        if (voiceSpecIsSampleVoiceSpec(voiceSpec)) {
             outputNotes = outputNotes.map((note: Note): Note =>
-                applyPlaybackRate(note, timbreName as SampleName))
+                applyPlaybackRate(note, voiceSpec.timbreName))
         }
-        else if (voiceType === VoiceType.OSCILLATOR) {
+        else {
             outputNotes = outputNotes.map(applyGainAdjustmentForWebAudioOscillators)
         }
 
-        const state: ImmutableState = store.getState() as ImmutableState
+        const state: ImmutableState = store.getState()
         const webVr: Maybe<Vrb> = state.get(StateKey.WEB_VR)
         const homePosition: Maybe<Coordinate<Meters, ThreeDimensional>> = state.get(StateKey.HOME_POSITION)
         if (webVr && homePosition) {

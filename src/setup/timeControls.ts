@@ -6,7 +6,7 @@ const setupTimeControls: (onUpdate: OnUpdate) => void =
     (onUpdate: OnUpdate): void => {
         let previousTimePosition: Ms = BEGINNING
         store.subscribe((): void => {
-            const state: ImmutableState = store.getState() as ImmutableState
+            const state: ImmutableState = store.getState()
             const timePosition: Ms = state.get(StateKey.TIME_POSITION)
 
             if (timePosition !== previousTimePosition) {

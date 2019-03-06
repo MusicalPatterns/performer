@@ -12,7 +12,7 @@ import {
 const buildToggleImmersiveAudio: ({ vrb }: BuildToggleImmersiveAudioParameters) => ToggleImmersiveAudioHandlers =
     ({ vrb }: BuildToggleImmersiveAudioParameters): ToggleImmersiveAudioHandlers => ({
         enterImmersiveAudio: (): void => {
-            const state: ImmutableState = store.getState() as ImmutableState
+            const state: ImmutableState = store.getState()
             const immersiveAudioReady: boolean = state.get(StateKey.IMMERSIVE_AUDIO_READY)
             if (!immersiveAudioReady) {
                 return
@@ -22,7 +22,7 @@ const buildToggleImmersiveAudio: ({ vrb }: BuildToggleImmersiveAudioParameters) 
             vrb.toggleVr()
         },
         exitImmersiveAudio: (): void => {
-            const state: ImmutableState = store.getState() as ImmutableState
+            const state: ImmutableState = store.getState()
             const immersiveAudioReady: boolean = state.get(StateKey.IMMERSIVE_AUDIO_READY)
             if (!immersiveAudioReady) {
                 return

@@ -8,7 +8,7 @@ const applyPlaybackRate: (note: Note, timbreName: SampleName) => Note =
     (note: Note, timbreName: SampleName): Note => {
         const outputNote: Note = note
 
-        const state: ImmutableState = store.getState() as ImmutableState
+        const state: ImmutableState = store.getState()
         const sampleData: Maybe<SampleDatas> = state.get(StateKey.SAMPLE_DATA)
 
         if (sampleData) {

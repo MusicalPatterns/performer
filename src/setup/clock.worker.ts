@@ -3,7 +3,7 @@
 import * as requestAnimationFrame from 'raf'
 import { TIME_STEP } from './constants'
 
-const worker: Worker = self as any
+const worker: Worker = self as unknown as Worker
 
 let previousTimestamp: number
 let delta: number = 0
@@ -25,4 +25,4 @@ const mainLoop: (timestamp: number) => void =
 
 requestAnimationFrame(mainLoop)
 
-export default ((): void => undefined) as any
+export default ((): void => undefined) as unknown

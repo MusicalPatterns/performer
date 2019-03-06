@@ -5,9 +5,16 @@ import { SampleName } from './samples'
 
 type TimbreName = SampleName | OscillatorName
 
-interface VoiceSpec {
-    timbreName: TimbreName,
-    voiceType: VoiceType,
+type VoiceSpec = SampleVoiceSpec | OscillatorVoiceSpec
+
+interface SampleVoiceSpec {
+    timbreName: SampleName,
+    voiceType: VoiceType.SAMPLE,
+}
+
+interface OscillatorVoiceSpec {
+    timbreName: OscillatorName,
+    voiceType: VoiceType.OSCILLATOR,
 }
 
 interface InitialNote {
@@ -19,4 +26,6 @@ export {
     VoiceSpec,
     TimbreName,
     InitialNote,
+    SampleVoiceSpec,
+    OscillatorVoiceSpec,
 }

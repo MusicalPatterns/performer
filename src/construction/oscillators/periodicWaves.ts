@@ -1,6 +1,6 @@
 // @ts-ignore
 import * as periodicWaves from '@mohayonao/wave-tables'
-import { logMessageToConsole, Maybe } from '@musical-patterns/utilities'
+import { isUndefined, logMessageToConsole, Maybe } from '@musical-patterns/utilities'
 import { context } from '../../performance'
 import { GetPeriodicWave, OscillatorName, OscillatorNameToPeriodicWaveNameMap, PeriodicWaveSpec } from './types'
 
@@ -68,10 +68,9 @@ const getPeriodicWaveSpec: (oscillatorName: OscillatorName) => PeriodicWaveSpec 
     (oscillatorName: OscillatorName): PeriodicWaveSpec => {
         const oscillatorNameToPeriodicWaveNameMapElement: string = oscillatorNameToPeriodicWaveNameMap[ oscillatorName ]
         const periodicWaveSpec: Maybe<PeriodicWaveSpec> =
-            periodicWaves[ oscillatorNameToPeriodicWaveNameMapElement ] as PeriodicWaveSpec
+            periodicWaves[ oscillatorNameToPeriodicWaveNameMapElement ]
 
-        if (!periodicWaveSpec) {
-            // tslint:disable-next-line no
+        if (isUndefined(periodicWaveSpec)) {
             logMessageToConsole(`No periodic wave spec was found for oscillator name ${oscillatorName}. \
 Defaulting to sine. Please try updating your '@musical-patterns' packages.`)
 
@@ -83,15 +82,13 @@ Defaulting to sine. Please try updating your '@musical-patterns' packages.`)
 
     }
 
-const getPeriodicWave: GetPeriodicWave =
-    (oscillatorName: OscillatorName): PeriodicWave => {
+const getPeriodicWave: GetPeriodicWave = (oscillatorName: OscillatorName): PeriodicWave => {
+    const { real, imag } = oscillatorName === OscillatorName.SINE ?
+        sineSpec :
+        getPeriodicWaveSpec(oscillatorName)
 
-        const { real, imag } = oscillatorName === OscillatorName.SINE ?
-            sineSpec :
-            getPeriodicWaveSpec(oscillatorName)
-
-        return context.createPeriodicWave(Float32Array.from(real), Float32Array.from(imag))
-    }
+    return context.createPeriodicWave(Float32Array.from(real), Float32Array.from(imag))
+}
 
 export {
     getPeriodicWave,

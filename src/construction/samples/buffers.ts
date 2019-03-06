@@ -1,12 +1,13 @@
+import { keyExistsOnObject } from '@musical-patterns/utilities'
 import { context } from '../../performance'
-import { ModulePath, SampleName } from './types'
+import { SampleName, Samples } from './types'
 
-// tslint:disable no-any
-const samples: { [x in SampleName]: AudioBuffer } = {} as any
+// tslint:disable no-object-literal-type-assertion
+const samples: Samples = {} as Samples
 
 const getBuffer: (sampleName: SampleName) => Promise<AudioBuffer> =
     async (sampleName: SampleName): Promise<AudioBuffer> => {
-        if (!samples[ sampleName ]) {
+        if (!keyExistsOnObject(sampleName, samples)) {
             await load(sampleName)
         }
 
@@ -17,12 +18,12 @@ const load: (sampleName: SampleName) => Promise<void> =
     async (sampleName: SampleName): Promise<void> =>
         new Promise((resolve: VoidFunction): void => {
             const request: XMLHttpRequest = new XMLHttpRequest()
-            const url: ModulePath = require(`../../../assets/samples/${sampleName}.mp3`) as ModulePath
+            const url: string = require(`../../../assets/samples/${sampleName}.mp3`)
             request.open('GET', url, true)
             request.responseType = 'arraybuffer'
 
             request.onload = async (): Promise<void> => {
-                const audioData: ArrayBuffer = request.response as ArrayBuffer
+                const audioData: ArrayBuffer = request.response
                 await context.decodeAudioData(audioData, (sample: AudioBuffer): void => {
                     samples[ sampleName ] = sample
                     resolve()

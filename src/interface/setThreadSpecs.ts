@@ -9,7 +9,7 @@ const setThreadSpecs: (threadSpecs: ThreadSpec[]) => Promise<void> =
     async (threadSpecs: ThreadSpec[]): Promise<void> => {
         stopExistingThreads()
 
-        const state: ImmutableState = store.getState() as ImmutableState
+        const state: ImmutableState = store.getState()
         const timePosition: Ms = state.get(StateKey.TIME_POSITION)
         const threads: Thread[] = await constructThreads(threadSpecs, timePosition)
 

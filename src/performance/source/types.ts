@@ -14,9 +14,10 @@ interface BuildSourceNodeParameters {
     [ index: string ]: any,
 }
 
-type SourceNode = (AudioBufferSourceNode | OscillatorNode) &
-    TimbreSetterKeyIndexSignature &
-    PitchKeyIndexSignature
+type SourceNode = SampleSourceNode | OscillatorSourceNode
+
+type SampleSourceNode = AudioBufferSourceNode & TimbreSetterKeyIndexSignature & PitchKeyIndexSignature
+type OscillatorSourceNode = OscillatorNode & TimbreSetterKeyIndexSignature & PitchKeyIndexSignature
 
 type PitchKeyIndexSignature = {
     [K in PitchKey]: PitchObject
@@ -59,6 +60,12 @@ enum TimbreSetterKey {
     setBuffer = 'setBuffer',
 }
 
+interface SetPitchObjectValueParameters {
+    buildSourceNodeParameters: BuildSourceNodeParameters,
+    pitchKey: PitchKey,
+    sourceNode: SourceNode,
+}
+
 export {
     BuildSourceNodeParameters,
     SourceNode,
@@ -71,4 +78,7 @@ export {
     StandardKey,
     TimbreSetterKey,
     TimbreSetterKeyIndexSignature,
+    SampleSourceNode,
+    OscillatorSourceNode,
+    SetPitchObjectValueParameters,
 }

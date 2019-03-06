@@ -25,7 +25,7 @@ const startThreadNote: (thread: Thread, note: Note) => void =
 
 const update: (thread: Thread, timePosition: Ms) => void =
     (thread: Thread, timePosition: Ms): void => {
-        if (!thread.notes.length) {
+        if (thread.notes.length === 0) {
             return
         }
 
