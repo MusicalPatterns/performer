@@ -29,10 +29,7 @@ const update: (thread: Thread, timePosition: Ms) => void =
             return
         }
 
-        const note: Maybe<Note> = apply.Ordinal(thread.notes, thread.noteIndex)
-        if (isUndefined(note)) {
-            throw new Error(`could not find note at index ${thread.noteIndex}`)
-        }
+        const note: Note = apply.Ordinal(thread.notes, thread.noteIndex)
 
         if (timePosition > thread.nextEnd) {
             thread.voice.stopNote()
