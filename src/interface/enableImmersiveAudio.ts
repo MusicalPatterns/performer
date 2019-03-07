@@ -1,7 +1,7 @@
 import { noop } from '@musical-patterns/utilities'
 import { BatchAction, batchActions } from 'redux-batched-actions'
 import { buildVrb, Vrb } from 'vrb'
-import { ActionType, ImmutableState, StateKey, store } from '../state'
+import { ImmutableState, StateKey, store } from '../state'
 import { handleImmersiveAudioChange } from './helpers'
 import {
     BuildToggleImmersiveAudioParameters,
@@ -18,7 +18,7 @@ const buildToggleImmersiveAudio: ({ vrb }: BuildToggleImmersiveAudioParameters) 
                 return
             }
 
-            store.dispatch({ type: ActionType.SET_IMMERSIVE_AUDIO_ENABLED, data: true })
+            store.dispatch({ type: StateKey.IMMERSIVE_AUDIO_ENABLED, data: true })
             vrb.toggleVr()
         },
         exitImmersiveAudio: (): void => {
@@ -28,7 +28,7 @@ const buildToggleImmersiveAudio: ({ vrb }: BuildToggleImmersiveAudioParameters) 
                 return
             }
 
-            store.dispatch({ type: ActionType.SET_IMMERSIVE_AUDIO_ENABLED, data: false })
+            store.dispatch({ type: StateKey.IMMERSIVE_AUDIO_ENABLED, data: false })
             vrb.toggleVr()
         },
     })
@@ -42,7 +42,7 @@ const enableImmersiveAudio:
             webVr = vrb
             const oldOnReady: VoidFunction = webVr.onReady
             webVr.onReady = (): void => {
-                store.dispatch({ type: ActionType.SET_IMMERSIVE_AUDIO_READY, data: true })
+                store.dispatch({ type: StateKey.IMMERSIVE_AUDIO_READY, data: true })
                 oldOnReady()
             }
         }
@@ -51,15 +51,15 @@ const enableImmersiveAudio:
                 camerasConfig: { INITIAL_PERSPECTIVE_POSITION: [ 0, 0, 0 ] },
                 onNoVr,
                 onReady: (): void => {
-                    store.dispatch({ type: ActionType.SET_IMMERSIVE_AUDIO_READY, data: true })
+                    store.dispatch({ type: StateKey.IMMERSIVE_AUDIO_READY, data: true })
                     onReady()
                 },
             })
         }
 
         const batchedAction: BatchAction = batchActions([
-            { type: ActionType.SET_WEB_VR, data: webVr },
-            { type: ActionType.SET_HOME_POSITION, data: homePosition },
+            { type: StateKey.WEB_VR, data: webVr },
+            { type: StateKey.HOME_POSITION, data: homePosition },
         ])
         store.dispatch(batchedAction)
 

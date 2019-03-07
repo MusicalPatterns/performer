@@ -1,5 +1,5 @@
 import { apply, Cents, CENTS_PER_SEMITONE, Semitones, to } from '@musical-patterns/utilities'
-import { ActionType, store } from '../../state'
+import { StateKey, store } from '../../state'
 import {
     DOWN_ONE_SEMITONE,
     DOWN_TWO_OCTAVES_IN_SEMITONES,
@@ -45,7 +45,7 @@ const buildSampleData: VoidFunction =
             },
         }
 
-        store.dispatch({ type: ActionType.SET_SAMPLE_DATA, data: sampleData })
+        store.dispatch({ type: StateKey.SAMPLE_DATA, data: sampleData })
     }
 
 export {

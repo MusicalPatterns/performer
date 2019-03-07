@@ -1,6 +1,6 @@
 import { apply, Ms, to } from '@musical-patterns/utilities'
 import { update } from '../performance'
-import { ActionType, ImmutableState, StateKey, store } from '../state'
+import { ImmutableState, StateKey, store } from '../state'
 import { Thread } from '../types'
 
 const onClockMessage: (event: MessageEvent) => void =
@@ -13,7 +13,7 @@ const onClockMessage: (event: MessageEvent) => void =
         const timePosition: Ms = state.get(StateKey.TIME_POSITION)
         const clockTimeIncrement: Ms = to.Ms(event.data)
         const newTimePosition: Ms = apply.Translation(timePosition, to.Translation(clockTimeIncrement))
-        store.dispatch({ type: ActionType.SET_TIME_POSITION, data: newTimePosition })
+        store.dispatch({ type: StateKey.TIME_POSITION, data: newTimePosition })
 
         const threads: Thread[] = state.get(StateKey.THREADS)
         threads.forEach((thread: Thread): void => {

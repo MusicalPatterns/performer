@@ -1,6 +1,6 @@
 import { Ms } from '@musical-patterns/utilities'
 import { constructThreads } from '../../construction'
-import { ActionType, ImmutableState, StateKey, store } from '../../state'
+import { ImmutableState, StateKey, store } from '../../state'
 import { Thread, ThreadSpec } from '../../types'
 import { stopExistingThreads } from './stopExistingThreads'
 
@@ -19,7 +19,7 @@ const handleImmersiveAudioChange: () => Promise<void> =
             const timePosition: Ms = state.get(StateKey.TIME_POSITION)
             const threads: Thread[] = await constructThreads(threadSpecs, timePosition)
 
-            store.dispatch({ type: ActionType.SET_THREADS, data: threads })
+            store.dispatch({ type: StateKey.THREADS, data: threads })
         }
     }
 

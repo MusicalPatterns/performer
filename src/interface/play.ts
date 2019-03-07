@@ -1,8 +1,8 @@
-import { ActionType, store } from '../state'
+import { StateKey, store } from '../state'
 
 const play: VoidFunction =
     (): void => {
-        store.dispatch({ type: ActionType.SET_PAUSED, data: false })
+        store.dispatch({ type: StateKey.PAUSED, data: false })
     }
 
 export {

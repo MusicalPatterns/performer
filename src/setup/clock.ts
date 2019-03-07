@@ -1,5 +1,5 @@
 import { Maybe } from '@musical-patterns/utilities'
-import { ActionType, ImmutableState, StateKey, store } from '../state'
+import { ImmutableState, StateKey, store } from '../state'
 import { onClockMessage } from './onClockMessage'
 
 const setupClock: VoidFunction =
@@ -16,7 +16,7 @@ const setupClock: VoidFunction =
         const clock: Worker = new Clock()
         clock.onmessage = onClockMessage
 
-        store.dispatch({ type: ActionType.SET_CLOCK, data: clock })
+        store.dispatch({ type: StateKey.CLOCK, data: clock })
     }
 
 export {

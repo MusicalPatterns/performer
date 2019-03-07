@@ -1,15 +1,6 @@
 // tslint:disable no-type-definitions-outside-types-modules
 
-import {
-    BEGINNING,
-    Coordinate,
-    Maybe,
-    Meters,
-    Ms,
-    ThreeDimensional,
-    typedMap,
-    TypedMap,
-} from '@musical-patterns/utilities'
+import { ActionForState, Coordinate, Maybe, Meters, Ms, ThreeDimensional, TypedMap } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
 import { SampleDatas } from '../construction'
 import { Thread, ThreadSpec } from '../types'
@@ -42,22 +33,11 @@ interface State {
 
 type ImmutableState = TypedMap<State>
 
-const initialState: ImmutableState = typedMap<State>({
-    [ StateKey.CLOCK ]: undefined,
-    [ StateKey.PAUSED ]: true,
-    [ StateKey.THREADS ]: [],
-    [ StateKey.THREAD_SPECS ]: [],
-    [ StateKey.TIME_POSITION ]: BEGINNING,
-    [ StateKey.IMMERSIVE_AUDIO_READY ]: false,
-    [ StateKey.WEB_VR ]: undefined,
-    [ StateKey.HOME_POSITION ]: undefined,
-    [ StateKey.SAMPLE_DATA ]: undefined,
-    [ StateKey.IMMERSIVE_AUDIO_ENABLED ]: false,
-})
+type Action = ActionForState<State>
 
 export {
     ImmutableState,
     StateKey,
     State,
-    initialState,
+    Action,
 }

@@ -1,15 +1,15 @@
 // tslint:disable no-any
 
 import { applyMiddleware, compose, createStore, Store } from 'redux'
-import { batchDispatchMiddleware, enableBatching } from 'redux-batched-actions'
+import { BatchAction, batchDispatchMiddleware, enableBatching } from 'redux-batched-actions'
+import { initialState } from './initial'
 import { reducer } from './reducer'
-import { initialState } from './state'
+import { Action, ImmutableState } from './types'
 
-const composeEnhancers: any =
-    // @ts-ignore
-    window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose
+// @ts-ignore
+const composeEnhancers: any = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const store: Store = createStore(
+const store: Store<ImmutableState, Action | BatchAction> = createStore(
     enableBatching(reducer),
     initialState,
     composeEnhancers(applyMiddleware(batchDispatchMiddleware)),
