@@ -1,4 +1,4 @@
-import { apply, from, INITIAL, Ms, NEXT, to } from '@musical-patterns/utilities'
+import { apply, from, INITIAL, isUndefined, Maybe, Ms, NEXT, to } from '@musical-patterns/utilities'
 import { Note, Thread } from '../types'
 
 const startThreadNote: (thread: Thread, note: Note) => void =
@@ -29,7 +29,10 @@ const update: (thread: Thread, timePosition: Ms) => void =
             return
         }
 
-        const note: Note = apply.Ordinal(thread.notes, thread.noteIndex)
+        const note: Maybe<Note> = apply.Ordinal(thread.notes, thread.noteIndex)
+        if (isUndefined(note)) {
+            throw new Error(`could not find note at index ${thread.noteIndex}`)
+        }
 
         if (timePosition > thread.nextEnd) {
             thread.voice.stopNote()

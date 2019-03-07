@@ -7,7 +7,7 @@ const applyHomePosition: (note: Note, homePosition: Coordinate<Meters>) => Note 
         position: map(note.position, (meters: Meters, index: Ordinal) =>
             apply.Translation(
                 meters,
-                to.Translation(apply.Ordinal(homePosition, index)),
+                to.Translation(apply.Ordinal(homePosition, index) || to.Meters(0)),
             ),
         ),
     })
