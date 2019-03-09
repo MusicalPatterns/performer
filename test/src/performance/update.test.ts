@@ -98,7 +98,7 @@ describe('update', () => {
     })
 
     describe('starting and stopping', () => {
-        it('calls the voice\'s start note method when the next start is reached', () => {
+        it(`calls the voice's start note method when the next start is reached`, () => {
             const startNote: Spy = jasmine.createSpy()
             const thread: Thread = {
                 nextEnd: to.Ms(0),
@@ -117,7 +117,7 @@ describe('update', () => {
                 .toHaveBeenCalled()
         })
 
-        it('does not call the voice\'s start note method when the next start is not yet reached', () => {
+        it(`does not call the voice's start note method when the next start is not yet reached`, () => {
             const startNote: Spy = jasmine.createSpy()
             const thread: Thread = {
                 nextEnd: to.Ms(0),
@@ -137,7 +137,7 @@ describe('update', () => {
                 .toHaveBeenCalled()
         })
 
-        it('calls the voice\'s stop note method when the next end is reached', () => {
+        it(`calls the voice's stop note method when the next end is reached`, () => {
             const stopNote: Spy = jasmine.createSpy()
             const thread: Thread = {
                 nextEnd: to.Ms(8),
@@ -156,7 +156,7 @@ describe('update', () => {
                 .toHaveBeenCalled()
         })
 
-        it('does not call the voice\'s stop note method when the next end is not yet reached', () => {
+        it(`does not call the voice's stop note method when the next end is not yet reached`, () => {
             const stopNote: Spy = jasmine.createSpy()
             const thread: Thread = {
                 nextEnd: to.Ms(8),
