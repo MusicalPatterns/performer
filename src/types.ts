@@ -1,33 +1,33 @@
 import { Ms, Ordinal } from '@musical-patterns/utilities'
-import { VoiceSpec } from './construction'
-import { NoteToPlay, StartNote, StopNote } from './performance'
+import { SoundToPlay, StartSound, StopSound } from './performance'
+import { SourceRequest } from './preparation'
 
-interface Thread {
-    nextEnd: Ms,
+interface PreparedVoice {
     nextStart: Ms,
-    noteIndex: Ordinal,
-    notes: Note[],
-    voice: Voice,
+    nextStop: Ms,
+    soundIndex: Ordinal,
+    sounds: Sound[],
+    source: Source,
 }
 
-interface ThreadSpec {
-    notes?: Note[],
-    voiceSpec?: VoiceSpec,
+interface Voice {
+    sounds?: Sound[],
+    sourceRequest?: SourceRequest,
 }
 
-interface Note extends NoteToPlay {
+interface Sound extends SoundToPlay {
     duration: Ms,
     sustain: Ms,
 }
 
-interface Voice {
-    startNote: StartNote,
-    stopNote: StopNote,
+interface Source {
+    startSound: StartSound,
+    stopSound: StopSound,
 }
 
 export {
-    Thread,
-    ThreadSpec,
-    Note,
+    PreparedVoice,
     Voice,
+    Sound,
+    Source,
 }

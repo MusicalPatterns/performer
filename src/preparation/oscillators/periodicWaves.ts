@@ -64,29 +64,29 @@ const oscillatorNameToPeriodicWaveNameMap: OscillatorNameToPeriodicWaveNameMap =
     WURLITZER_2: 'Wurlitzer2',
 }
 
-const sineSpec: CreatePeriodicWaveParameters = { imag: [ 0, 0 ], real: [ 0, 1 ] }
+const createSineWaveParameters: CreatePeriodicWaveParameters = { imag: [ 0, 0 ], real: [ 0, 1 ] }
 
 const computeCreatePeriodicWaveParameters: (oscillatorName: OscillatorName) => CreatePeriodicWaveParameters =
     (oscillatorName: OscillatorName): CreatePeriodicWaveParameters => {
         const oscillatorNameToPeriodicWaveNameMapElement: string = oscillatorNameToPeriodicWaveNameMap[ oscillatorName ]
-        const periodicWaveSpec: Maybe<CreatePeriodicWaveParameters> =
+        const createPeriodicWaveParameters: Maybe<CreatePeriodicWaveParameters> =
             periodicWaves[ oscillatorNameToPeriodicWaveNameMapElement ]
 
-        if (isUndefined(periodicWaveSpec)) {
-            logMessageToConsole(`No periodic wave spec was found for oscillator name ${oscillatorName}. \
+        if (isUndefined(createPeriodicWaveParameters)) {
+            logMessageToConsole(`No periodic wave was found for oscillator name ${oscillatorName}. \
 Defaulting to sine. Please try updating your '@musical-patterns' packages.`)
 
-            return sineSpec
+            return createSineWaveParameters
         }
         else {
-            return periodicWaveSpec
+            return createPeriodicWaveParameters
         }
     }
 
 const getPeriodicWave: GetPeriodicWave =
     (oscillatorName: OscillatorName): PeriodicWave => {
         const { real, imag } = oscillatorName === OscillatorName.SINE ?
-            sineSpec :
+            createSineWaveParameters :
             computeCreatePeriodicWaveParameters(oscillatorName)
 
         return context.createPeriodicWave(Float32Array.from(real), Float32Array.from(imag))

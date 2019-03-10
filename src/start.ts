@@ -12,7 +12,7 @@ import {
 
 const setupQa: () => Promise<void> =
     async (): Promise<void> => {
-        await setupPerformer({ threadSpecs: snapshot })
+        await setupPerformer({ voices: snapshot })
         const { enterImmersiveAudio, exitImmersiveAudio }: ToggleImmersiveAudioHandlers = enableImmersiveAudio()
 
         const setTimeButton: HTMLElement = document.createElement('button')

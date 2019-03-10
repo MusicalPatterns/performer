@@ -3,41 +3,41 @@ import { Object3D, PositionalAudio } from 'three'
 import { Vrb } from 'vrb'
 import { SourceNode } from './source'
 
-interface NoteToPlay {
+interface SoundToPlay {
     frequency: Hz,
     gain: Scalar,
     playbackRate?: Scalar,
     position: Coordinate<Meters>,
 }
 
-type StartNote = (note: NoteToPlay) => void
+type StartSound = (sound: SoundToPlay) => void
 
-type StopNote = VoidFunction
+type StopSound = VoidFunction
 
-interface StartNoteAnd {
-    startNote: StartNote,
+interface StartSoundAnd {
+    startSound: StartSound,
 }
 
-interface BuildStartNoteParameters {
+interface BuildStartSoundParameters {
     immersiveAudioEnabled: boolean,
+    sourceType: SourceType,
     timbre: Timbre,
-    voiceType: VoiceType,
     webVr?: Vrb,
 }
 
-interface StartNoteAndStartedNote extends StartNoteAnd {
-    startedNote: StartedNote
+interface StartSoundAndStartedSound extends StartSoundAnd {
+    startedSound: StartedSound
 }
 
-interface StartedNote {
+interface StartedSound {
     gainNode?: GainNode,
     positionalAudio?: PositionalAudio,
     positionNode?: Object3D,
     sourceNode?: SourceNode,
 }
 
-interface BuildStopNoteParameters {
-    startedNote: StartedNote,
+interface BuildStopSoundParameters {
+    startedSound: StartedSound,
 }
 
 interface BuildGainNodeParameters {
@@ -53,7 +53,7 @@ interface BuildPositionalAudioParameters {
     webVr: Vrb,
 }
 
-enum VoiceType {
+enum SourceType {
     OSCILLATOR = 'OSCILLATOR',
     SAMPLE = 'SAMPLE',
 }
@@ -61,15 +61,15 @@ enum VoiceType {
 type Timbre = AudioBuffer | PeriodicWave
 
 export {
-    NoteToPlay,
-    StartNote,
-    StopNote,
-    BuildStartNoteParameters,
-    StartNoteAndStartedNote,
-    StartedNote,
-    BuildStopNoteParameters,
+    SoundToPlay,
+    StartSound,
+    StopSound,
+    BuildStartSoundParameters,
+    StartSoundAndStartedSound,
+    StartedSound,
+    BuildStopSoundParameters,
     BuildGainNodeParameters,
     BuildPositionalAudioParameters,
     Timbre,
-    VoiceType,
+    SourceType,
 }

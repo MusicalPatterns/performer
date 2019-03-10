@@ -1,42 +1,42 @@
 import { apply, from, INITIAL, Ms, NEXT, to } from '@musical-patterns/utilities'
-import { Note, Thread } from '../types'
+import { PreparedVoice, Sound } from '../types'
 
-const startThreadNote: (thread: Thread, note: Note) => void =
-    (thread: Thread, note: Note): void => {
-        thread.voice.startNote({
-            ...note,
-            position: note.position || [ 0, 0, 0 ].map(to.Meters),
+const startPreparedVoiceSound: (preparedVoice: PreparedVoice, sound: Sound) => void =
+    (preparedVoice: PreparedVoice, sound: Sound): void => {
+        preparedVoice.source.startSound({
+            ...sound,
+            position: sound.position || [ 0, 0, 0 ].map(to.Meters),
         })
 
-        thread.nextEnd = apply.Translation(
-            thread.nextStart,
-            to.Translation(note.sustain),
+        preparedVoice.nextStop = apply.Translation(
+            preparedVoice.nextStart,
+            to.Translation(sound.sustain),
         )
-        thread.nextStart = apply.Translation(
-            thread.nextStart,
-            to.Translation(note.duration),
+        preparedVoice.nextStart = apply.Translation(
+            preparedVoice.nextStart,
+            to.Translation(sound.duration),
         )
 
-        thread.noteIndex = apply.Translation(thread.noteIndex, NEXT)
-        if (from.Ordinal(thread.noteIndex) === thread.notes.length) {
-            thread.noteIndex = INITIAL
+        preparedVoice.soundIndex = apply.Translation(preparedVoice.soundIndex, NEXT)
+        if (from.Ordinal(preparedVoice.soundIndex) === preparedVoice.sounds.length) {
+            preparedVoice.soundIndex = INITIAL
         }
     }
 
-const update: (thread: Thread, timePosition: Ms) => void =
-    (thread: Thread, timePosition: Ms): void => {
-        if (thread.notes.length === 0) {
+const update: (preparedVoice: PreparedVoice, timePosition: Ms) => void =
+    (preparedVoice: PreparedVoice, timePosition: Ms): void => {
+        if (preparedVoice.sounds.length === 0) {
             return
         }
 
-        const note: Note = apply.Ordinal(thread.notes, thread.noteIndex)
+        const sound: Sound = apply.Ordinal(preparedVoice.sounds, preparedVoice.soundIndex)
 
-        if (timePosition > thread.nextEnd) {
-            thread.voice.stopNote()
+        if (timePosition > preparedVoice.nextStop) {
+            preparedVoice.source.stopSound()
         }
 
-        if (timePosition > thread.nextStart) {
-            startThreadNote(thread, note)
+        if (timePosition > preparedVoice.nextStart) {
+            startPreparedVoiceSound(preparedVoice, sound)
         }
     }
 

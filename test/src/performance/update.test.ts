@@ -1,9 +1,9 @@
 import { noop, to } from '@musical-patterns/utilities'
-import { Note, Thread, update } from '../../../src/indexForTest'
+import { PreparedVoice, Sound, update } from '../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 describe('update', () => {
-    const testNote: Note = {
+    const testSound: Sound = {
         duration: to.Ms(5),
         frequency: to.Hz(1),
         gain: to.Scalar(1),
@@ -11,7 +11,7 @@ describe('update', () => {
         sustain: to.Ms(1),
     }
 
-    const nextTestNote: Note = {
+    const nextTestSound: Sound = {
         duration: to.Ms(3),
         frequency: to.Hz(1),
         gain: to.Scalar(1),
@@ -19,35 +19,35 @@ describe('update', () => {
         sustain: to.Ms(1),
     }
 
-    it('uses duration and sustain to determine the next note end and start', () => {
-        const thread: Thread = {
-            nextEnd: to.Ms(0),
+    it('uses duration and sustain to determine the next sound stop and start', () => {
+        const preparedVoice: PreparedVoice = {
             nextStart: to.Ms(0),
-            noteIndex: to.Ordinal(0),
-            notes: [ testNote, nextTestNote ],
-            voice: {
-                startNote: noop,
-                stopNote: noop,
+            nextStop: to.Ms(0),
+            soundIndex: to.Ordinal(0),
+            sounds: [ testSound, nextTestSound ],
+            source: {
+                startSound: noop,
+                stopSound: noop,
             },
         }
 
-        update(thread, to.Ms(0.001))
+        update(preparedVoice, to.Ms(0.001))
 
-        expect(thread.nextStart)
+        expect(preparedVoice.nextStart)
             .toBe(to.Ms(5))
-        expect(thread.nextEnd)
+        expect(preparedVoice.nextStop)
             .toBe(to.Ms(1))
-        expect(thread.noteIndex)
+        expect(preparedVoice.soundIndex)
             .toBe(to.Ordinal(1))
     })
 
-    describe('next note', () => {
-        it('sets note index to the next note', () => {
-            const thread: Thread = {
-                nextEnd: to.Ms(0),
+    describe('next sound', () => {
+        it('sets sound index to the next sound', () => {
+            const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(0),
-                noteIndex: to.Ordinal(0),
-                notes: [
+                nextStop: to.Ms(0),
+                soundIndex: to.Ordinal(0),
+                sounds: [
                     {
                         duration: to.Ms(5),
                         frequency: to.Hz(1),
@@ -63,132 +63,132 @@ describe('update', () => {
                         sustain: to.Ms(1),
                     },
                 ],
-                voice: {
-                    startNote: noop,
-                    stopNote: noop,
+                source: {
+                    startSound: noop,
+                    stopSound: noop,
                 },
             }
 
-            update(thread, to.Ms(0.001))
+            update(preparedVoice, to.Ms(0.001))
 
-            expect(thread.noteIndex)
+            expect(preparedVoice.soundIndex)
                 .toBe(to.Ordinal(1))
         })
 
-        it('wraps around to the beginning if it has reached the last note', () => {
-            const thread: Thread = {
-                nextEnd: to.Ms(1),
+        it('wraps around to the beginning if it has reached the last sound', () => {
+            const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(5),
-                noteIndex: to.Ordinal(1),
-                notes: [
-                    testNote,
-                    nextTestNote,
+                nextStop: to.Ms(1),
+                soundIndex: to.Ordinal(1),
+                sounds: [
+                    testSound,
+                    nextTestSound,
                 ],
-                voice: {
-                    startNote: noop,
-                    stopNote: noop,
+                source: {
+                    startSound: noop,
+                    stopSound: noop,
                 },
             }
 
-            update(thread, to.Ms(5.001))
+            update(preparedVoice, to.Ms(5.001))
 
-            expect(thread.noteIndex)
+            expect(preparedVoice.soundIndex)
                 .toBe(to.Ordinal(0))
         })
     })
 
     describe('starting and stopping', () => {
-        it(`calls the voice's start note method when the next start is reached`, () => {
-            const startNote: Spy = jasmine.createSpy()
-            const thread: Thread = {
-                nextEnd: to.Ms(0),
+        it(`calls the source's start sound method when the next start is reached`, () => {
+            const startSound: Spy = jasmine.createSpy()
+            const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(8),
-                noteIndex: to.Ordinal(0),
-                notes: [ testNote ],
-                voice: {
-                    startNote,
-                    stopNote: noop,
+                nextStop: to.Ms(0),
+                soundIndex: to.Ordinal(0),
+                sounds: [ testSound ],
+                source: {
+                    startSound,
+                    stopSound: noop,
                 },
             }
 
-            update(thread, to.Ms(8.001))
+            update(preparedVoice, to.Ms(8.001))
 
-            expect(startNote)
+            expect(startSound)
                 .toHaveBeenCalled()
         })
 
-        it(`does not call the voice's start note method when the next start is not yet reached`, () => {
-            const startNote: Spy = jasmine.createSpy()
-            const thread: Thread = {
-                nextEnd: to.Ms(0),
+        it(`does not call the source's start sound method when the next start is not yet reached`, () => {
+            const startSound: Spy = jasmine.createSpy()
+            const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(8),
-                noteIndex: to.Ordinal(0),
-                notes: [ testNote ],
-                voice: {
-                    startNote,
-                    stopNote: noop,
+                nextStop: to.Ms(0),
+                soundIndex: to.Ordinal(0),
+                sounds: [ testSound ],
+                source: {
+                    startSound,
+                    stopSound: noop,
                 },
             }
 
-            update(thread, to.Ms(7))
+            update(preparedVoice, to.Ms(7))
 
-            expect(startNote)
+            expect(startSound)
                 .not
                 .toHaveBeenCalled()
         })
 
-        it(`calls the voice's stop note method when the next end is reached`, () => {
-            const stopNote: Spy = jasmine.createSpy()
-            const thread: Thread = {
-                nextEnd: to.Ms(8),
+        it(`calls the source's stop sound method when the next stop is reached`, () => {
+            const stopSound: Spy = jasmine.createSpy()
+            const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(0),
-                noteIndex: to.Ordinal(0),
-                notes: [ testNote ],
-                voice: {
-                    startNote: noop,
-                    stopNote,
+                nextStop: to.Ms(8),
+                soundIndex: to.Ordinal(0),
+                sounds: [ testSound ],
+                source: {
+                    startSound: noop,
+                    stopSound,
                 },
             }
 
-            update(thread, to.Ms(8.001))
+            update(preparedVoice, to.Ms(8.001))
 
-            expect(stopNote)
+            expect(stopSound)
                 .toHaveBeenCalled()
         })
 
-        it(`does not call the voice's stop note method when the next end is not yet reached`, () => {
-            const stopNote: Spy = jasmine.createSpy()
-            const thread: Thread = {
-                nextEnd: to.Ms(8),
+        it(`does not call the source's stop sound method when the next stop is not yet reached`, () => {
+            const stopSound: Spy = jasmine.createSpy()
+            const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(0),
-                noteIndex: to.Ordinal(0),
-                notes: [ testNote ],
-                voice: {
-                    startNote: noop,
-                    stopNote,
+                nextStop: to.Ms(8),
+                soundIndex: to.Ordinal(0),
+                sounds: [ testSound ],
+                source: {
+                    startSound: noop,
+                    stopSound,
                 },
             }
 
-            update(thread, to.Ms(7))
+            update(preparedVoice, to.Ms(7))
 
-            expect(stopNote)
+            expect(stopSound)
                 .not
                 .toHaveBeenCalled()
         })
     })
 
-    it('when there are no notes, it does not crash', () => {
-        const thread: Thread = {
-            nextEnd: to.Ms(0),
+    it('when there are no sounds, it does not crash', () => {
+        const preparedVoice: PreparedVoice = {
             nextStart: to.Ms(0),
-            noteIndex: to.Ordinal(0),
-            notes: [],
-            voice: {
-                startNote: noop,
-                stopNote: noop,
+            nextStop: to.Ms(0),
+            soundIndex: to.Ordinal(0),
+            sounds: [],
+            source: {
+                startSound: noop,
+                stopSound: noop,
             },
         }
 
-        update(thread, to.Ms(0.001))
+        update(preparedVoice, to.Ms(0.001))
     })
 })

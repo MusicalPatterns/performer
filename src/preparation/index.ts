@@ -6,9 +6,9 @@ export {
 export {
     OscillatorName,
 } from './oscillators'
-export { constructThreads } from './threads'
+export { prepareVoices } from './voices'
 
 export {
-    VoiceSpec,
+    SourceRequest,
     TimbreName,
 } from './types'

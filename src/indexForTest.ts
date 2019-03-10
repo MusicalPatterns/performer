@@ -4,13 +4,13 @@ export {
     update,
 } from './performance/indexForTest'
 export {
-    constructThreads,
+    prepareVoices,
     OscillatorName,
     SampleName,
-} from './construction/indexForTest'
+} from './preparation/indexForTest'
 
 export {
-    Thread,
-    ThreadSpec,
-    Note,
+    PreparedVoice,
+    Voice,
+    Sound,
 } from './types'

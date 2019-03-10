@@ -1,12 +1,12 @@
 export { context } from './context'
 export { update } from './update'
-export { buildStartNote } from './startNote'
-export { buildStopNote } from './stopNote'
+export { buildStartSound } from './startSound'
+export { buildStopSound } from './stopSound'
 
 export {
-    NoteToPlay,
-    StartNote,
-    StopNote,
+    SoundToPlay,
+    StartSound,
+    StopSound,
     Timbre,
-    VoiceType,
+    SourceType,
 } from './types'

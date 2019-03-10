@@ -2,7 +2,7 @@
 
 # Musical Patterns - Performer
 
-Given a pattern which has used the `@musical-patterns/compiler` to compile it down to `ThreadSpec`s, this will first construct everything it needs to render it to audio with as few calculations during rendering as possible;
+Given a pattern which has used the `@musical-patterns/compiler` to compile it down to `Voice`s, this will first prepare everything it needs to render it to audio with as few calculations during rendering as possible;
 then it will render it as audio for you to hear.
 
 ## usage
@@ -26,16 +26,16 @@ This will ensure your browser is ready to start playing!
 ### loading a pattern
 
 ```
-import { setThreadSpecs, ThreadSpec } from '@musical-patterns/performer'
+import { setVoices, Voice } from '@musical-patterns/performer'
 
-const threadSpecs: ThreadSpec[] = [
-	// your thread specs here
+const voices: Voice[] = [
+	// your voices here
 ]
 
-await setThreadSpecs(threadSpecs)
+await setVoices(voices)
 ```
 
-`setThreadSpecs` only sets what is to be performed. It does not start playing it yet.
+`setVoices` only sets what is to be performed. It does not start playing it yet.
 
 ### starting and stopping
 
@@ -78,14 +78,14 @@ If you do not, Vrb is what will be used under the hood for WebVR and it will be 
 
 ### or if you're an eager beaver
 
-If you pass `threadSpecs` to the setup, it will automatically start playing them.
+If you pass `voices` to the setup, it will automatically start playing them.
 
 ```
 import { setupPerformer } from '@musical-patterns/performer'
 import { snapshot } from '@musical-patterns/pattern-houndstoothtopia-theme'
 
 await setupPerformer({
-	threadSpecs: snapshot,
+	voices: snapshot,
 })
 
 ```

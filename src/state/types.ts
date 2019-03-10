@@ -2,14 +2,14 @@
 
 import { ActionForState, Coordinate, Maybe, Meters, Ms, ThreeDimensional, TypedMap } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
-import { SampleDatas } from '../construction'
-import { Thread, ThreadSpec } from '../types'
+import { SampleDatas } from '../preparation'
+import { PreparedVoice, Voice } from '../types'
 
 enum StateKey {
     CLOCK = 'CLOCK',
     PAUSED = 'PAUSED',
-    THREADS = 'THREADS',
-    THREAD_SPECS = 'THREAD_SPECS',
+    PREPARED_VOICES = 'PREPARED_VOICES',
+    VOICES = 'VOICES',
     TIME_POSITION = 'TIME_POSITION',
     IMMERSIVE_AUDIO_READY = 'IMMERSIVE_AUDIO_READY',
     WEB_VR = 'WEB_VR',
@@ -21,8 +21,8 @@ enum StateKey {
 interface State {
     [ StateKey.CLOCK ]: Maybe<Worker>,
     [ StateKey.PAUSED ]: boolean,
-    [ StateKey.THREADS ]: Thread[],
-    [ StateKey.THREAD_SPECS ]: ThreadSpec[],
+    [ StateKey.PREPARED_VOICES ]: PreparedVoice[],
+    [ StateKey.VOICES ]: Voice[],
     [ StateKey.TIME_POSITION ]: Ms,
     [ StateKey.IMMERSIVE_AUDIO_READY ]: boolean,
     [ StateKey.WEB_VR ]: Maybe<Vrb>,

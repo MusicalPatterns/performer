@@ -1,6 +1,6 @@
 // tslint:disable no-reaching-imports
 
-export { constructThreads } from './threads'
+export { prepareVoices } from './voices'
 export {
     OscillatorName,
 } from './oscillators'

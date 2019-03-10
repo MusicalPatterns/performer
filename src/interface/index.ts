@@ -1,6 +1,6 @@
 export { enableImmersiveAudio } from './enableImmersiveAudio'
 export { setupPerformer } from './setupPerformer'
-export { setThreadSpecs } from './setThreadSpecs'
+export { setVoices } from './setVoices'
 export { stop } from './stop'
 export { pause } from './pause'
 export { play } from './play'

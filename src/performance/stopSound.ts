@@ -1,5 +1,5 @@
 import { SourceNode } from './source'
-import { BuildStopNoteParameters, StopNote } from './types'
+import { BuildStopSoundParameters, StopSound } from './types'
 
 const stopSourceNode: (sourceNode: SourceNode) => void =
     (sourceNode: SourceNode): void => {
@@ -11,10 +11,10 @@ const stopSourceNode: (sourceNode: SourceNode) => void =
         catch (e) {}
     }
 
-const buildStopNote: (parameters: BuildStopNoteParameters) => StopNote =
-    ({ startedNote }: BuildStopNoteParameters): StopNote =>
+const buildStopSound: (parameters: BuildStopSoundParameters) => StopSound =
+    ({ startedSound }: BuildStopSoundParameters): StopSound =>
         (): void => {
-            const { sourceNode, gainNode, positionalAudio, positionNode } = startedNote
+            const { sourceNode, gainNode, positionalAudio, positionNode } = startedSound
             if (positionNode && positionalAudio) {
                 positionNode.remove(positionalAudio)
             }
@@ -28,5 +28,5 @@ const buildStopNote: (parameters: BuildStopNoteParameters) => StopNote =
         }
 
 export {
-    buildStopNote,
+    buildStopSound,
 }

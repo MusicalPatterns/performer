@@ -1,32 +1,32 @@
 import { Ms, to } from '@musical-patterns/utilities'
-import { constructThreads, Thread, ThreadSpec } from '../../../src/indexForTest'
+import { PreparedVoice, prepareVoices, Voice } from '../../../src/indexForTest'
 
-describe('construct threads', () => {
-    it('defaults notes to empty array, and next start, next end, and note index each to zero', async (done: DoneFn) => {
-        const threadSpecs: ThreadSpec[] = [
+describe('prepare voices', () => {
+    it('defaults sounds to empty array, and next start, next stop, and sound index each to zero', async (done: DoneFn) => {
+        const voices: Voice[] = [
             {},
         ]
 
-        const threads: Thread[] = await constructThreads(threadSpecs)
-        const thread: Thread = threads[ 0 ]
+        const preparedVoices: PreparedVoice[] = await prepareVoices(voices)
+        const preparedVoice: PreparedVoice = preparedVoices[ 0 ]
 
-        expect(thread.nextEnd)
+        expect(preparedVoice.nextStop)
             .toBe(to.Ms(0))
-        expect(thread.nextStart)
+        expect(preparedVoice.nextStart)
             .toBe(to.Ms(0))
-        expect(thread.noteIndex)
+        expect(preparedVoice.soundIndex)
             .toBe(to.Ordinal(0))
-        expect(thread.notes)
+        expect(preparedVoice.sounds)
             .toEqual([])
 
         done()
     })
 
     describe('when provided a start time', () => {
-        it('picks the correct first note index, and the correct time when the next note will start', async (done: DoneFn) => {
-            const threadSpecs: ThreadSpec[] = [
+        it('picks the correct first sound index, and the correct time when the next sound will start', async (done: DoneFn) => {
+            const voices: Voice[] = [
                 {
-                    notes: [
+                    sounds: [
                         {
                             duration: to.Ms(5),
                             frequency: to.Hz(1),
@@ -46,23 +46,23 @@ describe('construct threads', () => {
             ]
             const startTime: Ms = to.Ms(2)
 
-            const threads: Thread[] = await constructThreads(threadSpecs, startTime)
-            const thread: Thread = threads[ 0 ]
+            const preparedVoices: PreparedVoice[] = await prepareVoices(voices, startTime)
+            const preparedVoice: PreparedVoice = preparedVoices[ 0 ]
 
-            expect(thread.nextEnd)
+            expect(preparedVoice.nextStop)
                 .toBe(to.Ms(5))
-            expect(thread.nextStart)
+            expect(preparedVoice.nextStart)
                 .toBe(to.Ms(5))
-            expect(thread.noteIndex)
+            expect(preparedVoice.soundIndex)
                 .toBe(to.Ordinal(1))
 
             done()
         })
 
         it('wraps around if the start time is longer than the pattern itself', async (done: DoneFn) => {
-            const threadSpecs: ThreadSpec[] = [
+            const voices: Voice[] = [
                 {
-                    notes: [
+                    sounds: [
                         {
                             duration: to.Ms(5),
                             frequency: to.Hz(1),
@@ -82,14 +82,14 @@ describe('construct threads', () => {
             ]
             const startTime: Ms = to.Ms(14)
 
-            const threads: Thread[] = await constructThreads(threadSpecs, startTime)
-            const thread: Thread = threads[ 0 ]
+            const preparedVoices: PreparedVoice[] = await prepareVoices(voices, startTime)
+            const preparedVoice: PreparedVoice = preparedVoices[ 0 ]
 
-            expect(thread.nextEnd)
+            expect(preparedVoice.nextStop)
                 .toBe(to.Ms(16))
-            expect(thread.nextStart)
+            expect(preparedVoice.nextStart)
                 .toBe(to.Ms(16))
-            expect(thread.noteIndex)
+            expect(preparedVoice.soundIndex)
                 .toBe(to.Ordinal(0))
 
             done()

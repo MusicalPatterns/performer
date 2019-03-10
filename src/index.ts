@@ -1,6 +1,6 @@
 export {
     enableImmersiveAudio,
-    setThreadSpecs,
+    setVoices,
     setupPerformer,
     play,
     pause,
@@ -14,15 +14,15 @@ export {
     OnUpdate,
 } from './setup'
 export {
-    VoiceSpec,
+    SourceRequest,
     SampleName,
     OscillatorName,
     TimbreName,
-} from './construction'
+} from './preparation'
 export {
-    VoiceType,
+    SourceType,
 } from './performance'
 export {
-    ThreadSpec,
-    Note,
+    Voice,
+    Sound,
 } from './types'

@@ -1,11 +1,11 @@
 import { BEGINNING } from '@musical-patterns/utilities'
 import { BatchAction, batchActions } from 'redux-batched-actions'
 import { Action, StateKey, store } from '../state'
-import { buildSetTimeActions, stopExistingThreads } from './helpers'
+import { buildSetTimeActions, stopExistingVoices } from './helpers'
 
 const stop: () => Promise<void> =
     async (): Promise<void> => {
-        stopExistingThreads()
+        stopExistingVoices()
 
         const setTimeActions: Action[] = await buildSetTimeActions(BEGINNING)
         const actions: Action[] = setTimeActions.concat([

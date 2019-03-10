@@ -1,8 +1,8 @@
 import { Ms } from '@musical-patterns/utilities'
-import { constructThreads } from '../../construction'
+import { prepareVoices } from '../../preparation'
 import { ImmutableState, StateKey, store } from '../../state'
-import { Thread, ThreadSpec } from '../../types'
-import { stopExistingThreads } from './stopExistingThreads'
+import { PreparedVoice, Voice } from '../../types'
+import { stopExistingVoices } from './stopExistingVoices'
 
 let previousImmersiveAudioEnabled: boolean = false
 
@@ -13,13 +13,13 @@ const handleImmersiveAudioChange: () => Promise<void> =
 
         if (immersiveAudioEnabled !== previousImmersiveAudioEnabled) {
             previousImmersiveAudioEnabled = immersiveAudioEnabled
-            stopExistingThreads()
+            stopExistingVoices()
 
-            const threadSpecs: ThreadSpec[] = state.get(StateKey.THREAD_SPECS)
             const timePosition: Ms = state.get(StateKey.TIME_POSITION)
-            const threads: Thread[] = await constructThreads(threadSpecs, timePosition)
+            const voices: Voice[] = state.get(StateKey.VOICES)
+            const preparedVoices: PreparedVoice[] = await prepareVoices(voices, timePosition)
 
-            store.dispatch({ type: StateKey.THREADS, data: threads })
+            store.dispatch({ type: StateKey.PREPARED_VOICES, data: preparedVoices })
         }
     }
 

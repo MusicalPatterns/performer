@@ -1,6 +1,6 @@
 import { keyExistsOnObject } from '@musical-patterns/utilities'
 import { context } from '../context'
-import { Timbre, VoiceType } from '../types'
+import { SourceType, Timbre } from '../types'
 import {
     BuildSourceNodeParameters,
     ImmersiveKey,
@@ -26,10 +26,10 @@ const setPitchObjectValue: (setupPitchObjectParameters: SetPitchObjectValueParam
 
 const buildSourceNode: (parameters: BuildSourceNodeParameters) => SourceNode =
     (parameters: BuildSourceNodeParameters): SourceNode => {
-        const { timbre, voiceType, webVr, immersiveAudioEnabled } = parameters
+        const { timbre, sourceType, webVr, immersiveAudioEnabled } = parameters
 
         let sourceNodeBuildingKeys: SourceNodeBuildingKeys
-        if (voiceType === VoiceType.SAMPLE) {
+        if (sourceType === SourceType.SAMPLE) {
             sourceNodeBuildingKeys = {
                 immersiveKey: ImmersiveKey.createSpatialBufferSource,
                 pitchKey: PitchKey.playbackRate,

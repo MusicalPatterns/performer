@@ -1,17 +1,17 @@
 import { Hz, Maybe, Scalar } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
-import { Timbre, VoiceType } from '../types'
+import { SourceType, Timbre } from '../types'
 
 interface BuildSourceNodeParameters {
-    frequency: Hz,
-    immersiveAudioEnabled: boolean,
-    playbackRate?: Maybe<Scalar>,
-    timbre: Timbre,
-    voiceType: VoiceType,
-    webVr?: Vrb,
 
     // tslint:disable-next-line no-any
     [ index: string ]: any,
+    frequency: Hz,
+    immersiveAudioEnabled: boolean,
+    playbackRate?: Maybe<Scalar>,
+    sourceType: SourceType,
+    timbre: Timbre,
+    webVr?: Vrb,
 }
 
 type SourceNode = SampleSourceNode | OscillatorSourceNode
