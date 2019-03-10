@@ -12,7 +12,7 @@ const constructVoice: (voiceSpec: VoiceSpec) => Promise<Voice> =
     async (voiceSpec: VoiceSpec): Promise<Voice> => {
         const timbre: Maybe<Timbre> = voiceSpecIsSampleVoiceSpec(voiceSpec) ?
             await getBuffer(voiceSpec.timbreName) :
-                getPeriodicWave(voiceSpec.timbreName)
+            getPeriodicWave(voiceSpec.timbreName)
 
         const { voiceType } = voiceSpec
 

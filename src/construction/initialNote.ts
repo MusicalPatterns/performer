@@ -1,15 +1,4 @@
-import {
-    apply,
-    from,
-    indexOfLastElement,
-    INITIAL,
-    isUndefined,
-    Maybe,
-    Ms,
-    NEXT,
-    Ordinal,
-    to,
-} from '@musical-patterns/utilities'
+import { apply, from, indexOfLastElement, INITIAL, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
 import { Note } from '../types'
 import { InitialNote } from './types'
 

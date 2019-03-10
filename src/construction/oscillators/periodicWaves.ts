@@ -2,7 +2,12 @@
 import * as periodicWaves from '@mohayonao/wave-tables'
 import { isUndefined, logMessageToConsole, Maybe } from '@musical-patterns/utilities'
 import { context } from '../../performance'
-import { GetPeriodicWave, OscillatorName, OscillatorNameToPeriodicWaveNameMap, PeriodicWaveSpec } from './types'
+import {
+    CreatePeriodicWaveParameters,
+    GetPeriodicWave,
+    OscillatorName,
+    OscillatorNameToPeriodicWaveNameMap,
+} from './types'
 
 const oscillatorNameToPeriodicWaveNameMap: OscillatorNameToPeriodicWaveNameMap = {
     BASS: 'Bass',
@@ -59,15 +64,12 @@ const oscillatorNameToPeriodicWaveNameMap: OscillatorNameToPeriodicWaveNameMap =
     WURLITZER_2: 'Wurlitzer2',
 }
 
-const sineSpec: PeriodicWaveSpec = {
-    imag: [ 0, 0 ],
-    real: [ 0, 1 ],
-}
+const sineSpec: CreatePeriodicWaveParameters = { imag: [ 0, 0 ], real: [ 0, 1 ] }
 
-const getPeriodicWaveSpec: (oscillatorName: OscillatorName) => PeriodicWaveSpec =
-    (oscillatorName: OscillatorName): PeriodicWaveSpec => {
+const computeCreatePeriodicWaveParameters: (oscillatorName: OscillatorName) => CreatePeriodicWaveParameters =
+    (oscillatorName: OscillatorName): CreatePeriodicWaveParameters => {
         const oscillatorNameToPeriodicWaveNameMapElement: string = oscillatorNameToPeriodicWaveNameMap[ oscillatorName ]
-        const periodicWaveSpec: Maybe<PeriodicWaveSpec> =
+        const periodicWaveSpec: Maybe<CreatePeriodicWaveParameters> =
             periodicWaves[ oscillatorNameToPeriodicWaveNameMapElement ]
 
         if (isUndefined(periodicWaveSpec)) {
@@ -79,16 +81,16 @@ Defaulting to sine. Please try updating your '@musical-patterns' packages.`)
         else {
             return periodicWaveSpec
         }
-
     }
 
-const getPeriodicWave: GetPeriodicWave = (oscillatorName: OscillatorName): PeriodicWave => {
-    const { real, imag } = oscillatorName === OscillatorName.SINE ?
-        sineSpec :
-        getPeriodicWaveSpec(oscillatorName)
+const getPeriodicWave: GetPeriodicWave =
+    (oscillatorName: OscillatorName): PeriodicWave => {
+        const { real, imag } = oscillatorName === OscillatorName.SINE ?
+            sineSpec :
+            computeCreatePeriodicWaveParameters(oscillatorName)
 
-    return context.createPeriodicWave(Float32Array.from(real), Float32Array.from(imag))
-}
+        return context.createPeriodicWave(Float32Array.from(real), Float32Array.from(imag))
+    }
 
 export {
     getPeriodicWave,

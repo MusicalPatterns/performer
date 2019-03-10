@@ -55,7 +55,7 @@ enum OscillatorName {
 
 type OscillatorNameToPeriodicWaveNameMap = { [K in OscillatorName]: string }
 
-interface PeriodicWaveSpec {
+interface CreatePeriodicWaveParameters {
     imag: number[],
     real: number[],
 }
@@ -63,7 +63,7 @@ interface PeriodicWaveSpec {
 type GetPeriodicWave = (oscillatorName: OscillatorName) => PeriodicWave
 
 export {
-    PeriodicWaveSpec,
+    CreatePeriodicWaveParameters,
     OscillatorName,
     GetPeriodicWave,
     OscillatorNameToPeriodicWaveNameMap,

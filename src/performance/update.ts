@@ -1,4 +1,4 @@
-import { apply, from, INITIAL, isUndefined, Maybe, Ms, NEXT, to } from '@musical-patterns/utilities'
+import { apply, from, INITIAL, Ms, NEXT, to } from '@musical-patterns/utilities'
 import { Note, Thread } from '../types'
 
 const startThreadNote: (thread: Thread, note: Note) => void =
