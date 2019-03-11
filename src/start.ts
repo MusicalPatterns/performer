@@ -1,6 +1,4 @@
-// tslint:disable
-
-// import { snapshot } from '@musical-patterns/pattern-performer-qa'
+import { snapshot } from '@musical-patterns/pattern-performer-qa'
 import { to } from '@musical-patterns/utilities'
 import {
     enableImmersiveAudio,
@@ -14,7 +12,7 @@ import {
 
 const setupQa: () => Promise<void> =
     async (): Promise<void> => {
-        // await setupPerformer({ voices: snapshot })
+        await setupPerformer({ voices: snapshot })
         const { enterImmersiveAudio, exitImmersiveAudio }: ToggleImmersiveAudioHandlers = enableImmersiveAudio()
 
         const setTimeButton: HTMLElement = document.createElement('button')
