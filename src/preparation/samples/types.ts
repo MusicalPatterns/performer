@@ -19,9 +19,9 @@ interface SampleData {
     unpitched?: boolean,
 }
 
-type SampleDatas = { [K in SampleName]: SampleData }
+type SampleDatas = { [Index in SampleName]: SampleData }
 
-type Samples = { [x in SampleName]: AudioBuffer }
+type Samples = { [Index in SampleName]: AudioBuffer }
 
 export {
     SampleName,
