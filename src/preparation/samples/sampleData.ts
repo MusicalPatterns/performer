@@ -13,7 +13,7 @@ const shiftSemitones: (semitones: Semitones) => Cents =
     (semitones: Semitones): Cents =>
         apply.Scalar(CENTS_PER_SEMITONE, to.Scalar(semitones))
 
-const buildSampleData: VoidFunction =
+const computeSampleData: VoidFunction =
     (): void => {
         const sampleData: SampleDatas = {
             [ SampleName.CELLO ]: {},
@@ -49,5 +49,5 @@ const buildSampleData: VoidFunction =
     }
 
 export {
-    buildSampleData,
+    computeSampleData,
 }

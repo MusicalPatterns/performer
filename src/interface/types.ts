@@ -3,7 +3,7 @@ import { Vrb } from 'vrb'
 import { OnUpdate } from '../setup'
 import { Voice } from '../types'
 
-interface BuildToggleImmersiveAudioParameters {
+interface ComputeToggleImmersiveAudioParameters {
     vrb: Vrb,
 }
 
@@ -25,7 +25,7 @@ interface ToggleImmersiveAudioHandlers {
 }
 
 export {
-    BuildToggleImmersiveAudioParameters,
+    ComputeToggleImmersiveAudioParameters,
     EnableImmersiveAudioParameters,
     SetupPerformerParameters,
     ToggleImmersiveAudioHandlers,

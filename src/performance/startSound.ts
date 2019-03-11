@@ -1,17 +1,17 @@
 import { Object3D } from 'three'
-import { buildGainNode } from './gainNode'
-import { buildPositionalAudio } from './positionalAudio'
-import { buildSourceNode, SourceNode } from './source'
-import { BuildStartSoundParameters, SoundToPlay, StartedSound, StartSound, StartSoundAndStartedSound } from './types'
+import { computeGainNode } from './gainNode'
+import { computePositionalAudio } from './positionalAudio'
+import { computeSourceNode, SourceNode } from './source'
+import { ComputeStartSoundParameters, SoundToPlay, StartedSound, StartSound, StartSoundAndStartedSound } from './types'
 
-const buildStartSound: (parameters: BuildStartSoundParameters) => StartSoundAndStartedSound =
-    (parameters: BuildStartSoundParameters): StartSoundAndStartedSound => {
+const computeStartSound: (parameters: ComputeStartSoundParameters) => StartSoundAndStartedSound =
+    (parameters: ComputeStartSoundParameters): StartSoundAndStartedSound => {
         const { timbre, webVr, sourceType, immersiveAudioEnabled } = parameters
 
         const startedSound: StartedSound = {}
 
         const startSound: StartSound = ({ gain, frequency, playbackRate, position }: SoundToPlay): void => {
-            const sourceNode: SourceNode = buildSourceNode({
+            const sourceNode: SourceNode = computeSourceNode({
                 frequency,
                 immersiveAudioEnabled,
                 playbackRate,
@@ -23,9 +23,9 @@ const buildStartSound: (parameters: BuildStartSoundParameters) => StartSoundAndS
             if (immersiveAudioEnabled && webVr) {
                 const positionNode: Object3D = new Object3D()
                 startedSound.positionNode = positionNode
-                startedSound.positionalAudio = buildPositionalAudio({ position, positionNode, sourceNode, webVr })
+                startedSound.positionalAudio = computePositionalAudio({ position, positionNode, sourceNode, webVr })
             }
-            startedSound.gainNode = buildGainNode({ gain, sourceNode, positionalAudio: startedSound.positionalAudio })
+            startedSound.gainNode = computeGainNode({ gain, sourceNode, positionalAudio: startedSound.positionalAudio })
             startedSound.sourceNode.start()
         }
 
@@ -36,5 +36,5 @@ const buildStartSound: (parameters: BuildStartSoundParameters) => StartSoundAndS
     }
 
 export {
-    buildStartSound,
+    computeStartSound,
 }

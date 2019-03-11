@@ -1,7 +1,7 @@
 import { Maybe } from '@musical-patterns/utilities'
 import { StateKey, store } from '../../state'
 import { Sound } from '../../types'
-import { calculatePlaybackRate } from './calculatePlaybackRate'
+import { computePlaybackRate } from './playbackRate'
 import { SampleDatas, SampleName } from './types'
 
 const applyPlaybackRate: (sound: Sound, timbreName: SampleName) => Sound =
@@ -12,7 +12,7 @@ const applyPlaybackRate: (sound: Sound, timbreName: SampleName) => Sound =
             .get(StateKey.SAMPLE_DATA)
 
         if (sampleData) {
-            sound.playbackRate = calculatePlaybackRate(sampleData[ timbreName ], sound.frequency)
+            sound.playbackRate = computePlaybackRate(sampleData[ timbreName ], sound.frequency)
         }
 
         return outputSound

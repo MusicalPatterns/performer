@@ -2,7 +2,7 @@ import { apply, from, indexOfLastElement, INITIAL, Ms, NEXT, Ordinal, to } from 
 import { Sound } from '../types'
 import { NextSound } from './types'
 
-const calculateNextSoundAfterTimePosition: (sounds: Sound[], timePosition: Ms) => NextSound =
+const computeNextSoundAfterTimePosition: (sounds: Sound[], timePosition: Ms) => NextSound =
     (sounds: Sound[], timePosition: Ms): NextSound => {
         let soundIndex: Ordinal = INITIAL
         let nextStart: Ms = to.Ms(0)
@@ -21,5 +21,5 @@ const calculateNextSoundAfterTimePosition: (sounds: Sound[], timePosition: Ms) =
     }
 
 export {
-    calculateNextSoundAfterTimePosition,
+    computeNextSoundAfterTimePosition,
 }

@@ -1,5 +1,5 @@
 import { noop } from '@musical-patterns/utilities'
-import { buildSampleData } from '../preparation'
+import { computeSampleData } from '../preparation'
 import { activateContextInMobileBrowserEnvironments, setupClock, setupTimeControls } from '../setup'
 import { play } from './play'
 import { setVoices } from './setVoices'
@@ -9,7 +9,7 @@ const setupPerformer: (parameters?: SetupPerformerParameters) => Promise<void> =
     async ({ onUpdate = noop, voices }: SetupPerformerParameters = {}): Promise<void> => {
         activateContextInMobileBrowserEnvironments()
         setupTimeControls(onUpdate)
-        buildSampleData()
+        computeSampleData()
         setupClock()
 
         if (voices) {

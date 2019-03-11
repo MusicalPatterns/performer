@@ -1,11 +1,11 @@
 import { isUndefined, Ms, to } from '@musical-patterns/utilities'
 import { SourceType } from '../performance'
-import { ImmutableState, StateKey, store } from '../state'
+import { StateKey, store } from '../state'
 import { PreparedVoice, Sound, Voice } from '../types'
-import { calculateNextSoundAfterTimePosition } from './initialSound'
+import { computeNextSoundAfterTimePosition } from './initialSound'
 import { OscillatorName } from './oscillators'
 import { adjustSoundsForPerformer } from './sounds'
-import { getSource } from './source'
+import { getSource } from './sources'
 import { SourceRequest } from './types'
 
 const defaultSourceRequest: SourceRequest = {
@@ -26,7 +26,7 @@ const prepareVoices: (voices: Voice[], timePosition?: Ms) => Promise<PreparedVoi
 
             const adjustedSounds: Sound[] = adjustSoundsForPerformer(sounds, sourceRequest)
 
-            const { soundIndex, nextStart } = calculateNextSoundAfterTimePosition(adjustedSounds, timePositionToStartAt)
+            const { soundIndex, nextStart } = computeNextSoundAfterTimePosition(adjustedSounds, timePositionToStartAt)
 
             return {
                 nextStart,

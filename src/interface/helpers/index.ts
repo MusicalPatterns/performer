@@ -1,3 +1,3 @@
 export { stopExistingVoices } from './stopExistingVoices'
-export { buildSetTimeActions } from './setTimeActions'
+export { computeSetTimeActions } from './setTimeActions'
 export { handleImmersiveAudioChange } from './handleImmersiveAudioChange'

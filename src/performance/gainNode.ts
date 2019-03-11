@@ -1,9 +1,9 @@
 import { from } from '@musical-patterns/utilities'
 import { context } from './context'
-import { BuildGainNodeParameters } from './types'
+import { ComputeGainNodeParameters } from './types'
 
-const buildGainNode: (parameters: BuildGainNodeParameters) => GainNode =
-    ({ sourceNode, positionalAudio, gain }: BuildGainNodeParameters): GainNode => {
+const computeGainNode: (parameters: ComputeGainNodeParameters) => GainNode =
+    ({ sourceNode, positionalAudio, gain }: ComputeGainNodeParameters): GainNode => {
         let gainNode: GainNode
         if (positionalAudio) {
             gainNode = positionalAudio.getOutput()
@@ -20,5 +20,5 @@ const buildGainNode: (parameters: BuildGainNodeParameters) => GainNode =
     }
 
 export {
-    buildGainNode,
+    computeGainNode,
 }

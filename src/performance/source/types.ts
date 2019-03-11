@@ -2,7 +2,7 @@ import { Hz, Maybe, Scalar } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
 import { SourceType, Timbre } from '../types'
 
-interface BuildSourceNodeParameters {
+interface ComputeSourceNodeParameters {
 
     // tslint:disable-next-line no-any
     [ index: string ]: any,
@@ -33,7 +33,7 @@ interface PitchObject {
 
 type TimbreSetter = (timbre: Timbre) => void
 
-interface SourceNodeBuildingKeys {
+interface SourceNodeComputingKeys {
     immersiveKey: ImmersiveKey,
     pitchKey: PitchKey,
     standardKey: StandardKey,
@@ -61,17 +61,17 @@ enum TimbreSetterKey {
 }
 
 interface SetPitchObjectValueParameters {
-    buildSourceNodeParameters: BuildSourceNodeParameters,
+    computeSourceNodeParameters: ComputeSourceNodeParameters,
     pitchKey: PitchKey,
     sourceNode: SourceNode,
 }
 
 export {
-    BuildSourceNodeParameters,
+    ComputeSourceNodeParameters,
     SourceNode,
     PitchObject,
     TimbreSetter,
-    SourceNodeBuildingKeys,
+    SourceNodeComputingKeys,
     ImmersiveKey,
     PitchKey,
     PitchKeyIndexSignature,

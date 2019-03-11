@@ -60,11 +60,11 @@ interface CreatePeriodicWaveParameters {
     real: number[],
 }
 
-type GetPeriodicWave = (oscillatorName: OscillatorName) => PeriodicWave
+type ComputePeriodicWave = (oscillatorName: OscillatorName) => PeriodicWave
 
 export {
     CreatePeriodicWaveParameters,
     OscillatorName,
-    GetPeriodicWave,
+    ComputePeriodicWave,
     OscillatorNameToPeriodicWaveNameMap,
 }

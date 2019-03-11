@@ -2,14 +2,14 @@ import { keyExistsOnObject } from '@musical-patterns/utilities'
 import { context } from '../context'
 import { SourceType, Timbre } from '../types'
 import {
-    BuildSourceNodeParameters,
+    ComputeSourceNodeParameters,
     ImmersiveKey,
     PitchKey,
     PitchObject,
     SampleSourceNode,
     SetPitchObjectValueParameters,
     SourceNode,
-    SourceNodeBuildingKeys,
+    SourceNodeComputingKeys,
     StandardKey,
     TimbreSetterKey,
 } from './types'
@@ -19,18 +19,18 @@ const isSampleSourceNode: (sourceNode: SourceNode) => sourceNode is SampleSource
         keyExistsOnObject('buffer', sourceNode)
 
 const setPitchObjectValue: (setupPitchObjectParameters: SetPitchObjectValueParameters) => void =
-    ({ sourceNode, pitchKey, buildSourceNodeParameters }: SetPitchObjectValueParameters): void => {
+    ({ sourceNode, pitchKey, computeSourceNodeParameters }: SetPitchObjectValueParameters): void => {
         const pitchObject: PitchObject = sourceNode[ pitchKey ]
-        pitchObject.value = buildSourceNodeParameters[ pitchKey ] as unknown as number || 1
+        pitchObject.value = computeSourceNodeParameters[ pitchKey ] as unknown as number || 1
     }
 
-const buildSourceNode: (parameters: BuildSourceNodeParameters) => SourceNode =
-    (parameters: BuildSourceNodeParameters): SourceNode => {
+const computeSourceNode: (parameters: ComputeSourceNodeParameters) => SourceNode =
+    (parameters: ComputeSourceNodeParameters): SourceNode => {
         const { timbre, sourceType, webVr, immersiveAudioEnabled } = parameters
 
-        let sourceNodeBuildingKeys: SourceNodeBuildingKeys
+        let sourceNodeComputingKeys: SourceNodeComputingKeys
         if (sourceType === SourceType.SAMPLE) {
-            sourceNodeBuildingKeys = {
+            sourceNodeComputingKeys = {
                 immersiveKey: ImmersiveKey.createSpatialBufferSource,
                 pitchKey: PitchKey.playbackRate,
                 standardKey: StandardKey.createBufferSource,
@@ -38,14 +38,14 @@ const buildSourceNode: (parameters: BuildSourceNodeParameters) => SourceNode =
             }
         }
         else {
-            sourceNodeBuildingKeys = {
+            sourceNodeComputingKeys = {
                 immersiveKey: ImmersiveKey.createSpatialOscillator,
                 pitchKey: PitchKey.frequency,
                 standardKey: StandardKey.createOscillator,
                 timbreSetterKey: TimbreSetterKey.setPeriodicWave,
             }
         }
-        const { timbreSetterKey, immersiveKey, standardKey, pitchKey } = sourceNodeBuildingKeys
+        const { timbreSetterKey, immersiveKey, standardKey, pitchKey } = sourceNodeComputingKeys
 
         // @ts-ignore
         const sourceNode: SourceNode = immersiveAudioEnabled && webVr ?
@@ -59,11 +59,11 @@ const buildSourceNode: (parameters: BuildSourceNodeParameters) => SourceNode =
 
         sourceNode[ timbreSetterKey ](timbre)
 
-        setPitchObjectValue({ sourceNode, pitchKey, buildSourceNodeParameters: parameters })
+        setPitchObjectValue({ sourceNode, pitchKey, computeSourceNodeParameters: parameters })
 
         return sourceNode
     }
 
 export {
-    buildSourceNode,
+    computeSourceNode,
 }

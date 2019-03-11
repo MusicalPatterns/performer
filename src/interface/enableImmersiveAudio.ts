@@ -4,13 +4,13 @@ import { buildVrb, Vrb } from 'vrb'
 import { StateKey, store } from '../state'
 import { handleImmersiveAudioChange } from './helpers'
 import {
-    BuildToggleImmersiveAudioParameters,
+    ComputeToggleImmersiveAudioParameters,
     EnableImmersiveAudioParameters,
     ToggleImmersiveAudioHandlers,
 } from './types'
 
-const buildToggleImmersiveAudio: ({ vrb }: BuildToggleImmersiveAudioParameters) => ToggleImmersiveAudioHandlers =
-    ({ vrb }: BuildToggleImmersiveAudioParameters): ToggleImmersiveAudioHandlers => ({
+const computeToggleImmersiveAudio: ({ vrb }: ComputeToggleImmersiveAudioParameters) => ToggleImmersiveAudioHandlers =
+    ({ vrb }: ComputeToggleImmersiveAudioParameters): ToggleImmersiveAudioHandlers => ({
         enterImmersiveAudio: (): void => {
             const immersiveAudioReady: boolean = store.getState()
                 .get(StateKey.IMMERSIVE_AUDIO_READY)
@@ -65,7 +65,7 @@ const enableImmersiveAudio:
 
         store.subscribe(handleImmersiveAudioChange)
 
-        return buildToggleImmersiveAudio({ vrb: webVr })
+        return computeToggleImmersiveAudio({ vrb: webVr })
     }
 
 export {

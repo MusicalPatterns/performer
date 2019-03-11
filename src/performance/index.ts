@@ -1,7 +1,7 @@
 export { context } from './context'
 export { update } from './update'
-export { buildStartSound } from './startSound'
-export { buildStopSound } from './stopSound'
+export { computeStartSound } from './startSound'
+export { computeStopSound } from './stopSound'
 
 export {
     SoundToPlay,

@@ -18,7 +18,7 @@ interface StartSoundAnd {
     startSound: StartSound,
 }
 
-interface BuildStartSoundParameters {
+interface ComputeStartSoundParameters {
     immersiveAudioEnabled: boolean,
     sourceType: SourceType,
     timbre: Timbre,
@@ -36,17 +36,17 @@ interface StartedSound {
     sourceNode?: SourceNode,
 }
 
-interface BuildStopSoundParameters {
+interface ComputeStopSoundParameters {
     startedSound: StartedSound,
 }
 
-interface BuildGainNodeParameters {
+interface ComputeGainNodeParameters {
     gain: Scalar,
     positionalAudio: Maybe<PositionalAudio>,
     sourceNode: SourceNode,
 }
 
-interface BuildPositionalAudioParameters {
+interface ComputePositionalAudioParameters {
     position: Coordinate<Meters>,
     positionNode: Object3D,
     sourceNode: SourceNode,
@@ -64,12 +64,12 @@ export {
     SoundToPlay,
     StartSound,
     StopSound,
-    BuildStartSoundParameters,
+    ComputeStartSoundParameters,
     StartSoundAndStartedSound,
     StartedSound,
-    BuildStopSoundParameters,
-    BuildGainNodeParameters,
-    BuildPositionalAudioParameters,
+    ComputeStopSoundParameters,
+    ComputeGainNodeParameters,
+    ComputePositionalAudioParameters,
     Timbre,
     SourceType,
 }

@@ -3,8 +3,8 @@ import * as periodicWaves from '@mohayonao/wave-tables'
 import { isUndefined, logMessageToConsole, Maybe } from '@musical-patterns/utilities'
 import { context } from '../../performance'
 import {
+    ComputePeriodicWave,
     CreatePeriodicWaveParameters,
-    GetPeriodicWave,
     OscillatorName,
     OscillatorNameToPeriodicWaveNameMap,
 } from './types'
@@ -83,7 +83,7 @@ Defaulting to sine. Please try updating your '@musical-patterns' packages.`)
         }
     }
 
-const getPeriodicWave: GetPeriodicWave =
+const computePeriodicWave: ComputePeriodicWave =
     (oscillatorName: OscillatorName): PeriodicWave => {
         const { real, imag } = oscillatorName === OscillatorName.SINE ?
             createSineWaveParameters :
@@ -93,5 +93,5 @@ const getPeriodicWave: GetPeriodicWave =
     }
 
 export {
-    getPeriodicWave,
+    computePeriodicWave,
 }

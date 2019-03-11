@@ -2,7 +2,7 @@ import { apply, centsToPitch, Frequency, from, Hz, reciprocal, Scalar, to } from
 import { STANDARDIZED_SAMPLE_PITCH_OF_C5 } from './constants'
 import { SampleData } from './types'
 
-const calculatePlaybackRate: (sampleData: SampleData, frequency: Hz) => Scalar =
+const computePlaybackRate: (sampleData: SampleData, frequency: Hz) => Scalar =
     (sampleData: SampleData, frequency: Hz): Scalar => {
         if (sampleData.unpitched) {
             return to.Scalar(1)
@@ -19,5 +19,5 @@ const calculatePlaybackRate: (sampleData: SampleData, frequency: Hz) => Scalar =
     }
 
 export {
-    calculatePlaybackRate,
+    computePlaybackRate,
 }

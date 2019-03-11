@@ -1,5 +1,5 @@
 export {
-    buildSampleData,
+    computeSampleData,
     SampleName,
     SampleDatas,
 } from './samples'

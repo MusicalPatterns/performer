@@ -1,4 +1,4 @@
-export { buildSampleData } from './sampleData'
+export { computeSampleData } from './sampleData'
 export { applyPlaybackRate } from './applyPlaybackRate'
 export { getBuffer } from './buffers'
 
