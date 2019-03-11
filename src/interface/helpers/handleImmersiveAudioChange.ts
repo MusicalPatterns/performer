@@ -15,9 +15,8 @@ const handleImmersiveAudioChange: () => Promise<void> =
             previousImmersiveAudioEnabled = immersiveAudioEnabled
             stopExistingVoices()
 
-            const timePosition: Ms = state.get(StateKey.TIME_POSITION)
             const voices: Voice[] = state.get(StateKey.VOICES)
-            const preparedVoices: PreparedVoice[] = await prepareVoices(voices, timePosition)
+            const preparedVoices: PreparedVoice[] = await prepareVoices(voices)
 
             store.dispatch({ type: StateKey.PREPARED_VOICES, data: preparedVoices })
         }

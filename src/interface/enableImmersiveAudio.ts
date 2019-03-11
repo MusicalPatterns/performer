@@ -1,7 +1,7 @@
 import { noop } from '@musical-patterns/utilities'
 import { BatchAction, batchActions } from 'redux-batched-actions'
 import { buildVrb, Vrb } from 'vrb'
-import { ImmutableState, StateKey, store } from '../state'
+import { StateKey, store } from '../state'
 import { handleImmersiveAudioChange } from './helpers'
 import {
     BuildToggleImmersiveAudioParameters,
@@ -12,8 +12,8 @@ import {
 const buildToggleImmersiveAudio: ({ vrb }: BuildToggleImmersiveAudioParameters) => ToggleImmersiveAudioHandlers =
     ({ vrb }: BuildToggleImmersiveAudioParameters): ToggleImmersiveAudioHandlers => ({
         enterImmersiveAudio: (): void => {
-            const state: ImmutableState = store.getState()
-            const immersiveAudioReady: boolean = state.get(StateKey.IMMERSIVE_AUDIO_READY)
+            const immersiveAudioReady: boolean = store.getState()
+                .get(StateKey.IMMERSIVE_AUDIO_READY)
             if (!immersiveAudioReady) {
                 return
             }
@@ -22,8 +22,8 @@ const buildToggleImmersiveAudio: ({ vrb }: BuildToggleImmersiveAudioParameters) 
             vrb.toggleVr()
         },
         exitImmersiveAudio: (): void => {
-            const state: ImmutableState = store.getState()
-            const immersiveAudioReady: boolean = state.get(StateKey.IMMERSIVE_AUDIO_READY)
+            const immersiveAudioReady: boolean = store.getState()
+                .get(StateKey.IMMERSIVE_AUDIO_READY)
             if (!immersiveAudioReady) {
                 return
             }

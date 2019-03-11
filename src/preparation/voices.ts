@@ -1,7 +1,8 @@
-import { Ms, to } from '@musical-patterns/utilities'
+import { isUndefined, Ms, to } from '@musical-patterns/utilities'
 import { SourceType } from '../performance'
+import { ImmutableState, StateKey, store } from '../state'
 import { PreparedVoice, Sound, Voice } from '../types'
-import { calculateInitialSound } from './initialSound'
+import { calculateNextSoundAfterTimePosition } from './initialSound'
 import { OscillatorName } from './oscillators'
 import { adjustSoundsForPerformer } from './sounds'
 import { getSource } from './source'
@@ -12,14 +13,20 @@ const defaultSourceRequest: SourceRequest = {
     timbreName: OscillatorName.SINE,
 }
 
-const prepareVoices: (voices: Voice[], startTime?: Ms) => Promise<PreparedVoice[]> =
-    async (voices: Voice[], startTime: Ms = to.Ms(0)): Promise<PreparedVoice[]> =>
-        Promise.all(voices.map(async (voice: Voice): Promise<PreparedVoice> => {
+const prepareVoices: (voices: Voice[], timePosition?: Ms) => Promise<PreparedVoice[]> =
+    async (voices: Voice[], timePosition?: Ms): Promise<PreparedVoice[]> => {
+        let timePositionToStartAt: Ms = timePosition || to.Ms(0)
+        if (isUndefined(timePosition)) {
+            timePositionToStartAt = store.getState()
+                .get(StateKey.TIME_POSITION)
+        }
+
+        return Promise.all(voices.map(async (voice: Voice): Promise<PreparedVoice> => {
             const { sounds = [], sourceRequest = defaultSourceRequest } = voice
 
             const adjustedSounds: Sound[] = adjustSoundsForPerformer(sounds, sourceRequest)
 
-            const { soundIndex, nextStart } = calculateInitialSound(adjustedSounds, startTime)
+            const { soundIndex, nextStart } = calculateNextSoundAfterTimePosition(adjustedSounds, timePositionToStartAt)
 
             return {
                 nextStart,
@@ -29,6 +36,7 @@ const prepareVoices: (voices: Voice[], startTime?: Ms) => Promise<PreparedVoice[
                 source: await getSource(sourceRequest),
             }
         }))
+    }
 
 export {
     prepareVoices,

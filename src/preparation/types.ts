@@ -17,7 +17,7 @@ interface OscillatorSourceRequest {
     timbreName: OscillatorName,
 }
 
-interface InitialSound {
+interface NextSound {
     nextStart: Ms,
     soundIndex: Ordinal,
 }
@@ -25,7 +25,7 @@ interface InitialSound {
 export {
     SourceRequest,
     TimbreName,
-    InitialSound,
+    NextSound,
     SampleSourceRequest,
     OscillatorSourceRequest,
 }
