@@ -1,7 +1,7 @@
 import { computeReducer } from '@musical-patterns/utilities'
 import { applyMiddleware, compose, createStore, Store } from 'redux'
 import { BatchAction, batchDispatchMiddleware, enableBatching } from 'redux-batched-actions'
-import { initialState } from './initial'
+import { initialState } from './initials'
 import { Action, ImmutableState } from './types'
 
 // @ts-ignore
