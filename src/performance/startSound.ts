@@ -1,5 +1,5 @@
 import { Object3D } from 'three'
-import { computeGainNode } from './gainNode'
+import { computeGainNode } from './gainNodes'
 import { computePositionalAudio } from './positionalAudio'
 import { computeSourceNode, SourceNode } from './source'
 import { ComputeStartSoundParameters, SoundToPlay, StartedSound, StartSound, StartSoundAndStartedSound } from './types'

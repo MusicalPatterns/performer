@@ -1,7 +1,7 @@
 import { Ms, Ordinal } from '@musical-patterns/utilities'
 import { SourceType } from '../performance'
-import { OscillatorName } from './oscillators'
-import { SampleName } from './samples'
+import { OscillatorName } from './oscillator'
+import { SampleName } from './sample'
 
 type TimbreName = SampleName | OscillatorName
 

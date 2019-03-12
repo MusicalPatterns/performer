@@ -3,7 +3,7 @@
 export { prepareVoices } from './voices'
 export {
     OscillatorName,
-} from './oscillators'
+} from './oscillator'
 export {
     SampleName,
-} from './samples'
+} from './sample'

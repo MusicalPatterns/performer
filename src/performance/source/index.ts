@@ -1,4 +1,4 @@
-export { computeSourceNode } from './sourceNode'
+export { computeSourceNode } from './sourceNodes'
 
 export {
     SourceNode,

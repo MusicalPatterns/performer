@@ -2,10 +2,10 @@ export {
     computeSampleData,
     SampleName,
     SampleDatas,
-} from './samples'
+} from './sample'
 export {
     OscillatorName,
-} from './oscillators'
+} from './oscillator'
 export { prepareVoices } from './voices'
 
 export {
