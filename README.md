@@ -2,8 +2,7 @@
 
 # Musical Patterns - Performer
 
-Given a pattern which has used the `@musical-patterns/compiler` to compile it down to `Voice`s, this will first prepare everything it needs to render it to audio with as few calculations during rendering as possible;
-then it will render it as audio for you to hear.
+Given a pattern compiled by the `@musical-patterns/compiler`, hooks it up to the Web Audio and WebXR APIs and gives you the power to play it (and pause it, etc.)
 
 ## usage
 
