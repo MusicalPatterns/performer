@@ -12,6 +12,7 @@ const initialState: ImmutableState = typedMap<State>({
     [ StateKey.HOME_POSITION ]: undefined,
     [ StateKey.SAMPLE_DATA ]: undefined,
     [ StateKey.IMMERSIVE_AUDIO_ENABLED ]: false,
+    [ StateKey.IMMERSIVE_AUDIO_ON ]: false,
 })
 
 export {

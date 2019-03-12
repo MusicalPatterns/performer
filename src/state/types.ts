@@ -16,6 +16,7 @@ enum StateKey {
     HOME_POSITION = 'HOME_POSITION',
     SAMPLE_DATA = 'SAMPLE_DATA',
     IMMERSIVE_AUDIO_ENABLED = 'IMMERSIVE_AUDIO_ENABLED',
+    IMMERSIVE_AUDIO_ON = 'IMMERSIVE_AUDIO_ON',
 }
 
 interface State {
@@ -29,6 +30,7 @@ interface State {
     [ StateKey.HOME_POSITION ]: Maybe<Coordinate<Meters, ThreeDimensional>>,
     [ StateKey.SAMPLE_DATA ]: Maybe<SampleDatas>,
     [ StateKey.IMMERSIVE_AUDIO_ENABLED ]: boolean,
+    [ StateKey.IMMERSIVE_AUDIO_ON ]: boolean,
 }
 
 type ImmutableState = TypedMap<State>

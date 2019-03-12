@@ -1,24 +1,26 @@
-import { Ms } from '@musical-patterns/utilities'
+import { BatchAction, batchActions } from 'redux-batched-actions'
 import { prepareVoices } from '../../preparation'
 import { ImmutableState, StateKey, store } from '../../state'
 import { PreparedVoice, Voice } from '../../types'
 import { stopExistingVoices } from './stopExistingVoices'
 
-let previousImmersiveAudioEnabled: boolean = false
-
 const handleImmersiveAudioChange: () => Promise<void> =
     async (): Promise<void> => {
         const state: ImmutableState = store.getState()
         const immersiveAudioEnabled: boolean = state.get(StateKey.IMMERSIVE_AUDIO_ENABLED)
+        const immersiveAudioOn: boolean = state.get(StateKey.IMMERSIVE_AUDIO_ON)
 
-        if (immersiveAudioEnabled !== previousImmersiveAudioEnabled) {
-            previousImmersiveAudioEnabled = immersiveAudioEnabled
+        if (immersiveAudioEnabled !== immersiveAudioOn) {
             stopExistingVoices()
 
             const voices: Voice[] = state.get(StateKey.VOICES)
             const preparedVoices: PreparedVoice[] = await prepareVoices(voices)
 
-            store.dispatch({ type: StateKey.PREPARED_VOICES, data: preparedVoices })
+            const batchedAction: BatchAction = batchActions([
+                { type: StateKey.IMMERSIVE_AUDIO_ON, data: immersiveAudioEnabled },
+                { type: StateKey.PREPARED_VOICES, data: preparedVoices },
+            ])
+            store.dispatch(batchedAction)
         }
     }
 
