@@ -4,7 +4,7 @@ import { StateKey, store } from '../state'
 import { PreparedVoice, Sound, Voice } from '../types'
 import { computeNextSoundAfterTimePosition } from './initialSound'
 import { OscillatorName } from './oscillator'
-import { adjustSoundsForPerformer } from './sounds'
+import { applySoundAdjustmentsForPerformer } from './sounds'
 import { getSource } from './sources'
 import { SourceRequest } from './types'
 
@@ -24,7 +24,7 @@ const prepareVoices: (voices: Voice[], timePosition?: Ms) => Promise<PreparedVoi
         return Promise.all(voices.map(async (voice: Voice): Promise<PreparedVoice> => {
             const { sounds = [], sourceRequest = defaultSourceRequest } = voice
 
-            const adjustedSounds: Sound[] = adjustSoundsForPerformer(sounds, sourceRequest)
+            const adjustedSounds: Sound[] = applySoundAdjustmentsForPerformer(sounds, sourceRequest)
 
             const { soundIndex, nextStart } = computeNextSoundAfterTimePosition(adjustedSounds, timePositionToStartAt)
 

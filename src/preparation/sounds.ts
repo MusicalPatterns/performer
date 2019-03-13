@@ -8,7 +8,7 @@ import { applyPlaybackRate } from './sample'
 import { sourceRequestIsSampleSourceRequest } from './typeGuards'
 import { SourceRequest } from './types'
 
-const adjustSoundsForPerformer: (sounds: Sound[], options: SourceRequest) => Sound[] =
+const applySoundAdjustmentsForPerformer: (sounds: Sound[], options: SourceRequest) => Sound[] =
     (sounds: Sound[], sourceRequest: SourceRequest): Sound[] => {
         let outputSounds: Sound[] = sounds
         if (sourceRequestIsSampleSourceRequest(sourceRequest)) {
@@ -31,5 +31,5 @@ const adjustSoundsForPerformer: (sounds: Sound[], options: SourceRequest) => Sou
     }
 
 export {
-    adjustSoundsForPerformer,
+    applySoundAdjustmentsForPerformer,
 }
