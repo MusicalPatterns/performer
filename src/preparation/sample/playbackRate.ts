@@ -1,4 +1,13 @@
-import { apply, centsToPitch, Frequency, from, Hz, reciprocal, Scalar, to } from '@musical-patterns/utilities'
+import {
+    apply,
+    centsTranslationToPitchScalar,
+    Frequency,
+    from,
+    Hz,
+    reciprocal,
+    Scalar,
+    to,
+} from '@musical-patterns/utilities'
 import { STANDARDIZED_SAMPLE_PITCH_OF_C5 } from './constants'
 import { SampleData } from './types'
 
@@ -12,10 +21,10 @@ const computePlaybackRate: (sampleData: SampleData, frequency: Hz) => Scalar =
             frequency,
             to.Scalar(reciprocal(STANDARDIZED_SAMPLE_PITCH_OF_C5)),
         ))
-        const samplePitchAdjustment: Scalar<Frequency> =
-            centsToPitch(sampleData.centsAdjustment || to.Cents(0))
+        const samplePitchScalar: Scalar<Frequency> =
+            centsTranslationToPitchScalar(sampleData.centsTranslation || to.Translation(to.Cents(0)))
 
-        return apply.Scalar(from.Hz(pitch), samplePitchAdjustment)
+        return apply.Scalar(from.Hz(pitch), samplePitchScalar)
     }
 
 export {

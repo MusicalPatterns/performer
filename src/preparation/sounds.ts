@@ -3,7 +3,7 @@ import { Vrb } from 'vrb'
 import { ImmutableState, StateKey, store } from '../state'
 import { Sound } from '../types'
 import { applyHomePosition } from './applyHomePosition'
-import { applyGainAdjustmentForWebAudioOscillators } from './oscillator'
+import { applyGainScalarForWebAudioOscillators } from './oscillator'
 import { applyPlaybackRate } from './sample'
 import { sourceRequestIsSampleSourceRequest } from './typeGuards'
 import { SourceRequest } from './types'
@@ -16,7 +16,7 @@ const applySoundAdjustmentsForPerformer: (sounds: Sound[], options: SourceReques
                 applyPlaybackRate(sound, sourceRequest.timbreName))
         }
         else {
-            outputSounds = outputSounds.map(applyGainAdjustmentForWebAudioOscillators)
+            outputSounds = outputSounds.map(applyGainScalarForWebAudioOscillators)
         }
 
         const state: ImmutableState = store.getState()

@@ -1,4 +1,4 @@
-import { Cents } from '@musical-patterns/utilities'
+import { Cents, Translation } from '@musical-patterns/utilities'
 
 enum SampleName {
     CELLO = 'CELLO',
@@ -15,7 +15,7 @@ enum SampleName {
 }
 
 interface SampleData {
-    centsAdjustment?: Cents,
+    centsTranslation?: Translation<Cents>,
     unpitched?: boolean,
 }
 

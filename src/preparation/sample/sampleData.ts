@@ -9,7 +9,7 @@ import {
 } from './constants'
 import { SampleDatas, SampleName } from './types'
 
-const shiftSemitones: (semitones: Semitones) => Cents =
+const semitonesToCents: (semitones: Semitones) => Cents =
     (semitones: Semitones): Cents =>
         apply.Scalar(CENTS_PER_SEMITONE, to.Scalar(semitones))
 
@@ -18,20 +18,20 @@ const computeSampleData: VoidFunction =
         const sampleData: SampleDatas = {
             [ SampleName.CELLO ]: {},
             [ SampleName.DOUBLE_BASS ]: {
-                centsAdjustment: shiftSemitones(UP_TWO_OCTAVES_IN_SEMITONES),
+                centsTranslation: to.Translation(semitonesToCents(UP_TWO_OCTAVES_IN_SEMITONES)),
             },
             [ SampleName.FLUTE ]: {},
             [ SampleName.PIANO ]: {
-                centsAdjustment: shiftSemitones(DOWN_TWO_OCTAVES_IN_SEMITONES),
+                centsTranslation: to.Translation(semitonesToCents(DOWN_TWO_OCTAVES_IN_SEMITONES)),
             },
             [ SampleName.TROMBONE ]: {
-                centsAdjustment: shiftSemitones(UP_TWO_SEMITONES),
+                centsTranslation: to.Translation(semitonesToCents(UP_TWO_SEMITONES)),
             },
             [ SampleName.TRUMPET ]: {
-                centsAdjustment: shiftSemitones(DOWN_ONE_SEMITONE),
+                centsTranslation: to.Translation(semitonesToCents(DOWN_ONE_SEMITONE)),
             },
             [ SampleName.TUBA ]: {
-                centsAdjustment: shiftSemitones(UP_ONE_OCTAVE_IN_SEMITONES),
+                centsTranslation: to.Translation(semitonesToCents(UP_ONE_OCTAVE_IN_SEMITONES)),
             },
             [ SampleName.VIOLIN ]: {},
             [ SampleName.SNARE ]: {
