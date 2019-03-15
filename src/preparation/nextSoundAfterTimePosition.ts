@@ -4,6 +4,10 @@ import { NextSound } from './types'
 
 const computeNextSoundAfterTimePosition: (sounds: Sound[], timePosition: Ms) => NextSound =
     (sounds: Sound[], timePosition: Ms): NextSound => {
+        if (!sounds.length) {
+            return { soundIndex: to.Ordinal(0), nextStart: to.Ms(0) }
+        }
+
         let soundIndex: Ordinal = INITIAL
         let nextStart: Ms = to.Ms(0)
         while (nextStart < timePosition) {

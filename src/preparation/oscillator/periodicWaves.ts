@@ -78,9 +78,8 @@ Defaulting to sine. Please try updating your '@musical-patterns' packages.`)
 
             return createSineWaveParameters
         }
-        else {
-            return createPeriodicWaveParameters
-        }
+
+        return createPeriodicWaveParameters
     }
 
 const computePeriodicWave: ComputePeriodicWave =

@@ -22,6 +22,16 @@ describe('prepare voices', () => {
         done()
     })
 
+    it('does not crash if a voice with empty sounds is prepared when the time position is not at the beginning', async (done: DoneFn) => {
+        const voices: Voice[] = [
+            { sounds: [] },
+        ]
+        const startTime: Ms = to.Ms(2)
+
+        await prepareVoices(voices, startTime)
+        done()
+    })
+
     describe('when provided a start time', () => {
         it('picks the correct first sound index, and the correct time when the next sound will start', async (done: DoneFn) => {
             const voices: Voice[] = [
