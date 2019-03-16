@@ -1,4 +1,4 @@
-import { apply, from, INITIAL, Ms, NEXT, to } from '@musical-patterns/utilities'
+import { apply, from, INITIAL, isEmpty, Ms, NEXT, to } from '@musical-patterns/utilities'
 import { PreparedVoice, Sound } from '../types'
 
 const startPreparedVoiceSound: (preparedVoice: PreparedVoice, sound: Sound) => void =
@@ -25,7 +25,7 @@ const startPreparedVoiceSound: (preparedVoice: PreparedVoice, sound: Sound) => v
 
 const update: (preparedVoice: PreparedVoice, timePosition: Ms) => void =
     (preparedVoice: PreparedVoice, timePosition: Ms): void => {
-        if (preparedVoice.sounds.length === 0) {
+        if (isEmpty(preparedVoice.sounds)) {
             return
         }
 

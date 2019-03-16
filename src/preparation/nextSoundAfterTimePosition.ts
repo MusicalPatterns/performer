@@ -1,10 +1,10 @@
-import { apply, from, indexOfLastElement, INITIAL, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
+import { apply, from, indexOfLastElement, INITIAL, isEmpty, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
 import { Sound } from '../types'
 import { NextSound } from './types'
 
 const computeNextSoundAfterTimePosition: (sounds: Sound[], timePosition: Ms) => NextSound =
     (sounds: Sound[], timePosition: Ms): NextSound => {
-        if (!sounds.length) {
+        if (isEmpty(sounds)) {
             return { soundIndex: to.Ordinal(0), nextStart: to.Ms(0) }
         }
 
