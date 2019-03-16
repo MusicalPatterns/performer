@@ -3,8 +3,6 @@ import { SourceType } from '../performance'
 import { OscillatorName } from './oscillator'
 import { SampleName } from './sample'
 
-type TimbreName = SampleName | OscillatorName
-
 type SourceRequest = SampleSourceRequest | OscillatorSourceRequest
 
 interface SampleSourceRequest {
@@ -24,7 +22,6 @@ interface NextSound {
 
 export {
     SourceRequest,
-    TimbreName,
     NextSound,
     SampleSourceRequest,
     OscillatorSourceRequest,

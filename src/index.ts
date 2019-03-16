@@ -17,7 +17,6 @@ export {
     SourceRequest,
     SampleName,
     OscillatorName,
-    TimbreName,
 } from './preparation'
 export {
     SourceType,
