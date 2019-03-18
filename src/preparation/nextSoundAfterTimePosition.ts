@@ -1,4 +1,4 @@
-import { apply, from, indexOfLastElement, INITIAL, isEmpty, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
+import { apply, from, indexOfFinalElement, INITIAL, isEmpty, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
 import { Sound } from '../types'
 import { NextSound } from './types'
 
@@ -16,7 +16,7 @@ const computeNextSoundAfterTimePosition: (sounds: Sound[], timePosition: Ms) => 
             nextStart = apply.Translation(nextStart, to.Translation(duration))
             soundIndex = apply.Translation(soundIndex, NEXT)
 
-            if (from.Ordinal(soundIndex) > indexOfLastElement(sounds)) {
+            if (from.Ordinal(soundIndex) > indexOfFinalElement(sounds)) {
                 soundIndex = INITIAL
             }
         }

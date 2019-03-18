@@ -75,7 +75,7 @@ describe('update', () => {
                 .toBe(to.Ordinal(1))
         })
 
-        it('wraps around to the beginning if it has reached the last sound', () => {
+        it('wraps around to the beginning if it has reached the final sound', () => {
             const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(5),
                 nextStop: to.Ms(1),
