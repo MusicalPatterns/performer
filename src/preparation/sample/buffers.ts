@@ -1,4 +1,4 @@
-import { keyExistsOnObject } from '@musical-patterns/utilities'
+import { keyExistsOnObject, objectSet } from '@musical-patterns/utilities'
 import { context } from '../../performance'
 import { SampleName, Samples } from './types'
 
@@ -25,7 +25,7 @@ const load: (sampleName: SampleName) => Promise<void> =
             request.onload = async (): Promise<void> => {
                 const audioData: ArrayBuffer = request.response
                 await context.decodeAudioData(audioData, (sample: AudioBuffer): void => {
-                    samples[ sampleName ] = sample
+                    objectSet(samples, sampleName, sample)
                     resolve()
                 })
             }
