@@ -1,5 +1,5 @@
 import { SourceNode } from './source'
-import { ComputeStopSoundParameters, StopSound } from './types'
+import { ComputeStopSoundParameters, StartedSound, StopSound } from './types'
 
 const stopSourceNode: (sourceNode: SourceNode) => void =
     (sourceNode: SourceNode): void => {
@@ -11,7 +11,7 @@ const stopSourceNode: (sourceNode: SourceNode) => void =
         catch (e) {}
     }
 
-const computeStopSound: (parameters: ComputeStopSoundParameters) => StopSound =
+const computeStopSound: (parameters: { startedSound: StartedSound }) => StopSound =
     ({ startedSound }: ComputeStopSoundParameters): StopSound =>
         (): void => {
             const { sourceNode, gainNode, positionalAudio, positionNode } = startedSound

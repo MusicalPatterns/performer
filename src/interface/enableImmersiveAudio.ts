@@ -1,4 +1,4 @@
-import { noop } from '@musical-patterns/utilities'
+import { Coordinate, noop } from '@musical-patterns/utilities'
 import { BatchAction, batchActions } from 'redux-batched-actions'
 import { buildVrb, Vrb } from 'vrb'
 import { StateKey, store } from '../state'
@@ -9,7 +9,10 @@ import {
     ToggleImmersiveAudioHandlers,
 } from './types'
 
-const computeToggleImmersiveAudio: ({ vrb }: ComputeToggleImmersiveAudioParameters) => ToggleImmersiveAudioHandlers =
+const computeToggleImmersiveAudio: ({ vrb }: { vrb: Vrb }) => {
+    enterImmersiveAudio: VoidFunction,
+    exitImmersiveAudio: VoidFunction,
+} =
     ({ vrb }: ComputeToggleImmersiveAudioParameters): ToggleImmersiveAudioHandlers => ({
         enterImmersiveAudio: (): void => {
             const immersiveAudioReady: boolean = store.getState()
@@ -33,8 +36,15 @@ const computeToggleImmersiveAudio: ({ vrb }: ComputeToggleImmersiveAudioParamete
         },
     })
 
-const enableImmersiveAudio:
-    (enableImmersiveAudioParameters?: EnableImmersiveAudioParameters) => ToggleImmersiveAudioHandlers =
+const enableImmersiveAudio: (enableImmersiveAudioParameters?: {
+    homePosition?: Coordinate,
+    onNoVr?: VoidFunction,
+    onReady?: VoidFunction,
+    vrb?: Vrb,
+}) => {
+    enterImmersiveAudio: VoidFunction,
+    exitImmersiveAudio: VoidFunction,
+} =
     (enableImmersiveAudioParameters: EnableImmersiveAudioParameters = {}): ToggleImmersiveAudioHandlers => {
         const { homePosition, vrb, onReady = noop, onNoVr = noop } = enableImmersiveAudioParameters
         let webVr: Vrb

@@ -66,7 +66,7 @@ const oscillatorNameToPeriodicWaveNameMap: OscillatorNameToPeriodicWaveNameMap =
 
 const createSineWaveParameters: CreatePeriodicWaveParameters = { imag: [ 0, 0 ], real: [ 0, 1 ] }
 
-const computeCreatePeriodicWaveParameters: (oscillatorName: OscillatorName) => CreatePeriodicWaveParameters =
+const computeCreatePeriodicWaveParameters: (oscillatorName: OscillatorName) => { imag: number[], real: number[] } =
     (oscillatorName: OscillatorName): CreatePeriodicWaveParameters => {
         const oscillatorNameToPeriodicWaveNameMapElement: string = oscillatorNameToPeriodicWaveNameMap[ oscillatorName ]
         const createPeriodicWaveParameters: Maybe<CreatePeriodicWaveParameters> =

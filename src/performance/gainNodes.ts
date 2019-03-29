@@ -1,8 +1,14 @@
-import { from } from '@musical-patterns/utilities'
+import { from, Maybe, Scalar } from '@musical-patterns/utilities'
+import { PositionalAudio } from 'three'
 import { context } from './context'
+import { SourceNode } from './source'
 import { ComputeGainNodeParameters } from './types'
 
-const computeGainNode: (parameters: ComputeGainNodeParameters) => GainNode =
+const computeGainNode: (parameters: {
+    gain: Scalar,
+    positionalAudio: Maybe<PositionalAudio>,
+    sourceNode: SourceNode,
+}) => GainNode =
     ({ sourceNode, positionalAudio, gain }: ComputeGainNodeParameters): GainNode => {
         let gainNode: GainNode
         if (positionalAudio) {

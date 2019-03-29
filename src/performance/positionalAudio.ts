@@ -1,5 +1,7 @@
 import { apply, Coordinate, from, Meters, X_AXIS, Y_AXIS, Z_AXIS } from '@musical-patterns/utilities'
 import { Object3D, PositionalAudio } from 'three'
+import { Vrb } from 'vrb'
+import { SourceNode } from './source'
 import { ComputePositionalAudioParameters } from './types'
 
 const setPosition: (positionNode: Object3D, position: Coordinate<Meters>) => void =
@@ -12,7 +14,12 @@ const setPosition: (positionNode: Object3D, position: Coordinate<Meters>) => voi
         )
     }
 
-const computePositionalAudio: (parameters: ComputePositionalAudioParameters) => PositionalAudio =
+const computePositionalAudio: (parameters: {
+    position: Coordinate<Meters>,
+    positionNode: Object3D,
+    sourceNode: SourceNode,
+    webVr: Vrb,
+}) => PositionalAudio =
     ({ sourceNode, positionNode, webVr, position }: ComputePositionalAudioParameters): PositionalAudio => {
         const positionalAudio: PositionalAudio = webVr.createPositionalSound()
         // @ts-ignore

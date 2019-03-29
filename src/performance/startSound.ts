@@ -1,10 +1,23 @@
 import { Object3D } from 'three'
+import { Vrb } from 'vrb'
 import { computeGainNode } from './gainNodes'
 import { computePositionalAudio } from './positionalAudio'
 import { computeSourceNode, SourceNode } from './source'
-import { ComputeStartSoundParameters, SoundToPlay, StartedSound, StartSound, StartSoundAndStartedSound } from './types'
+import {
+    ComputeStartSoundParameters,
+    SoundToPlay,
+    SourceType,
+    StartedSound,
+    StartSound,
+    StartSoundAndStartedSound, Timbre,
+} from './types'
 
-const computeStartSound: (parameters: ComputeStartSoundParameters) => StartSoundAndStartedSound =
+const computeStartSound: (parameters: {
+    immersiveAudioEnabled: boolean,
+    sourceType: SourceType,
+    timbre: Timbre,
+    webVr?: Vrb,
+}) => StartSoundAndStartedSound =
     (parameters: ComputeStartSoundParameters): StartSoundAndStartedSound => {
         const { timbre, webVr, sourceType, immersiveAudioEnabled } = parameters
 
