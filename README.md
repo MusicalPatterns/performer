@@ -80,11 +80,13 @@ If you do not, Vrb is what will be used under the hood for WebVR and it will be 
 If you pass `voices` to the setup, it will automatically start playing them.
 
 ```
-import { setupPerformer } from '@musical-patterns/performer'
-import { snapshot } from '@musical-patterns/pattern-houndstoothtopia-theme'
+import { compilePattern } from '@musical-patterns/compiler'
+import { setupPerformer, Voice } from '@musical-patterns/performer'
+import { pattern } from '@musical-patterns/pattern-houndstoothtopia-theme'
 
+const voices: Voice[] = await compilePattern(pattern)
 await setupPerformer({
-	voices: snapshot,
+	voices,
 })
 
 ```
