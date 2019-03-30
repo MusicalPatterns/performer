@@ -1,17 +1,28 @@
-import { Ms, Ordinal } from '@musical-patterns/utilities'
+import { Cardinal, Ms, Ordinal } from '@musical-patterns/utilities'
 import { SoundToPlay, StartSound, StopSound } from './performance'
 import { SourceRequest } from './preparation'
 
 interface PreparedVoice {
     nextStart: Ms,
     nextStop: Ms,
+    sectionIndex: Ordinal,
+    sections: SoundsSection[],
     soundIndex: Ordinal,
-    sounds: Sound[],
     source: Source,
 }
 
+interface Section {
+    delayFor?: Ms,
+    repetitions?: Cardinal,
+    wrapAt?: Ms,
+}
+
+interface SoundsSection extends Section {
+    sounds: Sound[],
+}
+
 interface Voice {
-    sounds?: Sound[],
+    sections?: SoundsSection[],
     sourceRequest?: SourceRequest,
 }
 
@@ -30,4 +41,6 @@ export {
     Voice,
     Sound,
     Source,
+    Section,
+    SoundsSection,
 }

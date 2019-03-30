@@ -24,4 +24,6 @@ export {
 export {
     Voice,
     Sound,
+    Section,
+    SoundsSection,
 } from './types'

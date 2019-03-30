@@ -1,5 +1,5 @@
 import { apply, from, INITIAL, isEmpty, Ms, NEXT, to } from '@musical-patterns/utilities'
-import { PreparedVoice, Sound } from '../types'
+import { PreparedVoice, Sound, SoundsSection } from '../types'
 
 const startPreparedVoiceSound: (preparedVoice: PreparedVoice, sound: Sound) => void =
     (preparedVoice: PreparedVoice, sound: Sound): void => {
@@ -18,24 +18,30 @@ const startPreparedVoiceSound: (preparedVoice: PreparedVoice, sound: Sound) => v
         )
 
         preparedVoice.soundIndex = apply.Translation(preparedVoice.soundIndex, NEXT)
-        if (from.Ordinal(preparedVoice.soundIndex) === preparedVoice.sounds.length) {
+        const section: SoundsSection = apply.Ordinal(preparedVoice.sections, preparedVoice.sectionIndex)
+        if (from.Ordinal(preparedVoice.soundIndex) === section.sounds.length) {
             preparedVoice.soundIndex = INITIAL
         }
     }
 
 const update: (preparedVoice: PreparedVoice, timePosition: Ms) => void =
     (preparedVoice: PreparedVoice, timePosition: Ms): void => {
-        if (isEmpty(preparedVoice.sounds)) {
+        const { sections, sectionIndex, soundIndex, nextStart, nextStop, source } = preparedVoice
+
+        if (isEmpty(sections)) {
             return
         }
+        const section: SoundsSection = apply.Ordinal(sections, sectionIndex)
+        if (isEmpty(section.sounds)) {
+            return
+        }
+        const sound: Sound = apply.Ordinal(section.sounds, soundIndex)
 
-        const sound: Sound = apply.Ordinal(preparedVoice.sounds, preparedVoice.soundIndex)
-
-        if (timePosition > preparedVoice.nextStop) {
-            preparedVoice.source.stopSound()
+        if (timePosition > nextStop) {
+            source.stopSound()
         }
 
-        if (timePosition > preparedVoice.nextStart) {
+        if (timePosition > nextStart) {
             startPreparedVoiceSound(preparedVoice, sound)
         }
     }
