@@ -1,5 +1,5 @@
 import { Ms, to } from '@musical-patterns/utilities'
-import { PreparedVoice, prepareVoices, Sound, Voice } from '../../../src/indexForTest'
+import { PreparedVoice, prepareVoices, Voice } from '../../../src/indexForTest'
 
 describe('prepare voices', () => {
     it('defaults sounds to empty array, and next start, next stop, and sound index each to zero', async (done: DoneFn) => {
@@ -16,7 +16,7 @@ describe('prepare voices', () => {
             .toBe(to.Ms(0))
         expect(preparedVoice.soundIndex)
             .toBe(to.Ordinal(0))
-        expect(preparedVoice.sections)
+        expect(preparedVoice.sounds)
             .toEqual([])
 
         done()
@@ -25,11 +25,7 @@ describe('prepare voices', () => {
     it('does not crash if a voice with empty sounds is prepared when the time position is not at the beginning', async (done: DoneFn) => {
         const voices: Voice[] = [
             {
-                sections: [
-                    {
-                        sounds: [],
-                    },
-                ],
+                sounds: [],
             },
         ]
         const startTime: Ms = to.Ms(2)
@@ -42,24 +38,20 @@ describe('prepare voices', () => {
         it('picks the correct first sound index, and the correct time when the next sound will start', async (done: DoneFn) => {
             const voices: Voice[] = [
                 {
-                    sections: [
+                    sounds: [
                         {
-                            sounds: [
-                                {
-                                    duration: to.Ms(5),
-                                    frequency: to.Hz(1),
-                                    gain: to.Scalar(1),
-                                    position: [ 1 ].map(to.Meters),
-                                    sustain: to.Ms(4),
-                                },
-                                {
-                                    duration: to.Ms(3),
-                                    frequency: to.Hz(1),
-                                    gain: to.Scalar(1),
-                                    position: [ 1 ].map(to.Meters),
-                                    sustain: to.Ms(1),
-                                },
-                            ],
+                            duration: to.Ms(5),
+                            frequency: to.Hz(1),
+                            gain: to.Scalar(1),
+                            position: [ 1 ].map(to.Meters),
+                            sustain: to.Ms(4),
+                        },
+                        {
+                            duration: to.Ms(3),
+                            frequency: to.Hz(1),
+                            gain: to.Scalar(1),
+                            position: [ 1 ].map(to.Meters),
+                            sustain: to.Ms(1),
                         },
                     ],
                 },
@@ -84,24 +76,20 @@ describe('prepare voices', () => {
         it('wraps around if the start time is longer than the pattern itself', async (done: DoneFn) => {
             const voices: Voice[] = [
                 {
-                    sections: [
+                    sounds: [
                         {
-                            sounds: [
-                                {
-                                    duration: to.Ms(5),
-                                    frequency: to.Hz(1),
-                                    gain: to.Scalar(1),
-                                    position: [ 1 ].map(to.Meters),
-                                    sustain: to.Ms(4),
-                                },
-                                {
-                                    duration: to.Ms(3),
-                                    frequency: to.Hz(1),
-                                    gain: to.Scalar(1),
-                                    position: [ 1 ].map(to.Meters),
-                                    sustain: to.Ms(1),
-                                },
-                            ],
+                            duration: to.Ms(5),
+                            frequency: to.Hz(1),
+                            gain: to.Scalar(1),
+                            position: [ 1 ].map(to.Meters),
+                            sustain: to.Ms(4),
+                        },
+                        {
+                            duration: to.Ms(3),
+                            frequency: to.Hz(1),
+                            gain: to.Scalar(1),
+                            position: [ 1 ].map(to.Meters),
+                            sustain: to.Ms(1),
                         },
                     ],
                 },
