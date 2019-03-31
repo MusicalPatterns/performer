@@ -7,6 +7,7 @@ export {
     OscillatorName,
 } from './oscillator'
 export { prepareVoices } from './voices'
+export { computeNextSoundAfterTimePosition } from './nextSoundAfterTimePosition'
 
 export {
     SourceRequest,

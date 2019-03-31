@@ -16,6 +16,7 @@ export {
 export {
     SourceRequest,
     SampleName,
+    computeNextSoundAfterTimePosition,
     OscillatorName,
 } from './preparation'
 export {
