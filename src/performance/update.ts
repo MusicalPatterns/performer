@@ -20,7 +20,7 @@ const startPreparedVoiceSound: (preparedVoice: PreparedVoice, sound: Sound) => v
         preparedVoice.soundIndex = apply.Translation(preparedVoice.soundIndex, NEXT)
 
         if (preparedVoice.soundIndex === indexJustBeyondFinalElement(preparedVoice.sounds)) {
-            preparedVoice.soundIndex = INITIAL
+            preparedVoice.soundIndex = preparedVoice.wrapIndex
         }
     }
 

@@ -30,6 +30,7 @@ describe('update', () => {
                 stopSound:
                 noop,
             },
+            wrapIndex: to.Ordinal(0),
         }
 
         update(preparedVoice, to.Ms(0.001))
@@ -68,6 +69,7 @@ describe('update', () => {
                     startSound: noop,
                     stopSound: noop,
                 },
+                wrapIndex: to.Ordinal(0),
             }
 
             update(preparedVoice, to.Ms(0.001))
@@ -89,6 +91,7 @@ describe('update', () => {
                     startSound: noop,
                     stopSound: noop,
                 },
+                wrapIndex: to.Ordinal(0),
             }
 
             update(preparedVoice, to.Ms(5.001))
@@ -110,6 +113,7 @@ describe('update', () => {
                     startSound,
                     stopSound: noop,
                 },
+                wrapIndex: to.Ordinal(0),
             }
 
             update(preparedVoice, to.Ms(8.001))
@@ -129,6 +133,7 @@ describe('update', () => {
                     startSound,
                     stopSound: noop,
                 },
+                wrapIndex: to.Ordinal(0),
             }
 
             update(preparedVoice, to.Ms(7))
@@ -149,6 +154,7 @@ describe('update', () => {
                     startSound: noop,
                     stopSound,
                 },
+                wrapIndex: to.Ordinal(0),
             }
 
             update(preparedVoice, to.Ms(8.001))
@@ -168,6 +174,7 @@ describe('update', () => {
                     startSound: noop,
                     stopSound,
                 },
+                wrapIndex: to.Ordinal(0),
             }
 
             update(preparedVoice, to.Ms(7))
@@ -188,8 +195,31 @@ describe('update', () => {
                 startSound: noop,
                 stopSound: noop,
             },
+            wrapIndex: to.Ordinal(0),
         }
 
         update(preparedVoice, to.Ms(0.001))
+    })
+
+    it('wraps to the wrap index, even if it is not 0 the default', () => {
+        const preparedVoice: PreparedVoice = {
+            nextStart: to.Ms(5),
+            nextStop: to.Ms(1),
+            soundIndex: to.Ordinal(1),
+            sounds: [
+                testSound,
+                nextTestSound,
+            ],
+            source: {
+                startSound: noop,
+                stopSound: noop,
+            },
+            wrapIndex: to.Ordinal(1),
+        }
+
+        update(preparedVoice, to.Ms(5.001))
+
+        expect(preparedVoice.soundIndex)
+            .toBe(to.Ordinal(1))
     })
 })

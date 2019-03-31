@@ -8,11 +8,13 @@ interface PreparedVoice {
     soundIndex: Ordinal,
     sounds: Sound[],
     source: Source,
+    wrapIndex: Ordinal,
 }
 
 interface Voice {
     sounds?: Sound[],
     sourceRequest?: SourceRequest,
+    wrapIndex?: Ordinal,
 }
 
 interface Sound extends SoundToPlay {

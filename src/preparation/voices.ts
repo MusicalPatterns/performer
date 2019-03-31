@@ -22,7 +22,7 @@ const prepareVoices: (voices: Voice[], timePosition?: Ms) => Promise<PreparedVoi
         }
 
         return Promise.all(voices.map(async (voice: Voice): Promise<PreparedVoice> => {
-            const { sounds = [], sourceRequest = defaultSourceRequest } = voice
+            const { sounds = [], sourceRequest = defaultSourceRequest, wrapIndex = INITIAL } = voice
             const adjustedSounds: Sound[] = applySoundAdjustmentsForPerformer(sounds, sourceRequest)
 
             const { soundIndex, nextStart } = computeNextSoundAfterTimePosition(adjustedSounds, timePositionToStartAt)
@@ -33,6 +33,7 @@ const prepareVoices: (voices: Voice[], timePosition?: Ms) => Promise<PreparedVoi
                 soundIndex,
                 sounds: adjustedSounds,
                 source: await getSource(sourceRequest),
+                wrapIndex,
             }
         }))
     }
