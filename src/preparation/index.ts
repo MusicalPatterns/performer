@@ -11,4 +11,5 @@ export { computeNextSoundAfterTimePosition } from './nextSoundAfterTimePosition'
 
 export {
     SourceRequest,
+    NextSound,
 } from './types'
