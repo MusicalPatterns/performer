@@ -5,16 +5,16 @@ import { SourceRequest } from './preparation'
 interface PreparedVoice {
     nextStart: Ms,
     nextStop: Ms,
+    segnoIndex: Ordinal,
     soundIndex: Ordinal,
     sounds: Sound[],
     source: Source,
-    wrapIndex: Ordinal,
 }
 
 interface Voice {
+    segnoIndex?: Ordinal,
     sounds?: Sound[],
     sourceRequest?: SourceRequest,
-    wrapIndex?: Ordinal,
 }
 
 interface Sound extends SoundToPlay {

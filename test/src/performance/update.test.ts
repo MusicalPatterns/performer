@@ -23,6 +23,7 @@ describe('update', () => {
         const preparedVoice: PreparedVoice = {
             nextStart: to.Ms(0),
             nextStop: to.Ms(0),
+            segnoIndex: to.Ordinal(0),
             soundIndex: to.Ordinal(0),
             sounds: [ testSound, nextTestSound ],
             source: {
@@ -30,7 +31,6 @@ describe('update', () => {
                 stopSound:
                 noop,
             },
-            wrapIndex: to.Ordinal(0),
         }
 
         update(preparedVoice, to.Ms(0.001))
@@ -48,6 +48,7 @@ describe('update', () => {
             const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(0),
                 nextStop: to.Ms(0),
+                segnoIndex: to.Ordinal(0),
                 soundIndex: to.Ordinal(0),
                 sounds: [
                     {
@@ -69,7 +70,6 @@ describe('update', () => {
                     startSound: noop,
                     stopSound: noop,
                 },
-                wrapIndex: to.Ordinal(0),
             }
 
             update(preparedVoice, to.Ms(0.001))
@@ -78,10 +78,11 @@ describe('update', () => {
                 .toBe(to.Ordinal(1))
         })
 
-        it('wraps around to the beginning if it has reached the final sound', () => {
+        it('repeats from the beginning if it has reached the final sound', () => {
             const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(5),
                 nextStop: to.Ms(1),
+                segnoIndex: to.Ordinal(0),
                 soundIndex: to.Ordinal(1),
                 sounds: [
                     testSound,
@@ -91,7 +92,6 @@ describe('update', () => {
                     startSound: noop,
                     stopSound: noop,
                 },
-                wrapIndex: to.Ordinal(0),
             }
 
             update(preparedVoice, to.Ms(5.001))
@@ -107,13 +107,13 @@ describe('update', () => {
             const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(8),
                 nextStop: to.Ms(0),
+                segnoIndex: to.Ordinal(0),
                 soundIndex: to.Ordinal(0),
                 sounds: [ testSound ],
                 source: {
                     startSound,
                     stopSound: noop,
                 },
-                wrapIndex: to.Ordinal(0),
             }
 
             update(preparedVoice, to.Ms(8.001))
@@ -127,13 +127,13 @@ describe('update', () => {
             const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(8),
                 nextStop: to.Ms(0),
+                segnoIndex: to.Ordinal(0),
                 soundIndex: to.Ordinal(0),
                 sounds: [ testSound ],
                 source: {
                     startSound,
                     stopSound: noop,
                 },
-                wrapIndex: to.Ordinal(0),
             }
 
             update(preparedVoice, to.Ms(7))
@@ -148,13 +148,13 @@ describe('update', () => {
             const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(0),
                 nextStop: to.Ms(8),
+                segnoIndex: to.Ordinal(0),
                 soundIndex: to.Ordinal(0),
                 sounds: [ testSound ],
                 source: {
                     startSound: noop,
                     stopSound,
                 },
-                wrapIndex: to.Ordinal(0),
             }
 
             update(preparedVoice, to.Ms(8.001))
@@ -168,13 +168,13 @@ describe('update', () => {
             const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(0),
                 nextStop: to.Ms(8),
+                segnoIndex: to.Ordinal(0),
                 soundIndex: to.Ordinal(0),
                 sounds: [ testSound ],
                 source: {
                     startSound: noop,
                     stopSound,
                 },
-                wrapIndex: to.Ordinal(0),
             }
 
             update(preparedVoice, to.Ms(7))
@@ -189,13 +189,13 @@ describe('update', () => {
         const preparedVoice: PreparedVoice = {
             nextStart: to.Ms(0),
             nextStop: to.Ms(0),
+            segnoIndex: to.Ordinal(0),
             soundIndex: to.Ordinal(0),
             sounds: [],
             source: {
                 startSound: noop,
                 stopSound: noop,
             },
-            wrapIndex: to.Ordinal(0),
         }
 
         update(preparedVoice, to.Ms(0.001))
@@ -205,6 +205,7 @@ describe('update', () => {
         const preparedVoice: PreparedVoice = {
             nextStart: to.Ms(5),
             nextStop: to.Ms(1),
+            segnoIndex: to.Ordinal(1),
             soundIndex: to.Ordinal(1),
             sounds: [
                 testSound,
@@ -214,7 +215,6 @@ describe('update', () => {
                 startSound: noop,
                 stopSound: noop,
             },
-            wrapIndex: to.Ordinal(1),
         }
 
         update(preparedVoice, to.Ms(5.001))
