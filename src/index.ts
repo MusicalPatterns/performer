@@ -20,6 +20,7 @@ export {
 } from './preparation'
 export {
     SourceType,
+    NON_SEGNO_INDEX,
 } from './performance'
 export {
     Voice,

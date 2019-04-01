@@ -4,6 +4,9 @@ export { computeStartSound } from './startSound'
 export { computeStopSound } from './stopSound'
 
 export {
+    NON_SEGNO_INDEX,
+} from './constants'
+export {
     SoundToPlay,
     StartSound,
     StopSound,

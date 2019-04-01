@@ -1,5 +1,6 @@
 import { apply, indexJustBeyondFinalElement, INITIAL, isEmpty, Ms, NEXT, to } from '@musical-patterns/utilities'
 import { PreparedVoice, Sound } from '../types'
+import { NON_SEGNO_INDEX } from './constants'
 
 const startPreparedVoiceSound: (preparedVoice: PreparedVoice, sound: Sound) => void =
     (preparedVoice: PreparedVoice, sound: Sound): void => {
@@ -28,14 +29,18 @@ const update: (preparedVoice: PreparedVoice, timePosition: Ms) => void =
     (preparedVoice: PreparedVoice, timePosition: Ms): void => {
         const { sounds, soundIndex, nextStart, nextStop, source } = preparedVoice
 
+        if (timePosition > nextStop) {
+            source.stopSound()
+        }
+
+        if (soundIndex === NON_SEGNO_INDEX) {
+            return
+        }
+
         if (isEmpty(sounds)) {
             return
         }
         const sound: Sound = apply.Ordinal(sounds, soundIndex)
-
-        if (timePosition > nextStop) {
-            source.stopSound()
-        }
 
         if (timePosition > nextStart) {
             startPreparedVoiceSound(preparedVoice, sound)

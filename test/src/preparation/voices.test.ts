@@ -73,7 +73,7 @@ describe('prepare voices', () => {
             done()
         })
 
-        it('wraps around if the start time is longer than the pattern itself', async (done: DoneFn) => {
+        it('if the start time is longer than the pattern itself, it keeps repeating from the beginning', async (done: DoneFn) => {
             const voices: Voice[] = [
                 {
                     sounds: [
@@ -105,6 +105,50 @@ describe('prepare voices', () => {
                 .toBe(to.Ms(16))
             expect(preparedVoice.soundIndex)
                 .toBe(to.Ordinal(0))
+
+            done()
+        })
+
+        it('if the start time is longer than the pattern itself, it keeps repeating from the segno index, if a segno index is provided', async (done: DoneFn) => {
+            const voices: Voice[] = [
+                {
+                    segnoIndex: to.Ordinal(1),
+                    sounds: [
+                        {
+                            duration: to.Ms(5),
+                            frequency: to.Hz(1),
+                            gain: to.Scalar(1),
+                            position: [ 1 ].map(to.Meters),
+                            sustain: to.Ms(4),
+                        },
+                        {
+                            duration: to.Ms(1),
+                            frequency: to.Hz(1),
+                            gain: to.Scalar(1),
+                            position: [ 1 ].map(to.Meters),
+                            sustain: to.Ms(1),
+                        },
+                        {
+                            duration: to.Ms(3),
+                            frequency: to.Hz(1),
+                            gain: to.Scalar(1),
+                            position: [ 1 ].map(to.Meters),
+                            sustain: to.Ms(1),
+                        },
+                    ],
+                },
+            ]
+            const startTime: Ms = to.Ms(14)
+
+            const preparedVoices: PreparedVoice[] = await prepareVoices(voices, startTime)
+            const preparedVoice: PreparedVoice = preparedVoices[ 0 ]
+
+            expect(preparedVoice.nextStop)
+                .toBe(to.Ms(14))
+            expect(preparedVoice.nextStart)
+                .toBe(to.Ms(14))
+            expect(preparedVoice.soundIndex)
+                .toBe(to.Ordinal(2))
 
             done()
         })

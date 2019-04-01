@@ -25,7 +25,11 @@ const prepareVoices: (voices: Voice[], timePosition?: Ms) => Promise<PreparedVoi
             const { sounds = [], sourceRequest = defaultSourceRequest, segnoIndex = INITIAL } = voice
             const adjustedSounds: Sound[] = applySoundAdjustmentsForPerformer(sounds, sourceRequest)
 
-            const { soundIndex, nextStart } = computeNextSoundAfterTimePosition(adjustedSounds, timePositionToStartAt)
+            const { soundIndex, nextStart } = computeNextSoundAfterTimePosition({
+                segnoIndex,
+                sounds: adjustedSounds,
+                timePosition: timePositionToStartAt,
+            })
 
             return {
                 nextStart,

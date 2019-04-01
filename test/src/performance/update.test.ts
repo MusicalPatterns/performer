@@ -183,6 +183,27 @@ describe('update', () => {
                 .not
                 .toHaveBeenCalled()
         })
+
+        it(`does not call the source's start sound method when the sound index is -1`, () => {
+            const startSound: Spy = jasmine.createSpy()
+            const preparedVoice: PreparedVoice = {
+                nextStart: to.Ms(8),
+                nextStop: to.Ms(0),
+                segnoIndex: to.Ordinal(-1),
+                soundIndex: to.Ordinal(-1),
+                sounds: [ testSound ],
+                source: {
+                    startSound,
+                    stopSound: noop,
+                },
+            }
+
+            update(preparedVoice, to.Ms(8.001))
+
+            expect(startSound)
+                .not
+                .toHaveBeenCalled()
+        })
     })
 
     it('when there are no sounds, it does not crash', () => {
@@ -201,7 +222,7 @@ describe('update', () => {
         update(preparedVoice, to.Ms(0.001))
     })
 
-    it('wraps to the wrap index, even if it is not 0 the default', () => {
+    it('repeats from the segno index, even if it is not 0 the default', () => {
         const preparedVoice: PreparedVoice = {
             nextStart: to.Ms(5),
             nextStop: to.Ms(1),
@@ -221,5 +242,27 @@ describe('update', () => {
 
         expect(preparedVoice.soundIndex)
             .toBe(to.Ordinal(1))
+    })
+
+    it('when the segno index is -1, it stops playing when it reaches the end', () => {
+        const preparedVoice: PreparedVoice = {
+            nextStart: to.Ms(5),
+            nextStop: to.Ms(1),
+            segnoIndex: to.Ordinal(-1),
+            soundIndex: to.Ordinal(1),
+            sounds: [
+                testSound,
+                nextTestSound,
+            ],
+            source: {
+                startSound: noop,
+                stopSound: noop,
+            },
+        }
+
+        update(preparedVoice, to.Ms(5.001))
+
+        expect(preparedVoice.soundIndex)
+            .toBe(to.Ordinal(-1))
     })
 })
