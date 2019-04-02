@@ -84,7 +84,7 @@ import { compilePattern } from '@musical-patterns/compiler'
 import { setupPerformer, Voice } from '@musical-patterns/performer'
 import { pattern } from '@musical-patterns/pattern-houndstoothtopia-theme'
 
-const voices: Voice[] = await compilePattern(pattern)
+const { voices }: CompiledPattern = await compilePattern(pattern)
 await setupPerformer({
 	voices,
 })
