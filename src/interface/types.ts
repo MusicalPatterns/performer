@@ -15,10 +15,8 @@ interface EnableImmersiveAudioParameters {
 }
 
 interface SetupPerformerParameters {
+    compiledPattern?: CompiledPattern,
     onUpdate?: OnUpdate,
-    segnoTime?: Ms,
-    totalDuration?: Ms,
-    voices?: Voice[],
 }
 
 interface ToggleImmersiveAudioHandlers {
@@ -26,9 +24,16 @@ interface ToggleImmersiveAudioHandlers {
     exitImmersiveAudio: VoidFunction,
 }
 
+interface CompiledPattern {
+    segnoTime: Ms,
+    totalDuration: Ms,
+    voices: Voice[],
+}
+
 export {
     ComputeToggleImmersiveAudioParameters,
     EnableImmersiveAudioParameters,
     SetupPerformerParameters,
     ToggleImmersiveAudioHandlers,
+    CompiledPattern,
 }

@@ -1,6 +1,6 @@
 export {
     enableImmersiveAudio,
-    setVoices,
+    setPattern,
     setupPerformer,
     play,
     pause,
@@ -9,6 +9,7 @@ export {
     EnableImmersiveAudioParameters,
     SetupPerformerParameters,
     ToggleImmersiveAudioHandlers,
+    CompiledPattern,
 } from './interface'
 export {
     OnUpdate,

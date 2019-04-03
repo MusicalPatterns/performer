@@ -14,9 +14,11 @@ import {
 const setupQa: () => Promise<void> =
     async (): Promise<void> => {
         await setupPerformer({
-            segnoTime: BEGINNING,
-            totalDuration: PERFORMER_QA_PATTERN_TOTAL_DURATION,
-            voices: snapshots.initial,
+            compiledPattern: {
+                segnoTime: BEGINNING,
+                totalDuration: PERFORMER_QA_PATTERN_TOTAL_DURATION,
+                voices: snapshots.initial,
+            },
         })
         const { enterImmersiveAudio, exitImmersiveAudio }: ToggleImmersiveAudioHandlers = enableImmersiveAudio()
 

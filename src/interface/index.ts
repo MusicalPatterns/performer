@@ -1,6 +1,6 @@
 export { enableImmersiveAudio } from './enableImmersiveAudio'
 export { setupPerformer } from './setupPerformer'
-export { setVoices } from './setVoices'
+export { setPattern } from './setPattern'
 export { stop } from './stop'
 export { pause } from './pause'
 export { play } from './play'
@@ -10,4 +10,5 @@ export {
     EnableImmersiveAudioParameters,
     SetupPerformerParameters,
     ToggleImmersiveAudioHandlers,
+    CompiledPattern,
 } from './types'

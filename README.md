@@ -26,16 +26,16 @@ This will ensure your browser is ready to start playing!
 ### loading a pattern
 
 ```
-import { setVoices, Voice } from '@musical-patterns/performer'
+import { setPattern, CompiledPattern } from '@musical-patterns/performer'
 
-const voices: Voice[] = [
-	// your voices here
-]
+const compiledPattern: CompiledPattern = {
+	// your compiled pattern here
+}
 
-await setVoices(voices)
+await setPattern(compiledPattern)
 ```
 
-`setVoices` only sets what is to be performed. It does not start playing it yet.
+`setPattern` only sets what is to be performed. It does not start playing it yet.
 
 ### starting and stopping
 

@@ -2,12 +2,6 @@ import { Ms } from '@musical-patterns/utilities'
 
 type OnUpdate = (timePosition: Ms) => void
 
-interface SetupTimeControlsParameters {
-    onUpdate: OnUpdate,
-    segnoTime: Ms,
-    totalDuration: Ms,
-}
-
 interface ComputePatternTimeParameters {
     segnoTime: Ms,
     timePosition: Ms,
@@ -17,5 +11,4 @@ interface ComputePatternTimeParameters {
 export {
     OnUpdate,
     ComputePatternTimeParameters,
-    SetupTimeControlsParameters,
 }
