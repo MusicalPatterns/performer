@@ -22,6 +22,7 @@ export {
 export {
     SourceType,
     NON_SEGNO_INDEX,
+    NON_SEGNO_TIME,
 } from './performance'
 export {
     Voice,

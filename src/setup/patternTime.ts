@@ -1,4 +1,5 @@
 import { apply, difference, Ms, sum, to } from '@musical-patterns/utilities'
+import { NON_SEGNO_TIME } from '../performance'
 import { ComputePatternTimeParameters } from './types'
 
 const computePatternTime: (parameters: { segnoTime: Ms, timePosition: Ms, totalDuration: Ms }) => Ms =
@@ -7,6 +8,10 @@ const computePatternTime: (parameters: { segnoTime: Ms, timePosition: Ms, totalD
 
         if (timePosition < totalDuration) {
             return timePosition
+        }
+
+        if (segnoTime === NON_SEGNO_TIME) {
+            return totalDuration
         }
 
         const introDuration: Ms = difference(totalDuration, repetendDuration)

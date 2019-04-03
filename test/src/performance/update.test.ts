@@ -1,5 +1,5 @@
 import { noop, to } from '@musical-patterns/utilities'
-import { PreparedVoice, Sound, update } from '../../../src/indexForTest'
+import { NON_SEGNO_INDEX, PreparedVoice, Sound, update } from '../../../src/indexForTest'
 import Spy = jasmine.Spy
 
 describe('update', () => {
@@ -184,13 +184,13 @@ describe('update', () => {
                 .toHaveBeenCalled()
         })
 
-        it(`does not call the source's start sound method when the sound index is -1`, () => {
+        it(`does not call the source's start sound method when the sound index has been set to -1 (the non-segno index) after reaching the end of a voice that does not repeat`, () => {
             const startSound: Spy = jasmine.createSpy()
             const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(8),
                 nextStop: to.Ms(0),
-                segnoIndex: to.Ordinal(-1),
-                soundIndex: to.Ordinal(-1),
+                segnoIndex: NON_SEGNO_INDEX,
+                soundIndex: NON_SEGNO_INDEX,
                 sounds: [ testSound ],
                 source: {
                     startSound,
@@ -244,11 +244,11 @@ describe('update', () => {
             .toBe(to.Ordinal(1))
     })
 
-    it('when the segno index is -1, it stops playing when it reaches the end', () => {
+    it('when the segno index is -1 (the non-segno index) it stops playing when it reaches the end', () => {
         const preparedVoice: PreparedVoice = {
             nextStart: to.Ms(5),
             nextStop: to.Ms(1),
-            segnoIndex: to.Ordinal(-1),
+            segnoIndex: NON_SEGNO_INDEX,
             soundIndex: to.Ordinal(1),
             sounds: [
                 testSound,
@@ -263,6 +263,6 @@ describe('update', () => {
         update(preparedVoice, to.Ms(5.001))
 
         expect(preparedVoice.soundIndex)
-            .toBe(to.Ordinal(-1))
+            .toBe(NON_SEGNO_INDEX)
     })
 })
