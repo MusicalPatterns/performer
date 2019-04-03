@@ -1,4 +1,4 @@
-import { Ms, to } from '@musical-patterns/utilities'
+import { BEGINNING, Ms, to } from '@musical-patterns/utilities'
 import { computePatternTime, NON_SEGNO_TIME } from '../../../src/indexForTest'
 
 describe('pattern time', () => {
@@ -7,10 +7,10 @@ describe('pattern time', () => {
         const totalDuration: Ms = to.Ms(10)
         expect(computePatternTime({
             segnoTime,
-            timePosition: to.Ms(0),
+            timePosition: BEGINNING,
             totalDuration,
         }))
-            .toBe(to.Ms(0))
+            .toBe(BEGINNING)
 
         expect(computePatternTime({
             segnoTime,
@@ -53,10 +53,10 @@ describe('pattern time', () => {
         const totalDuration: Ms = to.Ms(10)
         expect(computePatternTime({
             segnoTime,
-            timePosition: to.Ms(0),
+            timePosition: BEGINNING,
             totalDuration,
         }))
-            .toBe(to.Ms(0))
+            .toBe(BEGINNING)
 
         expect(computePatternTime({
             segnoTime,

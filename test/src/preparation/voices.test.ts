@@ -1,4 +1,4 @@
-import { Ms, to } from '@musical-patterns/utilities'
+import { BEGINNING, Ms, to } from '@musical-patterns/utilities'
 import { PreparedVoice, prepareVoices, Voice } from '../../../src/indexForTest'
 
 describe('prepare voices', () => {
@@ -11,9 +11,9 @@ describe('prepare voices', () => {
         const preparedVoice: PreparedVoice = preparedVoices[ 0 ]
 
         expect(preparedVoice.nextStop)
-            .toBe(to.Ms(0))
+            .toBe(BEGINNING)
         expect(preparedVoice.nextStart)
-            .toBe(to.Ms(0))
+            .toBe(BEGINNING)
         expect(preparedVoice.soundIndex)
             .toBe(to.Ordinal(0))
         expect(preparedVoice.sounds)

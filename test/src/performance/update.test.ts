@@ -1,4 +1,4 @@
-import { noop, to } from '@musical-patterns/utilities'
+import { BEGINNING, noop, to } from '@musical-patterns/utilities'
 import { NON_SEGNO_INDEX, PreparedVoice, Sound, update } from '../../../src/indexForTest'
 import Spy = jasmine.Spy
 
@@ -21,8 +21,8 @@ describe('update', () => {
 
     it('uses duration and sustain to determine the next sound stop and start', () => {
         const preparedVoice: PreparedVoice = {
-            nextStart: to.Ms(0),
-            nextStop: to.Ms(0),
+            nextStart: BEGINNING,
+            nextStop: BEGINNING,
             segnoIndex: to.Ordinal(0),
             soundIndex: to.Ordinal(0),
             sounds: [ testSound, nextTestSound ],
@@ -46,8 +46,8 @@ describe('update', () => {
     describe('next sound', () => {
         it('sets sound index to the next sound', () => {
             const preparedVoice: PreparedVoice = {
-                nextStart: to.Ms(0),
-                nextStop: to.Ms(0),
+                nextStart: BEGINNING,
+                nextStop: BEGINNING,
                 segnoIndex: to.Ordinal(0),
                 soundIndex: to.Ordinal(0),
                 sounds: [
@@ -106,7 +106,7 @@ describe('update', () => {
             const startSound: Spy = jasmine.createSpy()
             const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(8),
-                nextStop: to.Ms(0),
+                nextStop: BEGINNING,
                 segnoIndex: to.Ordinal(0),
                 soundIndex: to.Ordinal(0),
                 sounds: [ testSound ],
@@ -126,7 +126,7 @@ describe('update', () => {
             const startSound: Spy = jasmine.createSpy()
             const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(8),
-                nextStop: to.Ms(0),
+                nextStop: BEGINNING,
                 segnoIndex: to.Ordinal(0),
                 soundIndex: to.Ordinal(0),
                 sounds: [ testSound ],
@@ -146,7 +146,7 @@ describe('update', () => {
         it(`calls the source's stop sound method when the next stop is reached`, () => {
             const stopSound: Spy = jasmine.createSpy()
             const preparedVoice: PreparedVoice = {
-                nextStart: to.Ms(0),
+                nextStart: BEGINNING,
                 nextStop: to.Ms(8),
                 segnoIndex: to.Ordinal(0),
                 soundIndex: to.Ordinal(0),
@@ -166,7 +166,7 @@ describe('update', () => {
         it(`does not call the source's stop sound method when the next stop is not yet reached`, () => {
             const stopSound: Spy = jasmine.createSpy()
             const preparedVoice: PreparedVoice = {
-                nextStart: to.Ms(0),
+                nextStart: BEGINNING,
                 nextStop: to.Ms(8),
                 segnoIndex: to.Ordinal(0),
                 soundIndex: to.Ordinal(0),
@@ -188,7 +188,7 @@ describe('update', () => {
             const startSound: Spy = jasmine.createSpy()
             const preparedVoice: PreparedVoice = {
                 nextStart: to.Ms(8),
-                nextStop: to.Ms(0),
+                nextStop: BEGINNING,
                 segnoIndex: NON_SEGNO_INDEX,
                 soundIndex: NON_SEGNO_INDEX,
                 sounds: [ testSound ],
@@ -208,8 +208,8 @@ describe('update', () => {
 
     it('when there are no sounds, it does not crash', () => {
         const preparedVoice: PreparedVoice = {
-            nextStart: to.Ms(0),
-            nextStop: to.Ms(0),
+            nextStart: BEGINNING,
+            nextStop: BEGINNING,
             segnoIndex: to.Ordinal(0),
             soundIndex: to.Ordinal(0),
             sounds: [],
