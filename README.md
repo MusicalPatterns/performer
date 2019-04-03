@@ -82,12 +82,12 @@ If you pass `voices` to the setup, it will automatically start playing them.
 
 ```
 import { compilePattern } from '@musical-patterns/compiler'
-import { setupPerformer, Voice } from '@musical-patterns/performer'
+import { setupPerformer, CompiledPattern } from '@musical-patterns/performer'
 import { pattern } from '@musical-patterns/pattern-houndstoothtopia-theme'
 
-const { voices }: CompiledPattern = await compilePattern(pattern)
+const compiledPattern: CompiledPattern = await compilePattern(pattern)
 await setupPerformer({
-	voices,
+	compiledPattern,
 })
 
 ```
