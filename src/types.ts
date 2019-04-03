@@ -3,6 +3,7 @@ import { SoundToPlay, StartSound, StopSound } from './performance'
 import { SourceRequest } from './preparation'
 
 interface PreparedVoice {
+    delay: Ms,
     nextStart: Ms,
     nextStop: Ms,
     segnoIndex: Ordinal,
@@ -12,9 +13,10 @@ interface PreparedVoice {
 }
 
 interface Voice {
-    segnoIndex?: Ordinal,
-    sounds?: Sound[],
-    sourceRequest?: SourceRequest,
+    delay: Ms,
+    segnoIndex: Ordinal,
+    sounds: Sound[],
+    sourceRequest: SourceRequest,
 }
 
 interface Sound extends SoundToPlay {

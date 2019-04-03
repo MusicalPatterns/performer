@@ -1,17 +1,9 @@
-import { INITIAL, isUndefined, Ms, to } from '@musical-patterns/utilities'
-import { SourceType } from '../performance'
+import { isUndefined, Ms, to } from '@musical-patterns/utilities'
 import { StateKey, store } from '../state'
 import { PreparedVoice, Sound, Voice } from '../types'
 import { computeNextSoundAfterTimePosition } from './nextSoundAfterTimePosition'
-import { OscillatorName } from './oscillator'
 import { applySoundAdjustmentsForPerformer } from './sounds'
 import { getSource } from './sources'
-import { SourceRequest } from './types'
-
-const defaultSourceRequest: SourceRequest = {
-    sourceType: SourceType.OSCILLATOR,
-    timbreName: OscillatorName.SINE,
-}
 
 const prepareVoices: (voices: Voice[], timePosition?: Ms) => Promise<PreparedVoice[]> =
     async (voices: Voice[], timePosition?: Ms): Promise<PreparedVoice[]> => {
@@ -22,7 +14,7 @@ const prepareVoices: (voices: Voice[], timePosition?: Ms) => Promise<PreparedVoi
         }
 
         return Promise.all(voices.map(async (voice: Voice): Promise<PreparedVoice> => {
-            const { sounds = [], sourceRequest = defaultSourceRequest, segnoIndex = INITIAL } = voice
+            const { delay, sounds, sourceRequest, segnoIndex } = voice
             const adjustedSounds: Sound[] = applySoundAdjustmentsForPerformer(sounds, sourceRequest)
 
             const { soundIndex, nextStart } = computeNextSoundAfterTimePosition({
@@ -32,6 +24,7 @@ const prepareVoices: (voices: Voice[], timePosition?: Ms) => Promise<PreparedVoi
             })
 
             return {
+                delay,
                 nextStart,
                 nextStop: nextStart,
                 segnoIndex,

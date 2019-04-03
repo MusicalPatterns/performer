@@ -1,31 +1,17 @@
-import { BEGINNING, Ms, to } from '@musical-patterns/utilities'
-import { PreparedVoice, prepareVoices, Voice } from '../../../src/indexForTest'
+import { INITIAL, Ms, NO_DURATION, to } from '@musical-patterns/utilities'
+import { OscillatorName, PreparedVoice, prepareVoices, SourceType, Voice } from '../../../src/indexForTest'
 
 describe('prepare voices', () => {
-    it('defaults sounds to empty array, and next start, next stop, and sound index each to zero', async (done: DoneFn) => {
-        const voices: Voice[] = [
-            {},
-        ]
-
-        const preparedVoices: PreparedVoice[] = await prepareVoices(voices)
-        const preparedVoice: PreparedVoice = preparedVoices[ 0 ]
-
-        expect(preparedVoice.nextStop)
-            .toBe(BEGINNING)
-        expect(preparedVoice.nextStart)
-            .toBe(BEGINNING)
-        expect(preparedVoice.soundIndex)
-            .toBe(to.Ordinal(0))
-        expect(preparedVoice.sounds)
-            .toEqual([])
-
-        done()
-    })
-
     it('does not crash if a voice with empty sounds is prepared when the time position is not at the beginning', async (done: DoneFn) => {
         const voices: Voice[] = [
             {
+                delay: NO_DURATION,
+                segnoIndex: INITIAL,
                 sounds: [],
+                sourceRequest: {
+                    sourceType: SourceType.OSCILLATOR,
+                    timbreName: OscillatorName.SINE,
+                },
             },
         ]
         const startTime: Ms = to.Ms(2)
@@ -38,6 +24,8 @@ describe('prepare voices', () => {
         it('picks the correct first sound index, and the correct time when the next sound will start', async (done: DoneFn) => {
             const voices: Voice[] = [
                 {
+                    delay: NO_DURATION,
+                    segnoIndex: INITIAL,
                     sounds: [
                         {
                             duration: to.Ms(5),
@@ -54,6 +42,10 @@ describe('prepare voices', () => {
                             sustain: to.Ms(1),
                         },
                     ],
+                    sourceRequest: {
+                        sourceType: SourceType.OSCILLATOR,
+                        timbreName: OscillatorName.SINE,
+                    },
                 },
             ]
             const startTime
@@ -76,6 +68,8 @@ describe('prepare voices', () => {
         it('if the start time is longer than the pattern itself, it keeps repeating from the beginning', async (done: DoneFn) => {
             const voices: Voice[] = [
                 {
+                    delay: NO_DURATION,
+                    segnoIndex: INITIAL,
                     sounds: [
                         {
                             duration: to.Ms(5),
@@ -92,6 +86,10 @@ describe('prepare voices', () => {
                             sustain: to.Ms(1),
                         },
                     ],
+                    sourceRequest: {
+                        sourceType: SourceType.OSCILLATOR,
+                        timbreName: OscillatorName.SINE,
+                    },
                 },
             ]
             const startTime: Ms = to.Ms(14)
@@ -112,6 +110,7 @@ describe('prepare voices', () => {
         it('if the start time is longer than the pattern itself, it keeps repeating from the segno index, if a segno index is provided', async (done: DoneFn) => {
             const voices: Voice[] = [
                 {
+                    delay: NO_DURATION,
                     segnoIndex: to.Ordinal(1),
                     sounds: [
                         {
@@ -136,6 +135,10 @@ describe('prepare voices', () => {
                             sustain: to.Ms(1),
                         },
                     ],
+                    sourceRequest: {
+                        sourceType: SourceType.OSCILLATOR,
+                        timbreName: OscillatorName.SINE,
+                    },
                 },
             ]
             const startTime: Ms = to.Ms(14)

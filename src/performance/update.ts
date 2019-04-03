@@ -1,4 +1,4 @@
-import { apply, indexJustBeyondFinalElement, INITIAL, isEmpty, Ms, NEXT, to } from '@musical-patterns/utilities'
+import { apply, indexJustBeyondFinalElement, isEmpty, Ms, NEXT, to } from '@musical-patterns/utilities'
 import { PreparedVoice, Sound } from '../types'
 import { NON_SEGNO_INDEX } from './constants'
 
@@ -27,9 +27,9 @@ const startPreparedVoiceSound: (preparedVoice: PreparedVoice, sound: Sound) => v
 
 const update: (preparedVoice: PreparedVoice, timePosition: Ms) => void =
     (preparedVoice: PreparedVoice, timePosition: Ms): void => {
-        const { sounds, soundIndex, nextStart, nextStop, source } = preparedVoice
+        const { delay, sounds, soundIndex, nextStart, nextStop, source } = preparedVoice
 
-        if (timePosition > nextStop) {
+        if (timePosition > apply.Translation(nextStop, to.Translation(delay))) {
             source.stopSound()
         }
 
@@ -42,7 +42,7 @@ const update: (preparedVoice: PreparedVoice, timePosition: Ms) => void =
         }
         const sound: Sound = apply.Ordinal(sounds, soundIndex)
 
-        if (timePosition > nextStart) {
+        if (timePosition > apply.Translation(nextStart, to.Translation(delay))) {
             startPreparedVoiceSound(preparedVoice, sound)
         }
     }

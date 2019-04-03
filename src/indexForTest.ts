@@ -4,6 +4,7 @@ export {
     update,
     NON_SEGNO_TIME,
     NON_SEGNO_INDEX,
+    SourceType,
 } from './performance/indexForTest'
 export {
     prepareVoices,

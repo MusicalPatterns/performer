@@ -6,3 +6,7 @@ export {
     NON_SEGNO_TIME,
     NON_SEGNO_INDEX,
 } from './constants'
+
+export {
+    SourceType,
+} from './types'
