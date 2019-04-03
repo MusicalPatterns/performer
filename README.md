@@ -15,6 +15,7 @@ import { setupPerformer, OnUpdate } from '@musical-patterns/performer'
 
 const onUpdate: OnUpdate = time => {
 	// do whatever you wanna do with the latest time here, such as update some display
+	// note that the time this callback gets called with, if your pattern repeats from some point whenever it reaches the end, will restart to that time (it is not the raw time passed since starting the pattern in your reality; it is the time within the pattern)
 }
 
 await setupPerformer({ onUpdate })

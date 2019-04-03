@@ -1,5 +1,6 @@
 import { snapshots } from '@musical-patterns/pattern-performer-qa'
-import { to } from '@musical-patterns/utilities'
+import { BEGINNING, to } from '@musical-patterns/utilities'
+import { PERFORMER_QA_PATTERN_TOTAL_DURATION } from './constants'
 import {
     enableImmersiveAudio,
     pause,
@@ -12,7 +13,11 @@ import {
 
 const setupQa: () => Promise<void> =
     async (): Promise<void> => {
-        await setupPerformer({ voices: snapshots.initial })
+        await setupPerformer({
+            segnoTime: BEGINNING,
+            totalDuration: PERFORMER_QA_PATTERN_TOTAL_DURATION,
+            voices: snapshots.initial,
+        })
         const { enterImmersiveAudio, exitImmersiveAudio }: ToggleImmersiveAudioHandlers = enableImmersiveAudio()
 
         const setTimeButton: HTMLElement = document.createElement('button')

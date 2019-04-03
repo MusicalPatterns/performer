@@ -1,4 +1,4 @@
-import { Coordinate } from '@musical-patterns/utilities'
+import { Coordinate, Ms } from '@musical-patterns/utilities'
 import { Vrb } from 'vrb'
 import { OnUpdate } from '../setup'
 import { Voice } from '../types'
@@ -16,6 +16,8 @@ interface EnableImmersiveAudioParameters {
 
 interface SetupPerformerParameters {
     onUpdate?: OnUpdate,
+    segnoTime?: Ms,
+    totalDuration?: Ms,
     voices?: Voice[],
 }
 

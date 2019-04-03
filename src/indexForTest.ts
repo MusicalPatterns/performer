@@ -8,6 +8,9 @@ export {
     OscillatorName,
     SampleName,
 } from './preparation/indexForTest'
+export {
+    computePatternTime,
+} from './setup/indexForTest'
 
 export {
     PreparedVoice,
