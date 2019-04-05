@@ -9,9 +9,7 @@ const setupPerformer: (parameters?: {
     compiledPattern?: CompiledPattern,
     onUpdate?: OnUpdate,
 }) => Promise<void> =
-    async (parameters: SetupPerformerParameters = {}): Promise<void> => {
-        const { onUpdate = noop, compiledPattern } = parameters
-
+    async ({ onUpdate = noop, compiledPattern }: SetupPerformerParameters = {}): Promise<void> => {
         activateContextInMobileBrowserEnvironments()
         setupTimeControls(onUpdate)
         computeSampleData()

@@ -18,9 +18,7 @@ const computeStartSound: (parameters: {
     timbre: Timbre,
     webVr?: Vrb,
 }) => StartSoundAndStartedSound =
-    (parameters: ComputeStartSoundParameters): StartSoundAndStartedSound => {
-        const { timbre, webVr, sourceType, immersiveAudioEnabled } = parameters
-
+    ({ timbre, webVr, sourceType, immersiveAudioEnabled }: ComputeStartSoundParameters): StartSoundAndStartedSound => {
         const startedSound: StartedSound = {}
 
         const startSound: StartSound = ({ gain, frequency, playbackRate, position }: SoundToPlay): void => {
